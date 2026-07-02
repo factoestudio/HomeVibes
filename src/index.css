@@ -1,13 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg-dark: #07080B;          /* Pure Obsidian */
+  --bg-card: rgba(20, 22, 29, 0.7); /* Deep Caviar Glass */
+  --bg-subcard: rgba(28, 31, 40, 0.6);
+  
+  --border-color: rgba(197, 168, 128, 0.12); /* Ultra-thin Champagne Tint */
+  --border-glow: rgba(212, 175, 55, 0.35);    /* Glowing Gold */
+  
+  --text-main: #F5F5F7;        /* Silk White */
+  --text-muted: #9DA3AE;       /* Cashmere Gray */
+  --text-dark: #07080B;
+
+  --color-primary: #C5A880;     /* Satin Gold */
+  --color-primary-hover: #D4AF37; /* Champagne Gold */
+  --color-secondary: #8E7557;   /* Muted Bronze */
+  --color-secondary-hover: #A08669;
+  
+  --color-success: #C5A880;     /* Gold Accent */
+  --color-warning: #8E7557;
+  --color-danger: #6B5252;      /* Muted Velvet Wine */
+
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  
+  --shadow-glow: 0 0 30px rgba(197, 168, 128, 0.08);
+  --shadow-card: 0 16px 40px -12px rgba(0, 0, 0, 0.7);
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
+  
+  /* Luxury Obsidian Ambient Radial Glows */
+  background-image: 
+    radial-gradient(circle at 5% 15%, rgba(197, 168, 128, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 95% 85%, rgba(142, 117, 87, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(20, 22, 29, 0.5) 0%, transparent 100%);
+  background-attachment: fixed;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.display-font {
+  font-family: var(--font-display);
+}
+
+.serif-font {
+  font-family: var(--font-serif);
+}
+
+/* Scrollbar Customization - Gold Accent */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(7, 8, 11, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 168, 128, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 168, 128, 0.4);
 }
