@@ -7,11 +7,12 @@ export default function FilterBar({ filters, onChange }) {
   if (!filters) return null;
   const handleTypeToggle = (type) => {
     let newTypes;
-    if (filters.selectedTypes.includes(type)) {
-      if (filters.selectedTypes.length === 1) return; // Keep at least one selected
-      newTypes = filters.selectedTypes.filter(t => t !== type);
+    const currentTypes = filters.selectedTypes || ['Condo', 'House', 'Townhouse', 'Loft'];
+    if (currentTypes.includes(type)) {
+      if (currentTypes.length === 1) return; // Keep at least one selected
+      newTypes = currentTypes.filter(t => t !== type);
     } else {
-      newTypes = [...filters.selectedTypes, type];
+      newTypes = [...currentTypes, type];
     }
     onChange({ ...filters, selectedTypes: newTypes });
   };
@@ -118,7 +119,8 @@ export default function FilterBar({ filters, onChange }) {
           <span className="filter-group-label uppercase">Type:</span>
           <div className="types-chips-wrap">
             {PROPERTY_TYPES.map(type => {
-              const isSelected = filters.selectedTypes.includes(type);
+              const currentTypes = filters.selectedTypes || ['Condo', 'House', 'Townhouse', 'Loft'];
+              const isSelected = currentTypes.includes(type);
               return (
                 <button
                   key={type}

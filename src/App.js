@@ -19,7 +19,7 @@ export default function App() {
     if (!userPreferences || !filters) return [];
 
     const { profile, hub, commuteFrequency, transitMode, lifestyle } = userPreferences;
-    const { tenure, maxPrice, beds, baths, parkingRequired, selectedTypes } = filters;
+    const { tenure, maxPrice, beds, baths, parkingRequired, selectedTypes = ['Condo', 'House', 'Townhouse', 'Loft'] } = filters;
 
     return neighborhoodsData.map(area => {
       // 1. Life Stage Suitability Match (25% weight)
