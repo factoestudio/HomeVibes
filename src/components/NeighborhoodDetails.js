@@ -21,7 +21,7 @@ import {
 } from './SvgIcons';
 
 export default function NeighborhoodDetails({ selectedArea, userPreferences, onClose, filters, isPremiumUnlocked, setIsPremiumUnlocked }) {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', timeline: 'Just browsing' });
+  const [formData, setFormData] = useState({ name: '', email: '', timeline: 'Just browsing' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
 
@@ -421,7 +421,6 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
             <form onSubmit={handleUnlockSubmit} className="lead-form">
               <input type="text" placeholder="Full Name" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className="luxury-input" />
               <input type="email" placeholder="Email Address" required value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} className="luxury-input" />
-              <input type="tel" placeholder="Phone Number (Optional)" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} className="luxury-input" />
               <select required value={formData.timeline} onChange={e => setFormData({ ...formData, timeline: e.target.value })} className="luxury-select timeline-select">
                 <option value="Just browsing">Just browsing</option>
                 <option value="1-3 months">Looking to move in 1-3 months</option>

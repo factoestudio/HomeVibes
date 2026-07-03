@@ -123,16 +123,15 @@ export default function App() {
     }).sort((a, b) => b.matchScore - a.matchScore);
   }, [userPreferences, filters]);
 
-  // Handle Quiz Completion
   const handleQuizComplete = (prefs) => {
     setUserPreferences(prefs);
     setFilters({
-      tenure: prefs.tenure,
-      maxPrice: prefs.maxPrice,
-      beds: prefs.beds,
-      baths: prefs.baths,
-      parkingRequired: prefs.parkingRequired,
-      selectedTypes: prefs.selectedTypes
+      tenure: 'rent',
+      maxPrice: 2600,
+      beds: 1,
+      baths: 1,
+      parkingRequired: false,
+      selectedTypes: ['Condo', 'House', 'Townhouse', 'Loft']
     });
     setView('results');
   };
@@ -257,8 +256,11 @@ export default function App() {
             </div>
 
             {/* Middle Column: Leaflet Map */}
-            <div className="results-map-column">
+            <div className="results-map-column" style={{ position: 'relative' }}>
               <FilterBar filters={filters} onChange={setFilters} />
+              <div className="map-instruction-pulse fade-in">
+                <span>Click a Gold Marker to View Analytics</span>
+              </div>
               <div className="map-wrapper">
                 <MapWidget 
                   neighborhoods={filteredAreas}

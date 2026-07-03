@@ -72,16 +72,6 @@ export default function VibeQuiz({ onComplete }) {
   const [commuteFrequency, setCommuteFrequency] = useState('daily');
   const [transitMode, setTransitMode] = useState('transit');
 
-  // Step 5: Property Specs States
-  const [beds, setBeds] = useState(1);
-  const [baths, setBaths] = useState(1);
-  const [parkingRequired, setParkingRequired] = useState(false);
-  const [selectedTypes, setSelectedTypes] = useState(['Condo', 'House', 'Townhouse', 'Loft']);
-
-  // Step 6: Financing States
-  const [tenure, setTenure] = useState('rent'); // 'rent' | 'buy'
-  const [maxPrice, setMaxPrice] = useState(2600);
-
   // Initialize all 7 lifestyle pillars with level 1 (Nice-to-have)
   const [lifestyle, setLifestyle] = useState({
     cafes_restaurants: 1,
@@ -103,46 +93,17 @@ export default function VibeQuiz({ onComplete }) {
     }));
   };
 
-  const togglePropertyType = (typeId) => {
-    setSelectedTypes(prev => {
-      if (prev.includes(typeId)) {
-        if (prev.length === 1) return prev; // Keep at least one checked
-        return prev.filter(t => t !== typeId);
-      }
-      return [...prev, typeId];
-    });
-  };
-
-  const handleTenureChange = (mode) => {
-    setTenure(mode);
-    setMaxPrice(mode === 'rent' ? 2600 : 1100000);
-  };
-
-  const formatCurrency = (val) => {
-    return new Intl.NumberFormat('en-CA', {
-      style: 'currency',
-      currency: 'CAD',
-      maximumFractionDigits: 0
-    }).format(val);
-  };
-
   const handleSubmit = () => {
     onComplete({
       profile,
       hub,
       commuteFrequency,
       transitMode,
-      lifestyle,
-      beds,
-      baths,
-      parkingRequired,
-      selectedTypes,
-      tenure,
-      maxPrice
+      lifestyle
     });
   };
 
-  const progressPercent = ((step - 1) / 6) * 100;
+  const progressPercent = ((step - 1) / 4) * 100;
 
   return (
     <div className="quiz-container card-glass luxury-border">
@@ -154,7 +115,7 @@ export default function VibeQuiz({ onComplete }) {
         ></div>
       </div>
       <div className="quiz-steps-counter uppercase">
-        Step {step} of 6
+        Step {step} of 4
       </div>
 
       {/* STEP 1: DEMOGRAPHIC PROFILE */}
@@ -318,171 +279,7 @@ export default function VibeQuiz({ onComplete }) {
             <button className="btn-secondary" onClick={prevStep}>
               &larr; Back
             </button>
-            <button className="btn-primary btn-gold" onClick={nextStep}>
-              Next: Property Specifications &rarr;
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* STEP 5: PROPERTY SPECIFICATIONS */}
-      {step === 5 && (
-        <div className="quiz-step-content fade-in">
-          <h2 className="quiz-title display-font gold-text-glow">Property Preferences</h2>
-          <p className="quiz-subtitle">Specify the structural characteristics of your desired home.</p>
-
-          <div className="quiz-form-group">
-            <label className="quiz-label uppercase letter-spacing">Desired Property Types (Select all that apply)</label>
-            <div className="quiz-options-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem' }}>
-              {PROPERTY_TYPES.map(type => {
-                const isActive = selectedTypes.includes(type.id);
-                return (
-                  <div
-                    key={type.id}
-                    className={`quiz-card luxury-card type-select-card ${isActive ? 'active' : ''}`}
-                    onClick={() => togglePropertyType(type.id)}
-                    style={{ padding: '1rem', flexDirection: 'row', justifyContent: 'center', gap: '0.5rem' }}
-                  >
-                    <span className="gold-text">{type.icon}</span>
-                    <span style={{ fontSize: '0.85rem' }}>{type.name}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="specs-select-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginTop: '1rem' }}>
-            <div className="quiz-form-group">
-              <label className="quiz-label uppercase letter-spacing">Bedrooms</label>
-              <div className="quiz-toggle-group" style={{ gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.4rem' }}>
-                {[1, 2, 3, 4].map(num => (
-                  <button
-                    key={num}
-                    type="button"
-                    className={`quiz-toggle-btn luxury-btn spec-toggle ${beds === num ? 'active' : ''}`}
-                    onClick={() => setBeds(num)}
-                    style={{ padding: '0.6rem' }}
-                  >
-                    {num === 4 ? '4+' : `${num}+`}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="quiz-form-group">
-              <label className="quiz-label uppercase letter-spacing">Bathrooms</label>
-              <div className="quiz-toggle-group" style={{ gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.4rem' }}>
-                {[1, 1.5, 2, 3].map(num => (
-                  <button
-                    key={num}
-                    type="button"
-                    className={`quiz-toggle-btn luxury-btn spec-toggle ${baths === num ? 'active' : ''}`}
-                    onClick={() => setBaths(num)}
-                    style={{ padding: '0.6rem' }}
-                  >
-                    {num === 3 ? '3+' : `${num}+`}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="quiz-form-group" style={{ marginTop: '1.5rem' }}>
-            <div className="parking-required-toggle card-subglass luxury-subcard" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 1.25rem' }}>
-              <div>
-                <span style={{ fontWeight: 700, color: '#fff', fontSize: '0.95rem', display: 'block' }}>Parking Space Required</span>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Requires at least 1 dedicated parking space</span>
-              </div>
-              <button
-                type="button"
-                className={`quiz-toggle-btn luxury-btn ${parkingRequired ? 'active' : ''}`}
-                onClick={() => setParkingRequired(!parkingRequired)}
-                style={{ width: '80px', padding: '0.5rem' }}
-              >
-                {parkingRequired ? 'YES' : 'NO'}
-              </button>
-            </div>
-          </div>
-
-          <div className="quiz-nav-actions" style={{ marginTop: '1.5rem' }}>
-            <button className="btn-secondary" onClick={prevStep}>
-              &larr; Back
-            </button>
-            <button className="btn-primary btn-gold" onClick={nextStep}>
-              Next: Financials &rarr;
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* STEP 6: BUDGET & TENURE */}
-      {step === 6 && (
-        <div className="quiz-step-content fade-in">
-          <h2 className="quiz-title display-font gold-text-glow">Financial Limits</h2>
-          <p className="quiz-subtitle">Filter neighborhood compatibility based on rent or purchase budget constraints.</p>
-
-          <div className="quiz-form-group">
-            <label className="quiz-label uppercase letter-spacing">Do you want to Rent or Buy?</label>
-            <div className="quiz-toggle-group">
-              <button
-                type="button"
-                className={`quiz-toggle-btn luxury-btn ${tenure === 'rent' ? 'active' : ''}`}
-                onClick={() => handleTenureChange('rent')}
-              >
-                <span className="flex-align-btn"><RentIcon size={16} /> Renting</span>
-              </button>
-              <button
-                type="button"
-                className={`quiz-toggle-btn luxury-btn ${tenure === 'buy' ? 'active' : ''}`}
-                onClick={() => handleTenureChange('buy')}
-              >
-                <span className="flex-align-btn"><BuyIcon size={16} /> Buying</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="quiz-form-group" style={{ marginTop: '1.5rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.75rem' }}>
-              <label className="quiz-label uppercase letter-spacing">Maximum Budget Limit</label>
-              <span className="gold-text display-font" style={{ fontWeight: 800, fontSize: '1.35rem' }}>
-                {formatCurrency(maxPrice)}{tenure === 'rent' ? '/mo' : ''}
-              </span>
-            </div>
-            
-            {/* Custom Luxury Budget Slider */}
-            <input
-              type="range"
-              min={tenure === 'rent' ? 1500 : 400000}
-              max={tenure === 'rent' ? 5000 : 3000000}
-              step={tenure === 'rent' ? 100 : 50000}
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(Number(e.target.value))}
-              className="luxury-slider"
-              style={{ width: '100%', marginBottom: '1.25rem' }}
-            />
-
-            {/* Presets Grid */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.4rem' }}>
-              {PRICE_PRESETS[tenure].map(preset => (
-                <button
-                  key={preset}
-                  type="button"
-                  className={`quiz-toggle-btn luxury-btn ${maxPrice === preset ? 'active' : ''}`}
-                  onClick={() => setMaxPrice(preset)}
-                  style={{ flex: 1, padding: '0.5rem', fontSize: '0.75rem' }}
-                >
-                  {preset >= 1000000 
-                    ? `$${(preset/1000000).toFixed(1)}M` 
-                    : preset >= 1000 
-                      ? `$${(preset/1000).toFixed(0)}k` 
-                      : `$${preset}`
-                  }
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="quiz-nav-actions" style={{ marginTop: '2.5rem' }}>
+          <div className="quiz-nav-actions">
             <button className="btn-secondary" onClick={prevStep}>
               &larr; Back
             </button>
