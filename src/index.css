@@ -1,64 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --bg-dark: #0B1320;          /* Deep Slate Navy */
-  --bg-card: rgba(18, 30, 48, 0.7); /* Slate Tinted Glass */
-  --bg-subcard: rgba(28, 42, 64, 0.6);
+  /* Dark Mode: Midnight & Champagne Gold */
+  --bg-dark: #121212;          /* True Midnight Charcoal */
+  --bg-card: rgba(28, 28, 28, 0.7); /* Charcoal Tinted Glass */
+  --bg-subcard: rgba(38, 38, 38, 0.6);
   
-  --border-color: rgba(224, 228, 236, 0.12); /* Ultra-thin Platinum Tint */
-  --border-glow: rgba(200, 210, 224, 0.35);  /* Glowing Platinum */
+  --border-color: rgba(212, 175, 55, 0.15); /* Ultra-thin Gold Tint */
+  --border-glow: rgba(212, 175, 55, 0.4);   /* Glowing Gold */
   
-  --text-main: #F5F5F7;        /* Silk White */
-  --text-muted: #9DA3AE;       /* Cashmere Gray */
-  --text-dark: #07080B;
+  --text-main: #FAFAFA;        /* Silk White */
+  --text-muted: #A39E93;       /* Warm Gray */
+  --text-dark: #0A0A0A;
 
-  --color-primary: #B0C4DE;     /* Light Steel Blue / Platinum */
-  --color-primary-hover: #E6EBF2; /* Bright Platinum */
-  --color-secondary: #778899;   /* Light Slate Gray */
-  --color-secondary-hover: #9DA3AE;
+  --color-primary: #D4AF37;     /* Champagne Gold */
+  --color-primary-hover: #F3E5AB; /* Bright Gold/Vanilla */
+  --color-secondary: #C5A880;   /* Muted Warm Gold */
+  --color-secondary-hover: #D4AF37;
   
-  --color-success: #B0C4DE;     /* Platinum Accent */
-  --color-warning: #778899;
-  --color-danger: #6B5252;      /* Muted Velvet Wine */
+  --color-success: #D4AF37;     /* Gold Accent */
+  --color-warning: #C5A880;
+  --color-danger: #805B5B;      /* Muted Warm Rust */
 
   --font-main: 'Plus Jakarta Sans', sans-serif;
   --font-display: 'Outfit', sans-serif;
   --font-serif: 'Playfair Display', serif;
   
-  --shadow-glow: 0 0 30px rgba(176, 196, 222, 0.08);
-  --shadow-card: 0 16px 40px -12px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 30px rgba(212, 175, 55, 0.08);
+  --shadow-card: 0 16px 40px -12px rgba(0, 0, 0, 0.8);
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   
   --bg-gradients: 
-    radial-gradient(circle at 5% 15%, rgba(176, 196, 222, 0.05) 0%, transparent 35%),
-    radial-gradient(circle at 95% 85%, rgba(119, 136, 153, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(18, 30, 48, 0.5) 0%, transparent 100%);
+    radial-gradient(circle at 5% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 95% 85%, rgba(197, 168, 128, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(28, 28, 28, 0.5) 0%, transparent 100%);
 }
 
 [data-theme="light"] {
-  --bg-dark: #FAFAFC;          /* Silk White */
+  /* Light Mode: Cream & Classic Gold */
+  --bg-dark: #F7F5F0;          /* Creamy Pearl */
   --bg-card: rgba(255, 255, 255, 0.85); /* Frost Glass */
-  --bg-subcard: rgba(240, 242, 246, 0.8);
+  --bg-subcard: rgba(245, 242, 235, 0.8);
   
-  --border-color: rgba(119, 136, 153, 0.2); /* Subtle Slate */
-  --border-glow: rgba(176, 196, 222, 0.6);  /* Platinum Glow */
+  --border-color: rgba(184, 134, 11, 0.2); /* Subtle Gold */
+  --border-glow: rgba(184, 134, 11, 0.6);  /* Golden Glow */
   
-  --text-main: #0B1320;        /* Deep Slate Navy */
-  --text-muted: #5C677D;       /* Slate Gray */
+  --text-main: #1C1C1C;        /* Rich Charcoal */
+  --text-muted: #736B5E;       /* Warm Taupe */
   --text-dark: #FFFFFF;        /* Reversed for buttons */
 
-  --color-primary: #4A6382;     /* Slate Blue */
-  --color-primary-hover: #334A66; /* Deep Slate */
-  --color-secondary: #778899;   
-  --color-secondary-hover: #5C677D;
+  --color-primary: #B8860B;     /* Classic Dark Goldenrod */
+  --color-primary-hover: #966F09; /* Deep Gold */
+  --color-secondary: #8B7355;   /* Warm Bronze/Taupe */
+  --color-secondary-hover: #736B5E;
   
-  --shadow-glow: 0 0 30px rgba(74, 99, 130, 0.15);
-  --shadow-card: 0 16px 40px -12px rgba(119, 136, 153, 0.2);
+  --shadow-glow: 0 0 30px rgba(184, 134, 11, 0.15);
+  --shadow-card: 0 16px 40px -12px rgba(139, 115, 85, 0.15);
 
   --bg-gradients: 
-    radial-gradient(circle at 5% 15%, rgba(74, 99, 130, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(119, 136, 153, 0.06) 0%, transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(240, 242, 246, 0.8) 0%, transparent 100%);
+    radial-gradient(circle at 5% 15%, rgba(184, 134, 11, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(139, 115, 85, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(245, 242, 235, 0.8) 0%, transparent 100%);
 }
 
 * {

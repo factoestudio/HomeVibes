@@ -10,7 +10,7 @@ const getMarkerColor = (score) => {
 };
 
 const buildOverpassQuery = (profile, lat, lng) => {
-  const radius = 800; // 800 meters search radius
+  const radius = 1200; // 1200 meters search radius
   let filters = '';
   switch(profile) {
     case 'student':
@@ -51,19 +51,18 @@ const buildOverpassQuery = (profile, lat, lng) => {
   return `[out:json][timeout:15];(${filters});out body 20;`; // Limit to 20 nodes for UI performance
 };
 
-const getEmojiForTag = (tags) => {
-  if (tags.amenity === 'cafe') return '☕';
-  if (tags.amenity === 'library') return '📚';
-  if (tags.amenity === 'fast_food') return '🍕';
-  if (tags.amenity === 'pub' || tags.amenity === 'bar') return '🍸';
-  if (tags.leisure === 'fitness_centre') return '🏋️';
-  if (tags.amenity === 'restaurant') return '🍽️';
-  if (tags.leisure === 'park') return '🌳';
-  if (tags.shop === 'supermarket') return '🛒';
-  if (tags.amenity === 'school' || tags.amenity === 'childcare') return '🏫';
-  if (tags.amenity === 'hospital' || tags.amenity === 'clinic') return '🏥';
-  if (tags.shop === 'bakery') return '🍞';
-  return '📍';
+const getIconForTag = (tags) => {
+  if (tags.amenity === 'cafe') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>`;
+  if (tags.amenity === 'library') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>`;
+  if (tags.amenity === 'fast_food' || tags.amenity === 'restaurant') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>`;
+  if (tags.amenity === 'pub' || tags.amenity === 'bar') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h8"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5V2H7v8a5 5 0 0 0 5 5Z"/></svg>`;
+  if (tags.leisure === 'fitness_centre') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.4 14.4 9.6 9.6"/><path d="M18.65 21.35a2 2 0 0 1-2.83 0l-5.66-5.66a2 2 0 0 1 0-2.83l2.83-2.83a2 2 0 0 1 2.83 0l5.66 5.66a2 2 0 0 1 0 2.83Z"/><path d="M2.65 5.35a2 2 0 0 1 2.83 0l5.66 5.66a2 2 0 0 1 0 2.83l-2.83 2.83a2 2 0 0 1-2.83 0L2.65 8.18a2 2 0 0 1 0-2.83Z"/></svg>`;
+  if (tags.leisure === 'park') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22v-8"/><path d="m20 10-2-2 2-2-2-2-2 2-2-2-2 2-2-2-2 2-2-2-2 2 2 2-2 2 2 2-2 2 2 2Z"/></svg>`;
+  if (tags.shop === 'supermarket' || tags.shop === 'bakery') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>`;
+  if (tags.amenity === 'school' || tags.amenity === 'childcare') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 6 8-4 8 4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4"/><path d="M18 5v17"/><path d="M6 5v17"/><circle cx="12" cy="9" r="2"/></svg>`;
+  if (tags.amenity === 'hospital' || tags.amenity === 'clinic') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v4"/><path d="M14 8h-4"/><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg>`;
+  
+  return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`;
 };
 
 export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelectNeighborhood, userPreferences }) {
@@ -184,7 +183,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
         
         const commuteIcon = L.divIcon({
           className: 'custom-commute-marker',
-          html: `<div style="background: #D4AF37; border-radius: 50%; padding: 4px; box-shadow: 0 0 10px rgba(212, 175, 55, 0.8); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px;"><span style="font-size: 16px;">📍</span></div>`,
+          html: `<div style="background: var(--color-primary); color: var(--bg-dark); border-radius: 50%; padding: 4px; box-shadow: 0 0 10px rgba(212, 175, 55, 0.8); border: 2px solid var(--text-main); display: flex; align-items: center; justify-content: center; width: 28px; height: 28px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>`,
           iconSize: [28, 28],
           iconAnchor: [14, 14]
         });
@@ -210,12 +209,12 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
           if (data && data.elements) {
             data.elements.forEach((poi, idx) => {
               if (!poi.lat || !poi.lon) return;
-              const emoji = getEmojiForTag(poi.tags || {});
+              const svgIcon = getIconForTag(poi.tags || {});
               const name = poi.tags?.name || 'Local Vibe';
               
               const poiIcon = L.divIcon({
                 className: 'custom-poi-marker',
-                html: `<div style="background: rgba(197, 168, 128, 0.15); backdrop-filter: blur(4px); border-radius: 50%; border: 1px solid rgba(197, 168, 128, 0.4); display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; font-size: 14px;">${emoji}</div>`,
+                html: `<div style="background: rgba(212, 175, 55, 0.15); color: var(--color-primary); backdrop-filter: blur(4px); border-radius: 50%; border: 1px solid rgba(212, 175, 55, 0.4); display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; font-size: 14px;">${svgIcon}</div>`,
                 iconSize: [26, 26],
                 iconAnchor: [13, 13]
               });
