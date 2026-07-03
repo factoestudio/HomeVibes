@@ -28,6 +28,37 @@
   --shadow-glow: 0 0 30px rgba(176, 196, 222, 0.08);
   --shadow-card: 0 16px 40px -12px rgba(0, 0, 0, 0.7);
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  --bg-gradients: 
+    radial-gradient(circle at 5% 15%, rgba(176, 196, 222, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 95% 85%, rgba(119, 136, 153, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(18, 30, 48, 0.5) 0%, transparent 100%);
+}
+
+[data-theme="light"] {
+  --bg-dark: #FAFAFC;          /* Silk White */
+  --bg-card: rgba(255, 255, 255, 0.85); /* Frost Glass */
+  --bg-subcard: rgba(240, 242, 246, 0.8);
+  
+  --border-color: rgba(119, 136, 153, 0.2); /* Subtle Slate */
+  --border-glow: rgba(176, 196, 222, 0.6);  /* Platinum Glow */
+  
+  --text-main: #0B1320;        /* Deep Slate Navy */
+  --text-muted: #5C677D;       /* Slate Gray */
+  --text-dark: #FFFFFF;        /* Reversed for buttons */
+
+  --color-primary: #4A6382;     /* Slate Blue */
+  --color-primary-hover: #334A66; /* Deep Slate */
+  --color-secondary: #778899;   
+  --color-secondary-hover: #5C677D;
+  
+  --shadow-glow: 0 0 30px rgba(74, 99, 130, 0.15);
+  --shadow-card: 0 16px 40px -12px rgba(119, 136, 153, 0.2);
+
+  --bg-gradients: 
+    radial-gradient(circle at 5% 15%, rgba(74, 99, 130, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(119, 136, 153, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(240, 242, 246, 0.8) 0%, transparent 100%);
 }
 
 * {
@@ -46,11 +77,8 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   
-  /* Luxury Slate Ambient Radial Glows */
-  background-image: 
-    radial-gradient(circle at 5% 15%, rgba(176, 196, 222, 0.05) 0%, transparent 35%),
-    radial-gradient(circle at 95% 85%, rgba(119, 136, 153, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(18, 30, 48, 0.5) 0%, transparent 100%);
+  /* Luxury Ambient Radial Glows */
+  background-image: var(--bg-gradients);
   background-attachment: fixed;
 }
 

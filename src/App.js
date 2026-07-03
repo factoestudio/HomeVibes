@@ -3,6 +3,7 @@ import { neighborhoodsData } from './data/neighborhoodsData';
 import VibeQuiz from './components/VibeQuiz';
 import MapWidget from './components/MapWidget';
 import NeighborhoodDetails from './components/NeighborhoodDetails';
+import ThemeSelector from './components/ThemeSelector';
 import { LogoIcon } from './components/SvgIcons';
 import './App.css';
 
@@ -20,11 +21,36 @@ const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
 };
 
 export default function App() {
+  const [theme, setTheme] = useState(localStorage.getItem('homevibes-theme') || 'auto');
   const [view, setView] = useState('quiz'); // 'quiz' | 'results'
   const [userPreferences, setUserPreferences] = useState(null);
   const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
   const [selectedArea, setSelectedArea] = useState(null);
   const [cityFilter, setCityFilter] = useState('All');
+
+  // Apply theme class
+  useEffect(() => {
+    const applyTheme = (mode) => {
+      if (mode === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    };
+
+    if (theme === 'auto') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      applyTheme(mediaQuery.matches ? 'dark' : 'light');
+      
+      const listener = (e) => applyTheme(e.matches ? 'dark' : 'light');
+      mediaQuery.addEventListener('change', listener);
+      localStorage.setItem('homevibes-theme', 'auto');
+      return () => mediaQuery.removeEventListener('change', listener);
+    } else {
+      applyTheme(theme);
+      localStorage.setItem('homevibes-theme', theme);
+    }
+  }, [theme]);
 
   // Dynamic Matching Algorithm (Luxury Refined)
   const matchedNeighborhoods = useMemo(() => {
@@ -174,11 +200,14 @@ export default function App() {
           </h1>
         </div>
         <p className="header-desc uppercase letter-spacing">Bespoke neighborhood profiles & luxury real estate matcher</p>
-        {view === 'results' && (
-          <button className="btn-header-action luxury-btn-header" onClick={handleRetakeQuiz}>
-            Reset & Retake Quiz
-          </button>
-        )}
+        <div className="header-right">
+          <ThemeSelector theme={theme} setTheme={setTheme} />
+          {view === 'results' && (
+            <button className="btn-header-action luxury-btn-header" onClick={handleRetakeQuiz}>
+              Reset & Retake Quiz
+            </button>
+          )}
+        </div>
       </header>
 
       {/* Main Content Area */}
@@ -259,14 +288,12 @@ export default function App() {
               <div className="map-instruction-pulse fade-in">
                 <span>Click a platinum Marker to View Analytics</span>
               </div>
-              <div className="map-wrapper">
                 <MapWidget 
                   neighborhoods={filteredAreas}
                   selectedNeighborhood={selectedArea}
                   onSelectNeighborhood={(area) => setSelectedArea(area)}
                   userPreferences={userPreferences}
                 />
-              </div>
             </div>
 
             {/* Right Column: Details Panel */}

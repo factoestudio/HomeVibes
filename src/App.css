@@ -74,6 +74,44 @@
   padding-left: 1.5rem;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.theme-selector-container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 20px;
+}
+
+.theme-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.theme-btn:hover {
+  color: var(--text-main);
+  background-color: rgba(176, 196, 222, 0.1);
+}
+
+.theme-btn.active {
+  color: var(--bg-dark);
+  background-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(176, 196, 222, 0.4);
+}
+
 /* Glassmorphism Luxury Cards */
 .card-glass {
   background-color: var(--bg-card);
@@ -1399,16 +1437,23 @@ button {
 }
 
 /* Responsive Queries */
-@media (max-width: 1250px) {
+@media (max-width: 1350px) {
   .results-layout {
-    grid-template-columns: 330px 1fr;
-    grid-template-rows: 1fr 1.2fr;
+    grid-template-columns: 350px 1fr;
+    grid-template-rows: minmax(500px, 60vh) auto;
     height: auto;
+  }
+
+  .results-list-column,
+  .results-map-column {
+    height: 100%;
+    min-height: 500px;
   }
 
   .results-details-column {
     grid-column: 1 / -1;
-    height: 600px;
+    height: auto;
+    min-height: 500px;
     border-top: 1px solid var(--border-color);
     padding-top: 1.5rem;
   }
