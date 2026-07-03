@@ -425,6 +425,7 @@ export default function VibeQuiz({ onComplete, userRole }) {
       )}
       </>
       )}
+      </div>
     </div>
   );
 }
