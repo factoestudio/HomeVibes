@@ -1,31 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --bg-dark: #07080B;          /* Pure Obsidian */
-  --bg-card: rgba(20, 22, 29, 0.7); /* Deep Caviar Glass */
-  --bg-subcard: rgba(28, 31, 40, 0.6);
+  --bg-dark: #0B1320;          /* Deep Slate Navy */
+  --bg-card: rgba(18, 30, 48, 0.7); /* Slate Tinted Glass */
+  --bg-subcard: rgba(28, 42, 64, 0.6);
   
-  --border-color: rgba(197, 168, 128, 0.12); /* Ultra-thin Champagne Tint */
-  --border-glow: rgba(212, 175, 55, 0.35);    /* Glowing Gold */
+  --border-color: rgba(224, 228, 236, 0.12); /* Ultra-thin Platinum Tint */
+  --border-glow: rgba(200, 210, 224, 0.35);  /* Glowing Platinum */
   
   --text-main: #F5F5F7;        /* Silk White */
   --text-muted: #9DA3AE;       /* Cashmere Gray */
   --text-dark: #07080B;
 
-  --color-primary: #C5A880;     /* Satin Gold */
-  --color-primary-hover: #D4AF37; /* Champagne Gold */
-  --color-secondary: #8E7557;   /* Muted Bronze */
-  --color-secondary-hover: #A08669;
+  --color-primary: #B0C4DE;     /* Light Steel Blue / Platinum */
+  --color-primary-hover: #E6EBF2; /* Bright Platinum */
+  --color-secondary: #778899;   /* Light Slate Gray */
+  --color-secondary-hover: #9DA3AE;
   
-  --color-success: #C5A880;     /* Gold Accent */
-  --color-warning: #8E7557;
+  --color-success: #B0C4DE;     /* Platinum Accent */
+  --color-warning: #778899;
   --color-danger: #6B5252;      /* Muted Velvet Wine */
 
   --font-main: 'Plus Jakarta Sans', sans-serif;
   --font-display: 'Outfit', sans-serif;
   --font-serif: 'Playfair Display', serif;
   
-  --shadow-glow: 0 0 30px rgba(197, 168, 128, 0.08);
+  --shadow-glow: 0 0 30px rgba(176, 196, 222, 0.08);
   --shadow-card: 0 16px 40px -12px rgba(0, 0, 0, 0.7);
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -46,11 +46,11 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   
-  /* Luxury Obsidian Ambient Radial Glows */
+  /* Luxury Slate Ambient Radial Glows */
   background-image: 
-    radial-gradient(circle at 5% 15%, rgba(197, 168, 128, 0.05) 0%, transparent 35%),
-    radial-gradient(circle at 95% 85%, rgba(142, 117, 87, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(20, 22, 29, 0.5) 0%, transparent 100%);
+    radial-gradient(circle at 5% 15%, rgba(176, 196, 222, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 95% 85%, rgba(119, 136, 153, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(18, 30, 48, 0.5) 0%, transparent 100%);
   background-attachment: fixed;
 }
 
@@ -66,21 +66,21 @@ code {
   font-family: var(--font-serif);
 }
 
-/* Scrollbar Customization - Gold Accent */
+/* Scrollbar Customization - Platinum Accent */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(7, 8, 11, 0.5);
+  background: rgba(11, 19, 32, 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(197, 168, 128, 0.2);
+  background: rgba(176, 196, 222, 0.2);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(197, 168, 128, 0.4);
+  background: rgba(176, 196, 222, 0.4);
 }

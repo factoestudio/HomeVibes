@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 
-// Helper to determine marker color based on match percentage - Luxury Gold Palette
+// Helper to determine marker color based on match percentage - Slate Platinum Palette
 const getMarkerColor = (score) => {
-  if (score >= 90) return '#D4AF37'; // Champagne Gold
-  if (score >= 75) return '#C5A880'; // Satin Gold
-  if (score >= 60) return '#8E7557'; // Muted Bronze
-  return '#4A4B54'; // Charcoal Muted
+  if (score >= 90) return '#E6EBF2'; // Bright Platinum
+  if (score >= 75) return '#B0C4DE'; // Light Steel Blue
+  if (score >= 60) return '#778899'; // Light Slate Gray
+  return '#4A5568'; // Muted Slate
 };
 
 export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelectNeighborhood }) {
@@ -115,10 +115,10 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
       <div className="map-legend card-subglass luxury-subcard">
         <div className="legend-title display-font">Match compatibility</div>
         <div className="legend-items">
-          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#D4AF37' }}></span> 90%+ (Champagne)</div>
-          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#C5A880' }}></span> 75%-89% (Satin Gold)</div>
-          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#8E7557' }}></span> 60%-74% (Bronze)</div>
-          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#4A4B54' }}></span> &lt; 60% (Muted)</div>
+          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#E6EBF2' }}></span> 90%+ (Bright Platinum)</div>
+          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#B0C4DE' }}></span> 75%-89% (Steel Blue)</div>
+          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#778899' }}></span> 60%-74% (Slate Gray)</div>
+          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#4A5568' }}></span> &lt; 60% (Muted)</div>
         </div>
       </div>
     </div>

@@ -168,7 +168,7 @@ export default function App() {
       {/* Navbar Header */}
       <header className="app-header-nav luxury-header">
         <div className="logo-wrap" onClick={handleRetakeQuiz}>
-          <span className="logo-icon gold-text"><LogoIcon size={32} /></span>
+          <span className="logo-icon platinum-text"><LogoIcon size={32} /></span>
           <h1 className="logo-text display-font">
             HomeVibes <span className="logo-badge luxury-badge uppercase">GTA</span>
           </h1>
@@ -186,7 +186,7 @@ export default function App() {
         {view === 'quiz' ? (
           <div className="quiz-view-wrapper">
             <div className="hero-section">
-              <h2 className="hero-title display-font gold-text-glow">Discover Your Perfect GTA Neighborhood</h2>
+              <h2 className="hero-title display-font platinum-text-glow">Discover Your Perfect GTA Neighborhood</h2>
               <p className="hero-subtitle">Evaluate your lifestage, commuting hubs, transit mode, and budget parameters to compute a custom compatibility match with premium locations.</p>
             </div>
             <VibeQuiz onComplete={handleQuizComplete} />
@@ -240,7 +240,7 @@ export default function App() {
                         </div>
                         <p className="match-card-desc">{area.description.substring(0, 100)}...</p>
                         <div className="match-card-meta">
-                          <span className="gold-text">Class: {area.priceBracket}</span>
+                          <span className="platinum-text">Class: {area.priceBracket}</span>
                           <span>Walkability: {area.transit.walkability}/10</span>
                         </div>
                       </div>
@@ -257,7 +257,7 @@ export default function App() {
             {/* Middle Column: Leaflet Map */}
             <div className="results-map-column" style={{ position: 'relative' }}>
               <div className="map-instruction-pulse fade-in">
-                <span>Click a Gold Marker to View Analytics</span>
+                <span>Click a platinum Marker to View Analytics</span>
               </div>
               <div className="map-wrapper">
                 <MapWidget 

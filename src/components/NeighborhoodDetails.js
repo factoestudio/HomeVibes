@@ -51,9 +51,9 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
   if (!selectedArea) {
     return (
       <div className="details-empty-state card-glass luxury-border">
-        <div className="empty-icon gold-text"><MarkerIcon size={48} /></div>
+        <div className="empty-icon platinum-text"><MarkerIcon size={48} /></div>
         <h3 className="display-font">Select a Neighborhood</h3>
-        <p>Click on any gold marker on the map or select a neighborhood from the list to view its lifestyle suitabilities, budget comparison, and live real estate portals.</p>
+        <p>Click on any platinum marker on the map or select a neighborhood from the list to view its lifestyle suitabilities, budget comparison, and live real estate portals.</p>
       </div>
     );
   }
@@ -202,11 +202,11 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
 
         {/* Budget Comparison Card */}
         <div className="details-section budget-comparison-card card-subglass luxury-subcard">
-          <h3 className="display-font"><span className="title-icon-inline gold-text"><WalletIcon size={18} /></span> Budget Alignment</h3>
+          <h3 className="display-font"><span className="title-icon-inline platinum-text"><WalletIcon size={18} /></span> Budget Alignment</h3>
           <div className="budget-comparison-row">
             <div className="budget-compare-item">
               <span className="compare-title">YOUR LIMIT</span>
-              <span className="compare-value gold-text">
+              <span className="compare-value platinum-text">
                 {formatCurrencyLabel(maxPrice)}{tenure === 'rent' ? '/mo' : ''}
               </span>
             </div>
@@ -226,12 +226,12 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
         {/* Commute Breakdown */}
         {userPreferences && (
           <div className="details-section commute-breakdown card-subglass luxury-subcard">
-            <h3 className="display-font"><span className="title-icon-inline gold-text"><ClockIcon size={18} /></span> Proximity & Commute</h3>
+            <h3 className="display-font"><span className="title-icon-inline platinum-text"><ClockIcon size={18} /></span> Proximity & Commute</h3>
             <p className="commute-destination">
               Commute to <strong>{hubNames[userHub]}</strong>
             </p>
             <div className="commute-stat-box">
-              <span className="commute-icon gold-text"><ClockIcon size={20} /></span>
+              <span className="commute-icon platinum-text"><ClockIcon size={20} /></span>
               <div className="commute-value-wrap">
                 <span className="commute-time">{commuteTime} minutes</span>
                 <span className="commute-method uppercase">via {transitIcons[userTransit]}</span>
@@ -258,7 +258,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
                     <span className="suit-icon">{stage.icon}</span>
                     <span className="suit-label">{stage.label}</span>
                   </div>
-                  <span className="suit-score gold-text">{stage.score}/10</span>
+                  <span className="suit-score platinum-text">{stage.score}/10</span>
                 </div>
               );
             })}
@@ -287,11 +287,11 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
                 <div key={item.key} className="meter-row">
                   <div className="meter-header">
                     <div className="meter-header-label">
-                      <span className="meter-header-icon gold-text">{item.icon}</span>
+                      <span className="meter-header-icon platinum-text">{item.icon}</span>
                       <span>{item.label}</span>
                     </div>
                     <div className="meter-labels">
-                      {prefLabel && <span className="pref-indicator gold-pref-indicator">{prefLabel}</span>}
+                      {prefLabel && <span className="pref-indicator platinum-pref-indicator">{prefLabel}</span>}
                       <span className="meter-score">{item.score}/10</span>
                     </div>
                   </div>
@@ -328,7 +328,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
 
         {/* Local Attractions */}
         <div className="details-section">
-          <h3 className="display-font"><span className="title-icon-inline gold-text"><MarkerIcon size={18} /></span> Famous Local Spots</h3>
+          <h3 className="display-font"><span className="title-icon-inline platinum-text"><MarkerIcon size={18} /></span> Famous Local Spots</h3>
           <div className="local-spots-flex">
             {selectedArea.localSpots.map((spot, idx) => (
               <span key={idx} className="spot-chip luxury-spot-chip">{spot}</span>
@@ -338,7 +338,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
 
         {/* Real Estate Platform Connections */}
         <div className="details-section real-estate-platforms">
-          <h3 className="display-font"><span className="title-icon-inline gold-text"><DiamondIcon size={18} /></span> Search Live Listings</h3>
+          <h3 className="display-font"><span className="title-icon-inline platinum-text"><DiamondIcon size={18} /></span> Search Live Listings</h3>
           <p className="platform-sub">Deep-link to active properties in {selectedArea.name}:</p>
           <div className="platform-buttons-grid">
             <a 
@@ -370,7 +370,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
 
         {/* Featured Listings */}
         <div className="details-section listings-showcase">
-          <h3 className="display-font"><span className="title-icon-inline gold-text"><BuyIcon size={18} /></span> Curated Area Listings</h3>
+          <h3 className="display-font"><span className="title-icon-inline platinum-text"><BuyIcon size={18} /></span> Curated Area Listings</h3>
           <div className="listings-grid">
             {filteredListings && filteredListings.length > 0 ? (
               filteredListings.map(listing => (
@@ -387,7 +387,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
                     <span className="listing-type luxury-listing-type">{listing.type}</span>
                   </div>
                   <div className="listing-info">
-                    <div className="listing-price gold-text">{listing.price}</div>
+                    <div className="listing-price platinum-text">{listing.price}</div>
                     <h4 className="listing-title display-font">{listing.title}</h4>
                     <p className="listing-address">{listing.address}</p>
                     <div className="listing-specs">

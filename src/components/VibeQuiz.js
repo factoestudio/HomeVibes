@@ -143,7 +143,7 @@ export default function VibeQuiz({ onComplete }) {
       {/* Premium Progress Bar */}
       <div className="quiz-progress-bar-bg">
         <div 
-          className="quiz-progress-bar-fill gold-gradient-bg" 
+          className="quiz-progress-bar-fill platinum-gradient-bg" 
           style={{ width: `${progressPercent}%` }}
         ></div>
       </div>
@@ -154,7 +154,7 @@ export default function VibeQuiz({ onComplete }) {
       {/* STEP 1: DEMOGRAPHIC PROFILE */}
       {step === 1 && (
         <div className="quiz-step-content fade-in">
-          <h2 className="quiz-title display-font gold-text-glow">Select Your Profile</h2>
+          <h2 className="quiz-title display-font platinum-text-glow">Select Your Profile</h2>
           <p className="quiz-subtitle">Choose the lifestyle category that matches your current life stage.</p>
           
           <div className="quiz-options-list">
@@ -164,7 +164,7 @@ export default function VibeQuiz({ onComplete }) {
                 className={`quiz-list-item luxury-item ${profile === item.id ? 'active' : ''}`}
                 onClick={() => setProfile(item.id)}
               >
-                <div className="quiz-list-item-icon gold-text">{item.icon}</div>
+                <div className="quiz-list-item-icon platinum-text">{item.icon}</div>
                 <div className="quiz-list-item-info">
                   <div className="quiz-list-item-name">{item.name}</div>
                   <div className="quiz-list-item-desc">{item.desc}</div>
@@ -178,7 +178,7 @@ export default function VibeQuiz({ onComplete }) {
 
           <div className="quiz-nav-actions">
             <div></div>
-            <button className="btn-primary btn-gold" onClick={nextStep}>
+            <button className="btn-primary btn-platinum" onClick={nextStep}>
               Next: Commute Hub &rarr;
             </button>
           </div>
@@ -188,7 +188,7 @@ export default function VibeQuiz({ onComplete }) {
       {/* STEP 2: COMMUTE DESTINATIONS & FREQUENCY */}
       {step === 2 && (
         <div className="quiz-step-content fade-in">
-          <h2 className="quiz-title display-font gold-text-glow">Frequent Destinations</h2>
+          <h2 className="quiz-title display-font platinum-text-glow">Frequent Destinations</h2>
           <p className="quiz-subtitle">Enter the addresses you travel to most often (e.g., Work, Daycare, Gym).</p>
           
           <div className="commute-locations-container" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
@@ -257,7 +257,7 @@ export default function VibeQuiz({ onComplete }) {
             <button className="btn-secondary" onClick={prevStep}>
               &larr; Back
             </button>
-            <button className="btn-primary btn-gold" onClick={nextStep}>
+            <button className="btn-primary btn-platinum" onClick={nextStep}>
               Next: Commute Mode &rarr;
             </button>
           </div>
@@ -267,7 +267,7 @@ export default function VibeQuiz({ onComplete }) {
       {/* STEP 3: TRANSIT MODE PREFERENCE */}
       {step === 3 && (
         <div className="quiz-step-content fade-in">
-          <h2 className="quiz-title display-font gold-text-glow">Preferred Transit Mode</h2>
+          <h2 className="quiz-title display-font platinum-text-glow">Preferred Transit Mode</h2>
           <p className="quiz-subtitle">How do you prefer getting around the city?</p>
 
           <div className="quiz-options-list">
@@ -277,7 +277,7 @@ export default function VibeQuiz({ onComplete }) {
                 className={`quiz-list-item luxury-item ${transitMode === mode.id ? 'active' : ''}`}
                 onClick={() => setTransitMode(mode.id)}
               >
-                <div className="quiz-list-item-icon gold-text">{mode.icon}</div>
+                <div className="quiz-list-item-icon platinum-text">{mode.icon}</div>
                 <div className="quiz-list-item-info">
                   <div className="quiz-list-item-name">{mode.name}</div>
                   <div className="quiz-list-item-desc">{mode.desc}</div>
@@ -293,7 +293,7 @@ export default function VibeQuiz({ onComplete }) {
             <button className="btn-secondary" onClick={prevStep}>
               &larr; Back
             </button>
-            <button className="btn-primary btn-gold" onClick={nextStep}>
+            <button className="btn-primary btn-platinum" onClick={nextStep}>
               Next: Amenities & Vibes &rarr;
             </button>
           </div>
@@ -303,14 +303,14 @@ export default function VibeQuiz({ onComplete }) {
       {/* STEP 4: DETAILED AMENITIES & LIFESTYLE */}
       {step === 4 && (
         <div className="quiz-step-content fade-in">
-          <h2 className="quiz-title display-font gold-text-glow">Lifestyle & Conveniences</h2>
+          <h2 className="quiz-title display-font platinum-text-glow">Lifestyle & Conveniences</h2>
           <p className="quiz-subtitle">Select how important each surrounding amenity is to your daily life.</p>
 
           <div className="lifestyle-priority-list luxury-scroll">
             {AMENITY_PILLARS.map(pillar => (
               <div key={pillar.id} className="lifestyle-priority-item card-subglass luxury-subcard">
                 <div className="priority-item-header">
-                  <span className="priority-icon gold-text">{pillar.icon}</span>
+                  <span className="priority-icon platinum-text">{pillar.icon}</span>
                   <div className="priority-info">
                     <span className="priority-name">{pillar.name}</span>
                     <p className="priority-desc">{pillar.desc}</p>
@@ -344,7 +344,7 @@ export default function VibeQuiz({ onComplete }) {
             <button className="btn-secondary" onClick={prevStep}>
               &larr; Back
             </button>
-            <button className="btn-success btn-gold-success" onClick={handleSubmit} disabled={isGeocoding}>
+            <button className="btn-success btn-platinum-success" onClick={handleSubmit} disabled={isGeocoding}>
               {isGeocoding ? 'Calculating Routes...' : 'Calculate Matches \u2192'}
             </button>
           </div>
