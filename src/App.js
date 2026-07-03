@@ -205,6 +205,9 @@ export default function App() {
         </div>
         <p className="header-desc uppercase letter-spacing">Bespoke neighborhood profiles & luxury real estate matcher</p>
         <div className="header-right">
+          <button className="btn-header-action luxury-btn-header" style={{ marginRight: '8px' }} onClick={() => alert('Sign In coming soon!')}>
+            Sign In
+          </button>
           <ThemeSelector theme={theme} setTheme={setTheme} />
           {view === 'results' && (
             <button className="btn-header-action luxury-btn-header" onClick={handleRetakeQuiz}>
