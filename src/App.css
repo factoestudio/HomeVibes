@@ -317,7 +317,7 @@ button {
   font-family: var(--font-serif);
   font-size: 2.25rem;
   font-weight: 400;
-  color: #fff;
+  color: var(--text-main);
   letter-spacing: -0.5px;
 }
 
@@ -367,7 +367,7 @@ button {
 
 .quiz-card-name {
   font-weight: 700;
-  color: #fff;
+  color: var(--text-main);
   font-size: 0.95rem;
   letter-spacing: 0.5px;
 }
@@ -403,7 +403,7 @@ button {
 .quiz-toggle-btn:hover {
   background-color: rgba(176, 196, 222, 0.03);
   border-color: rgba(176, 196, 222, 0.25);
-  color: #fff;
+  color: var(--text-main);
 }
 
 .quiz-toggle-btn.active {
@@ -462,7 +462,7 @@ button {
 
 .quiz-list-item-name {
   font-weight: 700;
-  color: #fff;
+  color: var(--text-main);
   margin-bottom: 0.25rem;
   font-size: 1rem;
 }
@@ -545,7 +545,7 @@ button {
 
 .priority-name {
   font-weight: 700;
-  color: #fff;
+  color: var(--text-main);
   font-size: 1rem;
 }
 
@@ -580,7 +580,7 @@ button {
 }
 
 .priority-btn.active {
-  color: #fff;
+  color: var(--text-main);
 }
 
 .priority-btn.level-low.active {
@@ -598,7 +598,7 @@ button {
 .priority-btn.level-high.active {
   background: rgba(176, 196, 222, 0.15);
   border-color: var(--color-primary-hover);
-  color: #fff;
+  color: var(--text-main);
   box-shadow: 0 0 10px rgba(176, 196, 222, 0.15);
 }
 
@@ -627,7 +627,7 @@ button {
   font-family: var(--font-serif);
   font-size: 1.6rem;
   font-weight: 400;
-  color: #fff;
+  color: var(--text-main);
 }
 
 .list-subtitle {
@@ -721,7 +721,7 @@ button {
   font-family: var(--font-serif);
   font-weight: 400;
   font-size: 1.2rem;
-  color: #fff;
+  color: var(--text-main);
   margin-top: 0.2rem;
 }
 
@@ -794,7 +794,7 @@ button {
   font-size: 0.7rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--text-main);
   letter-spacing: 1px;
 }
 
@@ -877,7 +877,7 @@ button {
   font-family: var(--font-serif);
   font-size: 1.4rem;
   font-weight: 400;
-  color: #fff;
+  color: var(--text-main);
   margin-bottom: 0.75rem;
 }
 
@@ -916,7 +916,7 @@ button {
   font-family: var(--font-serif);
   font-size: 1.6rem;
   font-weight: 400;
-  color: #fff;
+  color: var(--text-main);
   margin-top: 0.25rem;
   letter-spacing: -0.5px;
 }
@@ -1044,7 +1044,7 @@ button {
 .metric-value {
   font-size: 0.85rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--text-main);
 }
 
 /* Tags */
@@ -1071,7 +1071,7 @@ button {
   font-family: var(--font-serif);
   font-size: 1.15rem;
   font-weight: 400;
-  color: #fff;
+  color: var(--text-main);
   margin-bottom: 0.85rem;
   display: flex;
   align-items: center;
@@ -1278,7 +1278,7 @@ button {
 
 .meter-score {
   font-weight: 800;
-  color: #fff;
+  color: var(--text-main);
   font-family: var(--font-display);
 }
 
@@ -1394,7 +1394,7 @@ button {
 .luxury-platform-btn:hover {
   background-color: rgba(176, 196, 222, 0.06);
   border-color: var(--color-primary-hover);
-  color: #fff;
+  color: var(--text-main);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(176, 196, 222, 0.1);
 }
@@ -1600,7 +1600,7 @@ button {
 }
 
 .filter-tenure-btn:hover {
-  color: #fff;
+  color: var(--text-main);
 }
 
 .filter-tenure-btn.active {
@@ -1613,7 +1613,7 @@ button {
 .luxury-select {
   background-color: rgba(7, 8, 11, 0.9);
   border: 1px solid rgba(176, 196, 222, 0.2);
-  color: #fff;
+  color: var(--text-main);
   padding: 0.35rem 1.75rem 0.35rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 600;
@@ -1637,7 +1637,7 @@ button {
 
 .luxury-select option {
   background-color: #0d0e12;
-  color: #fff;
+  color: var(--text-main);
 }
 
 /* Custom Checkbox */
@@ -1691,7 +1691,7 @@ button {
 }
 
 .parking-checkbox-label:hover .checkbox-text {
-  color: #fff;
+  color: var(--text-main);
 }
 
 /* Property Types Filter chips */
@@ -1717,13 +1717,13 @@ button {
 .type-chip-btn:hover {
   background-color: rgba(176, 196, 222, 0.03);
   border-color: rgba(176, 196, 222, 0.25);
-  color: #fff;
+  color: var(--text-main);
 }
 
 .type-chip-btn.active {
   background-color: rgba(176, 196, 222, 0.08);
   border-color: var(--color-primary-hover);
-  color: #fff;
+  color: var(--text-main);
   box-shadow: 0 0 10px rgba(176, 196, 222, 0.1);
 }
 
@@ -1833,7 +1833,7 @@ button {
 
 .premium-unlock-title {
   font-size: 2rem;
-  color: #fff;
+  color: var(--text-main);
   margin-bottom: 0.5rem;
   background: linear-gradient(135deg, #ffffff 10%, var(--color-primary) 70%, var(--color-secondary) 100%);
   -webkit-background-clip: text;
@@ -1861,7 +1861,7 @@ button {
   background-color: rgba(7, 8, 11, 0.7);
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  color: #fff;
+  color: var(--text-main);
   font-family: var(--font-main);
   font-size: 0.95rem;
   transition: var(--transition-smooth);
@@ -1909,7 +1909,7 @@ button {
   z-index: 1000;
   background: rgba(10, 11, 15, 0.85);
   border: 1px solid var(--color-primary);
-  color: #fff;
+  color: var(--text-main);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -1930,5 +1930,173 @@ button {
 /* Improve Map Contrast via Inversion */
 .leaflet-tile-pane {
   filter: invert(100%) hue-rotate(180deg) brightness(1.15) contrast(1.1) !important;
+}
+
+
+/* --- Legal & B2B Pages --- */
+.legal-page-wrapper, .b2b-page-wrapper {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 80vh;
+}
+
+.legal-page-container, .b2b-page-container {
+  max-width: 800px;
+  width: 100%;
+  padding: 40px;
+  background: var(--bg-card);
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-family: var(--font-primary);
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+.back-btn:hover {
+  color: var(--color-accent);
+}
+
+.legal-title, .b2b-title {
+  font-family: var(--font-primary);
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.legal-date {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.legal-content h2, .b2b-value-prop h3 {
+  font-family: var(--font-primary);
+  color: var(--text-main);
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.legal-content p, .legal-content li, .b2b-value-prop li {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.contact-email a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.b2b-subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.b2b-form-container {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border-color);
+}
+
+.luxury-input {
+  width: 100%;
+  padding: 12px 15px;
+  background: var(--bg-subcard);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  margin-bottom: 20px;
+}
+
+.luxury-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(176, 94, 241, 0.3);
+}
+
+.b2b-submit-btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+}
+
+.success-message {
+  text-align: center;
+  padding: 40px;
+}
+
+.success-message h3 {
+  color: var(--color-primary);
+  margin: 15px 0;
+}
+
+/* --- Footer --- */
+.footer-container {
+  margin-top: 60px;
+  padding: 40px 20px 20px;
+  text-align: center;
+}
+
+.footer-brand h3 {
+  font-family: var(--font-primary);
+  color: var(--color-primary);
+  margin-bottom: 5px;
+}
+
+.footer-brand p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.footer-link-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.footer-link-btn:hover {
+  color: var(--text-main);
+}
+
+.highlight-link {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.highlight-link:hover {
+  color: var(--color-accent);
+}
+
+.footer-divider {
+  color: var(--border-color);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
 }
 

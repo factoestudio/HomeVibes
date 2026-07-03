@@ -1,6 +1,7 @@
 export const neighborhoodsData = [
   {
     id: "downtown-toronto",
+    geojsonId: "077",
     name: "Downtown Toronto Core",
     city: "Toronto",
     lat: 43.6532,
@@ -106,6 +107,7 @@ export const neighborhoodsData = [
   },
   {
     id: "leslieville",
+    geojsonId: "070",
     name: "Leslieville",
     city: "Toronto (East)",
     lat: 43.6625,

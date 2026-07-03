@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import torontoGeoJSON from '../data/toronto.json';
 
 // Helper to determine marker color based on match percentage - Slate Platinum Palette
 const getMarkerColor = (score) => {
@@ -57,7 +59,7 @@ const getIconForTag = (tags) => {
   if (tags.amenity === 'fast_food' || tags.amenity === 'restaurant') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>`;
   if (tags.amenity === 'pub' || tags.amenity === 'bar') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h8"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5V2H7v8a5 5 0 0 0 5 5Z"/></svg>`;
   if (tags.leisure === 'fitness_centre') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.4 14.4 9.6 9.6"/><path d="M18.65 21.35a2 2 0 0 1-2.83 0l-5.66-5.66a2 2 0 0 1 0-2.83l2.83-2.83a2 2 0 0 1 2.83 0l5.66 5.66a2 2 0 0 1 0 2.83Z"/><path d="M2.65 5.35a2 2 0 0 1 2.83 0l5.66 5.66a2 2 0 0 1 0 2.83l-2.83 2.83a2 2 0 0 1-2.83 0L2.65 8.18a2 2 0 0 1 0-2.83Z"/></svg>`;
-  if (tags.leisure === 'park') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22v-8"/><path d="m20 10-2-2 2-2-2-2-2 2-2-2-2 2-2-2-2 2-2-2-2 2 2 2-2 2 2 2-2 2 2 2Z"/></svg>`;
+  if (tags.leisure === 'park') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22v-8"/><path d="m20 10-2-2 2-2-2-2-2 2-2-2-2 2-2-2-2 2-2 2 2 2-2 2 2 2-2 2 2 2Z"/></svg>`;
   if (tags.shop === 'supermarket' || tags.shop === 'bakery') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>`;
   if (tags.amenity === 'school' || tags.amenity === 'childcare') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 6 8-4 8 4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4"/><path d="M18 5v17"/><path d="M6 5v17"/><circle cx="12" cy="9" r="2"/></svg>`;
   if (tags.amenity === 'hospital' || tags.amenity === 'clinic') return `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v4"/><path d="M14 8h-4"/><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/></svg>`;
@@ -68,6 +70,7 @@ const getIconForTag = (tags) => {
 export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelectNeighborhood, userPreferences }) {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
+  const geoJsonLayerRef = useRef(null);
   const markersRef = useRef({});
   const extraMarkersRef = useRef({});
   const [isLoadingPOIs, setIsLoadingPOIs] = useState(false);
@@ -112,42 +115,60 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
     const map = mapRef.current;
     if (!map) return;
 
-    // Clear existing markers
-    Object.values(markersRef.current).forEach(marker => marker.remove());
-    markersRef.current = {};
+    // 2. Add Neighborhood Polygons
+    if (geoJsonLayerRef.current) {
+      map.removeLayer(geoJsonLayerRef.current);
+    }
 
-    neighborhoods.forEach(n => {
-      const matchScore = n.matchScore || 0;
-      const color = getMarkerColor(matchScore);
-
-      // Create a gorgeous custom glowing circle marker
-      const marker = L.circleMarker([n.lat, n.lng], {
-        radius: 11,
-        fillColor: color,
-        fillOpacity: 0.85,
-        color: '#ffffff',
-        weight: 1.5,
-        className: `map-marker-pulse-${n.id}`
+    if (neighborhoods && neighborhoods.length > 0) {
+      geoJsonLayerRef.current = L.geoJSON(torontoGeoJSON, {
+        style: function (feature) {
+          const areaId = feature.properties.AREA_S_CD;
+          const matchedNeighborhood = neighborhoods.find(n => n.geojsonId === areaId);
+          
+          if (matchedNeighborhood) {
+            const matchScore = matchedNeighborhood.matchScore || 0;
+            const color = getMarkerColor(matchScore);
+            return {
+              color: color,
+              weight: 2,
+              opacity: 0.8,
+              fillColor: color,
+              fillOpacity: 0.35,
+              className: `polygon-pulse-${matchedNeighborhood.id}`
+            };
+          } else {
+            return {
+              color: 'transparent',
+              weight: 0,
+              fillOpacity: 0
+            };
+          }
+        },
+        onEachFeature: function (feature, layer) {
+          const areaId = feature.properties.AREA_S_CD;
+          const matchedNeighborhood = neighborhoods.find(n => n.geojsonId === areaId);
+          
+          if (matchedNeighborhood) {
+            const matchScore = matchedNeighborhood.matchScore || 0;
+            const color = getMarkerColor(matchScore);
+            layer.bindTooltip(
+              `<div class="map-tooltip luxury-tooltip">
+                <strong style="color: var(--text-main); font-family: 'Outfit', sans-serif;">${matchedNeighborhood.name}</strong>
+                <div style="color: ${color}; font-weight: bold; margin-top: 3px; font-family: 'Plus Jakarta Sans', sans-serif;">
+                  ${matchScore}% Match
+                </div>
+              </div>`,
+              { direction: 'center', opacity: 0.95 }
+            );
+            
+            layer.on('click', () => {
+              if (onSelectNeighborhood) onSelectNeighborhood(matchedNeighborhood);
+            });
+          }
+        }
       }).addTo(map);
-
-      // Add a popup tooltip showing name and match score
-      marker.bindTooltip(
-        `<div class="map-tooltip luxury-tooltip">
-          <strong style="color: #fff; font-family: 'Outfit', sans-serif;">${n.name}</strong>
-          <div style="color: ${color}; font-weight: bold; margin-top: 3px; font-family: 'Plus Jakarta Sans', sans-serif;">
-            ${matchScore}% Match
-          </div>
-        </div>`,
-        { direction: 'top', offset: [0, -10], opacity: 0.95, permanent: false }
-      );
-
-      // Handle marker click
-      marker.on('click', () => {
-        onSelectNeighborhood(n);
-      });
-
-      markersRef.current[n.id] = marker;
-    });
+    }
   }, [neighborhoods, onSelectNeighborhood]);
 
   // Pan to selected neighborhood
@@ -189,7 +210,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
         });
 
         const marker = L.marker([loc.lat, loc.lng], { icon: commuteIcon }).addTo(map);
-        marker.bindTooltip(`<div class="luxury-tooltip" style="color:#fff; font-family:'Outfit', sans-serif;"><strong>Your Commute:</strong><br/>${loc.address}</div>`, { direction: 'top', offset: [0, -10], opacity: 0.95 });
+        marker.bindTooltip(`<div class="luxury-tooltip" style="color: var(--text-main); font-family:'Outfit', sans-serif;"><strong>Your Commute:</strong><br/>${loc.address}</div>`, { direction: 'top', offset: [0, -10], opacity: 0.95 });
         extraMarkersRef.current[`commute-${idx}`] = marker;
       });
     }
@@ -220,7 +241,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
               });
 
               const marker = L.marker([poi.lat, poi.lon], { icon: poiIcon }).addTo(map);
-              marker.bindTooltip(`<div class="luxury-tooltip" style="color:#fff; font-family:'Outfit', sans-serif;"><strong>${name}</strong></div>`, { direction: 'top', offset: [0, -10], opacity: 0.95 });
+              marker.bindTooltip(`<div class="luxury-tooltip" style="color: var(--text-main); font-family:'Outfit', sans-serif;"><strong>${name}</strong></div>`, { direction: 'top', offset: [0, -10], opacity: 0.95 });
               extraMarkersRef.current[`poi-${idx}`] = marker;
             });
           }

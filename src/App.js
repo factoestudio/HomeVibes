@@ -4,6 +4,9 @@ import VibeQuiz from './components/VibeQuiz';
 import MapWidget from './components/MapWidget';
 import NeighborhoodDetails from './components/NeighborhoodDetails';
 import ThemeSelector from './components/ThemeSelector';
+import Footer from './components/Footer';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import ContactB2B from './components/ContactB2B';
 import logoWhite from './assets/logo-white.png';
 import logoPurple from './assets/logo-purple.png';
 import './App.css';
@@ -219,8 +222,12 @@ export default function App() {
             </div>
             <VibeQuiz onComplete={handleQuizComplete} />
           </div>
-        ) : (
-          <div className="results-layout fade-in">
+          ) : view === 'privacy' ? (
+            <PrivacyPolicy setView={setView} />
+          ) : view === 'contact' ? (
+            <ContactB2B setView={setView} />
+          ) : (
+            <div className="results-container animate-fade-in">
             {/* Left Column: List of Matches */}
             <div className="results-list-column">
               <div className="list-column-header">
@@ -310,9 +317,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="app-footer luxury-footer">
-        <p>&copy; {new Date().getFullYear()} HomeVibes GTA. All data simulated for prototype demonstration. All deep-links connect to live realtor platforms.</p>
-      </footer>
+      <Footer setView={setView} />
     </div>
   );
 }
