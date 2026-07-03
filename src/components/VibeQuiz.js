@@ -13,8 +13,7 @@ import {
   LibraryIcon,
   PremiumGroceriesIcon,
   BudgetGroceriesIcon,
-  DogParksIcon,
-  BuyIcon
+  DogParksIcon
 } from './SvgIcons';
 
 const PROFILES = [
