@@ -22,7 +22,6 @@ const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
 export default function App() {
   const [view, setView] = useState('quiz'); // 'quiz' | 'results'
   const [userPreferences, setUserPreferences] = useState(null);
-  const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
   const [selectedArea, setSelectedArea] = useState(null);
   const [cityFilter, setCityFilter] = useState('All');
 
@@ -219,9 +218,9 @@ export default function App() {
                   filteredAreas.map(area => {
                     const isSelected = selectedArea?.id === area.id;
                     const scoreColor = 
-                      area.matchScore >= 90 ? '#D4AF37' : 
-                      area.matchScore >= 75 ? '#C5A880' : 
-                      area.matchScore >= 60 ? '#8E7557' : '#4A4B54';
+                      area.matchScore >= 90 ? '#E6EBF2' : 
+                      area.matchScore >= 75 ? '#B0C4DE' : 
+                      area.matchScore >= 60 ? '#778899' : '#4A5568';
 
                     return (
                       <div

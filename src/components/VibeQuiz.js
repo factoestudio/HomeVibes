@@ -15,12 +15,7 @@ import {
   BudgetGroceriesIcon,
   DogParksIcon,
   RentIcon,
-  BuyIcon,
-  CityIcon,
-  BuildingIcon,
-  WavesIcon,
-  CodeIcon,
-  TownhouseIcon
+  BuyIcon
 } from './SvgIcons';
 
 const PROFILES = [
@@ -230,6 +225,9 @@ export default function VibeQuiz({ onComplete }) {
             >
               + Add another destination
             </button>
+            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
+              Want to save these locations? <a href="#" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Create an account</a> to securely store your progress.
+            </p>
           </div>
 
           <div className="quiz-form-group">
