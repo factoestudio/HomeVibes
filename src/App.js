@@ -42,6 +42,29 @@ export default function App() {
 
   // Initialize Auth & Fetch Preferences
   useEffect(() => {
+    const fetchUserPreferences = async (userId) => {
+      try {
+        const { data, error } = await supabase
+          .from('user_preferences')
+          .select('*')
+          .eq('id', userId)
+          .single();
+        
+        if (error) {
+          console.warn('Could not fetch preferences:', error.message);
+          return;
+        }
+
+        if (data && data.preferences) {
+          setUserRole(data.role);
+          setUserPreferences(data.preferences);
+          setView('results');
+        }
+      } catch (err) {
+        console.error('Error fetching preferences:', err);
+      }
+    };
+
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       if (session) fetchUserPreferences(session.user.id);
@@ -60,29 +83,6 @@ export default function App() {
 
     return () => subscription.unsubscribe();
   }, []);
-
-  const fetchUserPreferences = async (userId) => {
-    try {
-      const { data, error } = await supabase
-        .from('user_preferences')
-        .select('*')
-        .eq('id', userId)
-        .single();
-      
-      if (error) {
-        console.warn('Could not fetch preferences:', error.message);
-        return;
-      }
-
-      if (data && data.preferences) {
-        setUserRole(data.role);
-        setUserPreferences(data.preferences);
-        setView('results');
-      }
-    } catch (err) {
-      console.error('Error fetching preferences:', err);
-    }
-  };
 
   const saveUserPreferences = async (role, prefs) => {
     if (!session) return;
