@@ -32,8 +32,8 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
     // Zoom control at top right with luxury outlines
     L.control.zoom({ position: 'topright' }).addTo(map);
 
-    // Load CartoDB Dark Matter tiles (sleek dark mode)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    // Load CartoDB Light (Positron) and we will invert it in CSS for a high-contrast dark mode
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       subdomains: 'abcd',
       maxZoom: 20
