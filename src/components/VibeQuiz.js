@@ -16,7 +16,6 @@ import {
   DogParksIcon,
   BuyIcon
 } from './SvgIcons';
-} from './SvgIcons';
 
 const PROFILES = [
   { id: 'student', name: 'Student & Academic', icon: <StudentIcon size={32} />, desc: 'Prioritize transit proximity to campuses, libraries, study hubs, and affordable living.' },

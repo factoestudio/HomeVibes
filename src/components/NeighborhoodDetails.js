@@ -80,7 +80,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
   };
 
   // Safe fallback for filters state
-  const activeFilters = filters || {
+  const activeFilters = {
     tenure: userPreferences?.tenure || 'rent',
     maxPrice: userPreferences?.maxPrice || (userPreferences?.tenure === 'buy' ? 1200000 : 2600),
     beds: userPreferences?.beds || 1,
