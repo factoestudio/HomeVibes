@@ -14,8 +14,8 @@ import {
   PremiumGroceriesIcon,
   BudgetGroceriesIcon,
   DogParksIcon,
-  RentIcon,
   BuyIcon
+} from './SvgIcons';
 } from './SvgIcons';
 
 const PROFILES = [
@@ -43,17 +43,7 @@ const AMENITY_PILLARS = [
   { id: 'dog_parks', name: 'Dog Parks & Pet Vibe', desc: 'Fenced off-leash areas, walking trails, and pet-friendly cafes.', icon: <DogParksIcon size={20} /> }
 ];
 
-const PROPERTY_TYPES = [
-  { id: 'Condo', name: 'Condo Suite', icon: <BuildingIcon size={20} /> },
-  { id: 'House', name: 'Detached / Semi', icon: <BuyIcon size={20} /> },
-  { id: 'Townhouse', name: 'Townhome', icon: <TownhouseIcon size={20} /> },
-  { id: 'Loft', name: 'Soft/Hard Loft', icon: <WavesIcon size={20} /> }
-];
 
-const PRICE_PRESETS = {
-  rent: [1800, 2200, 2600, 3200, 4500],
-  buy: [600000, 850000, 1100000, 1500000, 2500000]
-};
 
 export default function VibeQuiz({ onComplete }) {
   const [step, setStep] = useState(1);
@@ -226,7 +216,7 @@ export default function VibeQuiz({ onComplete }) {
               + Add another destination
             </button>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
-              Want to save these locations? <a href="#" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Create an account</a> to securely store your progress.
+              Want to save these locations? <span style={{ color: 'var(--color-primary)', textDecoration: 'underline', cursor: 'pointer' }}>Create an account</span> to securely store your progress.
             </p>
           </div>
 

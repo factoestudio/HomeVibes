@@ -426,6 +426,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
           </form>
         </div>
       )}
+      </div> {/* Closes details-body */}
     </div>
   );
 }
