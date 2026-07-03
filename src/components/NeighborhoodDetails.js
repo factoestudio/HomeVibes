@@ -20,7 +20,7 @@ import {
   WalletIcon
 } from './SvgIcons';
 
-export default function NeighborhoodDetails({ selectedArea, userPreferences, onClose, filters, isPremiumUnlocked, setIsPremiumUnlocked }) {
+export default function NeighborhoodDetails({ selectedArea, userPreferences, onClose, isPremiumUnlocked, setIsPremiumUnlocked }) {
   const [formData, setFormData] = useState({ name: '', email: '', timeline: 'Just browsing' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
@@ -395,47 +395,29 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
                       <span>{listing.baths} Baths</span>
                       <span>{listing.sqft} sqft</span>
                     </div>
-                    <a 
-                      href={selectedArea.realtorLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="btn-listing-action luxury-listing-action"
-                    >
-                      Request Details &rarr;
-                    </a>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p className="no-listings" style={{ fontStyle: 'italic', padding: '1rem 0' }}>No local listings match your exact property specifications. Try modifying your dashboard filters above.</p>
-            )}
-            )}
-          </div>
-        </div>
+      </div> {/* Closes premium-content-wrapper BEFORE the overlay */}
 
-        {/* Lead Capture Overlay */}
-        {!isPremiumUnlocked && (
-          <div className="lead-capture-overlay card-glass luxury-border fade-in">
-            <h3 className="display-font premium-unlock-title">Unlock Premium Insights</h3>
-            <p className="premium-unlock-desc">Leave your details to reveal deep lifestyle analytics, local realities, and deep-links to active real estate listings for this area.</p>
-            <form onSubmit={handleUnlockSubmit} className="lead-form">
-              <input type="text" placeholder="Full Name" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className="luxury-input" />
-              <input type="email" placeholder="Email Address" required value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} className="luxury-input" />
-              <select required value={formData.timeline} onChange={e => setFormData({ ...formData, timeline: e.target.value })} className="luxury-select timeline-select">
-                <option value="Just browsing">Just browsing</option>
-                <option value="1-3 months">Looking to move in 1-3 months</option>
-                <option value="3-6 months">Looking to move in 3-6 months</option>
-                <option value="6+ months">Looking to move in 6+ months</option>
-              </select>
-              {submitError && <div className="form-error">{submitError}</div>}
-              <button type="submit" disabled={isSubmitting} className="btn-primary unlock-btn">
-                {isSubmitting ? 'Unlocking...' : 'Unlock Deep-Dive Analysis'}
-              </button>
-            </form>
-          </div>
-        )}
+      {/* Lead Capture Overlay (Now Clickable & Sharp) */}
+      {!isPremiumUnlocked && (
+        <div className="lead-capture-overlay card-glass luxury-border fade-in">
+          <h3 className="display-font premium-unlock-title">Connect with a Local Specialist</h3>
+          <p className="premium-unlock-desc">Unlock deep lifestyle analytics for {selectedArea.name} and let our VIP concierges curate a bespoke list of off-market homes tailored to your vibe.</p>
+          <form onSubmit={handleUnlockSubmit} className="lead-form">
+            <input type="text" placeholder="Full Name" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className="luxury-input" />
+            <input type="email" placeholder="Email Address" required value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} className="luxury-input" />
+            <select required value={formData.timeline} onChange={e => setFormData({ ...formData, timeline: e.target.value })} className="luxury-select timeline-select">
+              <option value="Just browsing">Just browsing</option>
+              <option value="1-3 months">Looking to move in 1-3 months</option>
+              <option value="3-6 months">Looking to move in 3-6 months</option>
+              <option value="6+ months">Looking to move in 6+ months</option>
+            </select>
+            {submitError && <div className="form-error">{submitError}</div>}
+            <button type="submit" disabled={isSubmitting} className="btn-primary unlock-btn">
+              {isSubmitting ? 'Unlocking...' : 'Unlock Deep-Dive Analysis'}
+            </button>
+          </form>
         </div>
-      </div>
+      )}
     </div>
   );
 }

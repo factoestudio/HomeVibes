@@ -3,24 +3,21 @@ import { neighborhoodsData } from './data/neighborhoodsData';
 import VibeQuiz from './components/VibeQuiz';
 import MapWidget from './components/MapWidget';
 import NeighborhoodDetails from './components/NeighborhoodDetails';
-import FilterBar from './components/FilterBar';
 import { LogoIcon } from './components/SvgIcons';
 import './App.css';
 
 export default function App() {
   const [view, setView] = useState('quiz'); // 'quiz' | 'results'
   const [userPreferences, setUserPreferences] = useState(null);
-  const [filters, setFilters] = useState(null);
   const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
   const [selectedArea, setSelectedArea] = useState(null);
   const [cityFilter, setCityFilter] = useState('All');
 
   // Dynamic Matching Algorithm (Luxury Refined)
   const matchedNeighborhoods = useMemo(() => {
-    if (!userPreferences || !filters) return [];
+    if (!userPreferences) return [];
 
     const { profile, hub, commuteFrequency, transitMode, lifestyle } = userPreferences;
-    const { tenure, maxPrice, beds, baths, parkingRequired, selectedTypes = ['Condo', 'House', 'Townhouse', 'Loft'] } = filters;
 
     return neighborhoodsData.map(area => {
       // 1. Life Stage Suitability Match (25% weight)
@@ -79,39 +76,11 @@ export default function App() {
 
       const avgAmenitiesScore = amenitiesScoreSum / amenityKeys.length;
 
-      // 4. Budget & Tenure Alignment (20% weight)
-      let budgetScore = 100;
-      const areaPriceNum = tenure === 'rent' ? area.avgRentNum : area.avgBuyNum;
-
-      if (maxPrice < areaPriceNum) {
-        const diffPercent = (areaPriceNum - maxPrice) / areaPriceNum;
-        if (diffPercent <= 0.1) budgetScore = 85;
-        else if (diffPercent <= 0.25) budgetScore = 60;
-        else if (diffPercent <= 0.4) budgetScore = 30;
-        else budgetScore = 10;
-      }
-
-      // 5. Check if has any matching listings
-      const hasMatchingListings = (area.listings || []).some(listing => 
-        listing.tenure === tenure &&
-        listing.priceNum <= maxPrice &&
-        selectedTypes.includes(listing.type) &&
-        listing.beds >= beds &&
-        listing.baths >= baths &&
-        (!parkingRequired || listing.parking)
-      );
-
-      // 6. Total Compatibility Score
+      // 4. Total Compatibility Score
       let rawScore = 
-        (lifeStageScore * 0.25) + 
-        (commuteScore * 0.25) + 
-        (avgAmenitiesScore * 0.30) + 
-        (budgetScore * 0.20);
-
-      // Apply match score penalty if no properties in area fit specs
-      if (!hasMatchingListings) {
-        rawScore -= 15;
-      }
+        (lifeStageScore * 0.30) + 
+        (commuteScore * 0.30) + 
+        (avgAmenitiesScore * 0.40);
 
       // Round and cap between 40% and 99%
       const finalScore = Math.min(99, Math.max(40, Math.round(rawScore)));
@@ -121,18 +90,10 @@ export default function App() {
         matchScore: finalScore
       };
     }).sort((a, b) => b.matchScore - a.matchScore);
-  }, [userPreferences, filters]);
+  }, [userPreferences]);
 
   const handleQuizComplete = (prefs) => {
     setUserPreferences(prefs);
-    setFilters({
-      tenure: 'rent',
-      maxPrice: 2600,
-      beds: 1,
-      baths: 1,
-      parkingRequired: false,
-      selectedTypes: ['Condo', 'House', 'Townhouse', 'Loft']
-    });
     setView('results');
   };
 
@@ -155,10 +116,8 @@ export default function App() {
     return matchedNeighborhoods.filter(area => area.city.startsWith(cityFilter));
   }, [matchedNeighborhoods, cityFilter]);
 
-  // Reset quiz state
   const handleRetakeQuiz = () => {
     setUserPreferences(null);
-    setFilters(null);
     setSelectedArea(null);
     setCityFilter('All');
     setView('quiz');
@@ -257,7 +216,6 @@ export default function App() {
 
             {/* Middle Column: Leaflet Map */}
             <div className="results-map-column" style={{ position: 'relative' }}>
-              <FilterBar filters={filters} onChange={setFilters} />
               <div className="map-instruction-pulse fade-in">
                 <span>Click a Gold Marker to View Analytics</span>
               </div>
@@ -275,7 +233,6 @@ export default function App() {
               <NeighborhoodDetails
                 selectedArea={selectedArea || filteredAreas[0]}
                 userPreferences={userPreferences}
-                filters={filters}
                 isPremiumUnlocked={isPremiumUnlocked}
                 setIsPremiumUnlocked={setIsPremiumUnlocked}
                 onClose={() => setSelectedArea(null)}
