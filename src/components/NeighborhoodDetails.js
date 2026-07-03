@@ -395,6 +395,14 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
                       <span>{listing.baths} Baths</span>
                       <span>{listing.sqft} sqft</span>
                     </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="no-listings-text">No active premium listings at the moment.</p>
+            )}
+          </div>
+        </div>
       </div> {/* Closes premium-content-wrapper BEFORE the overlay */}
 
       {/* Lead Capture Overlay (Now Clickable & Sharp) */}

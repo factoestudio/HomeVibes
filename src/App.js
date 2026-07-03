@@ -22,6 +22,7 @@ const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
 export default function App() {
   const [view, setView] = useState('quiz'); // 'quiz' | 'results'
   const [userPreferences, setUserPreferences] = useState(null);
+  const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
   const [selectedArea, setSelectedArea] = useState(null);
   const [cityFilter, setCityFilter] = useState('All');
 

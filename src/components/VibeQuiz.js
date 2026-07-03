@@ -338,10 +338,6 @@ export default function VibeQuiz({ onComplete }) {
             <button className="btn-secondary" onClick={prevStep}>
               &larr; Back
             </button>
-          <div className="quiz-nav-actions">
-            <button className="btn-secondary" onClick={prevStep}>
-              &larr; Back
-            </button>
             <button className="btn-success btn-platinum-success" onClick={handleSubmit} disabled={isGeocoding}>
               {isGeocoding ? 'Calculating Routes...' : 'Calculate Matches \u2192'}
             </button>
