@@ -278,10 +278,11 @@ button {
 
 .quiz-container {
   width: 100%;
-  max-width: 720px;
+  max-width: 1000px;
   padding: 3rem;
   position: relative;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .quiz-progress-bar-bg {
