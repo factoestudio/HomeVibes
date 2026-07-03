@@ -7,7 +7,7 @@ export default function Footer({ setView }) {
       <div className="footer-content">
         <div className="footer-brand">
           <h3>HomeVibes</h3>
-          <p>Where Your Lifestyle Matches Home</p>
+          <p>Where your vibes meet home</p>
         </div>
         
         <div className="footer-links">
