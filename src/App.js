@@ -264,6 +264,7 @@ export default function App() {
                   neighborhoods={filteredAreas}
                   selectedNeighborhood={selectedArea}
                   onSelectNeighborhood={(area) => setSelectedArea(area)}
+                  userPreferences={userPreferences}
                 />
               </div>
             </div>

@@ -9,10 +9,37 @@ const getMarkerColor = (score) => {
   return '#4A5568'; // Muted Slate
 };
 
-export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelectNeighborhood }) {
+const generatePOIMarkers = (profile, centerLat, centerLng) => {
+  const getEmojisForProfile = (prof) => {
+    switch(prof) {
+      case 'student': return ['☕', '📚', '🍕', '🍺', '💻'];
+      case 'professional': return ['🍸', '🏋️', '☕', '🥩', '🏃'];
+      case 'family': return ['🏞️', '🧸', '🏫', '🛒', '🍎'];
+      case 'senior': return ['🏥', '🌳', '🍞', '🍵', '🪑'];
+      default: return ['☕', '🌳'];
+    }
+  };
+  
+  const emojis = getEmojisForProfile(profile);
+  const pois = [];
+  
+  for (let i = 0; i < 8; i++) {
+    const latOffset = (Math.random() - 0.5) * 0.015;
+    const lngOffset = (Math.random() - 0.5) * 0.015;
+    pois.push({
+      lat: centerLat + latOffset,
+      lng: centerLng + lngOffset,
+      emoji: emojis[Math.floor(Math.random() * emojis.length)]
+    });
+  }
+  return pois;
+};
+
+export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelectNeighborhood, userPreferences }) {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
   const markersRef = useRef({});
+  const extraMarkersRef = useRef({});
 
   // Initialize Map
   useEffect(() => {
@@ -108,6 +135,51 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
       activeMarker.openTooltip();
     }
   }, [selectedNeighborhood]);
+
+  // Render Commute Locations and mock POIs
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+
+    // Clear existing extra markers
+    Object.values(extraMarkersRef.current).forEach(marker => marker.remove());
+    extraMarkersRef.current = {};
+
+    // 1. Commute Locations
+    if (userPreferences?.commuteLocations?.length > 0) {
+      userPreferences.commuteLocations.forEach((loc, idx) => {
+        if (!loc.lat || !loc.lng) return;
+        
+        const commuteIcon = L.divIcon({
+          className: 'custom-commute-marker',
+          html: `<div style="background: #D4AF37; border-radius: 50%; padding: 4px; box-shadow: 0 0 10px rgba(212, 175, 55, 0.8); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px;"><span style="font-size: 16px;">📍</span></div>`,
+          iconSize: [28, 28],
+          iconAnchor: [14, 14]
+        });
+
+        const marker = L.marker([loc.lat, loc.lng], { icon: commuteIcon }).addTo(map);
+        marker.bindTooltip(`<div class="luxury-tooltip" style="color:#fff; font-family:'Outfit', sans-serif;"><strong>Your Commute:</strong><br/>${loc.address}</div>`, { direction: 'top', offset: [0, -10], opacity: 0.95 });
+        extraMarkersRef.current[`commute-${idx}`] = marker;
+      });
+    }
+
+    // 2. Mock POIs (only when a neighborhood is selected)
+    if (selectedNeighborhood && userPreferences?.profile) {
+      const pois = generatePOIMarkers(userPreferences.profile, selectedNeighborhood.lat, selectedNeighborhood.lng);
+      
+      pois.forEach((poi, idx) => {
+        const poiIcon = L.divIcon({
+          className: 'custom-poi-marker',
+          html: `<div style="background: rgba(197, 168, 128, 0.15); backdrop-filter: blur(4px); border-radius: 50%; border: 1px solid rgba(197, 168, 128, 0.4); display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; font-size: 14px;">${poi.emoji}</div>`,
+          iconSize: [26, 26],
+          iconAnchor: [13, 13]
+        });
+
+        const marker = L.marker([poi.lat, poi.lng], { icon: poiIcon }).addTo(map);
+        extraMarkersRef.current[`poi-${idx}`] = marker;
+      });
+    }
+  }, [selectedNeighborhood, userPreferences]);
 
   return (
     <div className="map-wrapper card-glass luxury-border">
