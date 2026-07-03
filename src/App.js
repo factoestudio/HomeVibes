@@ -6,6 +6,19 @@ import NeighborhoodDetails from './components/NeighborhoodDetails';
 import { LogoIcon } from './components/SvgIcons';
 import './App.css';
 
+// Haversine formula to calculate distance between two lat/lng coordinates in km
+const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
+  const R = 6371; // Radius of the earth in km
+  const dLat = (lat2 - lat1) * (Math.PI / 180);
+  const dLon = (lon2 - lon1) * (Math.PI / 180);
+  const a = 
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * 
+    Math.sin(dLon / 2) * Math.sin(dLon / 2); 
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+  return R * c; 
+};
+
 export default function App() {
   const [view, setView] = useState('quiz'); // 'quiz' | 'results'
   const [userPreferences, setUserPreferences] = useState(null);
@@ -17,7 +30,7 @@ export default function App() {
   const matchedNeighborhoods = useMemo(() => {
     if (!userPreferences) return [];
 
-    const { profile, hub, commuteFrequency, transitMode, lifestyle } = userPreferences;
+    const { profile, commuteLocations, commuteFrequency, transitMode, lifestyle } = userPreferences;
 
     return neighborhoodsData.map(area => {
       // 1. Life Stage Suitability Match (25% weight)
@@ -35,14 +48,41 @@ export default function App() {
         // Walking preference prioritizes local walkability index
         commuteScore = area.transit.walkability * 10;
       } else {
-        // Commute time score to selected hub by car/transit
-        const commuteTime = area.commutes[hub]?.[transitMode] || 60;
+        // Dynamic Haversine commute calculation
+        if (commuteLocations && commuteLocations.length > 0) {
+          let totalMins = 0;
+          let validLocations = 0;
 
-        if (commuteTime <= 15) commuteScore = 100;
-        else if (commuteTime <= 30) commuteScore = 90;
-        else if (commuteTime <= 45) commuteScore = 75;
-        else if (commuteTime <= 60) commuteScore = 55;
-        else commuteScore = 35;
+          commuteLocations.forEach(loc => {
+            if (loc.lat && loc.lng && area.lat && area.lng) {
+              validLocations++;
+              const distKm = getDistanceFromLatLonInKm(loc.lat, loc.lng, area.lat, area.lng);
+              
+              // Apply simple speed estimation (city traffic vs transit)
+              // Driving: ~30km/h (2 mins per km) + 5 min overhead
+              // Transit: ~15km/h (4 mins per km) + 10 min overhead
+              let estTime = 60;
+              if (transitMode === 'driving') estTime = (distKm * 2.5) + 5;
+              if (transitMode === 'transit') estTime = (distKm * 4.5) + 10;
+              
+              totalMins += estTime;
+            }
+          });
+
+          if (validLocations > 0) {
+            const avgTime = totalMins / validLocations;
+            if (avgTime <= 15) commuteScore = 100;
+            else if (avgTime <= 30) commuteScore = 90;
+            else if (avgTime <= 45) commuteScore = 75;
+            else if (avgTime <= 60) commuteScore = 55;
+            else commuteScore = 35;
+          } else {
+            // Fallback if geocoding failed
+            commuteScore = area.transit.walkability * 8; 
+          }
+        } else {
+          commuteScore = area.transit.walkability * 8;
+        }
 
         // Adjust based on frequency
         if (commuteFrequency === 'occasional') {

@@ -30,12 +30,7 @@ const PROFILES = [
   { id: 'senior', name: 'Downsizer & Senior', icon: <SeniorIcon size={32} />, desc: 'Prioritize peaceful streets, medical access, local parks, and low maintenance.' }
 ];
 
-const HUBS = [
-  { id: 'downtown', name: 'Downtown Toronto Core', icon: <CityIcon size={32} /> },
-  { id: 'north-york', name: 'North York / Willowdale', icon: <BuildingIcon size={32} /> },
-  { id: 'mississauga', name: 'Mississauga City Centre', icon: <WavesIcon size={32} /> },
-  { id: 'markham', name: 'Markham Tech District', icon: <CodeIcon size={32} /> }
-];
+
 
 const TRANSIT_MODES = [
   { id: 'walking', name: 'Walking & Cycling', desc: 'Prioritize active walking paths, trails, and hyper-local errand access.', icon: <WalkingIcon size={24} /> },
@@ -68,9 +63,10 @@ const PRICE_PRESETS = {
 export default function VibeQuiz({ onComplete }) {
   const [step, setStep] = useState(1);
   const [profile, setProfile] = useState('professional');
-  const [hub, setHub] = useState('downtown');
+  const [commuteLocations, setCommuteLocations] = useState([{ id: 1, address: '' }]);
   const [commuteFrequency, setCommuteFrequency] = useState('daily');
   const [transitMode, setTransitMode] = useState('transit');
+  const [isGeocoding, setIsGeocoding] = useState(false);
 
   // Initialize all 7 lifestyle pillars with level 1 (Nice-to-have)
   const [lifestyle, setLifestyle] = useState({
@@ -93,10 +89,47 @@ export default function VibeQuiz({ onComplete }) {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    // If remote or no addresses, skip geocoding
+    if (commuteFrequency === 'remote') {
+      onComplete({
+        profile,
+        commuteLocations: [],
+        commuteFrequency,
+        transitMode,
+        lifestyle
+      });
+      return;
+    }
+
+    setIsGeocoding(true);
+    
+    // Geocode all valid addresses via OpenStreetMap Nominatim
+    const locationsWithCoords = await Promise.all(
+      commuteLocations.filter(loc => loc.address.trim() !== '').map(async (loc) => {
+        try {
+          // OpenStreetMap requires a user-agent, but fetch API works well enough for testing.
+          const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(loc.address)}&limit=1`);
+          const data = await res.json();
+          if (data && data.length > 0) {
+            return {
+              ...loc,
+              lat: parseFloat(data[0].lat),
+              lng: parseFloat(data[0].lon)
+            };
+          }
+        } catch (e) {
+          console.error("Geocoding failed for", loc.address);
+        }
+        return loc; // Fallback without coords
+      })
+    );
+
+    setIsGeocoding(false);
+
     onComplete({
       profile,
-      hub,
+      commuteLocations: locationsWithCoords,
       commuteFrequency,
       transitMode,
       lifestyle
@@ -152,23 +185,51 @@ export default function VibeQuiz({ onComplete }) {
         </div>
       )}
 
-      {/* STEP 2: COMMUTE HUB & FREQUENCY */}
+      {/* STEP 2: COMMUTE DESTINATIONS & FREQUENCY */}
       {step === 2 && (
         <div className="quiz-step-content fade-in">
-          <h2 className="quiz-title display-font gold-text-glow">Frequent Commute Place</h2>
-          <p className="quiz-subtitle">We will measure commute times to find areas with the easiest connectivity.</p>
+          <h2 className="quiz-title display-font gold-text-glow">Frequent Destinations</h2>
+          <p className="quiz-subtitle">Enter the addresses you travel to most often (e.g., Work, Daycare, Gym).</p>
           
-          <div className="quiz-options-grid">
-            {HUBS.map(item => (
-              <div 
-                key={item.id}
-                className={`quiz-card luxury-card ${hub === item.id ? 'active' : ''}`}
-                onClick={() => setHub(item.id)}
-              >
-                <div className="quiz-card-icon">{item.icon}</div>
-                <div className="quiz-card-name">{item.name}</div>
+          <div className="commute-locations-container" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
+            {commuteLocations.map((loc, index) => (
+              <div key={loc.id} style={{ display: 'flex', gap: '0.5rem' }}>
+                <input 
+                  type="text" 
+                  className="luxury-input" 
+                  placeholder="E.g., 100 King St W, Toronto"
+                  value={loc.address}
+                  onChange={(e) => {
+                    const newLocs = [...commuteLocations];
+                    newLocs[index].address = e.target.value;
+                    setCommuteLocations(newLocs);
+                  }}
+                  style={{ flex: 1 }}
+                />
+                {commuteLocations.length > 1 && (
+                  <button 
+                    type="button" 
+                    className="btn-secondary"
+                    onClick={() => {
+                      setCommuteLocations(commuteLocations.filter(l => l.id !== loc.id));
+                    }}
+                    style={{ padding: '0 1rem' }}
+                  >
+                    X
+                  </button>
+                )}
               </div>
             ))}
+            <button 
+              type="button"
+              className="btn-secondary"
+              style={{ alignSelf: 'flex-start', padding: '0.5rem 1rem', fontSize: '0.9rem' }}
+              onClick={() => {
+                setCommuteLocations([...commuteLocations, { id: Date.now(), address: '' }]);
+              }}
+            >
+              + Add another destination
+            </button>
           </div>
 
           <div className="quiz-form-group">
@@ -283,8 +344,8 @@ export default function VibeQuiz({ onComplete }) {
             <button className="btn-secondary" onClick={prevStep}>
               &larr; Back
             </button>
-            <button className="btn-success btn-gold-success" onClick={handleSubmit}>
-              Calculate Matches &rarr;
+            <button className="btn-success btn-gold-success" onClick={handleSubmit} disabled={isGeocoding}>
+              {isGeocoding ? 'Calculating Routes...' : 'Calculate Matches \u2192'}
             </button>
           </div>
         </div>
