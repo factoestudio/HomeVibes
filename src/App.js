@@ -316,7 +316,8 @@ export default function App() {
               <div className="quiz-header">
               <h2>{userRole === 'investor' ? 'Investor Profile' : 'Discover Your Perfect Match'}</h2>
               <p>{userRole === 'investor' ? 'Tell us about your investment targets, and we will find the neighborhoods with the highest ROI potential for that lifestyle.' : 'Tell us about your lifestyle, and our algorithm will rank the best neighborhoods for you.'}</p>
-            </div>
+              </div>
+            )}
             {!userRole ? (
               <RoleSelector onSelectRole={setUserRole} />
             ) : (
