@@ -4,7 +4,8 @@ import VibeQuiz from './components/VibeQuiz';
 import MapWidget from './components/MapWidget';
 import NeighborhoodDetails from './components/NeighborhoodDetails';
 import ThemeSelector from './components/ThemeSelector';
-import { LogoIcon } from './components/SvgIcons';
+import logoWhite from './assets/logo-white.png';
+import logoPurple from './assets/logo-purple.png';
 import './App.css';
 
 // Haversine formula to calculate distance between two lat/lng coordinates in km
@@ -194,10 +195,8 @@ export default function App() {
       {/* Navbar Header */}
       <header className="app-header-nav luxury-header">
         <div className="logo-wrap" onClick={handleRetakeQuiz}>
-          <span className="logo-icon platinum-text"><LogoIcon size={32} /></span>
-          <h1 className="logo-text display-font">
-            HomeVibes <span className="logo-badge luxury-badge uppercase">GTA</span>
-          </h1>
+          <img src={logoWhite} alt="HomeVibes" className="brand-logo logo-dark-mode" />
+          <img src={logoPurple} alt="HomeVibes" className="brand-logo logo-light-mode" />
         </div>
         <p className="header-desc uppercase letter-spacing">Bespoke neighborhood profiles & luxury real estate matcher</p>
         <div className="header-right">
