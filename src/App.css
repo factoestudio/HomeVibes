@@ -1861,3 +1861,8 @@ button {
   100% { box-shadow: 0 0 10px rgba(197, 168, 128, 0.3); }
 }
 
+/* Improve Map Contrast */
+.leaflet-tile-pane {
+  filter: brightness(1.35) contrast(1.25) saturate(1.1);
+}
+
