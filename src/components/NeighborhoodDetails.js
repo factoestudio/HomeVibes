@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { supabase } from '../supabaseClient';
 import {
   StudentIcon,
   ProfessionalIcon,
@@ -19,7 +20,34 @@ import {
   WalletIcon
 } from './SvgIcons';
 
-export default function NeighborhoodDetails({ selectedArea, userPreferences, onClose, filters }) {
+export default function NeighborhoodDetails({ selectedArea, userPreferences, onClose, filters, isPremiumUnlocked, setIsPremiumUnlocked }) {
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', timeline: 'Just browsing' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+
+  const handleUnlockSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
+    try {
+      const { error } = await supabase.from('leads').insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          timeline: formData.timeline,
+          created_at: new Date().toISOString()
+        }
+      ]);
+      if (error) throw error;
+      setIsPremiumUnlocked(true);
+    } catch (err) {
+      console.error('Error submitting lead:', err);
+      setSubmitError('Failed to unlock. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   if (!selectedArea) {
     return (
       <div className="details-empty-state card-glass luxury-border">
@@ -212,7 +240,8 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
           </div>
         )}
 
-        {/* Life Stage Suitability */}
+        <div className={`premium-content-wrapper ${!isPremiumUnlocked ? 'locked' : ''}`}>
+          {/* Life Stage Suitability */}
         <div className="details-section">
           <h3 className="display-font">Life Stage Compatibility</h3>
           <div className="suitability-grid">
@@ -380,7 +409,32 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
             ) : (
               <p className="no-listings" style={{ fontStyle: 'italic', padding: '1rem 0' }}>No local listings match your exact property specifications. Try modifying your dashboard filters above.</p>
             )}
+            )}
           </div>
+        </div>
+
+        {/* Lead Capture Overlay */}
+        {!isPremiumUnlocked && (
+          <div className="lead-capture-overlay card-glass luxury-border fade-in">
+            <h3 className="display-font premium-unlock-title">Unlock Premium Insights</h3>
+            <p className="premium-unlock-desc">Leave your details to reveal deep lifestyle analytics, local realities, and deep-links to active real estate listings for this area.</p>
+            <form onSubmit={handleUnlockSubmit} className="lead-form">
+              <input type="text" placeholder="Full Name" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className="luxury-input" />
+              <input type="email" placeholder="Email Address" required value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} className="luxury-input" />
+              <input type="tel" placeholder="Phone Number (Optional)" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} className="luxury-input" />
+              <select required value={formData.timeline} onChange={e => setFormData({ ...formData, timeline: e.target.value })} className="luxury-select timeline-select">
+                <option value="Just browsing">Just browsing</option>
+                <option value="1-3 months">Looking to move in 1-3 months</option>
+                <option value="3-6 months">Looking to move in 3-6 months</option>
+                <option value="6+ months">Looking to move in 6+ months</option>
+              </select>
+              {submitError && <div className="form-error">{submitError}</div>}
+              <button type="submit" disabled={isSubmitting} className="btn-primary unlock-btn">
+                {isSubmitting ? 'Unlocking...' : 'Unlock Deep-Dive Analysis'}
+              </button>
+            </form>
+          </div>
+        )}
         </div>
       </div>
     </div>

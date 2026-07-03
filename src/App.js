@@ -11,6 +11,7 @@ export default function App() {
   const [view, setView] = useState('quiz'); // 'quiz' | 'results'
   const [userPreferences, setUserPreferences] = useState(null);
   const [filters, setFilters] = useState(null);
+  const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
   const [selectedArea, setSelectedArea] = useState(null);
   const [cityFilter, setCityFilter] = useState('All');
 
@@ -270,10 +271,12 @@ export default function App() {
             {/* Right Column: Details Panel */}
             <div className="results-details-column">
               <NeighborhoodDetails
-                selectedArea={selectedArea || filteredAreas[0]} 
+                selectedArea={selectedArea || filteredAreas[0]}
                 userPreferences={userPreferences}
-                onClose={() => setSelectedArea(null)}
                 filters={filters}
+                isPremiumUnlocked={isPremiumUnlocked}
+                setIsPremiumUnlocked={setIsPremiumUnlocked}
+                onClose={() => setSelectedArea(null)}
               />
             </div>
           </div>
