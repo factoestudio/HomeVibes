@@ -7,6 +7,7 @@ import ThemeSelector from './components/ThemeSelector';
 import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import ContactB2B from './components/ContactB2B';
+import RoleSelector from './components/RoleSelector';
 import logoWhite from './assets/logo-white.png';
 import logoPurple from './assets/logo-purple.png';
 import './App.css';
@@ -25,6 +26,7 @@ const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
 };
 
 export default function App() {
+  const [userRole, setUserRole] = useState(null); // 'resident' | 'investor' | null
   const [theme, setTheme] = useState(localStorage.getItem('homevibes-theme') || 'auto');
   const [view, setView] = useState('quiz'); // 'quiz' | 'results'
   const [userPreferences, setUserPreferences] = useState(null);
@@ -215,12 +217,16 @@ export default function App() {
       {/* Main Content Area */}
       <main className="app-main-content">
         {view === 'quiz' ? (
-          <div className="quiz-view-wrapper">
-            <div className="hero-section">
-              <h2 className="hero-title display-font platinum-text-glow">Discover Your Perfect GTA Neighborhood</h2>
-              <p className="hero-subtitle">Evaluate your lifestage, commuting hubs, transit mode, and budget parameters to compute a custom compatibility match with premium locations.</p>
+          <div className="quiz-container animate-fade-in">
+            <div className="quiz-header">
+              <h2>{userRole === 'investor' ? 'Investor Profile' : 'Discover Your Perfect Match'}</h2>
+              <p>{userRole === 'investor' ? 'Tell us about your investment targets, and we will find the neighborhoods with the highest ROI potential for that lifestyle.' : 'Tell us about your lifestyle, and our algorithm will rank the best neighborhoods for you.'}</p>
             </div>
-            <VibeQuiz onComplete={handleQuizComplete} />
+            {!userRole ? (
+              <RoleSelector onSelectRole={setUserRole} />
+            ) : (
+              <VibeQuiz onComplete={handleQuizComplete} userRole={userRole} />
+            )}
           </div>
           ) : view === 'privacy' ? (
             <PrivacyPolicy setView={setView} />

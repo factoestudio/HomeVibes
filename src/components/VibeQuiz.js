@@ -43,13 +43,18 @@ const AMENITY_PILLARS = [
 
 
 
-export default function VibeQuiz({ onComplete }) {
+export default function VibeQuiz({ onComplete, userRole }) {
   const [step, setStep] = useState(1);
   const [profile, setProfile] = useState('professional');
   const [commuteLocations, setCommuteLocations] = useState([{ id: 1, address: '' }]);
   const [commuteFrequency, setCommuteFrequency] = useState('daily');
   const [transitMode, setTransitMode] = useState('transit');
   const [isGeocoding, setIsGeocoding] = useState(false);
+
+  // Investor States
+  const [invGoal, setInvGoal] = useState('rental');
+  const [invTenant, setInvTenant] = useState('professional');
+  const [invBudget, setInvBudget] = useState('500k-1m');
 
   // Initialize all 7 lifestyle pillars with level 1 (Nice-to-have)
   const [lifestyle, setLifestyle] = useState({
@@ -73,6 +78,16 @@ export default function VibeQuiz({ onComplete }) {
   };
 
   const handleSubmit = async () => {
+    if (userRole === 'investor') {
+      onComplete({
+        userRole,
+        invGoal,
+        invTenant,
+        invBudget
+      });
+      return;
+    }
+
     // If remote or no addresses, skip geocoding
     if (commuteFrequency === 'remote') {
       onComplete({
@@ -133,7 +148,83 @@ export default function VibeQuiz({ onComplete }) {
       <div className="quiz-steps-counter uppercase">
         Step {step} of 4
       </div>
+      
+      <div className="quiz-container-inner">
+      {userRole === 'investor' ? (
+        <div className="quiz-step-content fade-in">
+          <h2 className="quiz-title display-font platinum-text-glow">Investor Profile</h2>
+          <p className="quiz-subtitle">Configure your investment targets below.</p>
+          
+          <div className="quiz-form-group" style={{ marginBottom: '2rem' }}>
+            <label className="quiz-label uppercase letter-spacing">1. Primary Investment Goal</label>
+            <div className="quiz-toggle-group" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {[
+                { id: 'rental', label: 'High-Yield Rental Income' },
+                { id: 'appreciation', label: 'Long-Term Appreciation' },
+                { id: 'flip', label: 'Pre-Construction / Flipping' }
+              ].map(opt => (
+                <button
+                  key={opt.id}
+                  type="button"
+                  className={`quiz-toggle-btn luxury-btn ${invGoal === opt.id ? 'active' : ''}`}
+                  onClick={() => setInvGoal(opt.id)}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
 
+          <div className="quiz-form-group" style={{ marginBottom: '2rem' }}>
+            <label className="quiz-label uppercase letter-spacing">2. Target Tenant Profile</label>
+            <div className="quiz-toggle-group" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {[
+                { id: 'professional', label: 'Young Professionals (Downtown/Transit)' },
+                { id: 'student', label: 'University Students (Campuses)' },
+                { id: 'family', label: 'Families (Schools/Parks)' },
+                { id: 'luxury', label: 'Luxury Corporate (Yorkville/King West)' }
+              ].map(opt => (
+                <button
+                  key={opt.id}
+                  type="button"
+                  className={`quiz-toggle-btn luxury-btn ${invTenant === opt.id ? 'active' : ''}`}
+                  onClick={() => setInvTenant(opt.id)}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="quiz-form-group" style={{ marginBottom: '2rem' }}>
+            <label className="quiz-label uppercase letter-spacing">3. Target Budget</label>
+            <div className="quiz-toggle-group">
+              {[
+                { id: 'under500', label: 'Under $500k' },
+                { id: '500k-1m', label: '$500k - $1M' },
+                { id: 'over1m', label: '$1M+' }
+              ].map(opt => (
+                <button
+                  key={opt.id}
+                  type="button"
+                  className={`quiz-toggle-btn luxury-btn ${invBudget === opt.id ? 'active' : ''}`}
+                  onClick={() => setInvBudget(opt.id)}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="quiz-nav-actions" style={{ marginTop: '2rem' }}>
+            <div></div>
+            <button className="btn-success btn-platinum-success" onClick={handleSubmit}>
+              Calculate Market Matches &rarr;
+            </button>
+          </div>
+        </div>
+      ) : (
+        <>
       {/* STEP 1: DEMOGRAPHIC PROFILE */}
       {step === 1 && (
         <div className="quiz-step-content fade-in">
@@ -331,6 +422,8 @@ export default function VibeQuiz({ onComplete }) {
             </button>
           </div>
         </div>
+      )}
+      </>
       )}
     </div>
   );
