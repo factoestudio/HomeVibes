@@ -30,7 +30,7 @@ const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
 export default function App() {
   const [userRole, setUserRole] = useState(null); // 'resident' | 'investor' | null
   const [theme, setTheme] = useState(localStorage.getItem('homevibes-theme') || 'auto');
-  const [view, setView] = useState('quiz'); // 'quiz' | 'results'
+  const [view, setView] = useState('quiz'); // 'quiz' | 'results' | 'privacy' | 'contact'
   const [userPreferences, setUserPreferences] = useState(null);
   const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
   const [selectedArea, setSelectedArea] = useState(null);
@@ -69,10 +69,15 @@ export default function App() {
         .eq('id', userId)
         .single();
       
+      if (error) {
+        console.warn('Could not fetch preferences:', error.message);
+        return;
+      }
+
       if (data && data.preferences) {
         setUserRole(data.role);
         setUserPreferences(data.preferences);
-        if (data.preferences) setView('results');
+        setView('results');
       }
     } catch (err) {
       console.error('Error fetching preferences:', err);
@@ -147,15 +152,23 @@ export default function App() {
   const matchedNeighborhoods = useMemo(() => {
     if (!userPreferences) return [];
 
-    const { profile, commuteLocations, commuteFrequency, transitMode, lifestyle } = userPreferences;
+    // Guard: investor preferences don't have lifestyle/profile — use tenant profile instead
+    const isInvestor = userPreferences.userRole === 'investor';
+    const profile = isInvestor ? (userPreferences.invTenant || 'professional') : userPreferences.profile;
+    const commuteLocations = userPreferences.commuteLocations || [];
+    const commuteFrequency = isInvestor ? 'remote' : (userPreferences.commuteFrequency || 'daily');
+    const transitMode = userPreferences.transitMode || 'transit';
+    const lifestyle = userPreferences.lifestyle || {};
 
     return neighborhoodsData.map(area => {
-      // 1. Life Stage Suitability Match (25% weight)
-      const suitabilityProp = `${profile}_suitability`;
+      // 1. Life Stage Suitability Match (30% weight)
+      // Map quiz profile IDs to data keys: 'professional' -> 'single_professional'
+      const profileKey = profile === 'professional' ? 'single_professional' : profile;
+      const suitabilityProp = `${profileKey}_suitability`;
       const suitabilityScore = area[suitabilityProp] || 5;
       const lifeStageScore = suitabilityScore * 10; // convert to 0-100 scale
 
-      // 2. Commute & Transit Match (25% weight)
+      // 2. Commute & Transit Match (30% weight)
       let commuteScore = 50;
 
       if (commuteFrequency === 'remote') {
@@ -207,7 +220,7 @@ export default function App() {
         }
       }
 
-      // 3. Expanded Amenities Match (30% weight)
+      // 3. Expanded Amenities Match (40% weight)
       let amenitiesScoreSum = 0;
       const amenityKeys = Object.keys(lifestyle);
 
@@ -252,6 +265,10 @@ export default function App() {
   const handleQuizComplete = (prefs) => {
     setUserPreferences(prefs);
     setView('results');
+    // Persist to Supabase if logged in
+    if (session) {
+      saveUserPreferences(userRole, prefs);
+    }
   };
 
   // Pre-select best match when view changes to results
@@ -329,7 +346,7 @@ export default function App() {
           ) : view === 'contact' ? (
             <ContactB2B setView={setView} />
           ) : (
-            <div className="results-container animate-fade-in">
+            <div className="results-layout animate-fade-in">
             {/* Left Column: List of Matches */}
             <div className="results-list-column">
               <div className="list-column-header">

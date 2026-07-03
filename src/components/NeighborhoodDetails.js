@@ -34,7 +34,6 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
         {
           name: formData.name,
           email: formData.email,
-          phone: formData.phone,
           timeline: formData.timeline,
           created_at: new Date().toISOString()
         }
@@ -63,7 +62,10 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
   // Get travel time details based on quiz selections
   const userHub = userPreferences?.hub || 'downtown';
   const userTransit = userPreferences?.transitMode || 'transit';
-  const commuteTime = selectedArea.commutes[userHub]?.[userTransit] || 'N/A';
+  let commuteTime = selectedArea.commutes[userHub]?.[userTransit];
+  if (commuteTime === undefined) {
+    commuteTime = userTransit === 'walking' ? Math.round((selectedArea.transit.walkability / 10) * 15) : 'N/A';
+  }
 
   // Mapping readable hub names
   const hubNames = {
@@ -189,7 +191,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
 
         {/* Tags */}
         <div className="details-tags">
-          {selectedArea.tags.map(tag => (
+          {selectedArea.tags?.map(tag => (
             <span key={tag} className="tag-pill luxury-tag">#{tag}</span>
           ))}
         </div>
@@ -251,7 +253,8 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
               { label: 'Growing Family', icon: <FamilyIcon size={16} />, score: selectedArea.family_suitability },
               { label: 'Downsizer & Senior', icon: <SeniorIcon size={16} />, score: selectedArea.senior_suitability }
             ].map((stage, idx) => {
-              const isActive = userPreferences?.profile === ['student', 'professional', 'family', 'senior'][idx];
+              const activeProfileKey = userPreferences?.profile === 'professional' ? 'single_professional' : userPreferences?.profile;
+              const isActive = activeProfileKey === ['student', 'single_professional', 'family', 'senior'][idx];
               return (
                 <div key={idx} className={`suitability-item card-subglass luxury-subcard ${isActive ? 'active-profile-match' : ''}`}>
                   <div className="suit-header">
@@ -315,13 +318,13 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
           <div className="pros-box luxury-pros-box">
             <h4 className="uppercase">Area Highlights</h4>
             <ul>
-              {selectedArea.pros.map((pro, idx) => <li key={idx}>{pro}</li>)}
+              {selectedArea.pros?.map((pro, idx) => <li key={idx}>{pro}</li>)}
             </ul>
           </div>
           <div className="cons-box luxury-cons-box">
             <h4 className="uppercase">Local Realities</h4>
             <ul>
-              {selectedArea.cons.map((con, idx) => <li key={idx}>{con}</li>)}
+              {selectedArea.cons?.map((con, idx) => <li key={idx}>{con}</li>)}
             </ul>
           </div>
         </div>
@@ -330,7 +333,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
         <div className="details-section">
           <h3 className="display-font"><span className="title-icon-inline platinum-text"><MarkerIcon size={18} /></span> Famous Local Spots</h3>
           <div className="local-spots-flex">
-            {selectedArea.localSpots.map((spot, idx) => (
+            {selectedArea.localSpots?.map((spot, idx) => (
               <span key={idx} className="spot-chip luxury-spot-chip">{spot}</span>
             ))}
           </div>

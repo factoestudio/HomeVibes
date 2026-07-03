@@ -134,20 +134,25 @@ export default function VibeQuiz({ onComplete, userRole }) {
     });
   };
 
-  const progressPercent = ((step - 1) / 4) * 100;
+  const totalSteps = 4;
+  const progressPercent = ((step - 1) / (totalSteps - 1)) * 100;
 
   return (
     <div className="quiz-container card-glass luxury-border">
-      {/* Premium Progress Bar */}
-      <div className="quiz-progress-bar-bg">
-        <div 
-          className="quiz-progress-bar-fill platinum-gradient-bg" 
-          style={{ width: `${progressPercent}%` }}
-        ></div>
-      </div>
-      <div className="quiz-steps-counter uppercase">
-        Step {step} of 4
-      </div>
+      {/* Premium Progress Bar - only show for resident path */}
+      {userRole !== 'investor' && (
+        <>
+          <div className="quiz-progress-bar-bg">
+            <div 
+              className="quiz-progress-bar-fill platinum-gradient-bg" 
+              style={{ width: `${progressPercent}%` }}
+            ></div>
+          </div>
+          <div className="quiz-steps-counter uppercase">
+            Step {step} of {totalSteps}
+          </div>
+        </>
+      )}
       
       <div className="quiz-container-inner">
       {userRole === 'investor' ? (
@@ -418,7 +423,7 @@ export default function VibeQuiz({ onComplete, userRole }) {
               &larr; Back
             </button>
             <button className="btn-success btn-platinum-success" onClick={handleSubmit} disabled={isGeocoding}>
-              {isGeocoding ? 'Calculating Routes...' : 'Calculate Matches \u2192'}
+              {isGeocoding ? 'Calculating Routes...' : 'Calculate Matches →'}
             </button>
           </div>
         </div>
