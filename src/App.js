@@ -8,6 +8,8 @@ import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import ContactB2B from './components/ContactB2B';
 import RoleSelector from './components/RoleSelector';
+import AuthModal from './components/AuthModal';
+import { supabase } from './supabaseClient';
 import logoWhite from './assets/logo-white.png';
 import logoPurple from './assets/logo-purple.png';
 import './App.css';
@@ -33,6 +35,89 @@ export default function App() {
   const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
   const [selectedArea, setSelectedArea] = useState(null);
   const [cityFilter, setCityFilter] = useState('All');
+
+  // Auth State
+  const [session, setSession] = useState(null);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+
+  // Initialize Auth & Fetch Preferences
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      if (session) fetchUserPreferences(session.user.id);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      if (session) {
+        fetchUserPreferences(session.user.id);
+      } else {
+        setUserPreferences(null);
+        setUserRole(null);
+        setView('quiz');
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const fetchUserPreferences = async (userId) => {
+    try {
+      const { data, error } = await supabase
+        .from('user_preferences')
+        .select('*')
+        .eq('id', userId)
+        .single();
+      
+      if (data && data.preferences) {
+        setUserRole(data.role);
+        setUserPreferences(data.preferences);
+        if (data.preferences) setView('results');
+      }
+    } catch (err) {
+      console.error('Error fetching preferences:', err);
+    }
+  };
+
+  const saveUserPreferences = async (role, prefs) => {
+    if (!session) return;
+    try {
+      await supabase
+        .from('user_preferences')
+        .upsert({ 
+          id: session.user.id, 
+          role: role, 
+          preferences: prefs 
+        });
+    } catch (err) {
+      console.error('Error saving preferences:', err);
+    }
+  };
+
+  const trackEvent = async (eventType, eventData) => {
+    try {
+      await supabase.from('user_events').insert({
+        user_id: session?.user?.id || null,
+        event_type: eventType,
+        event_data: eventData
+      });
+    } catch (err) {
+      console.error('Analytics error:', err);
+    }
+  };
+
+  const handleCityFilter = (city) => {
+    setCityFilter(city);
+    trackEvent('FILTER_CITY', { city });
+  };
+
+  const handleSelectArea = (area) => {
+    setSelectedArea(area);
+    if (area) {
+      trackEvent('VIEW_NEIGHBORHOOD', { neighborhood: area.name, city: area.city });
+    }
+  };
+
 
   // Apply theme class
   useEffect(() => {
@@ -205,9 +290,15 @@ export default function App() {
         </div>
         <p className="header-desc uppercase letter-spacing">Bespoke neighborhood profiles & luxury real estate matcher</p>
         <div className="header-right">
-          <button className="btn-header-action luxury-btn-header" style={{ marginRight: '8px' }} onClick={() => alert('Sign In coming soon!')}>
-            Sign In
-          </button>
+          {session ? (
+            <button className="btn-header-action luxury-btn-header" style={{ marginRight: '8px' }} onClick={() => supabase.auth.signOut()}>
+              Sign Out
+            </button>
+          ) : (
+            <button className="btn-header-action luxury-btn-header" style={{ marginRight: '8px' }} onClick={() => setShowAuthModal(true)}>
+              Sign In
+            </button>
+          )}
           <ThemeSelector theme={theme} setTheme={setTheme} />
           {view === 'results' && (
             <button className="btn-header-action luxury-btn-header" onClick={handleRetakeQuiz}>
@@ -221,7 +312,8 @@ export default function App() {
       <main className="app-main-content">
         {view === 'quiz' ? (
           <div className="quiz-container animate-fade-in">
-            <div className="quiz-header">
+            {userRole && (
+              <div className="quiz-header">
               <h2>{userRole === 'investor' ? 'Investor Profile' : 'Discover Your Perfect Match'}</h2>
               <p>{userRole === 'investor' ? 'Tell us about your investment targets, and we will find the neighborhoods with the highest ROI potential for that lifestyle.' : 'Tell us about your lifestyle, and our algorithm will rank the best neighborhoods for you.'}</p>
             </div>
@@ -250,7 +342,7 @@ export default function App() {
                   <button
                     key={city}
                     className={`filter-tab luxury-filter-tab ${cityFilter === city ? 'active' : ''}`}
-                    onClick={() => setCityFilter(city)}
+                    onClick={() => handleCityFilter(city)}
                   >
                     {city}
                   </button>
@@ -271,7 +363,7 @@ export default function App() {
                       <div
                         key={area.id}
                         className={`match-list-card luxury-match-card ${isSelected ? 'active' : ''}`}
-                        onClick={() => setSelectedArea(area)}
+                        onClick={() => handleSelectArea(area)}
                       >
                         <div className="match-card-header">
                           <div className="match-card-title-wrap">
@@ -325,8 +417,13 @@ export default function App() {
         )}
       </main>
 
+      {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
       {/* Footer */}
       <Footer setView={setView} />
     </div>
   );
 }
+
+
+
+
