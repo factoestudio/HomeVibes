@@ -1,81 +1,128 @@
-import React from 'react';
-import neighborhoodVibe from '../assets/neighborhood_vibe.png';
+import React, { useState, useEffect } from 'react';
 
-const CompassIcon = () => (
+const DataIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"></circle>
-    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
   </svg>
 );
 
-const ChartIcon = () => (
+const HeartIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="18" y="3" width="4" height="18"></rect>
-    <rect x="10" y="8" width="4" height="13"></rect>
-    <rect x="2" y="13" width="4" height="8"></rect>
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
   </svg>
 );
 
-const TransitIcon = () => (
+const MapIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 14.94A5.96 5.96 0 0 0 12 19a5.96 5.96 0 0 0 8-4.06"></path>
-    <path d="M12 19v3"></path>
-    <path d="M9 22h6"></path>
-    <path d="M12 3v2"></path>
-    <path d="M6 7l1.5-1.5"></path>
-    <path d="M16.5 5.5L18 7"></path>
-    <circle cx="12" cy="11" r="3"></circle>
+    <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+    <line x1="9" y1="3" x2="9" y2="18"></line>
+    <line x1="15" y1="6" x2="15" y2="21"></line>
   </svg>
 );
 
 export default function LandingPage({ onStart }) {
+  const [dataCount, setDataCount] = useState(0);
+
+  // Simple number counter animation for the data section
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDataCount(prev => (prev < 50 ? prev + 1 : 50));
+    }, 40);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="apple-landing-page">
-      {/* Hero Section */}
-      <section className="apple-hero-section">
-        <div className="apple-hero-background" style={{ backgroundImage: `url(${neighborhoodVibe})` }}></div>
-        <div className="apple-hero-overlay"></div>
-        <div className="apple-hero-content fade-in-up">
-          <h1 className="apple-hero-headline">
-            Where Your Vibes Match Home.
+    <div className="story-landing-page">
+      {/* Background Floating Orbs for depth */}
+      <div className="orb orb-1"></div>
+      <div className="orb orb-2"></div>
+
+      {/* Hero Section with Video */}
+      <section className="story-hero-section">
+        <video 
+          className="story-hero-video" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          poster="https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=2000&auto=format&fit=crop"
+        >
+          {/* Using a vibrant lifestyle city stock video */}
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-friends-walking-on-the-street-in-the-city-4944-large.mp4" type="video/mp4" />
+        </video>
+        <div className="story-hero-overlay"></div>
+        
+        <div className="story-hero-content fade-in-up">
+          <div className="hero-badge">THE REAL ESTATE REVOLUTION</div>
+          <h1 className="story-hero-headline display-font">
+            Where Your Vibes <br/><span className="text-gradient">Match Home.</span>
           </h1>
-          <p className="apple-hero-subtext">
-            Stop searching for just a physical house. Discover the perfect home in vibrant neighborhoods perfectly tailored to your personal routine, commute, and lifestyle.
+          <p className="story-hero-subtext">
+            Stop searching for just a physical house. Discover the perfect home in vibrant neighborhoods tailored perfectly to your personal routine, commute, and lifestyle.
           </p>
-          <button 
-            className="apple-hero-btn pulse-glow" 
-            onClick={onStart}
-          >
-            Start Your Journey
+          <button className="story-hero-btn pulse-glow" onClick={onStart}>
+            Find Your Match
           </button>
         </div>
       </section>
 
-      {/* Value Proposition Section */}
-      <section className="apple-features-section">
-        <div className="apple-features-container">
-          <div className="apple-feature-card slide-up-1">
-            <div className="apple-feature-icon-wrapper">
-              <CompassIcon />
-            </div>
-            <h3 className="apple-feature-title">Vibe Matching</h3>
-            <p className="apple-feature-text">Aligning the perfect neighborhood with your daily routine and comfort.</p>
+      {/* Act 1: The Problem */}
+      <section className="story-act story-act-1">
+        <div className="act-content">
+          <h2 className="act-title">You are more than a zip code and a budget.</h2>
+          <p className="act-text">
+            Traditional real estate platforms treat you like a spreadsheet. They ask for square footage and price, completely ignoring what actually matters: your lifestyle. How close is the best coffee? Is the street safe at night? Does the culture fit your vibe?
+          </p>
+        </div>
+      </section>
+
+      {/* Act 2: The Data */}
+      <section className="story-act story-act-data">
+        <div className="act-content data-grid">
+          <div className="data-text-side">
+            <div className="icon-glow-wrapper"><DataIcon /></div>
+            <h2 className="act-title">We analyze the DNA of every neighborhood.</h2>
+            <p className="act-text">
+              We process massive amounts of geospatial and cultural data to score neighborhoods based on safety, amenities, transit, and social energy. We do the heavy lifting so you don't have to guess.
+            </p>
           </div>
-          
-          <div className="apple-feature-card slide-up-2">
-            <div className="apple-feature-icon-wrapper">
-              <ChartIcon />
+          <div className="data-stats-side">
+            <div className="stat-card">
+              <h3 className="stat-number">{dataCount}+</h3>
+              <p className="stat-label">Data Points Analyzed</p>
             </div>
-            <h3 className="apple-feature-title">Deep Analytics</h3>
-            <p className="apple-feature-text">Data-driven neighborhood insights on safety, culture, and amenities.</p>
+            <div className="stat-card">
+              <h3 className="stat-number">100%</h3>
+              <p className="stat-label">Personalized Scoring</p>
+            </div>
           </div>
-          
-          <div className="apple-feature-card slide-up-3">
-            <div className="apple-feature-icon-wrapper">
-              <TransitIcon />
+        </div>
+      </section>
+
+      {/* Act 3: The Magic / Result */}
+      <section className="story-act story-act-magic">
+        <div className="act-content magic-flex">
+          <div className="magic-mockup float-animation">
+            <div className="mockup-card">
+              <div className="mockup-header">
+                <MapIcon /> <span>Trinity Bellwoods</span>
+              </div>
+              <div className="mockup-score text-gradient">98% Match</div>
+              <div className="mockup-bar"><div className="mockup-fill"></div></div>
+              <p className="mockup-desc">Perfect for your cafe routine & transit needs.</p>
             </div>
-            <h3 className="apple-feature-title">Seamless Commute</h3>
-            <p className="apple-feature-text">Integration with your daily travel to optimize your commute time.</p>
+          </div>
+          <div className="magic-text-side">
+            <div className="icon-glow-wrapper"><HeartIcon /></div>
+            <h2 className="act-title">Find your people. <br/>Find your vibe.</h2>
+            <p className="act-text">
+              Take our interactive Vibe Quiz to tell us who you are. We'll instantly match you with the neighborhoods where you truly belong.
+            </p>
+            <button className="story-hero-btn outline-btn" onClick={onStart}>
+              Start the Vibe Quiz
+            </button>
           </div>
         </div>
       </section>
