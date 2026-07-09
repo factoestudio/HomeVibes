@@ -30,7 +30,7 @@ const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
 export default function App() {
   const [view, setView] = useState('landing'); // 'landing' | 'quiz' | 'results' | 'privacy' | 'contact' | 'blog'
   const [userPreferences, setUserPreferences] = useState(null);
-  const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
+  const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(true);
   const [selectedArea, setSelectedArea] = useState(null);
   const [cityFilter, setCityFilter] = useState('All');
 
