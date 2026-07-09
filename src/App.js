@@ -170,10 +170,10 @@ export default function App() {
           if (validLocations > 0) {
             const avgTime = totalMins / validLocations;
             if (avgTime <= 15) commuteScore = 100;
-            else if (avgTime <= 30) commuteScore = 90;
-            else if (avgTime <= 45) commuteScore = 75;
-            else if (avgTime <= 60) commuteScore = 55;
-            else commuteScore = 35;
+            else if (avgTime <= 25) commuteScore = 90;
+            else if (avgTime <= 40) commuteScore = 65; // Heavier penalty
+            else if (avgTime <= 60) commuteScore = 40; // Heavy penalty
+            else commuteScore = 15; // Unacceptable commute
           } else {
             // Fallback if geocoding failed
             commuteScore = area.transit.walkability * 8; 
@@ -188,37 +188,48 @@ export default function App() {
         }
       }
 
-      // 3. Expanded Amenities Match (40% weight)
+      // 3. Expanded Amenities Match (30% weight)
       let amenitiesScoreSum = 0;
+      let countedAmenities = 0;
       const amenityKeys = Object.keys(lifestyle);
 
       amenityKeys.forEach(key => {
         const priorityVal = lifestyle[key]; // 0 = Not important, 1 = Nice, 2 = Must
         const areaVal = area.amenities[key] || 5;
 
-        if (priorityVal === 0) {
-          amenitiesScoreSum += 100; // Not important gets full score (no penalty)
-        } else if (priorityVal === 1) {
-          // Nice to have
-          if (areaVal >= 6) amenitiesScoreSum += 100;
-          else if (areaVal >= 4) amenitiesScoreSum += 80;
-          else amenitiesScoreSum += 45;
-        } else {
-          // Must have
-          if (areaVal >= 8) amenitiesScoreSum += 100;
-          else if (areaVal >= 6) amenitiesScoreSum += 70;
-          else if (areaVal >= 4) amenitiesScoreSum += 35;
-          else amenitiesScoreSum += 10;
+        if (priorityVal > 0) {
+          countedAmenities++;
+          if (priorityVal === 1) {
+            // Nice to have
+            if (areaVal >= 6) amenitiesScoreSum += 100;
+            else if (areaVal >= 4) amenitiesScoreSum += 80;
+            else amenitiesScoreSum += 45;
+          } else {
+            // Must have
+            if (areaVal >= 8) amenitiesScoreSum += 100;
+            else if (areaVal >= 6) amenitiesScoreSum += 70;
+            else if (areaVal >= 4) amenitiesScoreSum += 35;
+            else amenitiesScoreSum += 10;
+          }
         }
       });
 
-      const avgAmenitiesScore = amenitiesScoreSum / amenityKeys.length;
+      const avgAmenitiesScore = countedAmenities > 0 ? (amenitiesScoreSum / countedAmenities) : 100;
 
-      // 4. Total Compatibility Score
+      // 4. Budget & Affordability Penalty
+      let budgetPenalty = 0;
+      if (profile === 'student' && area.priceBracket === '$$$$') {
+        budgetPenalty = 30; // Huge penalty for students in ultra-luxury areas
+      } else if (profile === 'student' && area.priceBracket === '$$$') {
+        budgetPenalty = 15;
+      }
+
+      // 5. Total Compatibility Score
       let rawScore = 
         (lifeStageScore * 0.30) + 
-        (commuteScore * 0.30) + 
-        (avgAmenitiesScore * 0.40);
+        (commuteScore * 0.40) +  // Boost commute importance to 40%
+        (avgAmenitiesScore * 0.30) - // Reduce amenities to 30%
+        budgetPenalty;
 
       // Round and cap between 40% and 99%
       const finalScore = Math.min(99, Math.max(40, Math.round(rawScore)));
@@ -307,90 +318,99 @@ export default function App() {
         ) : view === 'contact' ? (
             <ContactB2B setView={setView} />
           ) : (
-            <div className="results-layout animate-fade-in">
-            {/* Left Column: List of Matches */}
-            <div className="results-list-column">
-              <div className="list-column-header">
-                <h3 className="display-font">Neighborhood Matches</h3>
-                <p className="list-subtitle">Sorted by computed lifestyle compatibility index</p>
-              </div>
+          ) : (
+            <div className="results-dashboard-wrapper">
+              <div className="results-layout animate-fade-in">
+              {/* Left Column: List of Matches */}
+              <div className="results-list-column">
+                <div className="list-column-header">
+                  <h3 className="display-font">Neighborhood Matches</h3>
+                  <p className="list-subtitle">Sorted by computed lifestyle compatibility index</p>
+                </div>
 
-              {/* City Filters */}
-              <div className="city-filters-scroll">
-                {cities.map(city => (
-                  <button
-                    key={city}
-                    className={`filter-tab luxury-filter-tab ${cityFilter === city ? 'active' : ''}`}
-                    onClick={() => handleCityFilter(city)}
-                  >
-                    {city}
-                  </button>
-                ))}
-              </div>
+                {/* City Filters */}
+                <div className="city-filters-scroll">
+                  {cities.map(city => (
+                    <button
+                      key={city}
+                      className={`filter-tab luxury-filter-tab ${cityFilter === city ? 'active' : ''}`}
+                      onClick={() => handleCityFilter(city)}
+                    >
+                      {city}
+                    </button>
+                  ))}
+                </div>
 
-              {/* Matches List */}
-              <div className="matches-list luxury-scroll">
-                {filteredAreas.length > 0 ? (
-                  filteredAreas.map(area => {
-                    const isSelected = selectedArea?.id === area.id;
-                    const scoreColor = 
-                      area.matchScore >= 90 ? '#E6EBF2' : 
-                      area.matchScore >= 75 ? '#B0C4DE' : 
-                      area.matchScore >= 60 ? '#778899' : '#4A5568';
+                {/* Matches List */}
+                <div className="matches-list luxury-scroll">
+                  {filteredAreas.length > 0 ? (
+                    filteredAreas.map(area => {
+                      const isSelected = selectedArea?.id === area.id;
+                      const scoreColor = 
+                        area.matchScore >= 90 ? '#E6EBF2' : 
+                        area.matchScore >= 75 ? '#B0C4DE' : 
+                        area.matchScore >= 60 ? '#778899' : '#4A5568';
 
-                    return (
-                      <div
-                        key={area.id}
-                        className={`match-list-card luxury-match-card ${isSelected ? 'active' : ''}`}
-                        onClick={() => handleSelectArea(area)}
-                      >
-                        <div className="match-card-header">
-                          <div className="match-card-title-wrap">
-                            <span className="match-card-city uppercase">{area.city}</span>
-                            <h4 className="match-card-name display-font">{area.name}</h4>
+                      return (
+                        <div
+                          key={area.id}
+                          className={`match-list-card luxury-match-card ${isSelected ? 'active' : ''}`}
+                          onClick={() => handleSelectArea(area)}
+                        >
+                          <div className="match-card-header">
+                            <div className="match-card-title-wrap">
+                              <span className="match-card-city uppercase">{area.city}</span>
+                              <h4 className="match-card-name display-font">{area.name}</h4>
+                            </div>
+                            <span className="match-card-score display-font" style={{ color: scoreColor, borderColor: scoreColor }}>
+                              {area.matchScore}%
+                            </span>
                           </div>
-                          <span className="match-card-score display-font" style={{ color: scoreColor, borderColor: scoreColor }}>
-                            {area.matchScore}%
-                          </span>
+                          <p className="match-card-desc">{area.description.substring(0, 100)}...</p>
+                          <div className="match-card-meta">
+                            <span className="platinum-text">Class: {area.priceBracket}</span>
+                            <span>Walkability: {area.transit.walkability}/10</span>
+                          </div>
                         </div>
-                        <p className="match-card-desc">{area.description.substring(0, 100)}...</p>
-                        <div className="match-card-meta">
-                          <span className="platinum-text">Class: {area.priceBracket}</span>
-                          <span>Walkability: {area.transit.walkability}/10</span>
-                        </div>
-                      </div>
-                    );
-                  })
-                ) : (
-                  <div className="no-matches-msg card-subglass luxury-subcard">
-                    No neighborhoods found matching this city filter. Try selecting 'All' or adjusting your quiz parameters.
-                  </div>
-                )}
+                      );
+                    })
+                  ) : (
+                    <div className="no-matches-msg card-subglass luxury-subcard">
+                      No neighborhoods found matching this city filter. Try selecting 'All' or adjusting your quiz parameters.
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
 
-            {/* Middle Column: Leaflet Map */}
-            <div className="results-map-column" style={{ position: 'relative' }}>
-              <div className="map-instruction-pulse fade-in">
-                <span>Click a platinum Marker to View Analytics</span>
+              {/* Middle Column: Leaflet Map */}
+              <div className="results-map-column" style={{ position: 'relative' }}>
+                  <MapWidget 
+                    neighborhoods={filteredAreas}
+                    selectedNeighborhood={selectedArea}
+                    onSelectNeighborhood={(area) => setSelectedArea(area)}
+                    userPreferences={userPreferences}
+                  />
               </div>
-                <MapWidget 
-                  neighborhoods={filteredAreas}
-                  selectedNeighborhood={selectedArea}
-                  onSelectNeighborhood={(area) => setSelectedArea(area)}
+
+              {/* Right Column: Details Panel */}
+              <div className="results-details-column">
+                <NeighborhoodDetails
+                  selectedArea={selectedArea || filteredAreas[0]}
                   userPreferences={userPreferences}
+                  isPremiumUnlocked={isPremiumUnlocked}
+                  setIsPremiumUnlocked={setIsPremiumUnlocked}
+                  onClose={() => setSelectedArea(null)}
                 />
+              </div>
             </div>
 
-            {/* Right Column: Details Panel */}
-            <div className="results-details-column">
-              <NeighborhoodDetails
-                selectedArea={selectedArea || filteredAreas[0]}
-                userPreferences={userPreferences}
-                isPremiumUnlocked={isPremiumUnlocked}
-                setIsPremiumUnlocked={setIsPremiumUnlocked}
-                onClose={() => setSelectedArea(null)}
-              />
+            {/* Premium Insights Banner */}
+            <div className="premium-insights-banner animate-fade-in card-subglass">
+              <div className="insights-content">
+                <h3 className="display-font"><span style={{color: 'var(--color-primary)'}}>✦</span> Premium Market Insights</h3>
+                <p>Unlock historical pricing trends, school district ratings, and predictive neighborhood gentrification models to make the perfect decision.</p>
+              </div>
+              <button className="btn-luxury" onClick={() => setIsPremiumUnlocked(true)}>Unlock Premium Insights</button>
             </div>
           </div>
         )}

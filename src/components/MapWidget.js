@@ -201,22 +201,38 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
     }
   }, [neighborhoods, onSelectNeighborhood]);
 
-  // Pan to selected neighborhood
+  // Pan to selected neighborhood and commute locations
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !selectedNeighborhood) return;
 
     const { lat, lng } = selectedNeighborhood;
-    map.setView([lat, lng], 12, {
-      animate: true,
-      duration: 1.5
-    });
+    
+    // Fit bounds if we have commute locations
+    if (userPreferences?.commuteLocations?.length > 0) {
+      const bounds = L.latLngBounds([[lat, lng]]);
+      userPreferences.commuteLocations.forEach(loc => {
+        if (loc.lat && loc.lng) {
+          bounds.extend([loc.lat, loc.lng]);
+        }
+      });
+      map.fitBounds(bounds, {
+        padding: [60, 60],
+        animate: true,
+        duration: 1.5
+      });
+    } else {
+      map.setView([lat, lng], 13, {
+        animate: true,
+        duration: 1.5
+      });
+    }
 
     const activeMarker = markersRef.current[selectedNeighborhood.id];
     if (activeMarker) {
       activeMarker.openTooltip();
     }
-  }, [selectedNeighborhood]);
+  }, [selectedNeighborhood, userPreferences]);
 
   // Render Commute Locations and mock POIs
   useEffect(() => {

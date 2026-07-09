@@ -2649,3 +2649,42 @@ button {
 @keyframes dashAnimation {
   to { stroke-dashoffset: 0; }
 }
+
+/* Dashboard Wrapper & Premium Banner */
+.results-dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.premium-insights-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+.insights-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.insights-content p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 820px) {
+  .premium-insights-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
