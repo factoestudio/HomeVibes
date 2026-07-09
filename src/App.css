@@ -2639,3 +2639,13 @@ button {
 }
 
 
+
+/* Animated Flight Path for Commute Visualization */
+.flight-path-line {
+  stroke-dashoffset: 1000;
+  animation: dashAnimation 40s linear infinite;
+  filter: drop-shadow(0 0 5px rgba(176, 94, 241, 0.5));
+}
+@keyframes dashAnimation {
+  to { stroke-dashoffset: 0; }
+}

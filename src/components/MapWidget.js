@@ -11,6 +11,36 @@ const getMarkerColor = (score) => {
   return '#4A5568'; // Muted Slate
 };
 
+// Helper to generate mathematical Bezier curves (flight paths)
+const generateBezierPoints = (startLat, startLng, endLat, endLng) => {
+  const points = [];
+  const numPoints = 60; // Higher = smoother curve
+  
+  const midLat = (startLat + endLat) / 2;
+  const midLng = (startLng + endLng) / 2;
+  
+  const dx = endLng - startLng;
+  const dy = endLat - startLat;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  
+  // Normal vector
+  const normalX = -dy / dist;
+  const normalY = dx / dist;
+  
+  // Curve height
+  const curveHeight = dist * 0.25; 
+  
+  const ctrlLat = midLat + normalY * curveHeight;
+  const ctrlLng = midLng + normalX * curveHeight;
+  
+  for (let t = 0; t <= 1; t += 1/numPoints) {
+    const lat = (1 - t) * (1 - t) * startLat + 2 * (1 - t) * t * ctrlLat + t * t * endLat;
+    const lng = (1 - t) * (1 - t) * startLng + 2 * (1 - t) * t * ctrlLng + t * t * endLng;
+    points.push([lat, lng]);
+  }
+  return points;
+};
+
 const buildOverpassQuery = (profile, lat, lng) => {
   const radius = 1200; // 1200 meters search radius
   let filters = '';
@@ -212,6 +242,19 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
         const marker = L.marker([loc.lat, loc.lng], { icon: commuteIcon }).addTo(map);
         marker.bindTooltip(`<div class="luxury-tooltip" style="color: var(--text-main); font-family:'Outfit', sans-serif;"><strong>Your Commute:</strong><br/>${loc.address}</div>`, { direction: 'top', offset: [0, -10], opacity: 0.95 });
         extraMarkersRef.current[`commute-${idx}`] = marker;
+
+        // Draw flight path curve if a neighborhood is selected
+        if (selectedNeighborhood && selectedNeighborhood.lat && selectedNeighborhood.lng) {
+          const bezierPoints = generateBezierPoints(selectedNeighborhood.lat, selectedNeighborhood.lng, loc.lat, loc.lng);
+          const flightPath = L.polyline(bezierPoints, {
+            color: '#B05EF1', // Vibrant Purple
+            weight: 3,
+            opacity: 0.7,
+            dashArray: '10, 15',
+            className: 'flight-path-line'
+          }).addTo(map);
+          extraMarkersRef.current[`commute-path-${idx}`] = flightPath;
+        }
       });
     }
 
