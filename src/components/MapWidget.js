@@ -240,7 +240,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
         });
 
         const marker = L.marker([loc.lat, loc.lng], { icon: commuteIcon }).addTo(map);
-        marker.bindTooltip(`<div class="luxury-tooltip" style="color: var(--text-main); font-family:'Outfit', sans-serif;"><strong>Your Commute:</strong><br/>${loc.address}</div>`, { direction: 'top', offset: [0, -10], opacity: 0.95 });
+        marker.bindTooltip(`<div class="luxury-tooltip" style="color: #ffffff; font-family:'Outfit', sans-serif;"><strong>Your Commute:</strong><br/>${loc.address}</div>`, { direction: 'top', offset: [0, -10], opacity: 0.95 });
         extraMarkersRef.current[`commute-${idx}`] = marker;
 
         // Draw flight path curve if a neighborhood is selected
@@ -284,7 +284,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
               });
 
               const marker = L.marker([poi.lat, poi.lon], { icon: poiIcon }).addTo(map);
-              marker.bindTooltip(`<div class="luxury-tooltip" style="color: var(--text-main); font-family:'Outfit', sans-serif;"><strong>${name}</strong></div>`, { direction: 'top', offset: [0, -10], opacity: 0.95 });
+              marker.bindTooltip(`<div class="luxury-tooltip" style="color: #ffffff; font-family:'Outfit', sans-serif;"><strong>${name}</strong></div>`, { direction: 'top', offset: [0, -10], opacity: 0.95 });
               extraMarkersRef.current[`poi-${idx}`] = marker;
             });
           }
