@@ -3,7 +3,6 @@ import { neighborhoodsData } from './data/neighborhoodsData';
 import VibeQuiz from './components/VibeQuiz';
 import MapWidget from './components/MapWidget';
 import NeighborhoodDetails from './components/NeighborhoodDetails';
-import ThemeSelector from './components/ThemeSelector';
 import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import ContactB2B from './components/ContactB2B';
@@ -29,7 +28,7 @@ const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
 };
 
 export default function App() {
-  const [theme, setTheme] = useState(localStorage.getItem('homevibes-theme') || 'auto');
+  const [theme, setTheme] = useState('light');
   const [view, setView] = useState('landing'); // 'landing' | 'quiz' | 'results' | 'privacy' | 'contact' | 'blog'
   const [userPreferences, setUserPreferences] = useState(null);
   const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
@@ -312,7 +311,6 @@ export default function App() {
               Sign In
             </button>
           )}
-          <ThemeSelector theme={theme} setTheme={setTheme} />
           {view === 'results' && (
             <button className="btn-header-action luxury-btn-header" onClick={handleRetakeQuiz}>
               Reset & Retake Quiz
