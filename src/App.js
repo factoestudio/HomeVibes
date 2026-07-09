@@ -293,7 +293,7 @@ export default function App() {
       </header>
 
       {/* Main Content Area */}
-      <main className="app-main-content">
+      <main className={`app-main-content ${view === 'landing' ? 'landing-view-main' : ''}`}>
         {view === 'landing' ? (
           <LandingPage onStart={() => setView('quiz')} />
         ) : view === 'quiz' ? (

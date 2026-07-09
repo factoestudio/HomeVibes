@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import neighborhoodVibe from '../assets/vibrant_neighborhood.png';
 
 const DataIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -41,17 +42,7 @@ export default function LandingPage({ onStart }) {
 
       {/* Hero Section with Video */}
       <section className="story-hero-section">
-        <video 
-          className="story-hero-video" 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          poster="https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=2000&auto=format&fit=crop"
-        >
-          {/* Using a vibrant lifestyle city stock video */}
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-friends-walking-on-the-street-in-the-city-4944-large.mp4" type="video/mp4" />
-        </video>
+        <img src={neighborhoodVibe} alt="Vibrant Neighborhood" className="story-hero-video" />
         <div className="story-hero-overlay"></div>
         
         <div className="story-hero-content fade-in-up">

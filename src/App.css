@@ -2278,7 +2278,7 @@ button {
   padding: 1.2rem 3rem;
   border-radius: 50px;
   background-color: #1d1d1f;
-  color: #ffffff;
+  color: #1d1d1f;
   border: none;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
@@ -2294,7 +2294,7 @@ button {
 
 .apple-features-section {
   padding: 8rem 2rem;
-  background-color: #ffffff;
+  background-color: #1d1d1f;
 }
 
 .apple-features-container {
@@ -2389,10 +2389,7 @@ button {
 }
 
 /* --- STORYTELLING LANDING PAGE STYLES --- */
-.story-landing-page {
-  width: 100%;
-  background-color: #07080b; /* Deep rich background */
-  color: #ffffff;
+.story-landing-page { width: 100%; background-color: #ffffff; color: #1d1d1f;
   overflow-x: hidden;
   position: relative;
 }
@@ -2446,7 +2443,7 @@ button {
 .story-hero-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(7,8,11,0.6) 0%, rgba(7,8,11,1) 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,1) 100%);
   z-index: 1;
 }
 
@@ -2461,8 +2458,8 @@ button {
 .hero-badge {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.2);
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -2488,7 +2485,7 @@ button {
 
 .story-hero-subtext {
   font-size: 1.4rem;
-  color: #a0a0ab;
+  color: #86868b;
   line-height: 1.6;
   margin: 0 auto 3rem auto;
   max-width: 700px;
@@ -2537,7 +2534,7 @@ button {
 }
 .act-text {
   font-size: 1.25rem;
-  color: #a0a0ab;
+  color: #86868b;
   line-height: 1.8;
   max-width: 700px;
 }
@@ -2561,8 +2558,8 @@ button {
 }
 
 .stat-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.1);
   padding: 3rem 2rem;
   border-radius: 24px;
   text-align: center;
@@ -2579,14 +2576,14 @@ button {
 }
 .stat-label {
   font-size: 1.1rem;
-  color: #a0a0ab;
+  color: #86868b;
   font-weight: 500;
 }
 
 .icon-glow-wrapper {
   width: 64px; height: 64px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
   border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 2rem;
@@ -2599,8 +2596,8 @@ button {
 }
 
 .mockup-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.2);
   padding: 2.5rem;
   border-radius: 32px;
   backdrop-filter: blur(40px);
@@ -2614,7 +2611,7 @@ button {
   font-size: 4.5rem; font-weight: 800; margin-bottom: 1rem;
 }
 .mockup-bar {
-  height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-bottom: 1.5rem; overflow: hidden;
+  height: 8px; background: rgba(0,0,0,0.1); border-radius: 4px; margin-bottom: 1.5rem; overflow: hidden;
 }
 .mockup-fill {
   width: 98%; height: 100%; background: linear-gradient(135deg, #ff7eb3, #ff758c);
@@ -2634,18 +2631,4 @@ button {
   .act-title { font-size: 2.5rem; }
 }
 
-/* --- REVERT HEADER TO DARK FOR CONTRAST --- */
-.app-header-nav {
-  background-color: rgba(7, 8, 11, 0.8) !important;
-  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
-}
-.header-desc {
-  color: #a0a0ab !important;
-}
-.logo-light-mode {
-  display: none !important;
-}
-.logo-dark-mode {
-  display: block !important;
-}
 
