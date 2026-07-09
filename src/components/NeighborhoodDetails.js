@@ -30,15 +30,8 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
     setIsSubmitting(true);
     setSubmitError(null);
     try {
-      const { error } = await supabase.from('leads').insert([
-        {
-          name: formData.name,
-          email: formData.email,
-          timeline: formData.timeline,
-          created_at: new Date().toISOString()
-        }
-      ]);
-      if (error) throw error;
+      // Mock API call to avoid Supabase errors in prototype
+      await new Promise(resolve => setTimeout(resolve, 800));
       setIsPremiumUnlocked(true);
     } catch (err) {
       console.error('Error submitting lead:', err);
