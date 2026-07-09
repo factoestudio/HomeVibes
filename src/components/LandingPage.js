@@ -30,22 +30,20 @@ const TransitIcon = () => (
 
 export default function LandingPage({ onStart }) {
   return (
-    <div className="landing-page">
+    <div className="apple-landing-page">
       {/* Hero Section */}
-      <section 
-        className="hero-section" 
-        style={{ backgroundImage: `url(${neighborhoodVibe})` }}
-      >
-        <div className="hero-overlay"></div>
-        <div className="hero-content fade-in-up">
-          <h1 className="hero-headline display-font">
-            Where Your Vibes Match Home
+      <section className="apple-hero-section">
+        <div className="apple-hero-background" style={{ backgroundImage: `url(${neighborhoodVibe})` }}></div>
+        <div className="apple-hero-overlay"></div>
+        <div className="apple-hero-content fade-in-up">
+          <h1 className="apple-hero-headline">
+            Where Your Vibes Match Home.
           </h1>
-          <p className="hero-subtext">
-            Stop searching for just a physical house. Discover the perfect home in vibrant neighborhoods perfectly tailored to your personal routine, commute, and lifestyle—no matter who you are or what you're looking for.
+          <p className="apple-hero-subtext">
+            Stop searching for just a physical house. Discover the perfect home in vibrant neighborhoods perfectly tailored to your personal routine, commute, and lifestyle.
           </p>
           <button 
-            className="luxury-btn pulse-glow hero-cta" 
+            className="apple-hero-btn pulse-glow" 
             onClick={onStart}
           >
             Start Your Journey
@@ -54,30 +52,30 @@ export default function LandingPage({ onStart }) {
       </section>
 
       {/* Value Proposition Section */}
-      <section className="features-section">
-        <div className="features-container">
-          <div className="feature-card slide-up-1">
-            <div className="feature-icon-wrapper">
+      <section className="apple-features-section">
+        <div className="apple-features-container">
+          <div className="apple-feature-card slide-up-1">
+            <div className="apple-feature-icon-wrapper">
               <CompassIcon />
             </div>
-            <h3 className="feature-title">Vibe Matching</h3>
-            <p className="feature-text">Aligning the perfect neighborhood with your daily routine and comfort.</p>
+            <h3 className="apple-feature-title">Vibe Matching</h3>
+            <p className="apple-feature-text">Aligning the perfect neighborhood with your daily routine and comfort.</p>
           </div>
           
-          <div className="feature-card slide-up-2">
-            <div className="feature-icon-wrapper">
+          <div className="apple-feature-card slide-up-2">
+            <div className="apple-feature-icon-wrapper">
               <ChartIcon />
             </div>
-            <h3 className="feature-title">Deep Analytics</h3>
-            <p className="feature-text">Data-driven neighborhood insights on safety, culture, and amenities.</p>
+            <h3 className="apple-feature-title">Deep Analytics</h3>
+            <p className="apple-feature-text">Data-driven neighborhood insights on safety, culture, and amenities.</p>
           </div>
           
-          <div className="feature-card slide-up-3">
-            <div className="feature-icon-wrapper">
+          <div className="apple-feature-card slide-up-3">
+            <div className="apple-feature-icon-wrapper">
               <TransitIcon />
             </div>
-            <h3 className="feature-title">Seamless Commute</h3>
-            <p className="feature-text">Integration with your daily travel to optimize your commute time.</p>
+            <h3 className="apple-feature-title">Seamless Commute</h3>
+            <p className="apple-feature-text">Integration with your daily travel to optimize your commute time.</p>
           </div>
         </div>
       </section>
