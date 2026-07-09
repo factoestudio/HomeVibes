@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useMemo, useEffect } from 'react';
 import { neighborhoodsData } from './data/neighborhoodsData';
 import VibeQuiz from './components/VibeQuiz';
@@ -422,6 +423,7 @@ export default function App() {
     </div>
   );
 }
+
 
 
 

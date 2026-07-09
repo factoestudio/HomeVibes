@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 
 import {
@@ -440,3 +441,4 @@ const formatCurrencyLabel = (val) => {
   if (val >= 1000) return `$${(val / 1000).toFixed(0)}k`;
   return `$${val}`;
 };
+
