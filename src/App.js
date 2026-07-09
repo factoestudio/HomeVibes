@@ -28,7 +28,6 @@ const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
 };
 
 export default function App() {
-  const [theme, setTheme] = useState('light');
   const [view, setView] = useState('landing'); // 'landing' | 'quiz' | 'results' | 'privacy' | 'contact' | 'blog'
   const [userPreferences, setUserPreferences] = useState(null);
   const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
@@ -119,32 +118,6 @@ export default function App() {
       trackEvent('VIEW_NEIGHBORHOOD', { neighborhood: area.name, city: area.city });
     }
   };
-
-
-  // Apply theme class
-  useEffect(() => {
-    const applyTheme = (mode) => {
-      if (mode === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-      }
-    };
-
-    if (theme === 'auto') {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      applyTheme(mediaQuery.matches ? 'dark' : 'light');
-      
-      const listener = (e) => applyTheme(e.matches ? 'dark' : 'light');
-      mediaQuery.addEventListener('change', listener);
-      localStorage.setItem('homevibes-theme', 'auto');
-      return () => mediaQuery.removeEventListener('change', listener);
-    } else {
-      applyTheme(theme);
-      localStorage.setItem('homevibes-theme', theme);
-    }
-  }, [theme]);
-
   // Dynamic Matching Algorithm (Luxury Refined)
   const matchedNeighborhoods = useMemo(() => {
     if (!userPreferences) return [];
