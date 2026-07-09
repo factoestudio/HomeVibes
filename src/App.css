@@ -1456,11 +1456,20 @@ button {
 }
 
 /* Responsive Queries */
-@media (max-width: 1250px) {
+@media (max-width: 1400px) {
   .results-layout {
-    grid-template-columns: 330px 1fr;
-    grid-template-rows: 1fr 1.2fr;
+    grid-template-columns: 350px 1fr;
+    grid-template-rows: calc(100vh - 200px) auto;
     height: auto;
+    max-height: none;
+  }
+
+  .results-list-column {
+    height: 100%;
+  }
+
+  .results-map-column {
+    height: 100%;
   }
 
   .results-details-column {
