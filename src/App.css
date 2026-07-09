@@ -12,11 +12,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 3rem;
-  background-color: rgba(7, 8, 11, 0.85);
+  padding: 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -30,16 +30,16 @@
 }
 
 .brand-logo {
-  height: 48px;
+  height: 36px;
   width: auto;
   object-fit: contain;
 }
 
 .logo-light-mode {
-  display: none;
+  display: block;
 }
 .logo-dark-mode {
-  display: block;
+  display: none;
 }
 
 [data-theme="light"] .logo-light-mode {
@@ -84,14 +84,12 @@
 }
 
 .header-desc {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  max-width: 350px;
-  margin: 0 1.5rem;
-  letter-spacing: 1px;
-  line-height: 1.4;
-  border-left: 1px solid var(--border-color);
-  padding-left: 1.5rem;
+  font-size: 0.9rem;
+  color: #86868b;
+  margin: 0;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+  text-transform: none;
 }
 
 .header-right {

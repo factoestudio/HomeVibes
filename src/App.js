@@ -300,7 +300,7 @@ export default function App() {
           <img src={logoWhite} alt="HomeVibes" className="brand-logo logo-dark-mode" />
           <img src={logoPurple} alt="HomeVibes" className="brand-logo logo-light-mode" />
         </div>
-        <p className="header-desc uppercase letter-spacing">Where your vibes match home</p>
+        <p className="header-desc">Where Your Vibes Match Home</p>
         <div className="header-right">
           {session ? (
             <button className="btn-header-action luxury-btn-header" style={{ marginRight: '8px' }} onClick={() => supabase.auth.signOut()}>
