@@ -1,5 +1,4 @@
-/* eslint-disable */
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import { neighborhoodsData } from './data/neighborhoodsData';
 import VibeQuiz from './components/VibeQuiz';
 import MapWidget from './components/MapWidget';
@@ -96,7 +95,7 @@ export default function App() {
     }
   };
 
-  const trackEvent = async (eventType, eventData) => {
+  const trackEvent = useCallback(async (eventType, eventData) => {
     try {
       await supabase.from('user_events').insert({
         user_id: session?.user?.id || null,
@@ -106,7 +105,7 @@ export default function App() {
     } catch (err) {
       console.error('Analytics error:', err);
     }
-  };
+  }, [session]);
 
   const handleCityFilter = (city) => {
     setCityFilter(city);
