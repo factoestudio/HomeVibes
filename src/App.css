@@ -605,10 +605,10 @@ button {
 /* Results Layout Dashboard */
 .results-layout {
   display: grid;
-  grid-template-columns: 370px 1fr 440px;
-  gap: 2rem;
-  height: calc(100vh - 160px);
-  max-height: 900px;
+  grid-template-columns: 330px 1fr 390px;
+  gap: 1.5rem;
+  height: 65vh;
+  max-height: 700px;
   min-height: 550px;
 }
 
@@ -1456,7 +1456,7 @@ button {
 }
 
 /* Responsive Queries */
-@media (max-width: 1400px) {
+@media (max-width: 1150px) {
   .results-layout {
     grid-template-columns: 350px 1fr;
     grid-template-rows: calc(100vh - 200px) auto;
