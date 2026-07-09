@@ -365,41 +365,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
           </div>
         </div>
 
-        {/* Featured Listings */}
-        <div className="details-section listings-showcase">
-          <h3 className="display-font"><span className="title-icon-inline platinum-text"><BuyIcon size={18} /></span> Curated Area Listings</h3>
-          <div className="listings-grid">
-            {filteredListings && filteredListings.length > 0 ? (
-              filteredListings.map(listing => (
-                <div key={listing.id} className="listing-card card-subglass luxury-subcard luxury-listing-card">
-                  <div className="listing-img-container">
-                    <img 
-                      src={listing.imgUrl} 
-                      alt={listing.title} 
-                      className="listing-img" 
-                      onError={(e) => {
-                        e.target.src = "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&auto=format&fit=crop&q=60";
-                      }}
-                    />
-                    <span className="listing-type luxury-listing-type">{listing.type}</span>
-                  </div>
-                  <div className="listing-info">
-                    <div className="listing-price platinum-text">{listing.price}</div>
-                    <h4 className="listing-title display-font">{listing.title}</h4>
-                    <p className="listing-address">{listing.address}</p>
-                    <div className="listing-specs">
-                      <span>{listing.beds} Beds</span>
-                      <span>{listing.baths} Baths</span>
-                      <span>{listing.sqft} sqft</span>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p className="no-listings-text">No active premium listings at the moment.</p>
-            )}
-          </div>
-        </div>
+        {/* Featured Listings Removed */}
       </div> {/* Closes premium-content-wrapper BEFORE the overlay */}
 
       {/* Lead Capture Overlay (Now Clickable & Sharp) */}
