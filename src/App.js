@@ -319,7 +319,6 @@ export default function App() {
         ) : view === 'contact' ? (
             <ContactB2B setView={setView} />
           ) : (
-          ) : (
             <div className="results-dashboard-wrapper">
               <div className="results-layout animate-fade-in">
               {/* Left Column: List of Matches */}
