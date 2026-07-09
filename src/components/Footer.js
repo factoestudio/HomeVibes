@@ -19,6 +19,13 @@ export default function Footer({ setView }) {
           </button>
           <span className="footer-divider">|</span>
           <button 
+            className="footer-link-btn" 
+            onClick={() => { setView('blog'); window.scrollTo(0,0); }}
+          >
+            Blog
+          </button>
+          <span className="footer-divider">|</span>
+          <button 
             className="footer-link-btn highlight-link" 
             onClick={() => { setView('contact'); window.scrollTo(0,0); }}
           >

@@ -7,7 +7,8 @@ import ThemeSelector from './components/ThemeSelector';
 import Footer from './components/Footer';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import ContactB2B from './components/ContactB2B';
-import RoleSelector from './components/RoleSelector';
+import LandingPage from './components/LandingPage';
+import Blog from './components/Blog';
 import AuthModal from './components/AuthModal';
 import { supabase } from './supabaseClient';
 import logoWhite from './assets/logo-white.png';
@@ -28,9 +29,8 @@ const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
 };
 
 export default function App() {
-  const [userRole, setUserRole] = useState(null); // 'resident' | 'investor' | null
   const [theme, setTheme] = useState(localStorage.getItem('homevibes-theme') || 'auto');
-  const [view, setView] = useState('quiz'); // 'quiz' | 'results' | 'privacy' | 'contact'
+  const [view, setView] = useState('landing'); // 'landing' | 'quiz' | 'results' | 'privacy' | 'contact' | 'blog'
   const [userPreferences, setUserPreferences] = useState(null);
   const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
   const [selectedArea, setSelectedArea] = useState(null);
@@ -56,7 +56,6 @@ export default function App() {
         }
 
         if (data && data.preferences) {
-          setUserRole(data.role);
           setUserPreferences(data.preferences);
           setView('results');
         }
@@ -76,22 +75,21 @@ export default function App() {
         fetchUserPreferences(session.user.id);
       } else {
         setUserPreferences(null);
-        setUserRole(null);
-        setView('quiz');
+        setView('landing');
       }
     });
 
     return () => subscription.unsubscribe();
   }, []);
 
-  const saveUserPreferences = async (role, prefs) => {
+  const saveUserPreferences = async (prefs) => {
     if (!session) return;
     try {
       await supabase
         .from('user_preferences')
         .upsert({ 
           id: session.user.id, 
-          role: role, 
+          role: 'resident', 
           preferences: prefs 
         });
     } catch (err) {
@@ -152,11 +150,9 @@ export default function App() {
   const matchedNeighborhoods = useMemo(() => {
     if (!userPreferences) return [];
 
-    // Guard: investor preferences don't have lifestyle/profile — use tenant profile instead
-    const isInvestor = userPreferences.userRole === 'investor';
-    const profile = isInvestor ? (userPreferences.invTenant || 'professional') : userPreferences.profile;
+    const profile = userPreferences.profile || 'professional';
     const commuteLocations = userPreferences.commuteLocations || [];
-    const commuteFrequency = isInvestor ? 'remote' : (userPreferences.commuteFrequency || 'daily');
+    const commuteFrequency = userPreferences.commuteFrequency || 'daily';
     const transitMode = userPreferences.transitMode || 'transit';
     const lifestyle = userPreferences.lifestyle || {};
 
@@ -267,7 +263,7 @@ export default function App() {
     setView('results');
     // Persist to Supabase if logged in
     if (session) {
-      saveUserPreferences(userRole, prefs);
+      saveUserPreferences(prefs);
     }
   };
 
@@ -294,7 +290,7 @@ export default function App() {
     setUserPreferences(null);
     setSelectedArea(null);
     setCityFilter('All');
-    setView('quiz');
+    setView('landing');
   };
 
   return (
@@ -327,23 +323,17 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="app-main-content">
-        {view === 'quiz' ? (
+        {view === 'landing' ? (
+          <LandingPage onStart={() => setView('quiz')} />
+        ) : view === 'quiz' ? (
           <div className="quiz-container animate-fade-in">
-            {userRole && (
-              <div className="quiz-header">
-              <h2>{userRole === 'investor' ? 'Investor Profile' : 'Discover Your Perfect Match'}</h2>
-              <p>{userRole === 'investor' ? 'Tell us about your investment targets, and we will find the neighborhoods with the highest ROI potential for that lifestyle.' : 'Tell us about your lifestyle, and our algorithm will rank the best neighborhoods for you.'}</p>
-              </div>
-            )}
-            {!userRole ? (
-              <RoleSelector onSelectRole={setUserRole} />
-            ) : (
-              <VibeQuiz onComplete={handleQuizComplete} userRole={userRole} />
-            )}
+            <VibeQuiz onComplete={handleQuizComplete} />
           </div>
-          ) : view === 'privacy' ? (
+        ) : view === 'blog' ? (
+          <Blog />
+        ) : view === 'privacy' ? (
             <PrivacyPolicy setView={setView} />
-          ) : view === 'contact' ? (
+        ) : view === 'contact' ? (
             <ContactB2B setView={setView} />
           ) : (
             <div className="results-layout animate-fade-in">
