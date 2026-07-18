@@ -292,6 +292,9 @@ export default function App() {
         </div>
         <p className="header-desc">Where Your Vibes Match Home</p>
         <div className="header-right">
+          <button className="btn-header-action luxury-btn-header" style={{ marginRight: '8px' }} onClick={() => setView('blog')}>
+            Insights
+          </button>
           {session ? (
             <button className="btn-header-action luxury-btn-header" style={{ marginRight: '8px' }} onClick={() => supabase.auth.signOut()}>
               Sign Out
