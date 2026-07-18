@@ -75,9 +75,7 @@ export default function PrivacyPolicy({ setView }) {
             <p>
               If you have any questions, concerns, or requests regarding this Privacy Policy or the treatment of your data, please contact our Data Privacy Officer at:
             </p>
-            <p className="contact-email">
-              <a href="mailto:factoestudio@gmail.com">factoestudio@gmail.com</a>
-            </p>
+        {/* Email removed */}
           </section>
         </div>
       </div>

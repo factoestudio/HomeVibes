@@ -108,9 +108,7 @@ export default function ContactB2B({ setView }) {
           </div>
         </div>
 
-        <div className="b2b-footer-contact">
-          <p>Or email us directly at: <a href="mailto:factoestudio@gmail.com">factoestudio@gmail.com</a></p>
-        </div>
+        {/* Contact info removed */}
       </div>
     </div>
   );
