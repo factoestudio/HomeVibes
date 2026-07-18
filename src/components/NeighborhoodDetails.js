@@ -100,28 +100,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
     budgetStatusClass = "fit-bad";
   }
 
-  // Filter listings based on global filter bar state
-  const filteredListings = (selectedArea.listings || []).filter(listing => {
-    // 1. Tenure filter
-    if (listing.tenure !== tenure) return false;
-    
-    // 2. Max Price filter
-    if (listing.priceNum > maxPrice) return false;
-    
-    // 3. Property Type filter
-    if (!activeFilters.selectedTypes.includes(listing.type)) return false;
-    
-    // 4. Beds filter (minimum)
-    if (listing.beds < activeFilters.beds) return false;
-    
-    // 5. Baths filter (minimum)
-    if (listing.baths < activeFilters.baths) return false;
-    
-    // 6. Parking filter
-    if (activeFilters.parkingRequired && !listing.parking) return false;
-    
-    return true;
-  });
+  // Listings were removed.
 
   return (
     <div className="details-panel card-glass luxury-border fade-in">
