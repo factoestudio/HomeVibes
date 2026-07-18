@@ -46,8 +46,8 @@ const AMENITY_PILLARS = [
 export default function VibeQuiz({ onComplete }) {
   const [step, setStep] = useState(1);
   const [profile, setProfile] = useState('professional');
-  const [commuteLocations, setCommuteLocations] = useState([{ id: 1, address: '' }]);
-  const [commuteFrequency, setCommuteFrequency] = useState('daily');
+  const [commuteLocations, setCommuteLocations] = useState([{ id: 1, address: '', label: 'Work', frequency: 'daily' }]);
+  const [isRemote, setIsRemote] = useState(false);
   const [transitMode, setTransitMode] = useState('transit');
   const [isGeocoding, setIsGeocoding] = useState(false);
 
@@ -74,11 +74,11 @@ export default function VibeQuiz({ onComplete }) {
 
   const handleSubmit = async () => {
     // If remote or no addresses, skip geocoding
-    if (commuteFrequency === 'remote') {
+    if (isRemote || commuteLocations.length === 0 || commuteLocations.every(loc => loc.address.trim() === '')) {
       onComplete({
         profile,
         commuteLocations: [],
-        commuteFrequency,
+        isRemote,
         transitMode,
         lifestyle
       });
@@ -113,7 +113,7 @@ export default function VibeQuiz({ onComplete }) {
     onComplete({
       profile,
       commuteLocations: locationsWithCoords,
-      commuteFrequency,
+      isRemote,
       transitMode,
       lifestyle
     });
@@ -172,75 +172,101 @@ export default function VibeQuiz({ onComplete }) {
       {/* STEP 2: COMMUTE DESTINATIONS & FREQUENCY */}
       {step === 2 && (
         <div className="quiz-step-content fade-in">
-          <h2 className="quiz-title display-font platinum-text-glow">Frequent Destinations</h2>
-          <p className="quiz-subtitle">Enter the addresses you travel to most often (e.g., Work, Daycare, Gym).</p>
-          
-          <div className="commute-locations-container" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
-            {commuteLocations.map((loc, index) => (
-              <div key={loc.id} style={{ display: 'flex', gap: '0.5rem' }}>
-                <input 
-                  type="text" 
-                  className="luxury-input" 
-                  placeholder="E.g., 100 King St W, Toronto"
-                  value={loc.address}
-                  onChange={(e) => {
-                    const newLocs = [...commuteLocations];
-                    newLocs[index].address = e.target.value;
-                    setCommuteLocations(newLocs);
-                  }}
-                  style={{ flex: 1 }}
-                />
-                {commuteLocations.length > 1 && (
-                  <button 
-                    type="button" 
-                    className="btn-secondary"
-                    onClick={() => {
-                      setCommuteLocations(commuteLocations.filter(l => l.id !== loc.id));
-                    }}
-                    style={{ padding: '0 1rem' }}
-                  >
-                    X
-                  </button>
-                )}
-              </div>
-            ))}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div>
+              <h2 className="quiz-title display-font platinum-text-glow">Anchor Locations</h2>
+              <p className="quiz-subtitle">Enter your frequent destinations (e.g., Office, Gym, Partner's Place).</p>
+            </div>
             <button 
               type="button"
-              className="btn-secondary"
-              style={{ alignSelf: 'flex-start', padding: '0.5rem 1rem', fontSize: '0.9rem' }}
-              onClick={() => {
-                setCommuteLocations([...commuteLocations, { id: Date.now(), address: '' }]);
-              }}
+              className={`quiz-toggle-btn luxury-btn ${isRemote ? 'active' : ''}`}
+              onClick={() => setIsRemote(!isRemote)}
+              style={{ padding: '0.75rem 1.5rem', whiteSpace: 'nowrap' }}
             >
-              + Add another destination
+              🏠 I Work Remotely
             </button>
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
-              Want to save these locations? <span style={{ color: 'var(--color-primary)', textDecoration: 'underline', cursor: 'pointer' }}>Create an account</span> to securely store your progress.
-            </p>
           </div>
-
-          <div className="quiz-form-group">
-            <label className="quiz-label uppercase letter-spacing">How often do you travel there?</label>
-            <div className="quiz-toggle-group">
-              {[
-                { id: 'daily', label: 'Daily (5+ times/wk)' },
-                { id: 'frequent', label: 'A few times/wk (2-4)' },
-                { id: 'occasional', label: 'Weekly / Hybrid' },
-                { id: 'remote', label: 'Remote Work / Never' }
-              ].map(freq => (
-                <button
-                  key={freq.id}
-                  type="button"
-                  className={`quiz-toggle-btn luxury-btn ${commuteFrequency === freq.id ? 'active' : ''}`}
-                  onClick={() => setCommuteFrequency(freq.id)}
-                >
-                  {freq.label}
-                </button>
+          
+          {!isRemote && (
+            <div className="commute-locations-container" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2rem', marginTop: '1rem' }}>
+              {commuteLocations.map((loc, index) => (
+                <div key={loc.id} className="card-subglass luxury-subcard" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <label className="quiz-label uppercase letter-spacing">Location {index + 1}</label>
+                    {commuteLocations.length > 1 && (
+                      <button 
+                        type="button" 
+                        className="btn-secondary"
+                        onClick={() => setCommuteLocations(commuteLocations.filter(l => l.id !== loc.id))}
+                        style={{ padding: '0.25rem 0.75rem', fontSize: '0.8rem' }}
+                      >
+                        Remove
+                      </button>
+                    )}
+                  </div>
+                  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    <input 
+                      type="text" 
+                      className="luxury-input" 
+                      placeholder="Label (e.g. Work, Gym)"
+                      value={loc.label}
+                      onChange={(e) => {
+                        const newLocs = [...commuteLocations];
+                        newLocs[index].label = e.target.value;
+                        setCommuteLocations(newLocs);
+                      }}
+                      style={{ flex: 1, minWidth: '150px' }}
+                    />
+                    <input 
+                      type="text" 
+                      className="luxury-input" 
+                      placeholder="Address (e.g. 100 King St W)"
+                      value={loc.address}
+                      onChange={(e) => {
+                        const newLocs = [...commuteLocations];
+                        newLocs[index].address = e.target.value;
+                        setCommuteLocations(newLocs);
+                      }}
+                      style={{ flex: 2, minWidth: '250px' }}
+                    />
+                  </div>
+                  <div className="quiz-toggle-group" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    {[
+                      { id: 'daily', label: 'Daily (5+)' },
+                      { id: 'frequent', label: 'Few times (2-4)' },
+                      { id: 'occasional', label: 'Weekly (1)' }
+                    ].map(freq => (
+                      <button
+                        key={freq.id}
+                        type="button"
+                        className={`quiz-toggle-btn luxury-btn ${loc.frequency === freq.id ? 'active' : ''}`}
+                        onClick={() => {
+                          const newLocs = [...commuteLocations];
+                          newLocs[index].frequency = freq.id;
+                          setCommuteLocations(newLocs);
+                        }}
+                        style={{ padding: '0.5rem 1rem', fontSize: '0.85rem', flex: 1 }}
+                      >
+                        {freq.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               ))}
+              <button 
+                type="button"
+                className="btn-secondary"
+                style={{ alignSelf: 'flex-start', padding: '0.75rem 1.5rem', fontSize: '0.9rem' }}
+                onClick={() => {
+                  setCommuteLocations([...commuteLocations, { id: Date.now(), address: '', label: '', frequency: 'frequent' }]);
+                }}
+              >
+                + Add another destination
+              </button>
             </div>
-          </div>
+          )}
 
-          <div className="quiz-nav-actions">
+          <div className="quiz-nav-actions" style={{ marginTop: isRemote ? '3rem' : '1rem' }}>
             <button className="btn-secondary" onClick={prevStep}>
               &larr; Back
             </button>

@@ -124,7 +124,7 @@ export default function App() {
 
     const profile = userPreferences.profile || 'professional';
     const commuteLocations = userPreferences.commuteLocations || [];
-    const commuteFrequency = userPreferences.commuteFrequency || 'daily';
+    const isRemote = userPreferences.isRemote || false;
     const transitMode = userPreferences.transitMode || 'transit';
     const lifestyle = userPreferences.lifestyle || {};
 
@@ -139,7 +139,7 @@ export default function App() {
       // 2. Commute & Transit Match (30% weight)
       let commuteScore = 50;
 
-      if (commuteFrequency === 'remote') {
+      if (isRemote) {
         // Remote workers get full score adjusted slightly by walkability
         commuteScore = 80 + (area.transit.walkability * 2);
       } else if (transitMode === 'walking') {
@@ -148,12 +148,11 @@ export default function App() {
       } else {
         // Dynamic Haversine commute calculation
         if (commuteLocations && commuteLocations.length > 0) {
-          let totalMins = 0;
-          let validLocations = 0;
+          let totalScore = 0;
+          let totalWeight = 0;
 
           commuteLocations.forEach(loc => {
             if (loc.lat && loc.lng && area.lat && area.lng) {
-              validLocations++;
               const distKm = getDistanceFromLatLonInKm(loc.lat, loc.lng, area.lat, area.lng);
               
               // Apply simple speed estimation (city traffic vs transit)
@@ -163,28 +162,30 @@ export default function App() {
               if (transitMode === 'driving') estTime = (distKm * 2.5) + 5;
               if (transitMode === 'transit') estTime = (distKm * 4.5) + 10;
               
-              totalMins += estTime;
+              let locScore = 0;
+              if (estTime <= 15) locScore = 100;
+              else if (estTime <= 25) locScore = 90;
+              else if (estTime <= 40) locScore = 65; // Heavier penalty
+              else if (estTime <= 60) locScore = 40; // Heavy penalty
+              else locScore = 15; // Unacceptable commute
+              
+              let weight = 1;
+              if (loc.frequency === 'daily') weight = 5;
+              if (loc.frequency === 'frequent') weight = 3;
+              
+              totalScore += (locScore * weight);
+              totalWeight += weight;
             }
           });
 
-          if (validLocations > 0) {
-            const avgTime = totalMins / validLocations;
-            if (avgTime <= 15) commuteScore = 100;
-            else if (avgTime <= 25) commuteScore = 90;
-            else if (avgTime <= 40) commuteScore = 65; // Heavier penalty
-            else if (avgTime <= 60) commuteScore = 40; // Heavy penalty
-            else commuteScore = 15; // Unacceptable commute
+          if (totalWeight > 0) {
+            commuteScore = totalScore / totalWeight;
           } else {
             // Fallback if geocoding failed
             commuteScore = area.transit.walkability * 8; 
           }
         } else {
           commuteScore = area.transit.walkability * 8;
-        }
-
-        // Adjust based on frequency
-        if (commuteFrequency === 'occasional') {
-          commuteScore = (commuteScore * 0.6) + ((area.transit.walkability * 10) * 0.4);
         }
       }
 
@@ -236,6 +237,11 @@ export default function App() {
 
       return {
         ...area,
+        subScores: {
+          lifeStage: Math.round(lifeStageScore),
+          commute: Math.round(commuteScore),
+          amenities: Math.round(avgAmenitiesScore)
+        },
         matchScore: finalScore
       };
     }).sort((a, b) => b.matchScore - a.matchScore);
