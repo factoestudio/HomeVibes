@@ -1,5 +1,51 @@
 export const blogPosts = [
   {
+    id: 5,
+    slug: 'the-crosstown-effect-line-5',
+    title: 'The Crosstown Effect: How Line 5’s Launch is Reshaping Midtown & Beyond',
+    date: 'July 21, 2026',
+    excerpt: 'Line 5 is officially running and the western extension excavation has begun. Here’s what it means for midtown and western transit-oriented investors.',
+    category: 'Market Trends',
+    content: `
+# The Crosstown Effect: How Line 5’s Launch is Reshaping Midtown & Beyond
+
+**Target Persona & Micro-Cluster**
+Urban Commuters, Transit-Oriented Investors, and Midtown Families (focusing on the Yonge/Eglinton corridor out to Mount Dennis).
+
+**The Vibe/Impact**
+It’s official—the wait is finally over! After opening its doors in February 2026, the Eglinton Crosstown LRT (Line 5) is transforming the daily commute. As of July 2026, the TTC is deep into service optimization, using transit signal priority (TSP) at intersections to drastically cut travel times and improve reliability after a bumpy initial launch. But the progress doesn't stop there. Just this month, major station excavation work kicked off for the Eglinton Crosstown West Extension (ECWE), paving the way for seamless transit from Mount Dennis all the way to Renforth Drive. Midtown feels more connected, and the infamous east-west slog is quickly becoming a thing of the past.
+
+**The Real Estate Play**
+The "transit premium" for homes within a 10-minute walk of the active Line 5 stations is now fully priced in, solidifying midtown real estate as a blue-chip asset. But the real opportunity for forward-looking investors has shifted west. With ECWE station excavation officially underway this summer, the smart play is targeting properties near the future western nodes (like Mount Dennis and Renforth). Buying ahead of the tracks has historically yielded massive appreciation by the time the ribbon is cut.
+
+**HomeVibes Verdict**
+The long-awaited transit dream is finally reality. If you missed the boat on the central Line 5 corridor, don't make the same mistake twice. The next big window of opportunity is mapping out the western extension—get in now before the heavy infrastructure is completed.
+`
+  },
+  {
+    id: 4,
+    slug: 'the-2026-condo-shakeup',
+    title: 'The 2026 Condo Shakeup: Why \'Move-In Ready\' is Defeating Pre-Con',
+    date: 'July 21, 2026',
+    excerpt: 'New condo sales are surging, but the action has completely shifted from pre-construction to completed projects. Here is how you should pivot your strategy.',
+    category: 'Market Trends',
+    content: `
+# The 2026 Condo Shakeup: Why 'Move-In Ready' is Defeating Pre-Con
+
+**Target Persona & Micro-Cluster**
+Turnkey Investors, First-Time Buyers, and GTHA Condo Hunters (Downtown Core & Emerging Transit Nodes).
+
+**The Vibe/Impact**
+The second quarter of 2026 brought a massive plot twist to the GTA condo market. According to recent July data, new condo sales in the Greater Toronto and Hamilton Area (GTHA) surged by a staggering 52%—marking the first year-over-year gain since 2023. The catalyst? The elimination of the HST on new homes and a wave of bulk investor buying. However, the underlying trend is fascinating: buyers are demanding certainty. Almost all of the sales action was concentrated in *completed* projects, while pre-construction sales plummeted by 80%. Buyers remain highly cautious regarding HST rebate structures on unbuilt units, and as a result, market analysts at Urbanation are warning that the supply of newly built, unoccupied condos is thinning quickly due to a lack of new project launches.
+
+**The Real Estate Play**
+It’s time to pivot your strategy from paper to physical. With pre-construction pipelines stalling out and buyers flocking to finished units for instant gratification, the smart money is snapping up newly completed inventory. Investors can capture immediate rental income without the stress of multi-year construction delays, all while taking advantage of the favorable new HST environment.
+
+**HomeVibes Verdict**
+Certainty is the new luxury in 2026. If you're looking to invest or move, prioritize recently completed projects. You'll bypass the pre-con waiting game, secure immediate equity, and capitalize on a rapidly thinning supply of brand-new, move-in-ready units.
+`
+  },
+  {
     id: 3,
     slug: 'leslieville-ontario-line',
     title: 'Leslieville & The Ontario Line: Future-Proofing Your Family\'s Lifestyle',
