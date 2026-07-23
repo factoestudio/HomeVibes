@@ -75,7 +75,7 @@ export default function PrivacyPolicy({ setView }) {
             <p>
               If you have any questions, concerns, or requests regarding this Privacy Policy or the treatment of your data, please contact our Data Privacy Officer at:
             </p>
-        {/* Email removed */}
+        <p><strong>Email:</strong> <a href="mailto:info@homevibes.app" style={{color: 'var(--color-primary)'}}>info@homevibes.app</a></p>
           </section>
         </div>
       </div>

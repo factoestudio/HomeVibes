@@ -108,7 +108,9 @@ export default function ContactB2B({ setView }) {
           </div>
         </div>
 
-        {/* Contact info removed */}
+        <div className="contact-alternative" style={{textAlign: 'center', marginTop: '2rem'}}>
+          <p style={{color: 'var(--text-muted)'}}>Or email us directly at: <a href="mailto:info@homevibes.app" style={{color: 'var(--color-primary)', fontWeight: 'bold', textDecoration: 'none'}}>info@homevibes.app</a></p>
+        </div>
       </div>
     </div>
   );
