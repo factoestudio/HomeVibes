@@ -16,15 +16,84 @@ import './App.css';
 
 // Haversine formula to calculate distance between two lat/lng coordinates in km
 const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
-  const R = 6371; // Radius of the earth in km
+  const R = 6371;
   const dLat = (lat2 - lat1) * (Math.PI / 180);
   const dLon = (lon2 - lon1) * (Math.PI / 180);
-  const a = 
+  const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * 
-    Math.sin(dLon / 2) * Math.sin(dLon / 2); 
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
-  return R * c; 
+    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+};
+
+// Sigmoidal commute decay — smooth, psychologically accurate scoring
+// Score drops gradually past target, not in harsh steps
+const sigmoidCommuteScore = (estMinutes, targetMinutes = 30) => {
+  const kappa = 0.12; // steepness of decay curve
+  return 100 / (1 + Math.exp(kappa * (estMinutes - targetMinutes)));
+};
+
+// Cosine similarity between user preference vector and neighborhood feature vector
+// Both vectors normalized to [0,1] before comparison
+const cosineLifestyleSimilarity = (userWeights, areaAmenities, amenityKeys) => {
+  let dot = 0, uMag = 0, nMag = 0;
+  amenityKeys.forEach(key => {
+    const u = (userWeights[key] || 0) / 2;          // normalize 0-2 → 0-1
+    const n = (areaAmenities[key] || 5) / 10;       // normalize 0-10 → 0-1
+    dot  += u * n;
+    uMag += u * u;
+    nMag += n * n;
+  });
+  const magnitude = Math.sqrt(uMag) * Math.sqrt(nMag);
+  return magnitude > 0 ? (dot / magnitude) * 100 : 50;
+};
+
+// Auto-generate human-readable "Why this match?" bullets
+const generateMatchExplanation = (area, userPreferences, subScores) => {
+  const reasons = [];
+  const lifestyle = userPreferences?.lifestyle || {};
+  const transitMode = userPreferences?.transitMode || 'transit';
+  const isRemote = userPreferences?.isRemote || false;
+
+  // Commute
+  if (isRemote) {
+    reasons.push({ type: 'positive', text: 'Remote-work friendly — walkability prioritized over commute' });
+  } else if (subScores.commute >= 80) {
+    reasons.push({ type: 'positive', text: `Short ${transitMode} commute to your destination(s)` });
+  } else if (subScores.commute < 45) {
+    reasons.push({ type: 'warning', text: `Commute longer than ideal via ${transitMode}` });
+  }
+
+  // Amenity highlights
+  if (lifestyle.cafes_restaurants > 0 && area.amenities.cafes_restaurants >= 8)
+    reasons.push({ type: 'positive', text: `Vibrant dining & café scene (${area.amenities.cafes_restaurants}/10)` });
+  if (lifestyle.parks_nature > 0 && area.amenities.parks_nature >= 7)
+    reasons.push({ type: 'positive', text: `Excellent parks & green space access (${area.amenities.parks_nature}/10)` });
+  if (lifestyle.dog_parks > 0 && area.amenities.dog_parks >= 7)
+    reasons.push({ type: 'positive', text: `Great dog parks & pet-friendly spaces (${area.amenities.dog_parks}/10)` });
+  if (lifestyle.malls_shopping > 0 && area.amenities.malls_shopping >= 7)
+    reasons.push({ type: 'positive', text: `Strong retail & shopping corridor` });
+  if (lifestyle.premium_groceries > 0 && area.amenities.premium_groceries >= 7)
+    reasons.push({ type: 'positive', text: `Organic & premium grocery access nearby` });
+  if (lifestyle.libraries_civic > 0 && area.amenities.libraries_civic >= 7)
+    reasons.push({ type: 'positive', text: `Well-served community & civic amenities` });
+
+  // Lifestyle mismatches
+  if (lifestyle.parks_nature === 2 && area.amenities.parks_nature < 5)
+    reasons.push({ type: 'warning', text: `Limited green space — parks are a must-have for you` });
+  if (lifestyle.cafes_restaurants === 2 && area.amenities.cafes_restaurants < 5)
+    reasons.push({ type: 'warning', text: `Below-average dining options for your food-focused lifestyle` });
+
+  // Transit
+  if (area.transit.walkability >= 8)
+    reasons.push({ type: 'positive', text: `Highly walkable — most errands done on foot (${area.transit.walkability}/10)` });
+
+  // Budget
+  if (userPreferences?.profile === 'student' && area.priceBracket === '$$$$')
+    reasons.push({ type: 'warning', text: 'Luxury price bracket — above typical student budget' });
+
+  return reasons.slice(0, 4); // cap at 4 bullets
 };
 
 export default function App() {
@@ -118,7 +187,8 @@ export default function App() {
       trackEvent('VIEW_NEIGHBORHOOD', { neighborhood: area.name, city: area.city });
     }
   };
-  // Dynamic Matching Algorithm (Luxury Refined)
+  // ─── Upgraded Matching Algorithm ───────────────────────────────────────────
+  // v2: Sigmoidal commute decay + Cosine similarity + Score explainability
   const matchedNeighborhoods = useMemo(() => {
     if (!userPreferences) return [];
 
@@ -127,122 +197,105 @@ export default function App() {
     const isRemote = userPreferences.isRemote || false;
     const transitMode = userPreferences.transitMode || 'transit';
     const lifestyle = userPreferences.lifestyle || {};
+    const amenityKeys = Object.keys(lifestyle).filter(k => (lifestyle[k] || 0) > 0);
 
     return neighborhoodsData.map(area => {
-      // 1. Life Stage Suitability Match (30% weight)
-      // Map quiz profile IDs to data keys: 'professional' -> 'single_professional'
-      const profileKey = profile === 'professional' ? 'single_professional' : profile;
-      const suitabilityProp = `${profileKey}_suitability`;
-      const suitabilityScore = area[suitabilityProp] || 5;
-      const lifeStageScore = suitabilityScore * 10; // convert to 0-100 scale
 
-      // 2. Commute & Transit Match (30% weight)
+      // ── 1. Life Stage Suitability (25% weight) ────────────────────────────
+      const profileKey = profile === 'professional' ? 'single_professional' : profile;
+      const suitabilityScore = area[`${profileKey}_suitability`] || 5;
+      const lifeStageScore = suitabilityScore * 10; // 0–100
+
+      // ── 2. Commute Score — Sigmoidal Decay (40% weight) ───────────────────
+      // Uses smooth S-curve instead of hard step-thresholds.
+      // Score decays gradually past the user's ideal commute target.
       let commuteScore = 50;
+      const idealMinutes = userPreferences.idealCommuteMinutes || 30;
 
       if (isRemote) {
-        // Remote workers get full score adjusted slightly by walkability
         commuteScore = 80 + (area.transit.walkability * 2);
       } else if (transitMode === 'walking') {
-        // Walking preference prioritizes local walkability index
         commuteScore = area.transit.walkability * 10;
+      } else if (commuteLocations && commuteLocations.length > 0) {
+        let totalScore = 0;
+        let totalWeight = 0;
+
+        commuteLocations.forEach(loc => {
+          if (loc.lat && loc.lng && area.lat && area.lng) {
+            const distKm = getDistanceFromLatLonInKm(loc.lat, loc.lng, area.lat, area.lng);
+            let estTime = 60;
+            if (transitMode === 'driving') estTime = (distKm * 2.5) + 5;
+            if (transitMode === 'transit') estTime = (distKm * 4.5) + 10;
+
+            // Sigmoidal decay — smooth psychological accuracy
+            const locScore = sigmoidCommuteScore(estTime, idealMinutes);
+
+            let weight = 1;
+            if (loc.frequency === 'daily')    weight = 5;
+            if (loc.frequency === 'frequent') weight = 3;
+
+            totalScore  += locScore * weight;
+            totalWeight += weight;
+          }
+        });
+
+        commuteScore = totalWeight > 0
+          ? totalScore / totalWeight
+          : area.transit.walkability * 8;
       } else {
-        // Dynamic Haversine commute calculation
-        if (commuteLocations && commuteLocations.length > 0) {
-          let totalScore = 0;
-          let totalWeight = 0;
-
-          commuteLocations.forEach(loc => {
-            if (loc.lat && loc.lng && area.lat && area.lng) {
-              const distKm = getDistanceFromLatLonInKm(loc.lat, loc.lng, area.lat, area.lng);
-              
-              // Apply simple speed estimation (city traffic vs transit)
-              // Driving: ~30km/h (2 mins per km) + 5 min overhead
-              // Transit: ~15km/h (4 mins per km) + 10 min overhead
-              let estTime = 60;
-              if (transitMode === 'driving') estTime = (distKm * 2.5) + 5;
-              if (transitMode === 'transit') estTime = (distKm * 4.5) + 10;
-              
-              let locScore = 0;
-              if (estTime <= 15) locScore = 100;
-              else if (estTime <= 25) locScore = 90;
-              else if (estTime <= 40) locScore = 65; // Heavier penalty
-              else if (estTime <= 60) locScore = 40; // Heavy penalty
-              else locScore = 15; // Unacceptable commute
-              
-              let weight = 1;
-              if (loc.frequency === 'daily') weight = 5;
-              if (loc.frequency === 'frequent') weight = 3;
-              
-              totalScore += (locScore * weight);
-              totalWeight += weight;
-            }
-          });
-
-          if (totalWeight > 0) {
-            commuteScore = totalScore / totalWeight;
-          } else {
-            // Fallback if geocoding failed
-            commuteScore = area.transit.walkability * 8; 
-          }
-        } else {
-          commuteScore = area.transit.walkability * 8;
-        }
+        commuteScore = area.transit.walkability * 8;
       }
 
-      // 3. Expanded Amenities Match (30% weight)
-      let amenitiesScoreSum = 0;
-      let countedAmenities = 0;
-      const amenityKeys = Object.keys(lifestyle);
+      // ── 3. Lifestyle Match — Cosine Similarity (25% weight) ───────────────
+      // Treats user preferences and neighborhood attributes as vectors.
+      // Cosine similarity captures holistic vibe alignment, not just averages.
+      let amenitiesScore = 50;
+      if (amenityKeys.length > 0) {
+        // Blend cosine similarity (holistic) with must-have penalty (hard constraints)
+        const cosineSim = cosineLifestyleSimilarity(lifestyle, area.amenities, amenityKeys);
 
-      amenityKeys.forEach(key => {
-        const priorityVal = lifestyle[key]; // 0 = Not important, 1 = Nice, 2 = Must
-        const areaVal = area.amenities[key] || 5;
-
-        if (priorityVal > 0) {
-          countedAmenities++;
-          if (priorityVal === 1) {
-            // Nice to have
-            if (areaVal >= 6) amenitiesScoreSum += 100;
-            else if (areaVal >= 4) amenitiesScoreSum += 80;
-            else amenitiesScoreSum += 45;
-          } else {
-            // Must have
-            if (areaVal >= 8) amenitiesScoreSum += 100;
-            else if (areaVal >= 6) amenitiesScoreSum += 70;
-            else if (areaVal >= 4) amenitiesScoreSum += 35;
-            else amenitiesScoreSum += 10;
+        // Apply hard penalty for unmet must-haves
+        let mustHavePenalty = 0;
+        amenityKeys.forEach(key => {
+          if (lifestyle[key] === 2 && (area.amenities[key] || 5) < 5) {
+            mustHavePenalty += 15; // unmet must-have — deduct 15pts each
           }
-        }
-      });
+        });
+        amenitiesScore = Math.max(0, cosineSim - mustHavePenalty);
+      } else {
+        amenitiesScore = 75; // no preferences set — neutral
+      }
 
-      const avgAmenitiesScore = countedAmenities > 0 ? (amenitiesScoreSum / countedAmenities) : 100;
-
-      // 4. Budget & Affordability Penalty
+      // ── 4. Budget & Affordability Penalty (10% weight) ───────────────────
       let budgetPenalty = 0;
-      if (profile === 'student' && area.priceBracket === '$$$$') {
-        budgetPenalty = 30; // Huge penalty for students in ultra-luxury areas
-      } else if (profile === 'student' && area.priceBracket === '$$$') {
-        budgetPenalty = 15;
-      }
+      if (profile === 'student' && area.priceBracket === '$$$$') budgetPenalty = 25;
+      else if (profile === 'student' && area.priceBracket === '$$$')  budgetPenalty = 12;
 
-      // 5. Total Compatibility Score
-      let rawScore = 
-        (lifeStageScore * 0.30) + 
-        (commuteScore * 0.40) +  // Boost commute importance to 40%
-        (avgAmenitiesScore * 0.30) - // Reduce amenities to 30%
+      // ── 5. Total Compatibility Score ──────────────────────────────────────
+      const rawScore =
+        (lifeStageScore * 0.25) +
+        (commuteScore   * 0.40) +
+        (amenitiesScore * 0.25) +
+        (area.transit.walkability * 10 * 0.10) - // walkability bonus
         budgetPenalty;
 
-      // Round and cap between 40% and 99%
       const finalScore = Math.min(99, Math.max(40, Math.round(rawScore)));
+
+      const subScores = {
+        lifeStage:  Math.round(lifeStageScore),
+        commute:    Math.min(100, Math.round(commuteScore)),
+        amenities:  Math.round(amenitiesScore),
+        walkability: area.transit.walkability * 10,
+      };
+
+      // ── 6. Score Explainability Bullets ──────────────────────────────────
+      const matchReasons = generateMatchExplanation(area, userPreferences, subScores);
 
       return {
         ...area,
-        subScores: {
-          lifeStage: Math.round(lifeStageScore),
-          commute: Math.round(commuteScore),
-          amenities: Math.round(avgAmenitiesScore)
-        },
-        matchScore: finalScore
+        subScores,
+        matchScore: finalScore,
+        matchReasons,
       };
     }).sort((a, b) => b.matchScore - a.matchScore);
   }, [userPreferences]);

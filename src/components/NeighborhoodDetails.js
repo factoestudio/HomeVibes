@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from 'recharts';
 
 import {
   StudentIcon,
@@ -24,13 +25,13 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
   const [formData, setFormData] = useState({ name: '', email: '', timeline: 'Just browsing' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
+  const [showDayInLife, setShowDayInLife] = useState(false);
 
   const handleUnlockSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError(null);
     try {
-      // Mock API call to avoid Supabase errors in prototype
       await new Promise(resolve => setTimeout(resolve, 800));
       setIsPremiumUnlocked(true);
     } catch (err) {
@@ -40,6 +41,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
       setIsSubmitting(false);
     }
   };
+
   if (!selectedArea) {
     return (
       <div className="details-empty-state card-glass luxury-border">
@@ -51,6 +53,58 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
   }
 
   const matchColor = getScoreColor(selectedArea.matchScore);
+
+  // Build radar chart data: user ideal vs neighbourhood actual
+  const buildRadarData = () => {
+    const lifestyle = userPreferences?.lifestyle || {};
+    const amenities = selectedArea.amenities || {};
+    return [
+      { axis: 'Dining',    user: (lifestyle.cafes_restaurants || 0) * 50,   area: (amenities.cafes_restaurants || 5) * 10 },
+      { axis: 'Nature',    user: (lifestyle.parks_nature || 0) * 50,         area: (amenities.parks_nature || 5) * 10 },
+      { axis: 'Shopping',  user: (lifestyle.malls_shopping || 0) * 50,       area: (amenities.malls_shopping || 5) * 10 },
+      { axis: 'Transit',   user: (userPreferences?.transitMode === 'walking' ? 2 : 1) * 50, area: selectedArea.transit.walkability * 10 },
+      { axis: 'Community', user: (lifestyle.libraries_civic || 0) * 50,      area: (amenities.libraries_civic || 5) * 10 },
+      { axis: 'Groceries', user: (lifestyle.premium_groceries || 0) * 50,    area: (amenities.premium_groceries || 5) * 10 },
+    ];
+  };
+
+  // Generate Day-in-the-Life timeline from neighbourhood data
+  const buildDayInLife = () => {
+    const walk = selectedArea.transit?.walkability || 5;
+    const cafes = selectedArea.amenities?.cafes_restaurants || 5;
+    const parks = selectedArea.amenities?.parks_nature || 5;
+    const grocery = selectedArea.amenities?.premium_groceries || 5;
+    const dogs = selectedArea.amenities?.dog_parks || 5;
+    const transitMode = userPreferences?.transitMode || 'transit';
+    const commuteLocations = userPreferences?.commuteLocations || [];
+    const events = [];
+
+    events.push({ time: '7:30 AM', icon: '☀️', text: `Wake up in ${selectedArea.name}` });
+
+    if (cafes >= 7)
+      events.push({ time: '8:00 AM', icon: '☕', text: `${cafes >= 9 ? 'Exceptional' : 'Great'} café scene — grab a flat white ${walk >= 8 ? 'steps from your door' : 'nearby'}` });
+    else
+      events.push({ time: '8:00 AM', icon: '🏠', text: 'Morning at home — limited café options in walking distance' });
+
+    if (commuteLocations.length > 0 && !userPreferences?.isRemote) {
+      const modeLabel = transitMode === 'driving' ? 'Drive' : transitMode === 'walking' ? 'Walk' : 'Transit ride';
+      events.push({ time: '8:30 AM', icon: transitMode === 'driving' ? '🚗' : transitMode === 'walking' ? '🚶' : '🚌', text: `${modeLabel} to work — ${walk >= 7 ? 'well-connected neighbourhood' : 'plan ahead for transit'}` });
+    } else if (userPreferences?.isRemote) {
+      events.push({ time: '9:00 AM', icon: '💻', text: 'Work from home — no commute needed' });
+    }
+
+    if (grocery >= 7)
+      events.push({ time: '12:30 PM', icon: '🛒', text: `${grocery >= 9 ? 'Whole Foods / organic market' : 'Quality grocery stores'} within easy reach` });
+
+    if (parks >= 7)
+      events.push({ time: '6:30 PM', icon: '🌳', text: `Evening walk in ${selectedArea.name}'s ${parks >= 9 ? 'outstanding' : 'excellent'} parks` });
+
+    if (dogs >= 7)
+      events.push({ time: '7:00 PM', icon: '🐕', text: `Dog parks and pet-friendly spaces nearby (${dogs}/10)` });
+
+    events.push({ time: '9:00 PM', icon: '🏡', text: 'Home — this is your neighbourhood' });
+    return events;
+  };
 
   // Get travel time details based on quiz selections
   const userHub = userPreferences?.hub || 'downtown';
@@ -205,11 +259,49 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
           ))}
         </div>
 
+        {/* Radar Chart — Vibe Alignment */}
+        {userPreferences && (
+          <div className="details-section card-subglass luxury-subcard" style={{ padding: '1.25rem' }}>
+            <h3 className="display-font" style={{ marginBottom: '0.5rem' }}>⬡ Vibe Alignment Radar</h3>
+            <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', marginBottom: '0.75rem' }}>
+              <span style={{ color: 'var(--color-primary)' }}>■</span> Your Ideal &nbsp;
+              <span style={{ color: '#C5A880' }}>■</span> This Neighbourhood
+            </p>
+            <ResponsiveContainer width="100%" height={210}>
+              <RadarChart data={buildRadarData()} outerRadius={72}>
+                <PolarGrid stroke="rgba(255,255,255,0.1)" />
+                <PolarAngleAxis dataKey="axis" tick={{ fill: '#a0a0b0', fontSize: 11 }} />
+                <Radar name="Your Ideal" dataKey="user" stroke="var(--color-primary)" fill="var(--color-primary)" fillOpacity={0.25} />
+                <Radar name="Neighbourhood" dataKey="area" stroke="#C5A880" fill="#C5A880" fillOpacity={0.2} />
+                <Tooltip
+                  contentStyle={{ background: 'rgba(20,20,35,0.95)', border: '1px solid rgba(197,168,128,0.3)', borderRadius: '8px', fontSize: '12px' }}
+                  formatter={(value, name) => [`${Math.round(value)}`, name]}
+                />
+              </RadarChart>
+            </ResponsiveContainer>
+          </div>
+        )}
+
         {/* Description */}
         <div className="details-section">
           <h3 className="display-font">Vibe Overview</h3>
           <p className="details-description">{selectedArea.description}</p>
         </div>
+
+        {/* Why This Match — Score Explainability */}
+        {selectedArea.matchReasons && selectedArea.matchReasons.length > 0 && (
+          <div className="details-section card-subglass luxury-subcard" style={{ padding: '1.25rem' }}>
+            <h3 className="display-font" style={{ marginBottom: '0.75rem' }}>✦ Why This Match?</h3>
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              {selectedArea.matchReasons.map((reason, i) => (
+                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.85rem', color: reason.type === 'positive' ? '#a8c5a0' : '#c5a880' }}>
+                  <span style={{ flexShrink: 0 }}>{reason.type === 'positive' ? '✅' : '⚠️'}</span>
+                  <span>{reason.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* Budget Comparison Card */}
         <div className="details-section budget-comparison-card card-subglass luxury-subcard">
@@ -247,6 +339,34 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
                 <span className="commute-time">{commuteTime} minutes</span>
                 <span className="commute-method uppercase">via {transitIcons[userTransit]}</span>
               </div>
+            </div>
+
+            {/* Day-in-the-Life Simulator */}
+            <div style={{ marginTop: '1rem' }}>
+              <button
+                onClick={() => setShowDayInLife(v => !v)}
+                style={{
+                  background: 'none', border: '1px solid rgba(197,168,128,0.35)',
+                  color: '#C5A880', borderRadius: '8px', padding: '0.4rem 0.9rem',
+                  fontSize: '0.8rem', cursor: 'pointer', letterSpacing: '0.5px',
+                  display: 'flex', alignItems: 'center', gap: '0.4rem'
+                }}
+              >
+                {showDayInLife ? '▲ Hide' : '▶ Day-in-the-Life Simulator'}
+              </button>
+              {showDayInLife && (
+                <div style={{ marginTop: '0.85rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                  {buildDayInLife().map((evt, i) => (
+                    <div key={i} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+                      <span style={{ fontSize: '1rem', flexShrink: 0 }}>{evt.icon}</span>
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <span style={{ fontSize: '0.72rem', color: 'var(--color-primary)', fontWeight: 600, letterSpacing: '0.5px' }}>{evt.time}</span>
+                        <span style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)', lineHeight: 1.4 }}>{evt.text}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}
