@@ -234,9 +234,9 @@ button {
 .app-main-content {
   flex: 1;
   width: 100%;
-  max-width: 1600px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2.5rem;
+  padding: 1.5rem 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -607,9 +607,8 @@ button {
   display: grid;
   grid-template-columns: 330px 1fr 390px;
   gap: 1.5rem;
-  height: 65vh;
-  max-height: 700px;
-  min-height: 550px;
+  height: calc(100vh - 130px);
+  min-height: 600px;
 }
 
 /* Left Column: Matches List */
