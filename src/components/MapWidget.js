@@ -132,7 +132,16 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
 
     mapRef.current = map;
 
+    // Invalidate map size when container dimensions change (vital for dynamic flex/grid layouts)
+    const resizeObserver = new ResizeObserver(() => {
+      if (mapRef.current) {
+        mapRef.current.invalidateSize();
+      }
+    });
+    resizeObserver.observe(mapContainerRef.current);
+
     return () => {
+      resizeObserver.disconnect();
       if (mapRef.current) {
         mapRef.current.remove();
         mapRef.current = null;

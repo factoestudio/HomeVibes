@@ -607,8 +607,8 @@ button {
   display: grid;
   grid-template-columns: 330px 1fr 390px;
   gap: 1.5rem;
-  height: calc(100vh - 130px);
-  min-height: 600px;
+  flex: 1;
+  min-height: 0;
 }
 
 /* Left Column: Matches List */
@@ -2672,8 +2672,9 @@ button {
   gap: 1.5rem;
   width: 100%;
   max-width: 100%;
-  padding: 0 1rem;
+  padding: 0;
   margin: 0 auto;
+  height: calc(100vh - 100px);
 }
 
 .premium-insights-banner {
