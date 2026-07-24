@@ -2418,6 +2418,9 @@ button {
   .apple-hero-subtext {
     font-size: 1.2rem;
   }
+  .apple-features-section {
+    padding: 5rem 1.5rem;
+  }
 }
 
 .mockup-desc {
@@ -2426,10 +2429,6 @@ button {
   line-height: 1.6;
   max-width: 600px;
   margin: 0 auto;
-}
-  .apple-features-section {
-    padding: 5rem 1.5rem;
-  }
 }
 
 /* --- STORYTELLING LANDING PAGE STYLES --- */
