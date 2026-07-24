@@ -14,6 +14,8 @@ import logoWhite from './assets/logo-white.png';
 import logoPurple from './assets/logo-purple.png';
 import './App.css';
 
+import { generateDynamicIsochroneZones } from './utils/isochroneGenerator';
+
 // Haversine formula to calculate distance between two lat/lng coordinates in km
 const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
   const R = 6371;
@@ -107,6 +109,43 @@ export default function App() {
   // Auth State
   const [session, setSession] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [customSearchAddress, setCustomSearchAddress] = useState('');
+  const [isSearchingAnchor, setIsSearchingAnchor] = useState(false);
+
+  const handleSetCustomAnchor = async (e) => {
+    e?.preventDefault();
+    if (!customSearchAddress.trim()) return;
+    setIsSearchingAnchor(true);
+    try {
+      const query = /ontario|gta|toronto|mississauga|brampton|oakville|markham|vaughan/i.test(customSearchAddress) 
+        ? customSearchAddress 
+        : `${customSearchAddress}, Greater Toronto Area, Ontario, Canada`;
+
+      const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`, {
+        headers: { 'User-Agent': 'HomeVibesApp/1.0' }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.length > 0) {
+          const newLoc = {
+            address: customSearchAddress,
+            lat: parseFloat(data[0].lat),
+            lng: parseFloat(data[0].lon),
+            frequency: 'daily'
+          };
+          setUserPreferences(prev => ({
+            ...prev,
+            isRemote: false,
+            commuteLocations: [newLoc]
+          }));
+        }
+      }
+    } catch (err) {
+      console.error("Custom anchor search error:", err);
+    } finally {
+      setIsSearchingAnchor(false);
+    }
+  };
 
   const navigateTo = useCallback((path, push = true) => {
     if (push && window.location.pathname !== path) {
@@ -263,7 +302,17 @@ export default function App() {
     const lifestyle = userPreferences.lifestyle || {};
     const amenityKeys = Object.keys(lifestyle).filter(k => (lifestyle[k] || 0) > 0);
 
-    return neighborhoodsData.map(area => {
+    // 1. Generate dynamic spatial micro-zone candidates around user's anchor location
+    let dynamicIsochroneAreas = [];
+    if (commuteLocations.length > 0 && commuteLocations[0].lat && commuteLocations[0].lng) {
+      dynamicIsochroneAreas = generateDynamicIsochroneZones(commuteLocations[0], userPreferences);
+    }
+
+    // 2. Combine static curated dataset + dynamic isochrone spatial candidates
+    const pool = [...neighborhoodsData, ...dynamicIsochroneAreas];
+
+    return pool.map(area => {
+      if (area.isDynamicArea) return area; // already evaluated with exact spatial metrics
 
       // ── 1. Life Stage Suitability (25% weight) ────────────────────────────
       const profileKey = profile === 'professional' ? 'single_professional' : profile;
@@ -472,6 +521,26 @@ export default function App() {
                 <div className="list-column-header">
                   <h3 className="display-font">Neighborhood Matches</h3>
                   <p className="list-subtitle">Sorted by computed lifestyle compatibility index</p>
+
+                  {/* Dynamic Location Isochrone Search Bar */}
+                  <form onSubmit={handleSetCustomAnchor} style={{ margin: '12px 0 6px 0', display: 'flex', gap: '6px' }}>
+                    <input 
+                      type="text" 
+                      placeholder="Search ANY GTA location (e.g. Square One, Unionville, High Park)..." 
+                      value={customSearchAddress}
+                      onChange={(e) => setCustomSearchAddress(e.target.value)}
+                      className="luxury-input"
+                      style={{ flex: 1, padding: '0.5rem 0.75rem', fontSize: '0.82rem', borderRadius: '8px' }}
+                    />
+                    <button 
+                      type="submit" 
+                      className="btn-header-action luxury-btn-header"
+                      disabled={isSearchingAnchor || !customSearchAddress.trim()}
+                      style={{ padding: '0.5rem 0.85rem', fontSize: '0.8rem', whiteSpace: 'nowrap' }}
+                    >
+                      {isSearchingAnchor ? 'Searching...' : '🎯 Evaluate Location'}
+                    </button>
+                  </form>
                 </div>
 
                 {/* City Filters */}
