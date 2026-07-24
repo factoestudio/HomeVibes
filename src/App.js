@@ -117,27 +117,33 @@ export default function App() {
     if (!customSearchAddress.trim()) return;
     setIsSearchingAnchor(true);
     try {
-      const query = /ontario|gta|toronto|mississauga|brampton|oakville|markham|vaughan/i.test(customSearchAddress) 
-        ? customSearchAddress 
-        : `${customSearchAddress}, Greater Toronto Area, Ontario, Canada`;
+      const cleanAddr = customSearchAddress.trim();
+      const queries = [
+        /ontario|canada/i.test(cleanAddr) ? cleanAddr : `${cleanAddr}, Ontario, Canada`,
+        cleanAddr,
+        `${cleanAddr}, Canada`
+      ];
 
-      const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`, {
-        headers: { 'User-Agent': 'HomeVibesApp/1.0' }
-      });
-      if (res.ok) {
-        const data = await res.json();
-        if (data && data.length > 0) {
-          const newLoc = {
-            address: customSearchAddress,
-            lat: parseFloat(data[0].lat),
-            lng: parseFloat(data[0].lon),
-            frequency: 'daily'
-          };
-          setUserPreferences(prev => ({
-            ...prev,
-            isRemote: false,
-            commuteLocations: [newLoc]
-          }));
+      for (const q of queries) {
+        const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=1`, {
+          headers: { 'User-Agent': 'HomeVibesApp/1.0' }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.length > 0) {
+            const newLoc = {
+              address: customSearchAddress,
+              lat: parseFloat(data[0].lat),
+              lng: parseFloat(data[0].lon),
+              frequency: 'daily'
+            };
+            setUserPreferences(prev => ({
+              ...(prev || DEFAULT_PREFERENCES),
+              isRemote: false,
+              commuteLocations: [newLoc]
+            }));
+            break;
+          }
         }
       }
     } catch (err) {
@@ -311,10 +317,15 @@ export default function App() {
     const lifestyle = prefs.lifestyle || {};
     const amenityKeys = Object.keys(lifestyle).filter(k => (lifestyle[k] || 0) > 0);
 
-    // 1. Generate dynamic spatial micro-zone candidates around user's anchor location
+    // 1. Generate dynamic spatial micro-zone candidates around ALL user anchor locations
     let dynamicIsochroneAreas = [];
-    if (commuteLocations.length > 0 && commuteLocations[0].lat && commuteLocations[0].lng) {
-      dynamicIsochroneAreas = generateDynamicIsochroneZones(commuteLocations[0], prefs);
+    if (commuteLocations && commuteLocations.length > 0) {
+      commuteLocations.forEach(loc => {
+        if (loc.lat && loc.lng) {
+          const zones = generateDynamicIsochroneZones(loc, prefs);
+          dynamicIsochroneAreas.push(...zones);
+        }
+      });
     }
 
     // 2. Combine static curated dataset + dynamic isochrone spatial candidates
@@ -332,9 +343,10 @@ export default function App() {
       // Uses smooth S-curve instead of hard step-thresholds.
       // Score decays gradually past the user's ideal commute target.
       let commuteScore = 50;
-      const idealMinutes = userPreferences.idealCommuteMinutes || 30;
+      const idealMinutes = prefs.idealCommuteMinutes || 30;
 
       let minEstTime = Infinity;
+      let minDistKm = Infinity;
 
       if (isRemote) {
         commuteScore = 80 + ((area.transit?.walkability ?? 0) * 2);
@@ -345,6 +357,8 @@ export default function App() {
         commuteLocations.forEach(loc => {
           if (loc.lat && loc.lng && area.lat && area.lng) {
             const distKm = getDistanceFromLatLonInKm(loc.lat, loc.lng, area.lat, area.lng);
+            if (distKm < minDistKm) minDistKm = distKm;
+
             let estTime = 60;
             if (transitMode === 'driving') estTime = (distKm * 2.2) + 4;
             if (transitMode === 'transit') estTime = (distKm * 4.2) + 8;
@@ -383,7 +397,6 @@ export default function App() {
 
       // ── 3. Lifestyle Match — Cosine Similarity (25% weight) ───────────────
       // Treats user preferences and neighborhood attributes as vectors.
-      // Cosine similarity captures holistic vibe alignment, not just averages.
       let amenitiesScore = 50;
       if (amenityKeys.length > 0) {
         // Blend cosine similarity (holistic) with must-have penalty (hard constraints)
@@ -406,10 +419,10 @@ export default function App() {
       if (profile === 'student' && area.priceBracket === '$$$$') budgetPenalty = 25;
       else if (profile === 'student' && area.priceBracket === '$$$')  budgetPenalty = 12;
 
-      // ── 5. Total Compatibility Score ──────────────────────────────────────
+      // ── 5. Total Compatibility Score & Geodesic Distance Penalty ─────────
       const hasCommuteLocs = commuteLocations && commuteLocations.length > 0 && !isRemote;
-      const wCommute   = hasCommuteLocs ? 0.55 : 0.35;
-      const wLifeStage = hasCommuteLocs ? 0.20 : 0.25;
+      const wCommute   = hasCommuteLocs ? 0.60 : 0.35;
+      const wLifeStage = hasCommuteLocs ? 0.15 : 0.25;
       const wAmenities = hasCommuteLocs ? 0.20 : 0.30;
       const wWalk      = hasCommuteLocs ? 0.05 : 0.10;
 
@@ -417,10 +430,18 @@ export default function App() {
         (lifeStageScore * wLifeStage) +
         (commuteScore   * wCommute) +
         (amenitiesScore * wAmenities) +
-        ((area.transit?.walkability ?? 0) * 10 * wWalk) - // walkability bonus
+        ((area.transit?.walkability ?? 0) * 10 * wWalk) -
         budgetPenalty;
 
-      const finalScore = Math.min(99, Math.max(40, Math.round(rawScore)));
+      // Strict out-of-corridor distance multiplier
+      let distanceMultiplier = 1.0;
+      if (hasCommuteLocs && minDistKm !== Infinity) {
+        if (minDistKm > 45)      distanceMultiplier = 0.15; // 85% penalty for areas >45km away
+        else if (minDistKm > 30) distanceMultiplier = 0.40; // 60% penalty for areas >30km away
+        else if (minDistKm > 18) distanceMultiplier = 0.75; // 25% penalty for areas >18km away
+      }
+
+      const finalScore = Math.min(99, Math.max(15, Math.round(rawScore * distanceMultiplier)));
 
       const subScores = {
         lifeStage:  Math.round(lifeStageScore),

@@ -94,28 +94,34 @@ export default function VibeQuiz({ onComplete }) {
     // Geocode all valid addresses via OpenStreetMap Nominatim
     const locationsWithCoords = await Promise.all(
       commuteLocations.filter(loc => loc.address.trim() !== '').map(async (loc) => {
-        try {
-          const searchQuery = /ontario|gta|toronto|mississauga|brampton|oakville|markham|vaughan/i.test(loc.address) 
-            ? loc.address 
-            : `${loc.address}, Greater Toronto Area, Ontario, Canada`;
+        const cleanAddr = loc.address.trim();
+        const queries = [
+          /ontario|canada/i.test(cleanAddr) ? cleanAddr : `${cleanAddr}, Ontario, Canada`,
+          cleanAddr,
+          `${cleanAddr}, Canada`
+        ];
 
-          const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&limit=1`, {
-            headers: { 'User-Agent': 'HomeVibesApp/1.0' }
-          });
-          if (!res.ok) throw new Error("Geocoding HTTP Error");
-          const data = await res.json();
-          if (data && data.length > 0) {
-            return {
-              ...loc,
-              lat: parseFloat(data[0].lat),
-              lng: parseFloat(data[0].lon)
-            };
+        for (const q of queries) {
+          try {
+            const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=1`, {
+              headers: { 'User-Agent': 'HomeVibesApp/1.0' }
+            });
+            if (res.ok) {
+              const data = await res.json();
+              if (data && data.length > 0) {
+                return {
+                  ...loc,
+                  lat: parseFloat(data[0].lat),
+                  lng: parseFloat(data[0].lon)
+                };
+              }
+            }
+          } catch (e) {
+            console.error("Geocoding failed for query", q, e);
           }
-        } catch (e) {
-          console.error("Geocoding failed for", loc.address, e);
         }
-        // Fallback to Toronto center
-        return { ...loc, lat: 43.6532, lng: -79.3832 }; 
+        // Fallback to Oakville/Mississauga GTA corridor midpoint instead of Downtown Toronto
+        return { ...loc, lat: 43.5183, lng: -79.8774 }; 
       })
     );
 
