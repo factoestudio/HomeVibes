@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /quiz
+Disallow: /results
 
 Sitemap: https://homevibes.app/sitemap.xml
