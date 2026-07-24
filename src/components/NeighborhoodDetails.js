@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import { supabase } from '../supabaseClient';
 
@@ -21,6 +21,21 @@ import {
   ClockIcon,
   WalletIcon
 } from './SvgIcons';
+
+// Helpers
+const getScoreColor = (score) => {
+  if (score >= 90) return '#D4AF37';
+  if (score >= 75) return '#C5A880';
+  if (score >= 60) return '#8E7557';
+  return '#4A4B54';
+};
+
+const formatCurrencyLabel = (val) => {
+  if (val >= 1000000) return `$${(val / 1000000).toFixed(1)}M`;
+  if (val >= 1000) return `$${(val / 1000).toFixed(0)}k`;
+  return `$${val}`;
+};
+
 
 export default function NeighborhoodDetails({ selectedArea, userPreferences, onClose, isPremiumUnlocked, setIsPremiumUnlocked }) {
   const [formData, setFormData] = useState({ name: '', email: '', timeline: 'Just browsing' });
@@ -570,18 +585,3 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
     </div>
   );
 }
-
-// Helpers
-const getScoreColor = (score) => {
-  if (score >= 90) return '#D4AF37';
-  if (score >= 75) return '#C5A880';
-  if (score >= 60) return '#8E7557';
-  return '#4A4B54';
-};
-
-const formatCurrencyLabel = (val) => {
-  if (val >= 1000000) return `$${(val / 1000000).toFixed(1)}M`;
-  if (val >= 1000) return `$${(val / 1000).toFixed(0)}k`;
-  return `$${val}`;
-};
-

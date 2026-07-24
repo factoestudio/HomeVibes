@@ -104,6 +104,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
   const markersRef = useRef({});
   const extraMarkersRef = useRef({});
   const regionalCirclesRef = useRef([]);
+  const [isLoadingPOIs, setIsLoadingPOIs] = useState(false);
 
   // Initialize Map
   useEffect(() => {
@@ -273,14 +274,11 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
       });
     }
 
-    const activeMarker = selectedNeighborhood?.id ? markersRef.current[selectedNeighborhood.id] : null;
-    if (activeMarker) {
-      activeMarker.openTooltip();
-    }
   }, [selectedNeighborhood, userPreferences]);
 
   // Render Commute Locations and mock POIs
   useEffect(() => {
+    let isMounted = true;
     const map = mapRef.current;
     if (!map) return;
 
@@ -370,6 +368,8 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
           if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           const data = await response.json();
           
+          if (!isMounted) return;
+
           if (data && data.elements) {
             data.elements.forEach((poi, idx) => {
               if (!poi.lat || !poi.lon) return;
@@ -385,13 +385,13 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
 
               const marker = L.marker([poi.lat, poi.lon], { icon: poiIcon }).addTo(map);
               marker.bindTooltip(`<div class="luxury-tooltip" style="color: #ffffff; font-family:'Outfit', sans-serif;"><strong>${name}</strong></div>`, { direction: 'top', offset: [0, -10], opacity: 0.95 });
-              extraMarkersRef.current[`poi-${idx}`] = marker;
+              extraMarkersRef.current[`poi-${Date.now()}-${idx}`] = marker;
             });
           }
         } catch (error) {
           console.error("Failed to fetch OSM POIs:", error);
         } finally {
-          setIsLoadingPOIs(false);
+          if (isMounted) setIsLoadingPOIs(false);
         }
       };
 
@@ -399,6 +399,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
     }
 
     return () => {
+      isMounted = false;
       Object.values(extraMarkersRef.current).forEach(marker => {
         if (marker && marker.remove) marker.remove();
       });

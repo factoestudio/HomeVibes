@@ -89,6 +89,8 @@ export function generateDynamicIsochroneZones(anchorLoc, userPreferences) {
         lat: coords.lat,
         lng: coords.lng,
         priceBracket: distKm < 5 ? "$$$$ (High)" : "$$$ (Mid-High)",
+        avgRentNum: Math.round(2100 + (10 - distKm) * 50),
+        avgBuyNum: Math.round(750000 + (10 - distKm) * 30000),
         avgRent: `$${Math.round(2100 + (10 - distKm) * 50)}/mo`,
         avgBuy: `$${Math.round(750000 + (10 - distKm) * 30000)}`,
         student_suitability: 8,
@@ -134,9 +136,11 @@ export function generateDynamicIsochroneZones(anchorLoc, userPreferences) {
         isWithinIsochroneBuffer: isWithinBuffer,
         isochroneBufferBadge,
         matchReasons: [
-          `Situated ${distKm.toFixed(1)} km from your search anchor`,
-          `Estimated ${roundedMins}-minute ${transitMode} commute`,
-          isWithinBuffer ? `Falls strictly inside your target ${idealMinutes}-minute isochrone` : `Outside ideal target by ${roundedMins - idealMinutes} mins`
+          { type: 'positive', text: `Situated ${distKm.toFixed(1)} km from your search anchor` },
+          { type: 'positive', text: `Estimated ${roundedMins}-minute ${transitMode} commute` },
+          isWithinBuffer 
+            ? { type: 'positive', text: `Falls strictly inside your target ${idealMinutes}-minute isochrone` } 
+            : { type: 'warning', text: `Outside ideal target by ${roundedMins - idealMinutes} mins` }
         ],
         listings: [
           {

@@ -97,12 +97,19 @@ const generateMatchExplanation = (area, userPreferences, subScores) => {
 
   return reasons.slice(0, 4); // cap at 4 bullets
 };
+const DEFAULT_PREFERENCES = {
+  profile: 'professional',
+  commuteLocations: [{ address: 'Downtown Toronto', lat: 43.6532, lng: -79.3832, frequency: 'daily' }],
+  isRemote: false,
+  transitMode: 'transit',
+  lifestyle: { cafes_restaurants: 1, parks_nature: 1 }
+};
 
 export default function App() {
   const [view, setView] = useState('landing'); // 'landing' | 'quiz' | 'results' | 'privacy' | 'contact' | 'blog'
   const [activeBlogSlug, setActiveBlogSlug] = useState(null);
   const [userPreferences, setUserPreferences] = useState(null);
-  const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(true);
+  const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
   const [selectedArea, setSelectedArea] = useState(null);
   const [cityFilter, setCityFilter] = useState('All');
 
@@ -202,7 +209,7 @@ export default function App() {
         setView('landing');
       }
     }
-  }, [userPreferences, navigateTo]);
+  }, [userPreferences]);
 
 
 
@@ -292,14 +299,7 @@ export default function App() {
       trackEvent('VIEW_NEIGHBORHOOD', { neighborhood: area.name, city: area.city });
     }
   };
-  // DEFAULT_PREFERENCES fallback so /results view never renders blank
-  const DEFAULT_PREFERENCES = useMemo(() => ({
-    profile: 'professional',
-    commuteLocations: [{ address: 'Downtown Toronto', lat: 43.6532, lng: -79.3832, frequency: 'daily' }],
-    isRemote: false,
-    transitMode: 'transit',
-    lifestyle: { cafes_restaurants: 1, parks_nature: 1 }
-  }), []);
+
 
   // ─── Upgraded Matching Algorithm ───────────────────────────────────────────
   // v2: Sigmoidal commute decay + Cosine similarity + Score explainability
@@ -459,7 +459,7 @@ export default function App() {
         isochroneBufferBadge
       };
     }).sort((a, b) => b.matchScore - a.matchScore);
-  }, [userPreferences]);
+  }, [userPreferences, DEFAULT_PREFERENCES]);
 
   const handleQuizComplete = (prefs) => {
     setUserPreferences(prefs);
@@ -616,7 +616,7 @@ export default function App() {
                           <p className="match-card-desc">{area.description.substring(0, 100)}...</p>
                           <div className="match-card-meta">
                             <span className="platinum-text">Class: {area.priceBracket}</span>
-                            <span>Walkability: {area.transit.walkability}/10</span>
+                            <span>Walkability: {area.transit?.walkability ?? 0}/10</span>
                           </div>
                         </div>
                       );

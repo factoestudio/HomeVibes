@@ -235,7 +235,7 @@ export default function VibeQuiz({ onComplete }) {
                       value={loc.label}
                       onChange={(e) => {
                         const newLocs = [...commuteLocations];
-                        newLocs[index].label = e.target.value;
+                        newLocs[index] = { ...newLocs[index], label: e.target.value };
                         setCommuteLocations(newLocs);
                       }}
                       style={{ flex: 1, minWidth: '150px' }}
@@ -247,7 +247,7 @@ export default function VibeQuiz({ onComplete }) {
                       value={loc.address}
                       onChange={(e) => {
                         const newLocs = [...commuteLocations];
-                        newLocs[index].address = e.target.value;
+                        newLocs[index] = { ...newLocs[index], address: e.target.value };
                         setCommuteLocations(newLocs);
                       }}
                       style={{ flex: 2, minWidth: '250px' }}
@@ -265,7 +265,7 @@ export default function VibeQuiz({ onComplete }) {
                         className={`quiz-toggle-btn luxury-btn ${loc.frequency === freq.id ? 'active' : ''}`}
                         onClick={() => {
                           const newLocs = [...commuteLocations];
-                          newLocs[index].frequency = freq.id;
+                          newLocs[index] = { ...newLocs[index], frequency: freq.id };
                           setCommuteLocations(newLocs);
                         }}
                         style={{ padding: '0.5rem 1rem', fontSize: '0.85rem', flex: 1 }}

@@ -24,21 +24,21 @@ export default function AuthModal({ onClose }) {
     setError(null);
     setMessage(null);
     try {
-      let error;
+      let authError;
       if (isLogin) {
         const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
-        error = signInError;
+        authError = signInError;
       } else {
         const { data, error: signUpError } = await supabase.auth.signUp({ email, password });
-        error = signUpError;
-        if (!error) {
+        authError = signUpError;
+        if (!authError) {
           setMessage('Check your email for the confirmation link.');
           if (data?.session) {
             onClose();
           }
         }
       }
-      if (error) throw error;
+      if (authError) throw authError;
       if (isLogin) onClose();
     } catch (err) {
       setError(err.message);
@@ -58,6 +58,7 @@ export default function AuthModal({ onClose }) {
       if (error) throw error;
     } catch (err) {
       setError(err.message);
+    } finally {
       setLoading(false);
     }
   };
