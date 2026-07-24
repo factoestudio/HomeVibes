@@ -40,6 +40,16 @@ export default function Footer({ setView, navigateTo }) {
           >
             Partner With Us (B2B)
           </button>
+          <span className="footer-divider">|</span>
+          <a 
+            href="https://www.linkedin.com/company/homevibes/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="footer-link-btn"
+            style={{ textDecoration: 'none', color: 'var(--color-primary)', fontWeight: '600' }}
+          >
+            LinkedIn
+          </a>
         </div>
       </div>
       
