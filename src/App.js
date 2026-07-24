@@ -290,22 +290,31 @@ export default function App() {
       trackEvent('VIEW_NEIGHBORHOOD', { neighborhood: area.name, city: area.city });
     }
   };
+  // DEFAULT_PREFERENCES fallback so /results view never renders blank
+  const DEFAULT_PREFERENCES = useMemo(() => ({
+    profile: 'professional',
+    commuteLocations: [{ address: 'Downtown Toronto', lat: 43.6532, lng: -79.3832, frequency: 'daily' }],
+    isRemote: false,
+    transitMode: 'transit',
+    lifestyle: { cafes_restaurants: 1, parks_nature: 1 }
+  }), []);
+
   // ─── Upgraded Matching Algorithm ───────────────────────────────────────────
   // v2: Sigmoidal commute decay + Cosine similarity + Score explainability
   const matchedNeighborhoods = useMemo(() => {
-    if (!userPreferences) return [];
+    const prefs = userPreferences || DEFAULT_PREFERENCES;
 
-    const profile = userPreferences.profile || 'professional';
-    const commuteLocations = userPreferences.commuteLocations || [];
-    const isRemote = userPreferences.isRemote || false;
-    const transitMode = userPreferences.transitMode || 'transit';
-    const lifestyle = userPreferences.lifestyle || {};
+    const profile = prefs.profile || 'professional';
+    const commuteLocations = prefs.commuteLocations || [];
+    const isRemote = prefs.isRemote || false;
+    const transitMode = prefs.transitMode || 'transit';
+    const lifestyle = prefs.lifestyle || {};
     const amenityKeys = Object.keys(lifestyle).filter(k => (lifestyle[k] || 0) > 0);
 
     // 1. Generate dynamic spatial micro-zone candidates around user's anchor location
     let dynamicIsochroneAreas = [];
     if (commuteLocations.length > 0 && commuteLocations[0].lat && commuteLocations[0].lng) {
-      dynamicIsochroneAreas = generateDynamicIsochroneZones(commuteLocations[0], userPreferences);
+      dynamicIsochroneAreas = generateDynamicIsochroneZones(commuteLocations[0], prefs);
     }
 
     // 2. Combine static curated dataset + dynamic isochrone spatial candidates
@@ -325,12 +334,11 @@ export default function App() {
       let commuteScore = 50;
       const idealMinutes = userPreferences.idealCommuteMinutes || 30;
 
+      let minEstTime = Infinity;
+
       if (isRemote) {
         commuteScore = 80 + ((area.transit?.walkability ?? 0) * 2);
-      } else if (transitMode === 'walking') {
-        commuteScore = (area.transit?.walkability ?? 0) * 10;
-      let minEstTime = Infinity;
-      if (commuteLocations && commuteLocations.length > 0) {
+      } else if (commuteLocations && commuteLocations.length > 0) {
         let totalScore = 0;
         let totalWeight = 0;
 
@@ -359,6 +367,8 @@ export default function App() {
         commuteScore = totalWeight > 0
           ? totalScore / totalWeight
           : (area.transit?.walkability ?? 0) * 8;
+      } else if (transitMode === 'walking') {
+        commuteScore = (area.transit?.walkability ?? 0) * 10;
       } else {
         commuteScore = (area.transit?.walkability ?? 0) * 8;
       }
@@ -458,8 +468,8 @@ export default function App() {
 
   // Filtered Neighborhood List
   const filteredAreas = useMemo(() => {
-    if (cityFilter === 'All') return matchedNeighborhoods;
-    return matchedNeighborhoods.filter(area => area.city.startsWith(cityFilter));
+    if (!cityFilter || cityFilter.toUpperCase() === 'ALL') return matchedNeighborhoods;
+    return matchedNeighborhoods.filter(area => area.city && area.city.toUpperCase().includes(cityFilter.toUpperCase()));
   }, [matchedNeighborhoods, cityFilter]);
 
   const handleRetakeQuiz = () => {
