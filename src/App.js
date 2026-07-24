@@ -637,10 +637,17 @@ export default function App() {
             {/* Premium Insights Banner */}
             <div className="premium-insights-banner animate-fade-in card-subglass">
               <div className="insights-content">
-                <h3 className="display-font"><span style={{color: 'var(--color-primary)'}}>✦</span> Premium Market Insights</h3>
-                <p>Unlock historical pricing trends, school district ratings, and predictive neighborhood gentrification models to make the perfect decision.</p>
+                <h3 className="display-font"><span style={{color: 'var(--color-primary)'}}>✦</span> Premium Market Insights & Data Reports</h3>
+                <p>Explore historical pricing trends, school district ratings, urban planning reports, and predictive neighborhood gentrification models.</p>
               </div>
-              <button className="btn-luxury" onClick={() => setIsPremiumUnlocked(true)}>Unlock Premium Insights</button>
+              <button 
+                type="button" 
+                className="btn-header-action luxury-btn-header" 
+                onClick={() => navigateTo('/insights')}
+                style={{ padding: '0.75rem 1.35rem', fontSize: '0.9rem', whiteSpace: 'nowrap', cursor: 'pointer' }}
+              >
+                Explore Insights &rarr;
+              </button>
             </div>
           </div>
         )}
