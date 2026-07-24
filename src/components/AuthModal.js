@@ -16,6 +16,10 @@ export default function AuthModal({ onClose }) {
       setError('Password must be at least 6 characters');
       return;
     }
+    if (!process.env.REACT_APP_SUPABASE_URL || process.env.REACT_APP_SUPABASE_URL.includes('placeholder')) {
+      setError('Supabase credentials missing on server. Please add REACT_APP_SUPABASE_URL to Vercel Environment Variables.');
+      return;
+    }
     setLoading(true);
     setError(null);
     setMessage(null);
