@@ -49,6 +49,8 @@ export default function VibeQuiz({ onComplete }) {
   const [commuteLocations, setCommuteLocations] = useState([{ id: 1, address: '', label: 'Work', frequency: 'daily' }]);
   const [isRemote, setIsRemote] = useState(false);
   const [transitMode, setTransitMode] = useState('transit');
+  const [tenure, setTenure] = useState('rent');
+  const [maxPrice, setMaxPrice] = useState(2500);
   const [isGeocoding, setIsGeocoding] = useState(false);
 
   // Initialize all 7 lifestyle pillars with level 1 (Nice-to-have)
@@ -80,6 +82,8 @@ export default function VibeQuiz({ onComplete }) {
         commuteLocations: [],
         isRemote,
         transitMode,
+        tenure,
+        maxPrice,
         lifestyle
       });
       return;
@@ -122,6 +126,8 @@ export default function VibeQuiz({ onComplete }) {
       commuteLocations: locationsWithCoords,
       isRemote,
       transitMode,
+      tenure,
+      maxPrice,
       lifestyle
     });
   };
@@ -293,13 +299,15 @@ export default function VibeQuiz({ onComplete }) {
         </div>
       )}
 
-      {/* STEP 3: TRANSIT MODE PREFERENCE */}
+      {/* STEP 3: TRANSIT MODE & BUDGET ALIGNMENT */}
       {step === 3 && (
         <div className="quiz-step-content fade-in">
-          <h2 className="quiz-title display-font platinum-text-glow">Preferred Transit Mode</h2>
-          <p className="quiz-subtitle">How do you prefer getting around the city?</p>
+          <h2 className="quiz-title display-font platinum-text-glow">Transit & Housing Budget</h2>
+          <p className="quiz-subtitle">Set your preferred transport mode and target monthly/purchase budget.</p>
 
-          <div className="quiz-options-list">
+          {/* Transit Mode Selection */}
+          <label className="quiz-label uppercase letter-spacing" style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.82rem' }}>1. Transport Mode</label>
+          <div className="quiz-options-list" style={{ marginBottom: '1.5rem' }}>
             {TRANSIT_MODES.map(mode => (
               <div 
                 key={mode.id}
@@ -320,6 +328,64 @@ export default function VibeQuiz({ onComplete }) {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Housing Tenure & Budget Selector */}
+          <div className="card-subglass luxury-subcard" style={{ padding: '1.25rem', marginBottom: '1.5rem' }}>
+            <label className="quiz-label uppercase letter-spacing" style={{ display: 'block', marginBottom: '0.75rem', fontSize: '0.82rem' }}>2. Housing Intent & Target Budget</label>
+            
+            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.25rem' }}>
+              <button
+                type="button"
+                className={`quiz-toggle-btn luxury-btn ${tenure === 'rent' ? 'active' : ''}`}
+                onClick={() => { setTenure('rent'); setMaxPrice(2500); }}
+                style={{ flex: 1, padding: '0.65rem', fontSize: '0.85rem' }}
+              >
+                🔑 Renting (Monthly)
+              </button>
+              <button
+                type="button"
+                className={`quiz-toggle-btn luxury-btn ${tenure === 'buy' ? 'active' : ''}`}
+                onClick={() => { setTenure('buy'); setMaxPrice(900000); }}
+                style={{ flex: 1, padding: '0.65rem', fontSize: '0.85rem' }}
+              >
+                🏡 Buying (Purchase Price)
+              </button>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Target Budget Limit:</span>
+              <span style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--color-accent)' }}>
+                {tenure === 'rent' ? `$${maxPrice.toLocaleString()}/mo` : `$${(maxPrice / 1000).toLocaleString()}k`}
+              </span>
+            </div>
+
+            <input 
+              type="range"
+              min={tenure === 'rent' ? 1200 : 400000}
+              max={tenure === 'rent' ? 5000 : 2500000}
+              step={tenure === 'rent' ? 100 : 25000}
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(Number(e.target.value))}
+              style={{ width: '100%', accentColor: 'var(--color-primary)', cursor: 'pointer', marginBottom: '0.75rem' }}
+            />
+
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              {(tenure === 'rent' 
+                ? [1800, 2400, 3000, 3800]
+                : [650000, 850000, 1200000, 1600000]
+              ).map(preset => (
+                <button
+                  key={preset}
+                  type="button"
+                  className="btn-secondary"
+                  onClick={() => setMaxPrice(preset)}
+                  style={{ padding: '0.35rem 0.75rem', fontSize: '0.78rem', flex: 1 }}
+                >
+                  {tenure === 'rent' ? `$${preset}/mo` : `$${preset / 1000}k`}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="quiz-nav-actions">

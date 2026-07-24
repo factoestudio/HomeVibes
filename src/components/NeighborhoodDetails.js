@@ -27,6 +27,13 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
   const [showDayInLife, setShowDayInLife] = useState(false);
+  const [localTenure, setLocalTenure] = useState(userPreferences?.tenure || 'rent');
+  const [localMaxPrice, setLocalMaxPrice] = useState(userPreferences?.maxPrice || (userPreferences?.tenure === 'buy' ? 900000 : 2500));
+
+  useEffect(() => {
+    if (userPreferences?.tenure) setLocalTenure(userPreferences.tenure);
+    if (userPreferences?.maxPrice) setLocalMaxPrice(userPreferences.maxPrice);
+  }, [userPreferences]);
 
   const handleUnlockSubmit = async (e) => {
     e.preventDefault();
@@ -146,8 +153,8 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
     selectedTypes: userPreferences?.selectedTypes || ['Condo', 'House', 'Townhouse', 'Loft']
   };
 
-  const tenure = activeFilters.tenure;
-  const maxPrice = activeFilters.maxPrice;
+  const tenure = localTenure;
+  const maxPrice = localMaxPrice;
   const avgCostNum = tenure === 'rent' ? selectedArea.avgRentNum : selectedArea.avgBuyNum;
   
   let budgetMessage = "";
@@ -323,8 +330,41 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
               </span>
             </div>
           </div>
-          <div className={`budget-status-label ${budgetStatusClass}`}>
+          <div className={`budget-status-label ${budgetStatusClass}`} style={{ marginBottom: '1rem' }}>
             {budgetMessage}
+          </div>
+
+          {/* Interactive Budget Control */}
+          <div style={{ paddingTop: '0.85rem', borderTop: '1px dashed rgba(255,255,255,0.1)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+              <label style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Adjust Target Budget Limit:</label>
+              <div style={{ display: 'flex', gap: '4px' }}>
+                <button 
+                  type="button" 
+                  onClick={() => { setLocalTenure('rent'); setLocalMaxPrice(2500); }} 
+                  style={{ padding: '2px 8px', fontSize: '0.72rem', borderRadius: '4px', background: localTenure === 'rent' ? 'var(--color-primary)' : 'rgba(255,255,255,0.1)', color: localTenure === 'rent' ? '#12131A' : '#fff', border: 'none', cursor: 'pointer', fontWeight: 600 }}
+                >
+                  Rent
+                </button>
+                <button 
+                  type="button" 
+                  onClick={() => { setLocalTenure('buy'); setLocalMaxPrice(900000); }} 
+                  style={{ padding: '2px 8px', fontSize: '0.72rem', borderRadius: '4px', background: localTenure === 'buy' ? 'var(--color-primary)' : 'rgba(255,255,255,0.1)', color: localTenure === 'buy' ? '#12131A' : '#fff', border: 'none', cursor: 'pointer', fontWeight: 600 }}
+                >
+                  Buy
+                </button>
+              </div>
+            </div>
+
+            <input 
+              type="range"
+              min={localTenure === 'rent' ? 1200 : 400000}
+              max={localTenure === 'rent' ? 5500 : 2500000}
+              step={localTenure === 'rent' ? 100 : 25000}
+              value={localMaxPrice}
+              onChange={(e) => setLocalMaxPrice(Number(e.target.value))}
+              style={{ width: '100%', accentColor: 'var(--color-primary)', cursor: 'pointer' }}
+            />
           </div>
         </div>
 
