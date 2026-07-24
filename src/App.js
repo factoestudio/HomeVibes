@@ -194,10 +194,6 @@ export default function App() {
     } else if (path === '/quiz' || path === '/quiz/') {
       setView('quiz');
     } else if (path === '/results' || path === '/results/') {
-      if (!userPreferences) {
-        navigateTo('/quiz');
-        return;
-      }
       setView('results');
     } else {
       if (userPreferences) {
@@ -451,7 +447,7 @@ export default function App() {
       };
 
       // ── 6. Score Explainability Bullets ──────────────────────────────────
-      const matchReasons = generateMatchExplanation(area, userPreferences, subScores);
+      const matchReasons = generateMatchExplanation(area, prefs, subScores);
 
       return {
         ...area,
