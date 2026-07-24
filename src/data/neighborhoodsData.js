@@ -213,6 +213,7 @@ export const neighborhoodsData = [
   },
   {
     id: "willowdale",
+    geojsonId: "051",
     name: "Willowdale",
     city: "North York",
     lat: 43.7682,
@@ -738,6 +739,7 @@ export const neighborhoodsData = [
   },
   {
     id: "scarborough-bluffs",
+    geojsonId: "023",
     name: "Scarborough Bluffs",
     city: "Scarborough",
     lat: 43.7225,

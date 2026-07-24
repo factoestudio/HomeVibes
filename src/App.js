@@ -336,11 +336,17 @@ export default function App() {
       else if (profile === 'student' && area.priceBracket === '$$$')  budgetPenalty = 12;
 
       // ── 5. Total Compatibility Score ──────────────────────────────────────
+      const hasCommuteLocs = commuteLocations && commuteLocations.length > 0 && !isRemote;
+      const wCommute   = hasCommuteLocs ? 0.55 : 0.35;
+      const wLifeStage = hasCommuteLocs ? 0.20 : 0.25;
+      const wAmenities = hasCommuteLocs ? 0.20 : 0.30;
+      const wWalk      = hasCommuteLocs ? 0.05 : 0.10;
+
       const rawScore =
-        (lifeStageScore * 0.25) +
-        (commuteScore   * 0.40) +
-        (amenitiesScore * 0.25) +
-        ((area.transit?.walkability ?? 0) * 10 * 0.10) - // walkability bonus
+        (lifeStageScore * wLifeStage) +
+        (commuteScore   * wCommute) +
+        (amenitiesScore * wAmenities) +
+        ((area.transit?.walkability ?? 0) * 10 * wWalk) - // walkability bonus
         budgetPenalty;
 
       const finalScore = Math.min(99, Math.max(40, Math.round(rawScore)));

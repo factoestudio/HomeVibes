@@ -91,7 +91,11 @@ export default function VibeQuiz({ onComplete }) {
     const locationsWithCoords = await Promise.all(
       commuteLocations.filter(loc => loc.address.trim() !== '').map(async (loc) => {
         try {
-          const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(loc.address)}&limit=1`, {
+          const searchQuery = /ontario|gta|toronto|mississauga|brampton|oakville|markham|vaughan/i.test(loc.address) 
+            ? loc.address 
+            : `${loc.address}, Greater Toronto Area, Ontario, Canada`;
+
+          const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&limit=1`, {
             headers: { 'User-Agent': 'HomeVibesApp/1.0' }
           });
           if (!res.ok) throw new Error("Geocoding HTTP Error");

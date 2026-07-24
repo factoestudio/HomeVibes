@@ -103,6 +103,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
   const geoJsonLayerRef = useRef(null);
   const markersRef = useRef({});
   const extraMarkersRef = useRef({});
+  const regionalCirclesRef = useRef([]);
   const [isLoadingPOIs, setIsLoadingPOIs] = useState(false);
 
   // Initialize Map
@@ -154,9 +155,13 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
     const map = mapRef.current;
     if (!map) return;
 
-    // 2. Add Neighborhood Polygons
+    // 2. Add Neighborhood Polygons & Regional Circles
     if (geoJsonLayerRef.current) {
       map.removeLayer(geoJsonLayerRef.current);
+    }
+    if (regionalCirclesRef.current) {
+      regionalCirclesRef.current.forEach(c => map.removeLayer(c));
+      regionalCirclesRef.current = [];
     }
 
     if (neighborhoods && neighborhoods.length > 0) {
@@ -207,6 +212,38 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
           }
         }
       }).addTo(map);
+
+      // Render glowing circular boundary overlays for regional GTA areas without GeoJSON polygons
+      neighborhoods.forEach(n => {
+        if (n && n.lat && n.lng && !n.geojsonId) {
+          const matchScore = n.matchScore || 0;
+          const color = getMarkerColor(matchScore);
+          const circle = L.circle([n.lat, n.lng], {
+            radius: 2000,
+            color: color,
+            weight: 2,
+            opacity: 0.8,
+            fillColor: color,
+            fillOpacity: 0.30
+          }).addTo(map);
+
+          circle.bindTooltip(
+            `<div class="map-tooltip luxury-tooltip">
+              <strong style="color: var(--text-main); font-family: 'Outfit', sans-serif;">${n.name}</strong>
+              <div style="color: ${color}; font-weight: bold; margin-top: 3px; font-family: 'Plus Jakarta Sans', sans-serif;">
+                ${matchScore}% Match
+              </div>
+            </div>`,
+            { direction: 'center', opacity: 0.95 }
+          );
+
+          circle.on('click', () => {
+            if (onSelectNeighborhood) onSelectNeighborhood(n);
+          });
+
+          regionalCirclesRef.current.push(circle);
+        }
+      });
     }
   }, [neighborhoods, onSelectNeighborhood]);
 
