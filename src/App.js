@@ -39,8 +39,8 @@ const sigmoidCommuteScore = (estMinutes, targetMinutes = 30) => {
 const cosineLifestyleSimilarity = (userWeights, areaAmenities, amenityKeys) => {
   let dot = 0, uMag = 0, nMag = 0;
   amenityKeys.forEach(key => {
-    const u = (userWeights[key] || 0) / 2;          // normalize 0-2 → 0-1
-    const n = (areaAmenities[key] || 5) / 10;       // normalize 0-10 → 0-1
+    const u = (userWeights[key] ?? 0) / 2;          // normalize 0-2 → 0-1
+    const n = (areaAmenities[key] ?? 5) / 10;       // normalize 0-10 → 0-1
     dot  += u * n;
     uMag += u * u;
     nMag += n * n;
@@ -126,6 +126,10 @@ export default function App() {
     } else if (path === '/quiz' || path === '/quiz/') {
       setView('quiz');
     } else if (path === '/results' || path === '/results/') {
+      if (!userPreferences) {
+        navigateTo('/quiz');
+        return;
+      }
       setView('results');
     } else {
       if (userPreferences) {
@@ -315,7 +319,7 @@ export default function App() {
         // Apply hard penalty for unmet must-haves
         let mustHavePenalty = 0;
         amenityKeys.forEach(key => {
-          if (lifestyle[key] === 2 && (area.amenities[key] || 5) < 5) {
+          if (lifestyle[key] === 2 && (area.amenities[key] ?? 5) < 5) {
             mustHavePenalty += 15; // unmet must-have — deduct 15pts each
           }
         });

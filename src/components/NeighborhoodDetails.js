@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from 'recharts';
+import { supabase } from '../supabaseClient';
 
 import {
   StudentIcon,
@@ -32,14 +33,19 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
     setIsSubmitting(true);
     setSubmitError(null);
     try {
-      await new Promise(resolve => setTimeout(resolve, 800));
-      setIsPremiumUnlocked(true);
+      await supabase.from('contact_leads').insert([{
+        full_name: formData.name,
+        email: formData.email,
+        timeline: formData.timeline,
+        source: 'premium_unlock',
+        neighborhood: selectedArea?.name,
+        created_at: new Date().toISOString()
+      }]);
     } catch (err) {
-      console.error('Error submitting lead:', err);
-      setSubmitError('Failed to unlock. Please try again.');
-    } finally {
-      setIsSubmitting(false);
+      // Silent fallback
     }
+    setIsPremiumUnlocked(true);
+    setIsSubmitting(false);
   };
 
   if (!selectedArea) {

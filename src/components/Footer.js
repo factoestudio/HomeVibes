@@ -20,26 +20,29 @@ export default function Footer({ setView, navigateTo }) {
         </div>
         
         <div className="footer-links">
-          <button 
+          <a 
+            href="/privacy"
             className="footer-link-btn" 
-            onClick={() => handleNav('/privacy', 'privacy')}
+            onClick={(e) => { e.preventDefault(); handleNav('/privacy', 'privacy'); }}
           >
             Data Privacy & Treatment
-          </button>
+          </a>
           <span className="footer-divider">|</span>
-          <button 
+          <a 
+            href="/insights"
             className="footer-link-btn" 
-            onClick={() => handleNav('/insights', 'blog')}
+            onClick={(e) => { e.preventDefault(); handleNav('/insights', 'blog'); }}
           >
             Blog
-          </button>
+          </a>
           <span className="footer-divider">|</span>
-          <button 
+          <a 
+            href="/contact"
             className="footer-link-btn highlight-link" 
-            onClick={() => handleNav('/contact', 'contact')}
+            onClick={(e) => { e.preventDefault(); handleNav('/contact', 'contact'); }}
           >
             Partner With Us (B2B)
-          </button>
+          </a>
           <span className="footer-divider">|</span>
           <a 
             href="https://www.linkedin.com/company/homevibes/" 

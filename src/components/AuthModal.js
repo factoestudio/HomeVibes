@@ -12,6 +12,10 @@ export default function AuthModal({ onClose }) {
 
   const handleAuth = async (e) => {
     e.preventDefault();
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
+      return;
+    }
     setLoading(true);
     setError(null);
     setMessage(null);
@@ -21,9 +25,14 @@ export default function AuthModal({ onClose }) {
         const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
         error = signInError;
       } else {
-        const { error: signUpError } = await supabase.auth.signUp({ email, password });
+        const { data, error: signUpError } = await supabase.auth.signUp({ email, password });
         error = signUpError;
-        if (!error) setMessage('Check your email for the confirmation link.');
+        if (!error) {
+          setMessage('Check your email for the confirmation link.');
+          if (data?.session) {
+            onClose();
+          }
+        }
       }
       if (error) throw error;
       if (isLogin) onClose();
@@ -38,7 +47,10 @@ export default function AuthModal({ onClose }) {
     setLoading(true);
     setError(null);
     try {
-      const { error } = await supabase.auth.signInWithOAuth({ provider });
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: { redirectTo: window.location.origin }
+      });
       if (error) throw error;
     } catch (err) {
       setError(err.message);

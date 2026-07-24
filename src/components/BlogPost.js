@@ -6,6 +6,7 @@ export default function BlogPost({ post, onBack }) {
   if (!post) return <div>Post not found.</div>;
 
   // Generate JSON-LD Schema
+  const isoDate = new Date(post.date).toISOString().split('T')[0];
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -15,7 +16,18 @@ export default function BlogPost({ post, onBack }) {
       "@type": "Organization",
       "name": "HomeVibes Research"
     },
-    "datePublished": post.date
+    "publisher": {
+      "@type": "Organization",
+      "name": "HomeVibes",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://homevibes.app/logo512.png"
+      }
+    },
+    "mainEntityOfPage": `https://homevibes.app/insights/${post.slug}`,
+    "image": "https://homevibes.app/logo512.png",
+    "datePublished": isoDate,
+    "dateModified": isoDate
   };
 
   return (
@@ -23,14 +35,20 @@ export default function BlogPost({ post, onBack }) {
       <Helmet>
         <title>{post.title} | HomeVibes</title>
         <meta name="description" content={post.excerpt} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:url" content={`https://homevibes.app/insights/${post.slug}`} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt} />
         <script type="application/ld+json">
           {JSON.stringify(schema)}
         </script>
       </Helmet>
 
-      <button className="btn-secondary" onClick={onBack} style={{ marginBottom: '2rem' }}>
+      <a href="/insights" className="btn-secondary" onClick={(e) => { e.preventDefault(); onBack(); }} style={{ marginBottom: '2rem', display: 'inline-block' }}>
         &larr; Back to Insights
-      </button>
+      </a>
 
       <article className="card-glass luxury-border" style={{ padding: '3rem', backgroundColor: 'var(--color-bg-dark)' }}>
         <header style={{ marginBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '2rem' }}>

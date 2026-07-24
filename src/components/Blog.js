@@ -7,6 +7,22 @@ export default function Blog({ activeSlug, navigateTo }) {
     ? blogPosts.find(p => p.slug === activeSlug || String(p.id) === String(activeSlug))
     : null;
 
+  if (activeSlug && !selectedPost) {
+    return (
+      <div className="blog-container fade-in" style={{ padding: '4rem 2rem', maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+        <h2 className="display-font platinum-text-glow" style={{ fontSize: '2rem', marginBottom: '1rem' }}>Post not found</h2>
+        <a 
+          href="/insights" 
+          className="btn-secondary" 
+          onClick={(e) => { e.preventDefault(); if (navigateTo) navigateTo('/insights'); }}
+          style={{ display: 'inline-block' }}
+        >
+          &larr; Back to Insights
+        </a>
+      </div>
+    );
+  }
+
   if (selectedPost) {
     return <BlogPost post={selectedPost} onBack={() => navigateTo ? navigateTo('/insights') : null} />;
   }
@@ -26,13 +42,15 @@ export default function Blog({ activeSlug, navigateTo }) {
             </span>
             <h2 className="display-font" style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{post.title}</h2>
             <p style={{ opacity: 0.8, lineHeight: 1.5, marginBottom: '2rem', flexGrow: 1 }}>{post.excerpt}</p>
-            <button 
+            <a 
+              href={`/insights/${post.slug}`}
               className="btn-luxury" 
-              style={{ alignSelf: 'flex-start', padding: '0.5rem 1.5rem', fontSize: '0.9rem' }}
-              onClick={() => navigateTo ? navigateTo(`/insights/${post.slug}`) : null}
+              style={{ alignSelf: 'flex-start', padding: '0.5rem 1.5rem', fontSize: '0.9rem', display: 'inline-block' }}
+              onClick={(e) => { e.preventDefault(); if(navigateTo) navigateTo(`/insights/${post.slug}`); }}
+              aria-label={`Read article: ${post.title}`}
             >
               Read Article
-            </button>
+            </a>
           </div>
         ))}
       </div>

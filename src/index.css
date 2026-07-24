@@ -2,6 +2,9 @@
 
 :root {
   /* Dark Mode: Vibrant Purple & Deep Violet-Navy */
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-primary: 'Outfit', sans-serif;
+  --color-accent: #D08DF6;
   --bg-dark: #0D0C2E;          /* Deep Violet-Navy */
   --bg-card: rgba(13, 12, 46, 0.7); /* Navy Tinted Glass */
   --bg-subcard: rgba(30, 28, 70, 0.6);
@@ -38,6 +41,9 @@
 
 [data-theme="light"] {
   /* Light Mode: White & Vibrant Purple */
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-primary: 'Outfit', sans-serif;
+  --color-accent: #D08DF6;
   --bg-dark: #FAFAFC;          /* Crisp White */
   --bg-card: rgba(255, 255, 255, 0.85); /* Frost Glass */
   --bg-subcard: rgba(245, 242, 250, 0.8);

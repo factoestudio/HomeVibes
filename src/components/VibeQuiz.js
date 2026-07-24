@@ -147,6 +147,10 @@ export default function VibeQuiz({ onComplete }) {
                 key={item.id}
                 className={`quiz-list-item luxury-item ${profile === item.id ? 'active' : ''}`}
                 onClick={() => setProfile(item.id)}
+                role="radio"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setProfile(item.id); } }}
+                aria-checked={profile === item.id}
               >
                 <div className="quiz-list-item-icon platinum-text">{item.icon}</div>
                 <div className="quiz-list-item-info">
@@ -289,6 +293,10 @@ export default function VibeQuiz({ onComplete }) {
                 key={mode.id}
                 className={`quiz-list-item luxury-item ${transitMode === mode.id ? 'active' : ''}`}
                 onClick={() => setTransitMode(mode.id)}
+                role="radio"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setTransitMode(mode.id); } }}
+                aria-checked={transitMode === mode.id}
               >
                 <div className="quiz-list-item-icon platinum-text">{mode.icon}</div>
                 <div className="quiz-list-item-info">

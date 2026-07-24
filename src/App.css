@@ -48,6 +48,12 @@
 [data-theme="light"] .logo-dark-mode {
   display: none;
 }
+[data-theme="dark"] .logo-light-mode {
+  display: none;
+}
+[data-theme="dark"] .logo-dark-mode {
+  display: block;
+}
 
 .logo-icon {
   display: flex;
@@ -606,9 +612,12 @@ button {
 .results-layout {
   display: grid;
   grid-template-columns: 330px 1fr 390px;
+  grid-template-rows: 1fr;
   gap: 1.5rem;
   flex: 1;
   min-height: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 /* Left Column: Matches List */
@@ -616,6 +625,8 @@ button {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .list-column-header {
@@ -761,15 +772,16 @@ button {
 
 /* Middle Column: Map Widget styling */
 .results-map-column {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .map-wrapper {
-  flex: 1;
-  position: relative;
-  height: 100%;
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .map-container .leaflet-container {
@@ -847,6 +859,8 @@ button {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .details-empty-state {
@@ -950,8 +964,8 @@ button {
 
 .score-ring-container {
   position: relative;
-  width: 95px;
-  height: 95px;
+  width: auto;
+  height: auto;
   flex-shrink: 0;
 }
 
@@ -970,7 +984,7 @@ button {
 .score-ring-fill {
   fill: none;
   stroke-width: 6;
-  stroke-linecap: square;
+  stroke-linecap: round;
   transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1458,7 +1472,7 @@ button {
 @media (max-width: 1150px) {
   .results-layout {
     grid-template-columns: 350px 1fr;
-    grid-template-rows: calc(100vh - 200px) auto;
+    grid-template-rows: 1fr auto;
     height: auto;
     max-height: none;
   }
@@ -1468,11 +1482,13 @@ button {
   }
 
   .results-map-column {
-    height: 100%;
+    position: relative;
+    min-height: 0;
   }
 
   .results-details-column {
     grid-column: 1 / -1;
+    position: relative;
     height: 600px;
     border-top: 1px solid var(--border-color);
     padding-top: 1.5rem;
@@ -1522,6 +1538,7 @@ button {
   }
 
   .results-map-column {
+    position: relative;
     height: 380px;
     margin-bottom: 1.5rem;
   }
@@ -1533,6 +1550,28 @@ button {
   .platform-buttons-grid {
     grid-template-columns: 1fr;
     gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-main-content {
+    padding: 0.75rem;
+  }
+  .quiz-container {
+    padding: 1rem;
+  }
+  .priority-selector {
+    grid-template-columns: 1fr;
+  }
+  .results-map-column {
+    height: 280px;
+  }
+  .results-list-column {
+    height: 350px;
+  }
+  .results-details-column {
+    height: auto;
+    max-height: 500px;
   }
 }
 
@@ -1855,28 +1894,7 @@ button {
   margin: 0 auto;
 }
 
-.luxury-input {
-  width: 100%;
-  padding: 1rem 1.25rem;
-  background-color: rgba(7, 8, 11, 0.7);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  color: var(--text-main);
-  font-family: var(--font-main);
-  font-size: 0.95rem;
-  transition: var(--transition-smooth);
-}
 
-.luxury-input:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 10px rgba(176, 196, 222, 0.15);
-}
-
-.luxury-input::placeholder {
-  color: var(--text-muted);
-  opacity: 0.6;
-}
 
 .timeline-select {
   width: 100%;
@@ -1931,6 +1949,10 @@ button {
   0% { box-shadow: 0 0 10px rgba(176, 196, 222, 0.3); }
   50% { box-shadow: 0 0 25px rgba(176, 196, 222, 0.7); }
   100% { box-shadow: 0 0 10px rgba(176, 196, 222, 0.3); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
 /* Improve Map Contrast via Inversion */
@@ -2118,7 +2140,6 @@ button {
 
 .role-selector-header {
   text-align: center;
-  text-align: center;
   margin-bottom: 50px;
 }
 
@@ -2292,7 +2313,7 @@ button {
   padding: 1.2rem 3rem;
   border-radius: 50px;
   background-color: #1d1d1f;
-  color: #1d1d1f;
+  color: #ffffff;
   border: none;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
@@ -2397,6 +2418,15 @@ button {
   .apple-hero-subtext {
     font-size: 1.2rem;
   }
+}
+
+.mockup-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
   .apple-features-section {
     padding: 5rem 1.5rem;
   }

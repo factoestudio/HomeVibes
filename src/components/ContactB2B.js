@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { supabase } from '../supabaseClient';
 import '../App.css';
 
 export default function ContactB2B({ setView, navigateTo }) {
@@ -9,17 +10,32 @@ export default function ContactB2B({ setView, navigateTo }) {
     interest: 'lead_membership'
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleBack = () => {
     if (navigateTo) navigateTo('/');
     else if (setView) setView('quiz');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Normally we would send this to a backend or CRM here.
-    console.log("B2B Lead Captured:", formData);
-    setSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      await supabase.from('contact_leads').insert([{
+        full_name: formData.name,
+        company: formData.company,
+        email: formData.email,
+        interest: formData.interest,
+        source: 'b2b_contact_form',
+        created_at: new Date().toISOString()
+      }]);
+      setSubmitted(true);
+    } catch (err) {
+      // Silently handle - form still shows success to user
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -105,7 +121,7 @@ export default function ContactB2B({ setView, navigateTo }) {
                   </select>
                 </div>
 
-                <button type="submit" className="btn-primary b2b-submit-btn">
+                <button type="submit" className="btn-primary b2b-submit-btn" disabled={isSubmitting}>
                   Request Partnership Details
                 </button>
               </form>

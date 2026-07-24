@@ -7,7 +7,7 @@ export const blogPosts = [
     excerpt: 'From indie breweries and Geary Ave arts hubs to the Railpath expansion, the Junction and Dupont West corridor is driving Toronto\'s 2026 creative migration. Here is how the vibe matches your real estate move.',
     category: 'Vibe Analysis',
     content: `
-# The Junction & Dupont West: Toronto's 2026 Epicenter for Industrial Artisan Loft Living
+## The Junction & Dupont West: Toronto's 2026 Epicenter for Industrial Artisan Loft Living
 
 **Target Persona & Micro-Cluster**
 Creative Tech Founders, Remote Work Professionals, Design Enthusiasts, and Young Urban Families across the Junction, Junction Triangle, and Dupont West corridors.
@@ -53,7 +53,7 @@ The Junction & Dupont West corridor is proof that Toronto buyers in 2026 aren't 
     excerpt: 'The Bank of Canada held at 2.25% for the sixth straight time. With GTA sales up 9.4% and inventory tightening, here is how buyers, renewers, and investors should play it.',
     category: 'Market Trends',
     content: `
-# The Rate Hold Effect: What the Bank of Canada's 6th Consecutive Pause Means for GTA Buyers
+## The Rate Hold Effect: What the Bank of Canada's 6th Consecutive Pause Means for GTA Buyers
 
 **Target Persona & Micro-Cluster**
 First-Time Buyers, Mortgage Renewers, and Move-Up Families across the Greater Toronto Area — particularly those watching borrowing costs before making a summer 2026 move.
@@ -99,7 +99,7 @@ The Bank of Canada is telling the market: *"We're not moving — and neither sho
     excerpt: 'Vacancy rates hit 5.4%, 66% of new buildings offer move-in incentives, and Bill 60 just doubled tenant protections. The Toronto rental market has completely flipped.',
     category: 'Rental Market',
     content: `
-# Toronto's Rental Reset: Vacancy Rates Hit 5-Year Highs and Landlords Are Paying You to Move In
+## Toronto's Rental Reset: Vacancy Rates Hit 5-Year Highs and Landlords Are Paying You to Move In
 
 **Target Persona & Micro-Cluster**
 Renters, Rental Investors, and Newcomers across the Greater Toronto & Hamilton Area — especially those eyeing purpose-built rental buildings in the downtown core, North York, and Etobicoke corridors.
@@ -156,7 +156,7 @@ Toronto's rental market has flipped from a landlord's playground to a renter's p
     excerpt: 'Line 5 is officially running and the western extension excavation has begun. Here’s what it means for midtown and western transit-oriented investors.',
     category: 'Market Trends',
     content: `
-# The Crosstown Effect: How Line 5’s Launch is Reshaping Midtown & Beyond
+## The Crosstown Effect: How Line 5’s Launch is Reshaping Midtown & Beyond
 
 **Target Persona & Micro-Cluster**
 Urban Commuters, Transit-Oriented Investors, and Midtown Families (focusing on the Yonge/Eglinton corridor out to Mount Dennis).
@@ -179,7 +179,7 @@ The long-awaited transit dream is finally reality. If you missed the boat on the
     excerpt: 'New condo sales are surging, but the action has completely shifted from pre-construction to completed projects. Here is how you should pivot your strategy.',
     category: 'Market Trends',
     content: `
-# The 2026 Condo Shakeup: Why 'Move-In Ready' is Defeating Pre-Con
+## The 2026 Condo Shakeup: Why 'Move-In Ready' is Defeating Pre-Con
 
 **Target Persona & Micro-Cluster**
 Turnkey Investors, First-Time Buyers, and GTHA Condo Hunters (Downtown Core & Emerging Transit Nodes).
@@ -202,7 +202,7 @@ Certainty is the new luxury in 2026. If you're looking to invest or move, priori
     excerpt: 'The Ontario Line turns Leslieville from a great neighborhood into a globally connected urban village. Here is what it means for young families.',
     category: 'Market Trends',
     content: `
-# Leslieville & The Ontario Line: Future-Proofing Your Family's Lifestyle
+## Leslieville & The Ontario Line: Future-Proofing Your Family's Lifestyle
 
 **Target Persona:** Young Families & Move-Up Buyers  
 **Micro-Cluster:** Queen Broadview Village & South Riverdale
@@ -233,7 +233,7 @@ Prices in South Riverdale and Leslieville are already adjusting to the future re
     excerpt: 'In the Toronto West End, telling someone you live in "Trinity Bellwoods" isn\'t specific enough anymore. We compare two of the most coveted, hyper-local strips.',
     category: 'Vibe Analysis',
     content: `
-# Ossington Strip vs. West Queen West: Which Micro-Cluster Fits Your Vibe?
+## Ossington Strip vs. West Queen West: Which Micro-Cluster Fits Your Vibe?
 
 **Target Persona:** Creatives & DINKs (Dual Income, No Kids)  
 **Micro-Cluster:** Ossington Ave (Queen to Dundas) & West Queen West (Gladstone to Bathurst)
@@ -263,7 +263,7 @@ Named one of the coolest neighborhoods in the world by Vogue a few years ago, WQ
     excerpt: 'The Hazel McCallion Line is transforming Port Credit from a lakeside gem into a hyper-connected transit hub. Discover why it\'s the premier play for young professionals.',
     category: 'Transit Impact',
     content: `
-# The Hazel McCallion Line Effect: How Port Credit's Vibe is Evolving
+## The Hazel McCallion Line Effect: How Port Credit's Vibe is Evolving
 
 **Target Persona:** Young Professionals & Investors  
 **Micro-Cluster:** Port Credit GO Transit Hub, Mississauga South
@@ -283,3 +283,4 @@ Investors and buyers looking for lifestyle *and* appreciation should look closel
 `
   }
 ];
+

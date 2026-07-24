@@ -10,9 +10,9 @@ export default function PrivacyPolicy({ setView, navigateTo }) {
   return (
     <div className="legal-page-wrapper">
       <div className="legal-page-container glass-panel luxury-border">
-        <button className="back-btn" onClick={handleBack}>
+        <a href="/" className="back-btn" onClick={(e) => { e.preventDefault(); handleBack(); }} style={{ display: 'inline-block' }}>
           &larr; Back to Home
-        </button>
+        </a>
         
         <h1 className="legal-title">Privacy Policy & Data Treatment</h1>
         <p className="legal-date">Last Updated: July 2026</p>
