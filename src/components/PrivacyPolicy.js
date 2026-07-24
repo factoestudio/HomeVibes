@@ -1,11 +1,16 @@
 import React from 'react';
 import '../App.css';
 
-export default function PrivacyPolicy({ setView }) {
+export default function PrivacyPolicy({ setView, navigateTo }) {
+  const handleBack = () => {
+    if (navigateTo) navigateTo('/');
+    else if (setView) setView('quiz');
+  };
+
   return (
     <div className="legal-page-wrapper">
       <div className="legal-page-container glass-panel luxury-border">
-        <button className="back-btn" onClick={() => setView('quiz')}>
+        <button className="back-btn" onClick={handleBack}>
           &larr; Back to Home
         </button>
         

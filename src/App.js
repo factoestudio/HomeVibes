@@ -98,6 +98,7 @@ const generateMatchExplanation = (area, userPreferences, subScores) => {
 
 export default function App() {
   const [view, setView] = useState('landing'); // 'landing' | 'quiz' | 'results' | 'privacy' | 'contact' | 'blog'
+  const [activeBlogSlug, setActiveBlogSlug] = useState(null);
   const [userPreferences, setUserPreferences] = useState(null);
   const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(true);
   const [selectedArea, setSelectedArea] = useState(null);
@@ -106,6 +107,63 @@ export default function App() {
   // Auth State
   const [session, setSession] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
+
+  // Synchronize state with URL location
+  const handleLocationChange = useCallback(() => {
+    const path = window.location.pathname;
+    if (path === '/insights' || path === '/insights/' || path === '/blog' || path === '/blog/') {
+      setView('blog');
+      setActiveBlogSlug(null);
+    } else if (path.startsWith('/insights/') || path.startsWith('/blog/')) {
+      const parts = path.split('/').filter(Boolean);
+      const slug = parts[1];
+      setView('blog');
+      setActiveBlogSlug(slug || null);
+    } else if (path === '/privacy' || path === '/privacy/') {
+      setView('privacy');
+    } else if (path === '/contact' || path === '/contact/') {
+      setView('contact');
+    } else if (path === '/quiz' || path === '/quiz/') {
+      setView('quiz');
+    } else if (path === '/results' || path === '/results/') {
+      setView('results');
+    } else {
+      if (userPreferences) {
+        setView('results');
+      } else {
+        setView('landing');
+      }
+    }
+  }, [userPreferences]);
+
+  const navigateTo = useCallback((path, push = true) => {
+    if (push && window.location.pathname !== path) {
+      window.history.pushState({}, '', path);
+    }
+    const parts = path.split('/').filter(Boolean);
+    if (parts[0] === 'insights' || parts[0] === 'blog') {
+      setView('blog');
+      setActiveBlogSlug(parts[1] || null);
+    } else if (parts[0] === 'privacy') {
+      setView('privacy');
+    } else if (parts[0] === 'contact') {
+      setView('contact');
+    } else if (parts[0] === 'quiz') {
+      setView('quiz');
+    } else if (parts[0] === 'results') {
+      setView('results');
+    } else {
+      if (userPreferences) setView('results');
+      else setView('landing');
+    }
+    window.scrollTo(0, 0);
+  }, [userPreferences]);
+
+  useEffect(() => {
+    handleLocationChange();
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, [handleLocationChange]);
 
   // Initialize Auth & Fetch Preferences
   useEffect(() => {
@@ -302,7 +360,7 @@ export default function App() {
 
   const handleQuizComplete = (prefs) => {
     setUserPreferences(prefs);
-    setView('results');
+    navigateTo('/results');
     // Persist to Supabase if logged in
     if (session) {
       saveUserPreferences(prefs);
@@ -332,7 +390,7 @@ export default function App() {
     setUserPreferences(null);
     setSelectedArea(null);
     setCityFilter('All');
-    setView('landing');
+    navigateTo('/');
   };
 
   return (
@@ -345,7 +403,7 @@ export default function App() {
         </div>
         <p className="header-desc">Where Your Vibes Match Home</p>
         <div className="header-right">
-          <button className="btn-header-action luxury-btn-header" style={{ marginRight: '8px' }} onClick={() => setView('blog')}>
+          <button className="btn-header-action luxury-btn-header" style={{ marginRight: '8px' }} onClick={() => navigateTo('/insights')}>
             Insights
           </button>
           {session ? (
@@ -368,17 +426,17 @@ export default function App() {
       {/* Main Content Area */}
       <main className={`app-main-content ${view === 'landing' ? 'landing-view-main' : ''}`}>
         {view === 'landing' ? (
-          <LandingPage onStart={() => setView('quiz')} />
+          <LandingPage onStart={() => navigateTo('/quiz')} />
         ) : view === 'quiz' ? (
           <div className="quiz-container animate-fade-in">
             <VibeQuiz onComplete={handleQuizComplete} />
           </div>
         ) : view === 'blog' ? (
-          <Blog />
+          <Blog activeSlug={activeBlogSlug} navigateTo={navigateTo} />
         ) : view === 'privacy' ? (
-            <PrivacyPolicy setView={setView} />
+            <PrivacyPolicy setView={setView} navigateTo={navigateTo} />
         ) : view === 'contact' ? (
-            <ContactB2B setView={setView} />
+            <ContactB2B setView={setView} navigateTo={navigateTo} />
           ) : (
             <div className="results-dashboard-wrapper">
               <div className="results-layout animate-fade-in">
@@ -479,7 +537,7 @@ export default function App() {
 
       {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
       {/* Footer */}
-      <Footer setView={setView} />
+      <Footer setView={setView} navigateTo={navigateTo} />
     </div>
   );
 }

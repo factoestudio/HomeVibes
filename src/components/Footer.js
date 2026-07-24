@@ -1,7 +1,16 @@
 import React from 'react';
 import '../App.css';
 
-export default function Footer({ setView }) {
+export default function Footer({ setView, navigateTo }) {
+  const handleNav = (path, viewName) => {
+    if (navigateTo) {
+      navigateTo(path);
+    } else if (setView) {
+      setView(viewName);
+    }
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="footer-container glass-panel luxury-border">
       <div className="footer-content">
@@ -13,21 +22,21 @@ export default function Footer({ setView }) {
         <div className="footer-links">
           <button 
             className="footer-link-btn" 
-            onClick={() => { setView('privacy'); window.scrollTo(0,0); }}
+            onClick={() => handleNav('/privacy', 'privacy')}
           >
             Data Privacy & Treatment
           </button>
           <span className="footer-divider">|</span>
           <button 
             className="footer-link-btn" 
-            onClick={() => { setView('blog'); window.scrollTo(0,0); }}
+            onClick={() => handleNav('/insights', 'blog')}
           >
             Blog
           </button>
           <span className="footer-divider">|</span>
           <button 
             className="footer-link-btn highlight-link" 
-            onClick={() => { setView('contact'); window.scrollTo(0,0); }}
+            onClick={() => handleNav('/contact', 'contact')}
           >
             Partner With Us (B2B)
           </button>

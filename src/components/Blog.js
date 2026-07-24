@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BlogPost from './BlogPost';
-import { blogPosts } from '../data/blogPosts'; // We will create this
+import { blogPosts } from '../data/blogPosts';
 
-export default function Blog() {
-  const [selectedPost, setSelectedPost] = useState(null);
+export default function Blog({ activeSlug, navigateTo }) {
+  const selectedPost = activeSlug 
+    ? blogPosts.find(p => p.slug === activeSlug || String(p.id) === String(activeSlug))
+    : null;
 
   if (selectedPost) {
-    return <BlogPost post={selectedPost} onBack={() => setSelectedPost(null)} />;
+    return <BlogPost post={selectedPost} onBack={() => navigateTo ? navigateTo('/insights') : null} />;
   }
 
   return (
@@ -27,7 +29,7 @@ export default function Blog() {
             <button 
               className="btn-luxury" 
               style={{ alignSelf: 'flex-start', padding: '0.5rem 1.5rem', fontSize: '0.9rem' }}
-              onClick={() => setSelectedPost(post)}
+              onClick={() => navigateTo ? navigateTo(`/insights/${post.slug}`) : null}
             >
               Read Article
             </button>

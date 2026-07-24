@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 
-export default function ContactB2B({ setView }) {
+export default function ContactB2B({ setView, navigateTo }) {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -9,6 +9,11 @@ export default function ContactB2B({ setView }) {
     interest: 'lead_membership'
   });
   const [submitted, setSubmitted] = useState(false);
+
+  const handleBack = () => {
+    if (navigateTo) navigateTo('/');
+    else if (setView) setView('quiz');
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +25,7 @@ export default function ContactB2B({ setView }) {
   return (
     <div className="b2b-page-wrapper">
       <div className="b2b-page-container glass-panel luxury-border">
-        <button className="back-btn" onClick={() => setView('quiz')}>
+        <button className="back-btn" onClick={handleBack}>
           &larr; Back to Home
         </button>
         
