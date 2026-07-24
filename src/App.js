@@ -280,7 +280,8 @@ export default function App() {
         commuteScore = 80 + ((area.transit?.walkability ?? 0) * 2);
       } else if (transitMode === 'walking') {
         commuteScore = (area.transit?.walkability ?? 0) * 10;
-      } else if (commuteLocations && commuteLocations.length > 0) {
+      let minEstTime = Infinity;
+      if (commuteLocations && commuteLocations.length > 0) {
         let totalScore = 0;
         let totalWeight = 0;
 
@@ -288,8 +289,11 @@ export default function App() {
           if (loc.lat && loc.lng && area.lat && area.lng) {
             const distKm = getDistanceFromLatLonInKm(loc.lat, loc.lng, area.lat, area.lng);
             let estTime = 60;
-            if (transitMode === 'driving') estTime = (distKm * 2.5) + 5;
-            if (transitMode === 'transit') estTime = (distKm * 4.5) + 10;
+            if (transitMode === 'driving') estTime = (distKm * 2.2) + 4;
+            if (transitMode === 'transit') estTime = (distKm * 4.2) + 8;
+            if (transitMode === 'walking') estTime = distKm * 12;
+
+            if (estTime < minEstTime) minEstTime = estTime;
 
             // Sigmoidal decay — smooth psychological accuracy
             const locScore = sigmoidCommuteScore(estTime, idealMinutes);
@@ -309,6 +313,14 @@ export default function App() {
       } else {
         commuteScore = (area.transit?.walkability ?? 0) * 8;
       }
+
+      const closestEstTime = minEstTime !== Infinity ? Math.round(minEstTime) : null;
+      const isWithinIsochroneBuffer = closestEstTime !== null ? closestEstTime <= idealMinutes : false;
+      const isochroneBufferBadge = (commuteLocations && commuteLocations.length > 0 && !isRemote && closestEstTime !== null)
+        ? (isWithinIsochroneBuffer 
+            ? `🎯 Within ${closestEstTime}-min Commute Isochrone Buffer` 
+            : `⏱️ ${closestEstTime}-min Commute (${closestEstTime - idealMinutes}m over target)`)
+        : null;
 
       // ── 3. Lifestyle Match — Cosine Similarity (25% weight) ───────────────
       // Treats user preferences and neighborhood attributes as vectors.
@@ -366,6 +378,9 @@ export default function App() {
         subScores,
         matchScore: finalScore,
         matchReasons,
+        closestEstTime,
+        isWithinIsochroneBuffer,
+        isochroneBufferBadge
       };
     }).sort((a, b) => b.matchScore - a.matchScore);
   }, [userPreferences]);
@@ -497,6 +512,11 @@ export default function App() {
                               {area.matchScore}%
                             </span>
                           </div>
+                          {area.isochroneBufferBadge && (
+                            <div style={{ margin: '6px 0', fontSize: '0.78rem', fontWeight: 600, color: area.isWithinIsochroneBuffer ? '#4ADE80' : '#FBBF24', display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '3px 8px', borderRadius: '12px', background: area.isWithinIsochroneBuffer ? 'rgba(74, 222, 128, 0.12)' : 'rgba(251, 191, 36, 0.12)', border: area.isWithinIsochroneBuffer ? '1px solid rgba(74, 222, 128, 0.3)' : '1px solid rgba(251, 191, 36, 0.3)' }}>
+                              {area.isochroneBufferBadge}
+                            </div>
+                          )}
                           <p className="match-card-desc">{area.description.substring(0, 100)}...</p>
                           <div className="match-card-meta">
                             <span className="platinum-text">Class: {area.priceBracket}</span>

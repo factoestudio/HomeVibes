@@ -289,21 +289,59 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
     Object.values(extraMarkersRef.current).forEach(marker => marker.remove());
     extraMarkersRef.current = {};
 
-    // 1. Commute Locations
+    // 1. Commute Locations & Dynamic Isochrone Buffer Rings
     if (userPreferences?.commuteLocations?.length > 0) {
+      const transitMode = userPreferences.transitMode || 'transit';
+      const idealMinutes = userPreferences.idealCommuteMinutes || 30;
+
+      // Calculate buffer radius in meters based on transport mode & target minutes
+      let radiusMeters = 15000;
+      if (transitMode === 'driving') radiusMeters = Math.max(3000, idealMinutes * 750);
+      if (transitMode === 'transit') radiusMeters = Math.max(2000, idealMinutes * 450);
+      if (transitMode === 'walking') radiusMeters = Math.max(800, idealMinutes * 80);
+
       userPreferences.commuteLocations.forEach((loc, idx) => {
         if (!loc.lat || !loc.lng) return;
         
+        // Render Anchor Marker
         const commuteIcon = L.divIcon({
           className: 'custom-commute-marker',
-          html: `<div style="background: var(--color-primary); color: var(--bg-dark); border-radius: 50%; padding: 4px; box-shadow: 0 0 10px rgba(212, 175, 55, 0.8); border: 2px solid var(--text-main); display: flex; align-items: center; justify-content: center; width: 28px; height: 28px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>`,
-          iconSize: [28, 28],
-          iconAnchor: [14, 14]
+          html: `<div style="background: #D08DF6; color: #12131A; border-radius: 50%; padding: 4px; box-shadow: 0 0 14px rgba(208, 141, 246, 0.9); border: 2px solid #FFFFFF; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>`,
+          iconSize: [32, 32],
+          iconAnchor: [16, 16]
         });
 
         const marker = L.marker([loc.lat, loc.lng], { icon: commuteIcon }).addTo(map);
-        marker.bindTooltip(`<div class="luxury-tooltip" style="color: #ffffff; font-family:'Outfit', sans-serif;"><strong>Your Commute:</strong><br/>${loc.address}</div>`, { direction: 'top', offset: [0, -10], opacity: 0.95 });
+        marker.bindTooltip(
+          `<div class="luxury-tooltip" style="color: #ffffff; font-family:'Outfit', sans-serif;">
+            <strong style="color: var(--color-accent);">🎯 Your Anchor Location:</strong><br/>
+            ${loc.address}
+          </div>`,
+          { direction: 'top', offset: [0, -12], opacity: 0.95 }
+        );
         extraMarkersRef.current[`commute-${idx}`] = marker;
+
+        // Render Dynamic Commute Isochrone Buffer Ring
+        const isochroneBufferCircle = L.circle([loc.lat, loc.lng], {
+          radius: radiusMeters,
+          color: '#D08DF6',
+          weight: 2,
+          dashArray: '6, 8',
+          fillColor: '#D08DF6',
+          fillOpacity: 0.12,
+          className: 'isochrone-buffer-ring'
+        }).addTo(map);
+
+        isochroneBufferCircle.bindTooltip(
+          `<div class="map-tooltip luxury-tooltip">
+            <strong style="color: var(--color-accent); font-family: 'Outfit', sans-serif;">🎯 ${idealMinutes}-min Commute Isochrone Buffer</strong>
+            <div style="color: var(--text-main); font-size: 0.8rem; margin-top: 2px;">
+              Anchor: ${loc.address}
+            </div>
+          </div>`,
+          { direction: 'top', opacity: 0.95 }
+        );
+        extraMarkersRef.current[`isochrone-buffer-${idx}`] = isochroneBufferCircle;
 
         // Draw flight path curve if a neighborhood is selected
         if (selectedNeighborhood && selectedNeighborhood.lat && selectedNeighborhood.lng) {
