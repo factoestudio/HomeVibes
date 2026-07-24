@@ -104,7 +104,6 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
   const markersRef = useRef({});
   const extraMarkersRef = useRef({});
   const regionalCirclesRef = useRef([]);
-  const [isLoadingPOIs, setIsLoadingPOIs] = useState(false);
 
   // Initialize Map
   useEffect(() => {
