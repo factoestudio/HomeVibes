@@ -1,5 +1,51 @@
 export const blogPosts = [
   {
+    id: 8,
+    slug: 'junction-dupont-corridor-2026-vibe',
+    title: 'The Junction & Dupont West: Toronto\'s 2026 Epicenter for Industrial Artisan Loft Living',
+    date: 'July 24, 2026',
+    excerpt: 'From indie breweries and Geary Ave arts hubs to the Railpath expansion, the Junction and Dupont West corridor is driving Toronto\'s 2026 creative migration. Here is how the vibe matches your real estate move.',
+    category: 'Vibe Analysis',
+    content: `
+# The Junction & Dupont West: Toronto's 2026 Epicenter for Industrial Artisan Loft Living
+
+**Target Persona & Micro-Cluster**
+Creative Tech Founders, Remote Work Professionals, Design Enthusiasts, and Young Urban Families across the Junction, Junction Triangle, and Dupont West corridors.
+
+---
+
+## The Vibe / Impact
+
+If King West is Toronto's high-octane runway and Leslieville is its family-first stroller sanctuary, the **Junction & Dupont West corridor** has solidified itself in summer 2026 as the city's undisputed capital of industrial chic. What was once a gritty enclave of rail lines, auto-body shops, and meatpacking plants has transformed into Toronto's most dynamic lifestyle engine.
+
+The transformation hit high gear in mid-2026 with the acceleration of the **West Toronto Railpath Extension**, which is actively linking the Junction Triangle down toward Liberty Village and downtown. Combine that transit-active infrastructure with the legendary **Geary Avenue Arts & Music Zone** and the sprawling greenery of High Park nearby, and you have a micro-cluster that offers an unmatched blend of urban texture, indie retail, and bikeable connectivity.
+
+On the retail front, the vibe is pure artisanal craft:
+- **Coffee & Dining:** Morning rituals revolve around *Subtext Coffee Roasters* and *Ethica Coffee Roasters*, while evenings draw foodies to *Annette Food Market*, *Honest Weight*, and the micro-breweries along Henderson and Indie Alehouse strips.
+- **Arts & Adaptive Reuse:** Geary Avenue's music venues, galleries, and furniture restoration studios give the area an authentic, non-homogenized culture that money simply can't manufacture.
+
+Market-wise, the Junction/Dupont West pocket has proven remarkably resilient in 2026. While glass tower condos in the core faced inventory backlogs earlier this year, **authentic hard lofts and soft-loft conversions here are trading at a premium average of $1,050 to $1,120 per square foot**. Freehold semi-detached Victorians and updated worker cottages sit at **$1.18M–$1.35M**, driven by fierce demand from dual-income couples seeking character homes with backyard gardens and laneway suite potential.
+
+---
+
+## The Real Estate Play
+
+Navigating the Junction/Dupont West market in mid-2026 requires understanding the subtle micro-zones:
+
+- **The Hard Loft Purist:** Look closely at historic conversions along Perth Ave, Sterling Rd (near the MOCA - Museum of Contemporary Art), and Sorauren Ave. Units with original exposed brick, timber beams, and soaring 13-foot ceilings are seeing low days-on-market because supply is finite. These are trophy blue-chip assets that hedge against broader condo volatility.
+
+- **The Railpath & Transit Investor:** Properties within a 400-meter radius of the Bloor GO / UP Express station and the expanded Railpath nodes offer the highest long-term appreciation curve. Commuters can reach Union Station in 8 minutes or Pearson Airport in 17 minutes, making this area the ultimate hybrid-work launchpad.
+
+- **The Laneway Developer / End-User:** Given Toronto's updated As-of-Right multiplex and laneway housing policies, many Junction lots feature deep 120+ foot parcels with lane access. Buyers acquiring semi-detached or detached homes with rear laneway potential are effectively creating secondary income streams or multi-generational living suites, adding $300k+ in equity.
+
+---
+
+## HomeVibes Verdict
+
+The Junction & Dupont West corridor is proof that Toronto buyers in 2026 aren't just buying square footage — they are buying character, walkability, and community authenticity. If you want high-design living, world-class indie coffee, and instant access to green transit corridors without sacrificing downtown proximity, this is the premier lifestyle match in the West End.
+`
+  },
+  {
     id: 7,
     slug: 'bank-of-canada-rate-hold-gta-buyers',
     title: 'The Rate Hold Effect: What the Bank of Canada\'s 6th Consecutive Pause Means for GTA Buyers',
