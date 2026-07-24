@@ -107,7 +107,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
 
   // Initialize Map
   useEffect(() => {
-    if (!mapContainerRef.current) return;
+    if (!mapContainerRef.current || mapRef.current) return;
 
     // Create map instance centered on GTA
     const map = L.map(mapContainerRef.current, {
@@ -163,7 +163,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
       geoJsonLayerRef.current = L.geoJSON(torontoGeoJSON, {
         style: function (feature) {
           const areaId = feature.properties.AREA_S_CD;
-          const matchedNeighborhood = neighborhoods.find(n => n.geojsonId === areaId);
+          const matchedNeighborhood = neighborhoods.find(n => n && n.geojsonId === areaId);
           
           if (matchedNeighborhood) {
             const matchScore = matchedNeighborhood.matchScore || 0;
@@ -186,7 +186,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
         },
         onEachFeature: function (feature, layer) {
           const areaId = feature.properties.AREA_S_CD;
-          const matchedNeighborhood = neighborhoods.find(n => n.geojsonId === areaId);
+          const matchedNeighborhood = neighborhoods.find(n => n && n.geojsonId === areaId);
           
           if (matchedNeighborhood) {
             const matchScore = matchedNeighborhood.matchScore || 0;
@@ -237,7 +237,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
       });
     }
 
-    const activeMarker = markersRef.current[selectedNeighborhood.id];
+    const activeMarker = selectedNeighborhood?.id ? markersRef.current[selectedNeighborhood.id] : null;
     if (activeMarker) {
       activeMarker.openTooltip();
     }
@@ -293,6 +293,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
             method: 'POST',
             body: query
           });
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           const data = await response.json();
           
           if (data && data.elements) {
@@ -322,6 +323,13 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
 
       fetchPOIs();
     }
+
+    return () => {
+      Object.values(extraMarkersRef.current).forEach(marker => {
+        if (marker && marker.remove) marker.remove();
+      });
+      extraMarkersRef.current = {};
+    };
   }, [selectedNeighborhood, userPreferences]);
 
   return (

@@ -39,8 +39,11 @@ export default function BlogPost({ post, onBack }) {
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:url" content={`https://homevibes.app/insights/${post.slug}`} />
         <meta property="og:type" content="article" />
+        <meta property="og:image" content="https://homevibes.app/logo512.png" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt} />
+        <meta name="twitter:image" content="https://homevibes.app/logo512.png" />
         <script type="application/ld+json">
           {JSON.stringify(schema)}
         </script>

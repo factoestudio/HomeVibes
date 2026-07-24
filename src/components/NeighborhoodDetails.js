@@ -33,7 +33,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
     setIsSubmitting(true);
     setSubmitError(null);
     try {
-      await supabase.from('contact_leads').insert([{
+      const { error } = await supabase.from('contact_leads').insert([{
         full_name: formData.name,
         email: formData.email,
         timeline: formData.timeline,
@@ -41,11 +41,13 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
         neighborhood: selectedArea?.name,
         created_at: new Date().toISOString()
       }]);
+      if (error) throw error;
+      setIsPremiumUnlocked(true);
     } catch (err) {
-      // Silent fallback
+      setSubmitError('Failed to unlock. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsPremiumUnlocked(true);
-    setIsSubmitting(false);
   };
 
   if (!selectedArea) {
@@ -68,7 +70,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
       { axis: 'Dining',    user: (lifestyle.cafes_restaurants || 0) * 50,   area: (amenities.cafes_restaurants || 5) * 10 },
       { axis: 'Nature',    user: (lifestyle.parks_nature || 0) * 50,         area: (amenities.parks_nature || 5) * 10 },
       { axis: 'Shopping',  user: (lifestyle.malls_shopping || 0) * 50,       area: (amenities.malls_shopping || 5) * 10 },
-      { axis: 'Transit',   user: (userPreferences?.transitMode === 'walking' ? 2 : 1) * 50, area: selectedArea.transit.walkability * 10 },
+      { axis: 'Transit',   user: (userPreferences?.transitMode === 'walking' ? 2 : 1) * 50, area: (selectedArea.transit?.walkability || 5) * 10 },
       { axis: 'Community', user: (lifestyle.libraries_civic || 0) * 50,      area: (amenities.libraries_civic || 5) * 10 },
       { axis: 'Groceries', user: (lifestyle.premium_groceries || 0) * 50,    area: (amenities.premium_groceries || 5) * 10 },
     ];
@@ -115,9 +117,9 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
   // Get travel time details based on quiz selections
   const userHub = userPreferences?.hub || 'downtown';
   const userTransit = userPreferences?.transitMode || 'transit';
-  let commuteTime = selectedArea.commutes[userHub]?.[userTransit];
+  let commuteTime = selectedArea.commutes?.[userHub]?.[userTransit];
   if (commuteTime === undefined) {
-    commuteTime = userTransit === 'walking' ? Math.round((selectedArea.transit.walkability / 10) * 15) : 'N/A';
+    commuteTime = userTransit === 'walking' ? Math.round(((selectedArea.transit?.walkability || 5) / 10) * 15) : 'N/A';
   }
 
   // Mapping readable hub names
@@ -187,20 +189,20 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
                   fill="none" strokeWidth="6" strokeLinecap="round"
                   style={{
                     strokeDasharray: `${2 * Math.PI * 42}`,
-                    strokeDashoffset: `${2 * Math.PI * 42 * (1 - selectedArea.matchScore / 100)}`,
+                    strokeDashoffset: `${2 * Math.PI * 42 * (1 - (selectedArea.matchScore || 0) / 100)}`,
                     stroke: matchColor
                   }}
                 />
               </svg>
               <div className="score-ring-text" style={{ color: matchColor }}>
-                <span className="score-number display-font" style={{ fontSize: '28px', fontWeight: 'bold' }}>{selectedArea.matchScore}%</span>
+                <span className="score-number display-font" style={{ fontSize: '28px', fontWeight: 'bold' }}>{selectedArea.matchScore || 0}%</span>
                 <span className="score-label uppercase" style={{ fontSize: '10px', letterSpacing: '1px' }}>Total Match</span>
               </div>
             </div>
 
             {/* Sub Dials */}
             {selectedArea.subScores && ['commute', 'amenities', 'lifeStage'].map((key) => {
-              const score = selectedArea.subScores[key];
+              const score = selectedArea.subScores[key] || 0;
               const label = key === 'commute' ? 'Commute' : key === 'amenities' ? 'Amenities' : 'Life Stage';
               const subColor = getScoreColor(score);
               return (
@@ -402,13 +404,13 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
           <h3 className="display-font">Lifestyle & Amenities Breakdown</h3>
           <div className="amenities-meters">
             {[
-              { key: 'cafes_restaurants', label: 'Cafes & Dining', icon: <CafesIcon size={16} />, score: selectedArea.amenities.cafes_restaurants },
-              { key: 'malls_shopping', label: 'Malls & Retail', icon: <MallsIcon size={16} />, score: selectedArea.amenities.malls_shopping },
-              { key: 'parks_nature', label: 'Parks & Nature', icon: <NatureIcon size={16} />, score: selectedArea.amenities.parks_nature },
-              { key: 'libraries_civic', label: 'Libraries & Civic', icon: <LibraryIcon size={16} />, score: selectedArea.amenities.libraries_civic },
-              { key: 'premium_groceries', label: 'Organic Groceries', icon: <PremiumGroceriesIcon size={16} />, score: selectedArea.amenities.premium_groceries },
-              { key: 'budget_groceries', label: 'Affordable Groceries', icon: <BudgetGroceriesIcon size={16} />, score: selectedArea.amenities.budget_groceries },
-              { key: 'dog_parks', label: 'Dog Parks & Pets', icon: <DogParksIcon size={16} />, score: selectedArea.amenities.dog_parks }
+              { key: 'cafes_restaurants', label: 'Cafes & Dining', icon: <CafesIcon size={16} />, score: selectedArea.amenities?.cafes_restaurants || 0 },
+              { key: 'malls_shopping', label: 'Malls & Retail', icon: <MallsIcon size={16} />, score: selectedArea.amenities?.malls_shopping || 0 },
+              { key: 'parks_nature', label: 'Parks & Nature', icon: <NatureIcon size={16} />, score: selectedArea.amenities?.parks_nature || 0 },
+              { key: 'libraries_civic', label: 'Libraries & Civic', icon: <LibraryIcon size={16} />, score: selectedArea.amenities?.libraries_civic || 0 },
+              { key: 'premium_groceries', label: 'Organic Groceries', icon: <PremiumGroceriesIcon size={16} />, score: selectedArea.amenities?.premium_groceries || 0 },
+              { key: 'budget_groceries', label: 'Affordable Groceries', icon: <BudgetGroceriesIcon size={16} />, score: selectedArea.amenities?.budget_groceries || 0 },
+              { key: 'dog_parks', label: 'Dog Parks & Pets', icon: <DogParksIcon size={16} />, score: selectedArea.amenities?.dog_parks || 0 }
             ].map(item => {
               const prefVal = userPreferences?.lifestyle?.[item.key];
               let prefLabel = "";

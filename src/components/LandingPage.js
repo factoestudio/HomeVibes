@@ -53,7 +53,7 @@ export default function LandingPage({ onStart }) {
           <p className="story-hero-subtext">
             Stop searching for just a physical house. Discover the perfect home in vibrant neighborhoods tailored perfectly to your personal routine, commute, and lifestyle.
           </p>
-          <button className="story-hero-btn pulse-glow" onClick={onStart}>
+          <button className="story-hero-btn pulse-glow" onClick={() => onStart && onStart()}>
             Find Your Match
           </button>
         </div>
@@ -111,7 +111,7 @@ export default function LandingPage({ onStart }) {
             <p className="act-text">
               Take our interactive Vibe Quiz to tell us who you are. We'll instantly match you with the neighborhoods where you truly belong.
             </p>
-            <button className="story-hero-btn outline-btn" onClick={onStart}>
+            <button className="story-hero-btn outline-btn" onClick={() => onStart && onStart()}>
               Start the Vibe Quiz
             </button>
           </div>

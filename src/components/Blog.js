@@ -3,8 +3,9 @@ import BlogPost from './BlogPost';
 import { blogPosts } from '../data/blogPosts';
 
 export default function Blog({ activeSlug, navigateTo }) {
-  const selectedPost = activeSlug 
-    ? blogPosts.find(p => p.slug === activeSlug || String(p.id) === String(activeSlug))
+  const cleanSlug = activeSlug ? decodeURIComponent(activeSlug).replace(/\/$/, '') : null;
+  const selectedPost = cleanSlug 
+    ? blogPosts.find(p => p.slug === cleanSlug || String(p.id) === String(cleanSlug))
     : null;
 
   if (activeSlug && !selectedPost) {

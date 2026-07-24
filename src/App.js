@@ -40,7 +40,7 @@ const cosineLifestyleSimilarity = (userWeights, areaAmenities, amenityKeys) => {
   let dot = 0, uMag = 0, nMag = 0;
   amenityKeys.forEach(key => {
     const u = (userWeights[key] ?? 0) / 2;          // normalize 0-2 → 0-1
-    const n = (areaAmenities[key] ?? 5) / 10;       // normalize 0-10 → 0-1
+    const n = (areaAmenities?.[key] ?? 5) / 10;       // normalize 0-10 → 0-1
     dot  += u * n;
     uMag += u * u;
     nMag += n * n;
@@ -66,27 +66,27 @@ const generateMatchExplanation = (area, userPreferences, subScores) => {
   }
 
   // Amenity highlights
-  if (lifestyle.cafes_restaurants > 0 && area.amenities.cafes_restaurants >= 8)
+  if (lifestyle.cafes_restaurants > 0 && area.amenities?.cafes_restaurants >= 8)
     reasons.push({ type: 'positive', text: `Vibrant dining & café scene (${area.amenities.cafes_restaurants}/10)` });
-  if (lifestyle.parks_nature > 0 && area.amenities.parks_nature >= 7)
+  if (lifestyle.parks_nature > 0 && area.amenities?.parks_nature >= 7)
     reasons.push({ type: 'positive', text: `Excellent parks & green space access (${area.amenities.parks_nature}/10)` });
-  if (lifestyle.dog_parks > 0 && area.amenities.dog_parks >= 7)
+  if (lifestyle.dog_parks > 0 && area.amenities?.dog_parks >= 7)
     reasons.push({ type: 'positive', text: `Great dog parks & pet-friendly spaces (${area.amenities.dog_parks}/10)` });
-  if (lifestyle.malls_shopping > 0 && area.amenities.malls_shopping >= 7)
+  if (lifestyle.malls_shopping > 0 && area.amenities?.malls_shopping >= 7)
     reasons.push({ type: 'positive', text: `Strong retail & shopping corridor` });
-  if (lifestyle.premium_groceries > 0 && area.amenities.premium_groceries >= 7)
+  if (lifestyle.premium_groceries > 0 && area.amenities?.premium_groceries >= 7)
     reasons.push({ type: 'positive', text: `Organic & premium grocery access nearby` });
-  if (lifestyle.libraries_civic > 0 && area.amenities.libraries_civic >= 7)
+  if (lifestyle.libraries_civic > 0 && area.amenities?.libraries_civic >= 7)
     reasons.push({ type: 'positive', text: `Well-served community & civic amenities` });
 
   // Lifestyle mismatches
-  if (lifestyle.parks_nature === 2 && area.amenities.parks_nature < 5)
+  if (lifestyle.parks_nature === 2 && (area.amenities?.parks_nature ?? 0) < 5)
     reasons.push({ type: 'warning', text: `Limited green space — parks are a must-have for you` });
-  if (lifestyle.cafes_restaurants === 2 && area.amenities.cafes_restaurants < 5)
+  if (lifestyle.cafes_restaurants === 2 && (area.amenities?.cafes_restaurants ?? 0) < 5)
     reasons.push({ type: 'warning', text: `Below-average dining options for your food-focused lifestyle` });
 
   // Transit
-  if (area.transit.walkability >= 8)
+  if (area.transit?.walkability >= 8)
     reasons.push({ type: 'positive', text: `Highly walkable — most errands done on foot (${area.transit.walkability}/10)` });
 
   // Budget
@@ -107,6 +107,29 @@ export default function App() {
   // Auth State
   const [session, setSession] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
+
+  const navigateTo = useCallback((path, push = true) => {
+    if (push && window.location.pathname !== path) {
+      window.history.pushState({}, '', path);
+    }
+    const parts = path.split('/').filter(Boolean);
+    if (parts[0] === 'insights' || parts[0] === 'blog') {
+      setView('blog');
+      setActiveBlogSlug(parts[1] || null);
+    } else if (parts[0] === 'privacy') {
+      setView('privacy');
+    } else if (parts[0] === 'contact') {
+      setView('contact');
+    } else if (parts[0] === 'quiz') {
+      setView('quiz');
+    } else if (parts[0] === 'results') {
+      setView('results');
+    } else {
+      if (userPreferences) setView('results');
+      else setView('landing');
+    }
+    window.scrollTo(0, 0);
+  }, [userPreferences]);
 
   // Synchronize state with URL location
   const handleLocationChange = useCallback(() => {
@@ -138,30 +161,9 @@ export default function App() {
         setView('landing');
       }
     }
-  }, [userPreferences]);
+  }, [userPreferences, navigateTo]);
 
-  const navigateTo = useCallback((path, push = true) => {
-    if (push && window.location.pathname !== path) {
-      window.history.pushState({}, '', path);
-    }
-    const parts = path.split('/').filter(Boolean);
-    if (parts[0] === 'insights' || parts[0] === 'blog') {
-      setView('blog');
-      setActiveBlogSlug(parts[1] || null);
-    } else if (parts[0] === 'privacy') {
-      setView('privacy');
-    } else if (parts[0] === 'contact') {
-      setView('contact');
-    } else if (parts[0] === 'quiz') {
-      setView('quiz');
-    } else if (parts[0] === 'results') {
-      setView('results');
-    } else {
-      if (userPreferences) setView('results');
-      else setView('landing');
-    }
-    window.scrollTo(0, 0);
-  }, [userPreferences]);
+
 
   useEffect(() => {
     handleLocationChange();
@@ -275,9 +277,9 @@ export default function App() {
       const idealMinutes = userPreferences.idealCommuteMinutes || 30;
 
       if (isRemote) {
-        commuteScore = 80 + (area.transit.walkability * 2);
+        commuteScore = 80 + ((area.transit?.walkability ?? 0) * 2);
       } else if (transitMode === 'walking') {
-        commuteScore = area.transit.walkability * 10;
+        commuteScore = (area.transit?.walkability ?? 0) * 10;
       } else if (commuteLocations && commuteLocations.length > 0) {
         let totalScore = 0;
         let totalWeight = 0;
@@ -303,9 +305,9 @@ export default function App() {
 
         commuteScore = totalWeight > 0
           ? totalScore / totalWeight
-          : area.transit.walkability * 8;
+          : (area.transit?.walkability ?? 0) * 8;
       } else {
-        commuteScore = area.transit.walkability * 8;
+        commuteScore = (area.transit?.walkability ?? 0) * 8;
       }
 
       // ── 3. Lifestyle Match — Cosine Similarity (25% weight) ───────────────
@@ -319,7 +321,7 @@ export default function App() {
         // Apply hard penalty for unmet must-haves
         let mustHavePenalty = 0;
         amenityKeys.forEach(key => {
-          if (lifestyle[key] === 2 && (area.amenities[key] ?? 5) < 5) {
+          if (lifestyle[key] === 2 && (area.amenities?.[key] ?? 5) < 5) {
             mustHavePenalty += 15; // unmet must-have — deduct 15pts each
           }
         });
@@ -338,7 +340,7 @@ export default function App() {
         (lifeStageScore * 0.25) +
         (commuteScore   * 0.40) +
         (amenitiesScore * 0.25) +
-        (area.transit.walkability * 10 * 0.10) - // walkability bonus
+        ((area.transit?.walkability ?? 0) * 10 * 0.10) - // walkability bonus
         budgetPenalty;
 
       const finalScore = Math.min(99, Math.max(40, Math.round(rawScore)));
@@ -347,7 +349,7 @@ export default function App() {
         lifeStage:  Math.round(lifeStageScore),
         commute:    Math.min(100, Math.round(commuteScore)),
         amenities:  Math.round(amenitiesScore),
-        walkability: area.transit.walkability * 10,
+        walkability: (area.transit?.walkability ?? 0) * 10,
       };
 
       // ── 6. Score Explainability Bullets ──────────────────────────────────

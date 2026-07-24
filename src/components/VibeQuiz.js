@@ -91,8 +91,10 @@ export default function VibeQuiz({ onComplete }) {
     const locationsWithCoords = await Promise.all(
       commuteLocations.filter(loc => loc.address.trim() !== '').map(async (loc) => {
         try {
-          // OpenStreetMap requires a user-agent, but fetch API works well enough for testing.
-          const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(loc.address)}&limit=1`);
+          const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(loc.address)}&limit=1`, {
+            headers: { 'User-Agent': 'HomeVibesApp/1.0' }
+          });
+          if (!res.ok) throw new Error("Geocoding HTTP Error");
           const data = await res.json();
           if (data && data.length > 0) {
             return {
@@ -102,9 +104,10 @@ export default function VibeQuiz({ onComplete }) {
             };
           }
         } catch (e) {
-          console.error("Geocoding failed for", loc.address);
+          console.error("Geocoding failed for", loc.address, e);
         }
-        return loc; // Fallback without coords
+        // Fallback to Toronto center
+        return { ...loc, lat: 43.6532, lng: -79.3832 }; 
       })
     );
 
@@ -274,7 +277,12 @@ export default function VibeQuiz({ onComplete }) {
             <button className="btn-secondary" onClick={prevStep}>
               &larr; Back
             </button>
-            <button className="btn-primary btn-platinum" onClick={nextStep}>
+            <button 
+              className="btn-primary btn-platinum" 
+              onClick={nextStep}
+              disabled={!isRemote && !commuteLocations.some(loc => loc.address.trim() !== '')}
+              title={!isRemote && !commuteLocations.some(loc => loc.address.trim() !== '') ? "Please enter at least one address" : ""}
+            >
               Next: Commute Mode &rarr;
             </button>
           </div>
