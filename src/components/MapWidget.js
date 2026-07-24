@@ -325,7 +325,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
   }, [selectedNeighborhood, userPreferences]);
 
   return (
-    <div className="map-wrapper card-glass luxury-border" style={{ position: 'relative' }}>
+    <div className="map-wrapper card-glass luxury-border">
       {isLoadingPOIs && (
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(7,8,11,0.5)', zIndex: 1000, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)' }}>
           <div className="map-instruction-pulse fade-in" style={{ position: 'relative', top: 0, margin: '0' }}>
