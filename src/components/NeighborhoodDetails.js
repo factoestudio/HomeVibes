@@ -173,8 +173,8 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
             
             {/* Main Dial */}
             <div className="score-ring-container main-dial" style={{ width: '120px', height: '120px', position: 'relative' }}>
-              <svg className="score-ring-svg" viewBox="0 0 100 100" style={{ width: '100%', height: '100%' }}>
-                <circle className="score-ring-bg" cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="6" />
+              <svg className="score-ring-svg" viewBox="0 0 100 100">
+                <circle className="score-ring-bg" cx="50" cy="50" r="42" fill="none" strokeWidth="6" />
                 <circle 
                   className="score-ring-fill" 
                   cx="50" cy="50" r="42" 
@@ -182,14 +182,11 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
                   style={{
                     strokeDasharray: `${2 * Math.PI * 42}`,
                     strokeDashoffset: `${2 * Math.PI * 42 * (1 - selectedArea.matchScore / 100)}`,
-                    stroke: matchColor,
-                    transition: 'stroke-dashoffset 1s ease-out',
-                    transform: 'rotate(-90deg)',
-                    transformOrigin: '50% 50%'
+                    stroke: matchColor
                   }}
                 />
               </svg>
-              <div className="score-ring-text" style={{ color: matchColor, position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="score-ring-text" style={{ color: matchColor }}>
                 <span className="score-number display-font" style={{ fontSize: '28px', fontWeight: 'bold' }}>{selectedArea.matchScore}%</span>
                 <span className="score-label uppercase" style={{ fontSize: '10px', letterSpacing: '1px' }}>Total Match</span>
               </div>
@@ -202,8 +199,8 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
               const subColor = getScoreColor(score);
               return (
                 <div key={key} className="score-ring-container sub-dial" style={{ width: '80px', height: '80px', position: 'relative' }}>
-                  <svg className="score-ring-svg" viewBox="0 0 100 100" style={{ width: '100%', height: '100%' }}>
-                    <circle className="score-ring-bg" cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="8" />
+                  <svg className="score-ring-svg" viewBox="0 0 100 100">
+                    <circle className="score-ring-bg" cx="50" cy="50" r="42" fill="none" strokeWidth="8" />
                     <circle 
                       className="score-ring-fill" 
                       cx="50" cy="50" r="42" 
@@ -211,14 +208,11 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
                       style={{
                         strokeDasharray: `${2 * Math.PI * 42}`,
                         strokeDashoffset: `${2 * Math.PI * 42 * (1 - score / 100)}`,
-                        stroke: subColor,
-                        transition: 'stroke-dashoffset 1s ease-out',
-                        transform: 'rotate(-90deg)',
-                        transformOrigin: '50% 50%'
+                        stroke: subColor
                       }}
                     />
                   </svg>
-                  <div className="score-ring-text" style={{ color: subColor, position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                  <div className="score-ring-text" style={{ color: subColor }}>
                     <span className="score-number display-font" style={{ fontSize: '18px', fontWeight: 'bold' }}>{score}%</span>
                     <span className="score-label uppercase" style={{ fontSize: '8px', letterSpacing: '0.5px' }}>{label}</span>
                   </div>
