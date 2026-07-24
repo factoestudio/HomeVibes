@@ -12,17 +12,6 @@ const defaultProps = (size, color) => ({
   strokeLinejoin: "round"
 });
 
-export const LogoIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)} viewBox="0 0 32 32" fill="none" strokeWidth={2}>
-    {/* Abstract Geometric Luxury Logo: Diamond frame intersecting house outline + concentric vibe waves */}
-    <path d="M16 4 L28 14 L28 28 L4 28 L4 14 Z" />
-    <path d="M16 4 L16 28" />
-    <path d="M8 18 Q16 13 24 18" />
-    <path d="M10 22 Q16 18 22 22" />
-    <circle cx="16" cy="9" r="2" fill="currentColor" stroke="none" />
-  </svg>
-);
-
 export const StudentIcon = ({ size, color }) => (
   <svg {...defaultProps(size, color)}>
     {/* Academic Mortarboard Cap */}
@@ -93,14 +82,6 @@ export const CafesIcon = ({ size, color }) => (
   </svg>
 );
 
-export const GymsIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)}>
-    {/* Dumbbell */}
-    <path d="M18 4H6v16h12V4zM22 8h-4v8h4V8zM2 8h4v8H2V8z" strokeWidth={2} />
-    <path d="M6 12h12" />
-  </svg>
-);
-
 export const MallsIcon = ({ size, color }) => (
   <svg {...defaultProps(size, color)}>
     {/* Shopping Bag */}
@@ -113,21 +94,6 @@ export const NatureIcon = ({ size, color }) => (
     {/* Leaf */}
     <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 22 2c-2.48 5-3 6.5-4.1 12.2A7 7 0 0 1 11 20z" />
     <path d="M9 22l3-3" />
-  </svg>
-);
-
-export const QuietIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)}>
-    {/* Muted Speaker / Waves */}
-    <path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" />
-  </svg>
-);
-
-export const FamilyFriendlyIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)}>
-    {/* Kids Backpack / Child Safety */}
-    <path d="M4 20V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" />
-    <path d="M9 7V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3M8 12h8M12 12v5" />
   </svg>
 );
 
@@ -182,36 +148,6 @@ export const BuyIcon = ({ size, color }) => (
   </svg>
 );
 
-export const CityIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)}>
-    {/* Multiple Skylines */}
-    <path d="M2 22h20M3 22V9a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v13M9 22V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v17M15 22V11a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11" />
-  </svg>
-);
-
-export const BuildingIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)}>
-    {/* Highrise Office */}
-    <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
-    <path d="M9 22v-4h6v4M8 6h2M14 6h2M8 10h2M14 10h2M8 14h2M14 14h2" />
-  </svg>
-);
-
-export const WavesIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)}>
-    {/* Minimal Waves / Waterfront */}
-    <path d="M2 6c4-2 6 2 10 0s6-2 10 0M2 12c4-2 6 2 10 0s6-2 10 0M2 18c4-2 6 2 10 0s6-2 10 0" />
-  </svg>
-);
-
-export const CodeIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)}>
-    {/* Minimalist Code Block / Laptop */}
-    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-    <path d="M8 21h8M12 17v4M7 8l-3 3 3 3M17 8l3 3-3 3" />
-  </svg>
-);
-
 export const MarkerIcon = ({ size, color }) => (
   <svg {...defaultProps(size, color)}>
     {/* Minimalist Map Pin */}
@@ -241,40 +177,3 @@ export const WalletIcon = ({ size, color }) => (
     <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h14v4M4 6v12a2 2 0 0 0 2 2h14v-4M20 12a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2" />
   </svg>
 );
-
-export const MapIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)}>
-    {/* Folded Map */}
-    <path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6zM9 3v15M15 6v15" />
-  </svg>
-);
-
-export const TownhouseIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)}>
-    {/* Two townhomes side-by-side */}
-    <path d="M2 22V10l5-4 5 4v12" />
-    <path d="M12 22V12l5-4 5 4v10" />
-    <path d="M6 22v-4h2v4M16 22v-4h2v4" />
-  </svg>
-);
-
-export const SunIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)}>
-    <circle cx="12" cy="12" r="5" />
-    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-  </svg>
-);
-
-export const MoonIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)}>
-    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-  </svg>
-);
-
-export const MonitorIcon = ({ size, color }) => (
-  <svg {...defaultProps(size, color)}>
-    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-    <path d="M8 21h8M12 17v4" />
-  </svg>
-);
-
