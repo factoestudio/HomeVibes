@@ -1,5 +1,49 @@
 export const blogPosts = [
   {
+    id: 9,
+    slug: 'waterfront-sugar-beach-2026-vibe',
+    title: 'The Waterfront & Sugar Beach: Toronto\'s 2026 Urban Resort Living',
+    date: 'July 25, 2026',
+    excerpt: 'From waterfront promenades to tech-hub proximity, the revitalized East Bayfront and Sugar Beach pocket offers an unparalleled resort-style lifestyle in the heart of the city.',
+    category: 'Vibe Analysis',
+    content: `
+## The Waterfront & Sugar Beach: Toronto's 2026 Urban Resort Living
+
+**Target Persona & Micro-Cluster**
+Tech Executives, Empty Nesters, Health & Wellness Devotees, and DINK (Double Income No Kids) Professionals across the East Bayfront, Sugar Beach, and Queens Quay East corridors.
+
+---
+
+## The Vibe / Impact
+
+If the Junction is Toronto's industrial artisan heart, the **East Bayfront & Sugar Beach corridor** has truly blossomed in summer 2026 as the city's premier urban resort. Thanks to the completion of multi-year waterfront revitalization projects and the integration of world-class landscape architecture, this micro-cluster offers a lifestyle that feels miles away from the downtown grind, despite being just a 10-minute walk from the Financial District.
+
+The transformation is anchored by the expansion of the **Waterfront Promenade** and the lush, tech-forward campuses that have attracted top-tier innovation firms to the water's edge. Combine that with the iconic pink umbrellas of Sugar Beach and the serene, open-water vistas of Lake Ontario, and you have a neighborhood that perfectly balances high-performance careers with active, wellness-oriented living.
+
+On the retail and lifestyle front, the vibe is elevated and aquatic:
+- **Wellness & Recreation:** Mornings are defined by cycling along the Martin Goodman Trail, paddleboarding near Cherry Beach, or hitting the state-of-the-art wellness clubs that have opened in the new Waterfront Innovation Centre.
+- **Dining & Culture:** Evenings transition seamlessly into patio dining with unobstructed lake views. From upscale seafood restaurants to relaxed waterfront cafes, the culinary scene here is designed for lingering sunsets.
+
+Market-wise, the Waterfront pocket commands a premium in 2026. **Ultra-luxury waterfront condos and penthouses are trading at an average of $1,400 to $1,750 per square foot**, reflecting the scarcity of true lakefront living. Mid-rise boutique buildings are seeing fierce competition from downsizers and tech executives seeking turn-key luxury with resort-style amenities.
+
+---
+
+## The Real Estate Play
+
+Navigating the East Bayfront/Sugar Beach market in mid-2026 requires a focus on sightlines and amenities:
+
+- **The Waterfront Purist:** Look closely at the new mid-rise developments along Queens Quay East. Units with guaranteed, unobstructed south-facing lake views command the highest premiums and offer the best long-term value retention. These are the blue-chip assets of the waterfront.
+- **The Tech Commuter:** Properties within walking distance of the Waterfront Innovation Centre and the new East Bayfront transit connections offer the ultimate convenience for tech professionals. The ability to walk to work along the water is a rare luxury in Toronto.
+- **The Wellness Seeker:** Buildings that prioritize holistic wellness—featuring expansive spas, outdoor pools, yoga terraces, and direct access to the Martin Goodman Trail—are seeing the lowest turnover rates. Buyers are prioritizing buildings that function as a comprehensive lifestyle ecosystem.
+
+---
+
+## HomeVibes Verdict
+
+The East Bayfront & Sugar Beach corridor proves that you don't have to leave the city to find tranquility. In 2026, buyers here are investing in a daily sense of escape, expansive horizons, and unparalleled access to both nature and the downtown core. If you want a lifestyle that feels like an endless vacation with a world-class city at your doorstep, this is the premier match on the waterfront.
+`
+  },
+  {
     id: 8,
     slug: 'junction-dupont-corridor-2026-vibe',
     title: 'The Junction & Dupont West: Toronto\'s 2026 Epicenter for Industrial Artisan Loft Living',
