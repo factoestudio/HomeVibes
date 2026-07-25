@@ -101,7 +101,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
   const geoJsonLayerRef = useRef(null);
-  const markersRef = useRef({});
+
   const extraMarkersRef = useRef({});
   const regionalCirclesRef = useRef([]);
   const [isLoadingPOIs, setIsLoadingPOIs] = useState(false);

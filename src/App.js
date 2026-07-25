@@ -459,7 +459,7 @@ export default function App() {
         isochroneBufferBadge
       };
     }).sort((a, b) => b.matchScore - a.matchScore);
-  }, [userPreferences, DEFAULT_PREFERENCES]);
+  }, [userPreferences]);
 
   const handleQuizComplete = (prefs) => {
     setUserPreferences(prefs);
@@ -475,7 +475,7 @@ export default function App() {
     if (view === 'results' && matchedNeighborhoods.length > 0 && !selectedArea) {
       setSelectedArea(matchedNeighborhoods[0]);
     }
-  }, [view, matchedNeighborhoods, selectedArea]);
+  }, [view, matchedNeighborhoods, selectedArea, setSelectedArea]);
 
   // Get distinct cities for filter tabs
   const cities = useMemo(() => {
