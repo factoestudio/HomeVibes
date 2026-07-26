@@ -9,6 +9,7 @@ import ContactB2B from './components/ContactB2B';
 import LandingPage from './components/LandingPage';
 import Blog from './components/Blog';
 import AuthModal from './components/AuthModal';
+import SEOHead from './components/SEOHead';
 import { supabase } from './supabaseClient';
 import logoWhite from './assets/logo-white.png';
 import logoPurple from './assets/logo-purple.png';
@@ -194,6 +195,19 @@ export default function App() {
       const slug = parts[1];
       setView('blog');
       setActiveBlogSlug(slug || null);
+    } else if (path.startsWith('/neighborhoods/')) {
+      const nid = path.replace('/neighborhoods/', '').replace(/\/$/, '');
+      const area = neighborhoodsData.find(n => n.id === nid || n.id === `toronto-${nid}`);
+      if (area) {
+        setSelectedArea(area);
+        setView('results');
+      } else {
+        setView('results');
+      }
+    } else if (path.startsWith('/compare/')) {
+      setView('results');
+    } else if (path.startsWith('/guides/')) {
+      setView('results');
     } else if (path === '/privacy' || path === '/privacy/') {
       setView('privacy');
     } else if (path === '/contact' || path === '/contact/') {
@@ -498,6 +512,11 @@ export default function App() {
 
   return (
     <div className="app-container">
+      <SEOHead
+        title={selectedArea ? `${selectedArea.name} | Toronto Neighborhood Vibe Profile & Real Estate Insights` : 'HomeVibes | Where Your Lifestyle Matches Home'}
+        description={selectedArea ? `Explore ${selectedArea.name} in Toronto: lifestyle vibe match, average rent/buy prices, commute access, and neighborhood amenities.` : 'Discover Toronto neighborhoods tailored to your unique vibe, commute, budget, and lifestyle preferences.'}
+        canonicalUrl={`https://homevibes.app${window.location.pathname}`}
+      />
       {/* Navbar Header */}
       <header className="app-header-nav luxury-header">
         <div className="logo-wrap" onClick={handleRetakeQuiz}>
