@@ -1,5 +1,49 @@
 export const blogPosts = [
   {
+    id: 10,
+    slug: 'yonge-eglinton-midtown-tech-hub-2026',
+    title: 'The Rise of Mid-Town: Yonge & Eglinton\'s Transformation into a Family-Friendly Tech Hub',
+    date: 'July 26, 2026',
+    excerpt: 'With the Eglinton Crosstown fully operational and new mixed-use developments opening, Midtown is quickly becoming the destination of choice for millennial tech families seeking space and connectivity.',
+    category: 'Market Trends',
+    content: `
+## The Rise of Mid-Town: Yonge & Eglinton's Transformation into a Family-Friendly Tech Hub
+
+**Target Persona & Micro-Cluster**
+Millennial Tech Families, Established Professionals, and Urban Upsizers across the Yonge-Eglinton, Mount Pleasant, and Davisville corridors.
+
+---
+
+## The Vibe / Impact
+
+For years, Yonge and Eglinton (affectionately known as "Young and Eligible") was synonymous with recent graduates and endless construction. Fast forward to the summer of 2026, and Midtown has fundamentally matured. The dust has settled, the **Eglinton Crosstown LRT is finally fully operational**, and the neighborhood has emerged as a powerhouse micro-cluster that successfully blends the energy of downtown with the breathing room of the suburbs.
+
+The defining characteristic of Midtown in 2026 is its appeal to **Millennial Tech Families**—those who spent their 20s in King West or Liberty Village but now require superior schools, larger floor plans, and family-friendly infrastructure without sacrificing urban walkability or transit access. 
+
+On the lifestyle front, the vibe is upscale and established:
+- **Retail & Dining:** The intersection is anchored by the completely reimagined Yonge Eglinton Centre. The dining scene has evolved from fast-casual to elevated dining experiences, with chef-driven restaurants lining Yonge Street and Mount Pleasant Road.
+- **Family Infrastructure:** The area boasts some of the highest-rated public and private schools in the province. Combined with proximity to Sherwood Park and the Beltline Trail, it offers an outdoor lifestyle that downtown pockets struggle to match.
+
+Market-wise, Midtown has seen a robust stabilization. **Spacious 3-bedroom luxury condos and townhomes are highly coveted, trading between $1,100 and $1,300 per square foot.** Meanwhile, the classic detached and semi-detached homes in the surrounding tree-lined streets (like Lytton Park and Davisville Village) continue to see steady appreciation, often starting in the high **$1.8M** range for updated properties.
+
+---
+
+## The Real Estate Play
+
+Navigating the Yonge & Eglinton market in mid-2026 requires understanding the shift toward family-centric urbanism:
+
+- **The Transit-Oriented Upsizer:** Properties within a 5-8 minute walk of the new Crosstown stations (like Mount Pleasant or Avenue Road) are seeing incredible demand. The ability to commute seamlessly east-west, in addition to the north-south Yonge line, makes this pocket the most connected transit node outside of Union Station.
+- **The "Missing Middle" Townhomes:** Stacked townhomes and low-rise developments tucked away on the residential side streets off Eglinton offer the perfect "missing middle" housing. They provide the ground-floor access and square footage families crave, without the premium price tag of a detached home.
+- **The Premium Condo Market:** Buildings that have pivoted to offer "family-sized" units (1,200+ sq ft, 3 bedrooms) rather than micro-investor units are commanding significant premiums. Buyers are treating these as long-term family homes, prioritizing buildings with robust amenities like indoor play areas and expansive outdoor terraces.
+
+---
+
+## HomeVibes Verdict
+
+Midtown has successfully shed its construction-heavy past to become Toronto's premier destination for established urbanites. In 2026, investing in Yonge & Eglinton means buying into a mature, deeply connected community that offers top-tier education, expansive green spaces, and unparalleled transit infrastructure. For families unwilling to compromise on urban convenience, this is the definitive real estate move.
+`
+  },
+  {
     id: 9,
     slug: 'waterfront-sugar-beach-2026-vibe',
     title: 'The Waterfront & Sugar Beach: Toronto\'s 2026 Urban Resort Living',
