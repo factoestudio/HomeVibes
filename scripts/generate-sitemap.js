@@ -11,7 +11,7 @@ const staticUrls = [
   { url: '/contact', priority: '0.5', changefreq: 'monthly' }
 ];
 
-// 2. Programmatic Neighborhood URLs from neighborhoodsData.js
+// 2. Programmatic Neighborhood URLs from neighborhoodsData.js (excluding listing IDs)
 const nDataPath = path.join(__dirname, '../src/data/neighborhoodsData.js');
 const nDataContent = fs.readFileSync(nDataPath, 'utf8');
 const idRegex = /id:\s*['"]([^'"]+)['"]/g;
@@ -19,9 +19,12 @@ let nMatch;
 const neighborhoodUrls = [];
 const neighborhoodIds = [];
 
+// Listing ID pattern (e.g. dt-r1, lv-b2, sb-b1, etc.)
+const listingIdPattern = /^[a-z]{2,3}-[rb]\d+$/;
+
 while ((nMatch = idRegex.exec(nDataContent)) !== null) {
   const nid = nMatch[1];
-  if (!neighborhoodIds.includes(nid)) {
+  if (!listingIdPattern.test(nid) && !neighborhoodIds.includes(nid)) {
     neighborhoodIds.push(nid);
     neighborhoodUrls.push({
       url: `/neighborhoods/${nid}`,
@@ -31,15 +34,63 @@ while ((nMatch = idRegex.exec(nDataContent)) !== null) {
   }
 }
 
-// 3. Programmatic Comparison URLs (Top High-Intent Pairings)
+// 3. Programmatic Comparison URLs (Top 55 High-Intent Pairings)
 const comparisonPairs = [
   'junction-vs-leslieville',
   'king-west-vs-liberty-village',
   'waterfront-vs-cityplace',
   'yorkville-vs-annex',
   'roncesvalles-vs-high-park',
-  'danforth-vs-beach',
-  'yonge-eglinton-vs-davisville'
+  'danforth-vs-the-beaches',
+  'yonge-eglinton-vs-davisville',
+  'port-credit-vs-bronte-harbour',
+  'unionville-vs-cornell',
+  'willowdale-vs-vaughan-vmc',
+  'mimico-waterfront-vs-port-credit',
+  'leslieville-vs-the-beaches',
+  'downtown-toronto-vs-yorkville',
+  'liberty-village-vs-ossington-trinity',
+  'streetsville-vs-port-credit',
+  'downtown-brampton-vs-square-one',
+  'old-oakville-vs-bronte-harbour',
+  'richmond-hill-heritage-vs-unionville',
+  'scarborough-bluffs-vs-the-beaches',
+  'vaughan-vmc-vs-square-one',
+  'ossington-trinity-vs-roncesvalles',
+  'king-west-vs-downtown-toronto',
+  'willowdale-vs-richmond-hill-heritage',
+  'cityplace-vs-liberty-village',
+  'high-park-vs-roncesvalles',
+  'leslieville-vs-ossington-trinity',
+  'junction-vs-roncesvalles',
+  'yorkville-vs-king-west',
+  'waterfront-vs-mimico-waterfront',
+  'port-credit-vs-square-one',
+  'unionville-vs-willowdale',
+  'downtown-toronto-vs-liberty-village',
+  'the-beaches-vs-port-credit',
+  'old-oakville-vs-port-credit',
+  'vaughan-vmc-vs-willowdale',
+  'cornell-vs-richmond-hill-heritage',
+  'scarborough-bluffs-vs-leslieville',
+  'downtown-brampton-vs-streetsville',
+  'bronte-harbour-vs-port-credit',
+  'high-park-vs-the-beaches',
+  'king-west-vs-ossington-trinity',
+  'the-danforth-vs-leslieville',
+  'downtown-toronto-vs-willowdale',
+  'port-credit-vs-old-oakville',
+  'yorkville-vs-leslieville',
+  'liberty-village-vs-waterfront',
+  'mimico-waterfront-vs-high-park',
+  'streetsville-vs-square-one',
+  'vaughan-vmc-vs-richmond-hill-heritage',
+  'cornell-vs-unionville',
+  'scarborough-bluffs-vs-port-credit',
+  'bronte-harbour-vs-old-oakville',
+  'high-park-vs-junction',
+  'king-west-vs-yorkville',
+  'the-danforth-vs-the-beaches'
 ];
 
 const comparisonUrls = comparisonPairs.map(pair => ({
@@ -48,19 +99,20 @@ const comparisonUrls = comparisonPairs.map(pair => ({
   changefreq: 'weekly'
 }));
 
-// 4. Programmatic Lifestyle Guides
-const guideSlugs = [
-  'best-toronto-neighborhoods-for-remote-workers',
-  'best-toronto-neighborhoods-for-families',
-  'toronto-transit-friendly-neighborhoods',
-  'toronto-walkable-artisan-enclaves'
-];
+// 4. Programmatic Lifestyle Guides from guidesData.js
+const guideFilePath = path.join(__dirname, '../src/data/guidesData.js');
+const guideContent = fs.readFileSync(guideFilePath, 'utf8');
+const guideSlugRegex = /slug:\s*['"]([^'"]+)['"]/g;
+let gMatch;
+const guideUrls = [];
 
-const guideUrls = guideSlugs.map(slug => ({
-  url: `/guides/${slug}`,
-  priority: '0.7',
-  changefreq: 'weekly'
-}));
+while ((gMatch = guideSlugRegex.exec(guideContent)) !== null) {
+  guideUrls.push({
+    url: `/guides/${gMatch[1]}`,
+    priority: '0.7',
+    changefreq: 'weekly'
+  });
+}
 
 // 5. Blog Post URLs from blogPosts.js
 const blogFilePath = path.join(__dirname, '../src/data/blogPosts.js');

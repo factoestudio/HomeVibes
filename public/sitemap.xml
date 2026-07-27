@@ -26,47 +26,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/neighborhoods/dt-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/dt-r2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/dt-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/dt-b2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://homevibes.app/neighborhoods/leslieville</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/lv-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/lv-r2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/lv-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/lv-b2</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -76,47 +36,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/neighborhoods/wd-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/wd-r2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/wd-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/wd-b2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://homevibes.app/neighborhoods/port-credit</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/pc-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/pc-r2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/pc-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/pc-b2</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -126,47 +46,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/neighborhoods/uv-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/uv-r2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/uv-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/uv-b2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://homevibes.app/neighborhoods/downtown-brampton</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/br-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/br-r2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/br-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/br-b2</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -176,47 +56,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/neighborhoods/ok-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/ok-r2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/ok-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/ok-b2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://homevibes.app/neighborhoods/scarborough-bluffs</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/sb-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/sb-r2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/sb-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/sb-b2</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -226,27 +66,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/neighborhoods/ot-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/ot-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://homevibes.app/neighborhoods/roncesvalles</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/rv-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/rv-b1</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -256,27 +76,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/neighborhoods/yk-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/yk-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://homevibes.app/neighborhoods/liberty-village</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/lvg-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/lvg-b1</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -286,27 +86,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/neighborhoods/tb-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/tb-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://homevibes.app/neighborhoods/mimico-waterfront</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/hb-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/hb-b1</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -316,27 +96,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/neighborhoods/sq-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/sq-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://homevibes.app/neighborhoods/streetsville</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/st-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/st-b1</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -346,27 +106,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/neighborhoods/vm-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/vm-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://homevibes.app/neighborhoods/cornell</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/cn-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/cn-b1</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -376,27 +116,32 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/neighborhoods/bh-r1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://homevibes.app/neighborhoods/bh-b1</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://homevibes.app/neighborhoods/richmond-hill-heritage</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/neighborhoods/rh-r1</loc>
+    <loc>https://homevibes.app/neighborhoods/high-park</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/neighborhoods/rh-b1</loc>
+    <loc>https://homevibes.app/neighborhoods/king-west</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/neighborhoods/cityplace</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/neighborhoods/the-danforth</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/neighborhoods/etobicoke-centre</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -426,12 +171,252 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://homevibes.app/compare/danforth-vs-beach</loc>
+    <loc>https://homevibes.app/compare/danforth-vs-the-beaches</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://homevibes.app/compare/yonge-eglinton-vs-davisville</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/port-credit-vs-bronte-harbour</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/unionville-vs-cornell</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/willowdale-vs-vaughan-vmc</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/mimico-waterfront-vs-port-credit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/leslieville-vs-the-beaches</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/downtown-toronto-vs-yorkville</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/liberty-village-vs-ossington-trinity</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/streetsville-vs-port-credit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/downtown-brampton-vs-square-one</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/old-oakville-vs-bronte-harbour</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/richmond-hill-heritage-vs-unionville</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/scarborough-bluffs-vs-the-beaches</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/vaughan-vmc-vs-square-one</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/ossington-trinity-vs-roncesvalles</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/king-west-vs-downtown-toronto</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/willowdale-vs-richmond-hill-heritage</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/cityplace-vs-liberty-village</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/high-park-vs-roncesvalles</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/leslieville-vs-ossington-trinity</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/junction-vs-roncesvalles</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/yorkville-vs-king-west</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/waterfront-vs-mimico-waterfront</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/port-credit-vs-square-one</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/unionville-vs-willowdale</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/downtown-toronto-vs-liberty-village</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/the-beaches-vs-port-credit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/old-oakville-vs-port-credit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/vaughan-vmc-vs-willowdale</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/cornell-vs-richmond-hill-heritage</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/scarborough-bluffs-vs-leslieville</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/downtown-brampton-vs-streetsville</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/bronte-harbour-vs-port-credit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/high-park-vs-the-beaches</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/king-west-vs-ossington-trinity</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/the-danforth-vs-leslieville</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/downtown-toronto-vs-willowdale</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/port-credit-vs-old-oakville</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/yorkville-vs-leslieville</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/liberty-village-vs-waterfront</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/mimico-waterfront-vs-high-park</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/streetsville-vs-square-one</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/vaughan-vmc-vs-richmond-hill-heritage</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/cornell-vs-unionville</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/scarborough-bluffs-vs-port-credit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/bronte-harbour-vs-old-oakville</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/high-park-vs-junction</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/king-west-vs-yorkville</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/compare/the-danforth-vs-the-beaches</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -454,6 +439,96 @@
     <loc>https://homevibes.app/guides/toronto-walkable-artisan-enclaves</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/best-gta-neighborhoods-for-tech-workers</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/best-toronto-neighborhoods-for-young-professionals</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/top-gta-neighborhoods-with-best-public-schools</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/best-waterfront-neighborhoods-in-gta</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/most-affordable-gta-neighborhoods-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/best-toronto-neighborhoods-for-dog-owners</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/best-luxury-neighborhoods-in-toronto-and-gta</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/best-toronto-neighborhoods-for-foodies</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/top-gta-neighborhoods-for-seniors-and-retirees</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/best-gta-suburbs-with-fast-go-transit-to-downtown</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/toronto-missing-middle-housing-neighborhoods</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/best-toronto-neighborhoods-for-students</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/top-walkable-suburban-villages-in-gta</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/gta-neighborhoods-near-ontario-line-and-lrt</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/best-toronto-neighborhoods-for-nightlife-and-dining</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/guides/top-gta-neighborhoods-for-investment-and-resale-value</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/insights/best-toronto-neighborhoods-for-tech-workers-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/insights/junction-vs-leslieville-2026-vibe-showdown</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://homevibes.app/insights/yonge-eglinton-midtown-tech-hub-2026</loc>

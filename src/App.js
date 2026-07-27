@@ -10,6 +10,8 @@ import LandingPage from './components/LandingPage';
 import Blog from './components/Blog';
 import AuthModal from './components/AuthModal';
 import SEOHead from './components/SEOHead';
+import ComparisonView from './components/ComparisonView';
+import GuideView from './components/GuideView';
 import { supabase } from './supabaseClient';
 import logoWhite from './assets/logo-white.png';
 import logoPurple from './assets/logo-purple.png';
@@ -107,8 +109,10 @@ const DEFAULT_PREFERENCES = {
 };
 
 export default function App() {
-  const [view, setView] = useState('landing'); // 'landing' | 'quiz' | 'results' | 'privacy' | 'contact' | 'blog'
+  const [view, setView] = useState('landing'); // 'landing' | 'quiz' | 'results' | 'privacy' | 'contact' | 'blog' | 'compare' | 'guide'
   const [activeBlogSlug, setActiveBlogSlug] = useState(null);
+  const [activeComparePair, setActiveComparePair] = useState(null);
+  const [activeGuideSlug, setActiveGuideSlug] = useState(null);
   const [userPreferences, setUserPreferences] = useState(null);
   const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
   const [selectedArea, setSelectedArea] = useState(null);
@@ -169,6 +173,12 @@ export default function App() {
     if (parts[0] === 'insights' || parts[0] === 'blog') {
       setView('blog');
       setActiveBlogSlug(parts[1] || null);
+    } else if (parts[0] === 'compare') {
+      setView('compare');
+      setActiveComparePair(parts[1] || 'junction-vs-leslieville');
+    } else if (parts[0] === 'guides') {
+      setView('guide');
+      setActiveGuideSlug(parts[1] || 'best-toronto-neighborhoods-for-remote-workers');
     } else if (parts[0] === 'privacy') {
       setView('privacy');
     } else if (parts[0] === 'contact') {
@@ -195,6 +205,14 @@ export default function App() {
       const slug = parts[1];
       setView('blog');
       setActiveBlogSlug(slug || null);
+    } else if (path.startsWith('/compare/')) {
+      const pair = path.replace('/compare/', '').replace(/\/$/, '');
+      setView('compare');
+      setActiveComparePair(pair || 'junction-vs-leslieville');
+    } else if (path.startsWith('/guides/')) {
+      const slug = path.replace('/guides/', '').replace(/\/$/, '');
+      setView('guide');
+      setActiveGuideSlug(slug || 'best-toronto-neighborhoods-for-remote-workers');
     } else if (path.startsWith('/neighborhoods/')) {
       const nid = path.replace('/neighborhoods/', '').replace(/\/$/, '');
       const area = neighborhoodsData.find(n => n.id === nid || n.id === `toronto-${nid}`);
@@ -204,10 +222,6 @@ export default function App() {
       } else {
         setView('results');
       }
-    } else if (path.startsWith('/compare/')) {
-      setView('results');
-    } else if (path.startsWith('/guides/')) {
-      setView('results');
     } else if (path === '/privacy' || path === '/privacy/') {
       setView('privacy');
     } else if (path === '/contact' || path === '/contact/') {
@@ -555,6 +569,10 @@ export default function App() {
           </div>
         ) : view === 'blog' ? (
           <Blog activeSlug={activeBlogSlug} navigateTo={navigateTo} />
+        ) : view === 'compare' ? (
+          <ComparisonView pairSlug={activeComparePair} navigateTo={navigateTo} onStartQuiz={() => navigateTo('/quiz')} />
+        ) : view === 'guide' ? (
+          <GuideView guideSlug={activeGuideSlug} navigateTo={navigateTo} onStartQuiz={() => navigateTo('/quiz')} />
         ) : view === 'privacy' ? (
             <PrivacyPolicy setView={setView} navigateTo={navigateTo} />
         ) : view === 'contact' ? (
