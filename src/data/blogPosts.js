@@ -1,5 +1,47 @@
 export const blogPosts = [
   {
+    id: 13,
+    slug: 'roncesvalles-high-park-eco-luxury-2026',
+    title: 'Roncesvalles & High Park: Toronto\'s 2026 Eco-Luxury & Family Village Corridor',
+    date: 'July 27, 2026',
+    excerpt: 'Discover why Roncesvalles Village and the High Park enclave have become Toronto\'s 2026 destination for eco-conscious luxury, heritage home restorations, and active family living.',
+    category: 'Vibe Analysis',
+    content: `
+## Roncesvalles & High Park: Toronto's 2026 Eco-Luxury & Family Village Corridor
+
+**Target Persona & Micro-Cluster**  
+Eco-Conscious Executives, Established Families, European Design Enthusiasts, and Active Outdoor Lifestyle Seekers across Roncesvalles, High Park, and Swansea.
+
+---
+
+## The Vibe / Impact
+
+Nestled between the 400-acre greenery of High Park and the European-flavored strip of Roncesvalles Avenue, **"Roncy"** has cemented its position in mid-2026 as Toronto's premier eco-luxury village. While other downtown pockets focus on high-density vertical towers, Roncesvalles retains a rare, human-scale residential warmth defined by century-old Edwardian homes, mature tree canopies, and independent Polish bakeries operating alongside third-wave espresso bars.
+
+In 2026, the neighborhood's appeal is driven by a strong commitment to **sustainable urban living**:
+- **Active Green Mobility:** Direct access to High Park's walking trails, Grenadier Pond, and the waterfront bike lanes along Humber Bay.
+- **Artisanal & Local Retail:** Roncesvalles Ave features zero corporate chains—local favorites like *Reverie Espresso*, *Chocolat de Kat*, *Sorauren Farmers' Market*, and boutique zero-waste grocers define daily rituals.
+
+Market-wise, Roncesvalles and High Park exhibit incredible resilience. **Fully restored 3-story Victorian and Edwardian red-brick homes command $2.1M to $2.8M**, with buyers paying a steep premium for heritage restorations that feature heat-pump HVAC upgrades, solar integration, and laneway housing suites.
+
+---
+
+## The Real Estate Play
+
+Navigating the Roncesvalles & High Park market in mid-2026 requires targeting key micro-streets:
+
+- **The Heritage Restorer:** Look along Wright, Galley, and Fermanagh Avenues for deep lots with original woodwork and laneway access. Laneway suites here can yield $2,800/mo in passive rental income or serve as private multi-generational spaces.
+- **The Parkside Buyer:** Homes backing directly onto High Park or within 2 blocks of Grenadier Pond command the highest long-term valuation stability in the GTA.
+- **Boutique Low-Rise Condos:** Low-rise eco-condos along Roncesvalles Ave offer an accessible entry point ($850k to $1.2M) for downsizers and young professionals who want Roncy walkability without exterior maintenance.
+
+---
+
+## HomeVibes Verdict
+
+Roncesvalles & High Park offer a timeless blend of natural beauty, architectural soul, and tight-knit community energy. For buyers who prioritize sustainability, family warmth, and instant parkland access, Roncy remains one of Toronto's gold-standard neighborhood matches.
+`
+  },
+  {
     id: 12,
     slug: 'best-toronto-neighborhoods-for-tech-workers-2026',
     title: 'Best Toronto Neighborhoods for Tech Workers in 2026: Hybrid Work, Transit & Lifestyle Analysis',
