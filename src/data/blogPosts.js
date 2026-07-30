@@ -1,5 +1,49 @@
 export const blogPosts = [
   {
+    id: 14,
+    slug: 'port-credit-mississauga-waterfront-2026-vibe',
+    title: 'Port Credit & Mississauga Waterfront: The 2026 Suburban-Urban Transit Oasis',
+    date: 'July 30, 2026',
+    excerpt: 'With the Hazel McCallion Hurontario LRT and waterfront redevelopment taking shape, Port Credit is the premier 2026 destination for buyers seeking lakefront charm and rapid GTA connectivity.',
+    category: 'Market Trends',
+    content: `
+## Port Credit & Mississauga Waterfront: The 2026 Suburban-Urban Transit Oasis
+
+**Target Persona & Micro-Cluster**  
+Active Professionals, Lakeshore Upsizers, Commuting Tech Executives, and Active Retirees across Port Credit, Lorne Park, and Mineola.
+
+---
+
+## The Vibe / Impact
+
+Known as Mississauga's "Village on the Lake," **Port Credit** has undergone a remarkable evolution in 2026. The neighborhood seamlessly combines historic marine charm—complete with its iconic lighthouse and marina promenade—with the high-density, transit-oriented development of modern urban hubs.
+
+The major catalyst in 2026 is the completion and full integration of the **Hazel McCallion Line (Hurontario LRT)**, linking Port Credit GO station directly to Mississauga City Centre and Brampton. Combined with 25-minute express GO train service to Union Station in Toronto, Port Credit offers an unmatched transit nexus for hybrid workers.
+
+On the retail and social front, the vibe is lively and maritime:
+- **Lakeshore Dining & Festivals:** Lakeshore Rd E features vibrant patio dining, craft ice-cream shops, and annual music festivals that draw visitors from across the GTA.
+- **Waterfront Active Living:** Direct access to Snug Harbour, Credit River kayaking, and expansive lakeside park networks makes outdoor recreation a daily routine rather than a weekend trip.
+
+Market-wise, Port Credit is one of the highest-demand pockets in Peel Region. **Luxury waterfront condos and master-planned urban townhomes trade between $1,150 and $1,400 per square foot**, while surrounding custom-built single-family detached homes in Mineola and Lorne Park regularly fetch **$2.5M to $4.2M**.
+
+---
+
+## The Real Estate Play
+
+Navigating the Port Credit market in mid-2026 centers around proximity to the lakefront and LRT corridor:
+
+- **The Master-Planned Waterfront Buyer:** Brightwater and master-planned waterfront developments along Lakeshore offer modern, eco-certified mid-rises with retail at grade, ideal for buyers seeking turn-key luxury.
+- **The LRT & GO Transit Investor:** Properties within 500 meters of the Port Credit GO/LRT station hold the highest long-term appreciation curve for commuters working between Toronto and Mississauga.
+- **The Estate Upgrade (Mineola & Lorne Park):** Buyers looking for mature tree canopies, 100+ foot wide lots, and architectural prestige are focusing on Mineola West and Lorne Park, creating custom multi-generational estates.
+
+---
+
+## HomeVibes Verdict
+
+Port Credit proves that you don't need a Toronto postal code to enjoy world-class urban transit and vibrant lakefront living. In 2026, it represents the ultimate balance of suburban space, rapid transit, and resort-style waterfront vibes.
+`
+  },
+  {
     id: 13,
     slug: 'roncesvalles-high-park-eco-luxury-2026',
     title: 'Roncesvalles & High Park: Toronto\'s 2026 Eco-Luxury & Family Village Corridor',
