@@ -1,5 +1,47 @@
 export const blogPosts = [
   {
+    id: 15,
+    slug: 'leslieville-south-riverdale-design-family-2026',
+    title: 'Leslieville & South Riverdale: Toronto\'s 2026 Epicenter for Creative Design & Family Living',
+    date: 'August 2, 2026',
+    excerpt: 'Explore how Leslieville and South Riverdale have solidified their status in summer 2026 as the East End\'s premier hub for boutique retail, film studio hubs, and family-first urban living.',
+    category: 'Vibe Analysis',
+    content: `
+## Leslieville & South Riverdale: Toronto's 2026 Epicenter for Creative Design & Family Living
+
+**Target Persona & Micro-Cluster**  
+Film & Creative Media Executives, Young Urban Families, Vintage Design Collectors, and East End Entrepreneurs across Queen St East, Broadview, and Carlaw corridors.
+
+---
+
+## The Vibe / Impact
+
+Often referred to as the creative engine of the East End, **Leslieville and South Riverdale** have hit an incredible high point in August 2026. While historic brick row houses and leafy residential avenues preserve the area's intimate village charm, massive investments in the **East Harbour transit hub** and expanding film studio complexes along the Port Lands have injected unprecedented economic vitality into the district.
+
+The signature of Leslieville in 2026 is its effortless balance of creative flair and family-friendly infrastructure:
+- **Queen Street East Retail:** Anchored by independent vintage furniture boutiques, artisan bakeries (*Sidewalk Citizens*, *Pilot Coffee Roasters*), and acclaimed dining along the Broadview and Carlaw strips.
+- **Parks & Community:** Jimmie Simpson Park, Greenwood Park (with its year-round outdoor rink and pool), and quick cycling access to Tommy Thompson Park and the Beaches.
+
+Market-wise, Leslieville remains one of Toronto's most competitive residential markets. **Classic semi-detached Victorians and updated worker cottages trade between $1.2M and $1.45M**, while authentic hard loft conversions (like the *Garment Factory Lofts* and *Izone Lofts*) command a steady **$1,080 to $1,220 per square foot**.
+
+---
+
+## The Real Estate Play
+
+Navigating the Leslieville & South Riverdale market in late summer 2026 centers around key infrastructure catalysts:
+
+- **The Ontario Line & East Harbour Catalyst:** Properties within a 10-minute walk of the future Riverside/Leslieville and East Harbour transit hubs offer the highest long-term appreciation curve in the East End.
+- **The Hard Loft Purist:** Hard lofts along Carlaw and Boston Avenue feature soaring 12+ foot concrete ceilings and industrial oversized windows, serving as prized blue-chip assets for creative professionals.
+- **The Family Upsizer:** Semi-detached homes with laneway potential between Broadview and Jones Avenue offer deep backyards, top school catchments (such as Morse Street Public School), and room for growing families.
+
+---
+
+## HomeVibes Verdict
+
+Leslieville and South Riverdale represent the gold standard for East End living in 2026. Offering world-class dining, thriving creative industries, and unmatched community warmth, it is the premier match for buyers seeking character, culture, and long-term equity growth.
+`
+  },
+  {
     id: 14,
     slug: 'port-credit-mississauga-waterfront-2026-vibe',
     title: 'Port Credit & Mississauga Waterfront: The 2026 Suburban-Urban Transit Oasis',
