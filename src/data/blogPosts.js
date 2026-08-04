@@ -1,5 +1,47 @@
 export const blogPosts = [
   {
+    id: 16,
+    slug: 'beaches-upper-beaches-coastal-village-2026',
+    title: 'The Beaches & Upper Beaches: Toronto\'s 2026 Coastal Village Real Estate Analysis',
+    date: 'August 4, 2026',
+    excerpt: 'An in-depth look at why the Beaches and Upper Beaches corridor continues to be Toronto\'s premier resort-style family haven, combining boardwalk lifestyle with heritage charm.',
+    category: 'Vibe Analysis',
+    content: `
+## The Beaches & Upper Beaches: Toronto's 2026 Coastal Village Real Estate Analysis
+
+**Target Persona & Micro-Cluster**  
+Established Families, Waterfront Lifestyle Enthusiasts, Active Outdoor Professionals, and Remote Executives across Queen St East, Kew Beach, and Upper Beaches corridors.
+
+---
+
+## The Vibe / Impact
+
+Few neighborhoods in Toronto possess an identity as distinct and enduring as **The Beaches**. In late summer 2026, the neighborhood's coastal, resort-like atmosphere remains unmatched anywhere in North America's urban centers. With 3 kilometers of continuous boardwalk, sandy beaches along Lake Ontario, and the lush canopy of Kew Gardens, "The Beach" offers a complete lifestyle escape without abandoning Toronto city access.
+
+In 2026, the contrast between the classic lower Beaches and the rising **Upper Beaches** (along Kingston Road) has created a dynamic two-tiered market:
+- **Lower Beaches Boardwalk Culture:** Mornings center around volleyball at Woodbine Beach, boardwalk jogs, and patio brunches along Queen Street East (*Remarkable Bean*, *Beaches Bake Shop*).
+- **Upper Beaches Kingston Road Revival:** Kingston Road has transformed into a vibrant design corridor featuring independent cafes, boutique fitness studios, and mid-rise urban infill condo developments.
+
+Market-wise, the Beaches commands high valuation stability. **Classic detached and semi-detached beach cottages and updated Craftsman homes in the lower Beaches range from $1.65M to $2.8M**, while boutique mid-rise condos along Kingston Road offer a competitive entry point at **$880 to $1,050 per square foot**.
+
+---
+
+## The Real Estate Play
+
+Navigating the Beaches market in August 2026 requires understanding the micro-pockets:
+
+- **The Boardwalk Purist:** Homes south of Queen Street East (Kew Beach, Balmy Beach) represent trophy heritage real estate. The proximity to the water ensures perpetual demand and low downside volatility.
+- **The Upper Beaches Growth Play:** Condos and stacked townhomes along Kingston Road offer superior price-per-square-foot value while benefiting from the same school catchments and beach access.
+- **The Family School Catchment:** Properties within the Williamson Road and Malvern Collegiate catchments continue to draw fierce competition from young families relocating from downtown core apartments.
+
+---
+
+## HomeVibes Verdict
+
+The Beaches and Upper Beaches offer a lifestyle that feels like an extended summer vacation. For buyers seeking coastal tranquility, top-tier schools, and a tight-knit community, this enclave is the definitive East End lifestyle match.
+`
+  },
+  {
     id: 15,
     slug: 'leslieville-south-riverdale-design-family-2026',
     title: 'Leslieville & South Riverdale: Toronto\'s 2026 Epicenter for Creative Design & Family Living',
