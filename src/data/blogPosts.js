@@ -1,5 +1,47 @@
 export const blogPosts = [
   {
+    id: 17,
+    slug: 'roncesvalles-high-park-heritage-family-2026',
+    title: 'Roncesvalles & High Park: Toronto\'s #1 Ranked Enclave for Eco-Luxury & Family Living (2026 Analysis)',
+    date: 'August 7, 2026',
+    excerpt: 'Discover why Roncesvalles and High Park achieved the highest community sentiment score (88/100) in our 2026 GTA intelligence harvest, blending Polish heritage, green space, and eco-luxury family living.',
+    category: 'Vibe Analysis',
+    content: `
+## Roncesvalles & High Park: Toronto's #1 Ranked Enclave for Eco-Luxury & Family Living (2026 Analysis)
+
+**Target Persona & Micro-Cluster**  
+Eco-Conscious Families, Creative Media Directors, Tech Founders, and Active Outdoor Enthusiasts across Roncesvalles Ave, High Park Blvd, and Sorauren Park corridors.
+
+---
+
+## The Vibe / Impact
+
+In our late-summer 2026 Greater Toronto Area Market Intelligence harvest, **Roncesvalles & High Park** captured the **#1 overall community sentiment score across all 20 GTA micro-markets at 88/100**. This coveted ranking reflects a neighborhood that has mastered the ultimate urban balance: historic European village warmth, seamless green space access, and high-density transit connectivity.
+
+Nestled immediately east of 400-acre High Park, "Roncy" maintains a distinct European heritage rooted in its Polish bakeries (*Benna's Bakery*, *Chopin Restaurant*) while evolving into Toronto's premier hub for eco-luxury lifestyles:
+- **High Park & Sorauren Green Hub:** Mornings start with dog walks in Sorauren Park's off-leash zone, farmers market runs on Mondays, and weekend trail runs through High Park down to the Lake Ontario boardwalk.
+- **Roncesvalles Retail Strip:** Independent bookshops, organic grocers (*The Big Carrot*), boutique coffee roasters (*Revolver*, *Cherry Bomb*), and zero-waste markets line the streetcar corridor.
+
+Market-wise, Roncesvalles commands exceptional valuation resilience. **Classic Edwardian and Victorian semi-detached and detached homes range from $1.75M to $2.9M**, while updated character condos along Howard Park and Bloor West trade between **$1,020 and $1,150 per square foot**.
+
+---
+
+## The Real Estate Play
+
+Navigating the Roncesvalles real estate market in August 2026 requires understanding the micro-pockets:
+
+- **The Heritage Family Hold:** Classic 2.5-storey Edwardian homes with original wood trim, private parking, and deep backyards on streets like Sunnyside, Marmaduke, and High Park Blvd represent multi-generational trophy assets.
+- **The Transit & Sub-Penthouse Play:** Mid-rise developments along Howard Park Avenue and Dundas West offer effortless access to both the Bloor-Danforth Line 2 subway and the UP Express (17 minutes to Union Station or Pearson Airport).
+- **The Sorauren Garden Suite Opportunity:** Toronto's expanded missing-middle multiplex and garden suite bylaws have unlocked lucrative income/laneway potential along the neighborhood's deep rear alleys.
+
+---
+
+## HomeVibes Verdict
+
+Roncesvalles and High Park stand as the gold standard for family-first urban living in Toronto. For buyers seeking deep community roots, world-class parkland at their doorstep, and enduring equity stability, Roncy is Toronto's ultimate 2026 lifestyle match.
+`
+  },
+  {
     id: 16,
     slug: 'beaches-upper-beaches-coastal-village-2026',
     title: 'The Beaches & Upper Beaches: Toronto\'s 2026 Coastal Village Real Estate Analysis',
