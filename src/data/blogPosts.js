@@ -1,5 +1,47 @@
 export const blogPosts = [
   {
+    id: 18,
+    slug: 'downtown-oakville-kerr-village-waterfront-luxury-2026',
+    title: 'Downtown Oakville & Kerr Village: Halton\'s #1 Ranked Enclave for Waterfront Prestige & Boutique Living (2026 Analysis)',
+    date: 'August 10, 2026',
+    excerpt: 'An in-depth analysis of why Downtown Oakville and Kerr Village achieved an 87/100 sentiment score in our 2026 GTA intelligence harvest, standing as Halton Region\'s premier luxury waterfront enclave.',
+    category: 'Vibe Analysis',
+    content: `
+## Downtown Oakville & Kerr Village: Halton's #1 Ranked Enclave for Waterfront Prestige & Boutique Living (2026 Analysis)
+
+**Target Persona & Micro-Cluster**  
+C-Suite Executives, Luxury Downsizers, Nautical & Boating Enthusiasts, and Boutique Culinary Connoisseurs across Lakeshore Rd East, Sixteen Mile Creek Harbour, and Kerr Village corridors.
+
+---
+
+## The Vibe / Impact
+
+In our August 2026 Greater Toronto Area Market Intelligence harvest, **Downtown Oakville & Kerr Village** captured the **#1 overall community sentiment score in Halton Region at 87/100** (ranking #2 across all 20 GTA micro-markets). This stellar score highlights an enclave that blends historic harbor heritage, high-end boutique shopping, and refined waterfront living within a seamless 35-minute GO Transit commute to Toronto’s Financial District.
+
+Nestled along the shores of Lake Ontario where Sixteen Mile Creek meets the harbor, Downtown Oakville offers a resort-level lifestyle that feels worlds away from dense metropolitan cores while preserving urban sophistication:
+- **Harbour & Heritage Core:** Mornings begin with coffee along Lakeshore Road East (*Croissant Express*, *Aroma Espresso Bar*), yacht club visits at Oakville Harbour, and strolls through Towne Square and Tannery Park.
+- **Kerr Village Creative Pulse:** Just west across Sixteen Mile Creek, Kerr Village brings an eclectic, bohemian counterbalance—home to artisanal bakeries, craft breweries, vintage design shops, and popular dining spots (*Film.Ca Cinemas*, *Sandwich Society*).
+
+Valuation-wise, Downtown Oakville represents trophy GTA real estate. **Classic heritage homes and custom lakefront estates range from $2.4M to $6.5M+**, while boutique luxury condos and urban townhomes along Lakeshore and Kerr Street trade between **$980 and $1,150 per square foot**.
+
+---
+
+## The Real Estate Play
+
+Navigating the Oakville waterfront market in late 2026 requires targeting the key micro-pockets:
+
+- **The Waterfront Estate Hold:** Custom luxury homes south of Robinson Street and along Old Oakville’s tree-lined avenues represent multi-generational wealth preservation assets with zero downside risk.
+- **The Kerr Village Infill Opportunity:** Boutique low-rise and mid-rise condo developments in Kerr Village provide ideal entry points for downsizers and young executives seeking walkability at accessible price points.
+- **The Commuter Executive Edge:** Oakville GO station provides 35-minute express service to Union Station, making it the primary choice for Toronto financial executives prioritizing space, top-tier private schools (Appleby College), and lakefront air quality.
+
+---
+
+## HomeVibes Verdict
+
+Downtown Oakville and Kerr Village deliver an unparalleled coastal lifestyle with world-class amenities and proven equity resilience. For buyers seeking suburban tranquility with cosmopolitan elegance, Oakville is the premier 2026 waterfront match.
+`
+  },
+  {
     id: 17,
     slug: 'roncesvalles-high-park-heritage-family-2026',
     title: 'Roncesvalles & High Park: Toronto\'s #1 Ranked Enclave for Eco-Luxury & Family Living (2026 Analysis)',
