@@ -110,10 +110,21 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current) return;
 
-    // Create map instance centered on GTA
+    // Define strict Greater Toronto Area (GTA) Bounding Box
+    // SW: [43.35, -79.95] (Oakville/Hamilton border), NE: [44.15, -78.85] (Oshawa/Pickering border)
+    const gtaBounds = L.latLngBounds(
+      L.latLng(43.35, -79.95),
+      L.latLng(44.15, -78.85)
+    );
+
+    // Create map instance centered on GTA with solid max bounds wall
     const map = L.map(mapContainerRef.current, {
-      center: [43.6532, -79.3832],
-      zoom: 10,
+      center: [43.68, -79.50], // GTA Geographical Center
+      zoom: 10.2,
+      minZoom: 9.5,
+      maxZoom: 18,
+      maxBounds: gtaBounds,
+      maxBoundsViscosity: 1.0, // 1.0 = solid wall, prevents users from panning outside GTA
       zoomControl: false,
       attributionControl: false
     });
@@ -121,14 +132,15 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
     // Add attribution at bottom right
     L.control.attribution({ position: 'bottomright' }).addTo(map);
 
-    // Zoom control at top right with luxury outlines
+    // Zoom control at top right
     L.control.zoom({ position: 'topright' }).addTo(map);
 
-    // Load CartoDB Light (Positron) and we will invert it in CSS for a high-contrast dark mode
+    // Load CartoDB Light (Positron) tiles
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       subdomains: 'abcd',
-      maxZoom: 20
+      maxZoom: 18,
+      bounds: gtaBounds
     }).addTo(map);
 
     mapRef.current = map;

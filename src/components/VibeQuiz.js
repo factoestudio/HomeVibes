@@ -109,22 +109,29 @@ export default function VibeQuiz({ onComplete }) {
         } catch (e) {}
 
         const queries = [
-          /ontario|canada/i.test(cleanAddr) ? cleanAddr : `${cleanAddr}, Ontario, Canada`,
-          cleanAddr,
-          `${cleanAddr}, Canada`
+          /gta|toronto|mississauga|brampton|markham|vaughan|oakville|pickering|richmond hill|ajax|whitby|oshawa/i.test(cleanAddr) 
+            ? cleanAddr 
+            : `${cleanAddr}, Greater Toronto Area, Ontario, Canada`,
+          cleanAddr
         ];
 
         for (const q of queries) {
           try {
-            const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=1`, {
+            const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&viewbox=-79.95,44.15,-78.85,43.35&bounded=1&countrycodes=ca&limit=1`;
+            const res = await fetch(url, {
               headers: { 'User-Agent': 'HomeVibesApp/1.0 (https://homevibes.app)' }
             });
             if (res.ok) {
               const data = await res.json();
               if (data && data.length > 0) {
-                const coords = { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
-                try { localStorage.setItem(cacheKey, JSON.stringify(coords)); } catch(e) {}
-                return { ...loc, ...coords };
+                const lat = parseFloat(data[0].lat);
+                const lng = parseFloat(data[0].lon);
+                // Verify within GTA limits
+                if (lat >= 43.35 && lat <= 44.15 && lng >= -79.95 && lng <= -78.85) {
+                  const coords = { lat, lng };
+                  try { localStorage.setItem(cacheKey, JSON.stringify(coords)); } catch(e) {}
+                  return { ...loc, ...coords };
+                }
               }
             }
           } catch (e) {
