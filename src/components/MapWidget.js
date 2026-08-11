@@ -330,7 +330,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
         );
         extraMarkersRef.current[`commute-${idx}`] = marker;
 
-        // Render Dynamic Commute Isochrone Buffer Ring
+        // Render Dynamic Commute Isochrone Buffer Ring (interactive: false so clicks pass through to neighborhoods)
         const isochroneBufferCircle = L.circle([loc.lat, loc.lng], {
           radius: radiusMeters,
           color: '#D08DF6',
@@ -338,18 +338,10 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
           dashArray: '6, 8',
           fillColor: '#D08DF6',
           fillOpacity: 0.12,
+          interactive: false,
           className: 'isochrone-buffer-ring'
         }).addTo(map);
 
-        isochroneBufferCircle.bindTooltip(
-          `<div class="map-tooltip luxury-tooltip">
-            <strong style="color: var(--color-accent); font-family: 'Outfit', sans-serif;">🎯 ${idealMinutes}-min Commute Isochrone Buffer</strong>
-            <div style="color: var(--text-main); font-size: 0.8rem; margin-top: 2px;">
-              Anchor: ${loc.address}
-            </div>
-          </div>`,
-          { direction: 'top', opacity: 0.95 }
-        );
         extraMarkersRef.current[`isochrone-buffer-${idx}`] = isochroneBufferCircle;
 
         // Draw flight path curve if a neighborhood is selected
@@ -360,6 +352,7 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
             weight: 3,
             opacity: 0.7,
             dashArray: '10, 15',
+            interactive: false,
             className: 'flight-path-line'
           }).addTo(map);
           extraMarkersRef.current[`commute-path-${idx}`] = flightPath;

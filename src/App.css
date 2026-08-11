@@ -2074,6 +2074,14 @@ button {
   text-align: center;
 }
 
+/* Ensure map buffer rings and flight paths never intercept mouse pointer events */
+.isochrone-buffer-ring,
+.flight-path-line,
+path.isochrone-buffer-ring,
+path.flight-path-line {
+  pointer-events: none !important;
+}
+
 .footer-brand h3 {
   font-family: var(--font-primary);
   color: var(--color-primary);
