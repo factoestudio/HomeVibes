@@ -1,5 +1,52 @@
 export const blogPosts = [
   {
+    id: 19,
+    slug: 'junction-dupont-west-artisan-transit-2026',
+    title: 'The Junction & Dupont West: Toronto\'s #1 Ranked West-End Cultural Enclave for Artisan Living & Rapid Transit (2026 Analysis)',
+    date: 'August 11, 2026',
+    excerpt: 'An in-depth analysis of why The Junction & Dupont West scored an 85/100 sentiment rating in our August 2026 GTA market intelligence harvest, featuring 17-minute UP Express transit and Geary Avenue arts culture.',
+    category: 'Vibe Analysis',
+    coordinates: { lat: 43.6654, lng: -79.4718 },
+    neighborhoodName: "The Junction & Dupont West",
+    city: "Toronto",
+    neighborhoodId: "the-junction",
+    content: `
+## The Junction & Dupont West: Toronto's #1 Ranked West-End Cultural Enclave for Artisan Living & Rapid Transit (2026 Analysis)
+
+**Target Persona & Micro-Cluster**  
+Creative Directors, Industrial Designers, Tech Entrepreneurs, Coffee Roasters, and Urban Families across Dundas St West, Junction Road, and Geary Avenue corridors.
+
+---
+
+## The Vibe / Impact
+
+In our August 2026 Greater Toronto Area Market Intelligence harvest, **The Junction & Dupont West** captured an outstanding **85/100 overall community sentiment score**, ranking as Toronto West’s premier industrial-chic cultural enclave. Defined by its rich railway history, brick loft conversions, and independent artisan scene, The Junction delivers a distinct neighborhood warmth where historic architecture meets high-velocity urban innovation.
+
+Connecting Dundas Street West to the bustling Geary Avenue creative corridor, the neighborhood offers a complete 15-minute lifestyle ecosystem:
+- **Geary Avenue Arts & Culinary Strip:** Home to acclaimed micro-breweries (*Blood Brothers Brewing*), artisan coffee roasters (*Parallel*, *Subtext Coffee*), and independent music venues.
+- **Dundas West Village Core:** Lined with vintage furniture shops, zero-waste markets, indie bookstores, and local dining hubs (*Lucie*, *Anatolia*, *Indie Alehouse*).
+- **Rapid Transit Advantage:** Bloor GO & UP Express Bloor station provides a 17-minute direct connection to Union Station and a 15-minute ride to Pearson Airport.
+
+Market-wise, demand velocity in The Junction is lightning fast at **11 days average DOM**. **Classic 2-storey Victorian/Edwardian brick homes and renovated worker cottages trade between $1.35M and $1.9M**, while authentic hard lofts and modern mid-rise condos along Dundas and Dupont range from **$990 to $1,120 per square foot**.
+
+---
+
+## The Real Estate Play
+
+Navigating The Junction & Dupont West in late summer 2026 centers around key value drivers:
+
+- **The UP Express & Transit Node:** Properties within a 10-minute walk of Bloor GO / Dundas West Station command premium liquidity, appealing to hybrid tech and financial executives requiring fast downtown or airport access.
+- **The Hard Loft & Factory Conversion:** Historic industrial lofts on Annette, Campbell, and Perth Avenues feature soaring timber beams and exposed brickwork, preserving trophy asset status.
+- **The Laneway & Multiplex Upside:** Deep residential lots along Dundas West and High Park Avenue offer prime opportunities for garden suite infill under Toronto's expanded housing policies.
+
+---
+
+## HomeVibes Verdict
+
+The Junction & Dupont West delivers an unmatchable blend of industrial character, thriving culinary culture, and unbeatable transit efficiency. For buyers seeking independent vibe, high walkability, and strong capital appreciation, The Junction is Toronto West's definitive 2026 match.
+`
+  },
+  {
     id: 18,
     slug: 'downtown-oakville-kerr-village-waterfront-luxury-2026',
     title: 'Downtown Oakville & Kerr Village: Halton\'s #1 Ranked Enclave for Waterfront Prestige & Boutique Living (2026 Analysis)',
