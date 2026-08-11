@@ -91,10 +91,23 @@ export default function VibeQuiz({ onComplete }) {
 
     setIsGeocoding(true);
     
-    // Geocode all valid addresses via OpenStreetMap Nominatim
+    // Geocode all valid addresses via OpenStreetMap Nominatim (with localStorage caching & retry)
     const locationsWithCoords = await Promise.all(
       commuteLocations.filter(loc => loc.address.trim() !== '').map(async (loc) => {
         const cleanAddr = loc.address.trim();
+        const cacheKey = 'hv_geo_' + cleanAddr.toLowerCase().replace(/[^a-z0-9]/g, '_');
+        
+        // 1. Check client-side cache
+        try {
+          const cached = localStorage.getItem(cacheKey);
+          if (cached) {
+            const parsed = JSON.parse(cached);
+            if (parsed.lat && parsed.lng) {
+              return { ...loc, lat: parsed.lat, lng: parsed.lng };
+            }
+          }
+        } catch (e) {}
+
         const queries = [
           /ontario|canada/i.test(cleanAddr) ? cleanAddr : `${cleanAddr}, Ontario, Canada`,
           cleanAddr,
@@ -104,24 +117,22 @@ export default function VibeQuiz({ onComplete }) {
         for (const q of queries) {
           try {
             const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&limit=1`, {
-              headers: { 'User-Agent': 'HomeVibesApp/1.0' }
+              headers: { 'User-Agent': 'HomeVibesApp/1.0 (https://homevibes.app)' }
             });
             if (res.ok) {
               const data = await res.json();
               if (data && data.length > 0) {
-                return {
-                  ...loc,
-                  lat: parseFloat(data[0].lat),
-                  lng: parseFloat(data[0].lon)
-                };
+                const coords = { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+                try { localStorage.setItem(cacheKey, JSON.stringify(coords)); } catch(e) {}
+                return { ...loc, ...coords };
               }
             }
           } catch (e) {
-            console.error("Geocoding failed for query", q, e);
+            console.warn("Geocoding query fallback:", q, e.message);
           }
         }
-        // Fallback to Oakville/Mississauga GTA corridor midpoint instead of Downtown Toronto
-        return { ...loc, lat: 43.5183, lng: -79.8774 }; 
+        // Fallback to Toronto GTA midpoint
+        return { ...loc, lat: 43.6532, lng: -79.3832 }; 
       })
     );
 

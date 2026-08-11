@@ -3,38 +3,45 @@ import { supabase } from '../supabaseClient';
 import '../App.css';
 
 export default function ContactB2B({ setView, navigateTo }) {
-  const [formData, setFormData] = useState({
+  const [formState, setFormState] = useState({
     name: '',
     company: '',
     email: '',
-    interest: 'lead_membership'
+    interest: 'lead_membership',
+    submitted: false,
+    isSubmitting: false,
+    errorMessage: null
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleBack = () => {
-    if (navigateTo) navigateTo('/');
-    else if (setView) setView('quiz');
+    if (typeof navigateTo === 'function') navigateTo('/');
+    else if (typeof setView === 'function') setView('quiz');
+    else window.location.href = '/';
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setFormState(prev => ({ ...prev, isSubmitting: true, errorMessage: null }));
+
     try {
-      await supabase.from('contact_leads').insert([{
-        full_name: formData.name,
-        company: formData.company,
-        email: formData.email,
-        interest: formData.interest,
+      const { error } = await supabase.from('contact_leads').insert([{
+        full_name: formState.name,
+        company: formState.company,
+        email: formState.email,
+        interest: formState.interest,
         source: 'b2b_contact_form',
         created_at: new Date().toISOString()
       }]);
-      setSubmitted(true);
+
+      if (error) {
+        console.warn('Supabase lead submission warning:', error.message);
+      }
+      setFormState(prev => ({ ...prev, submitted: true }));
     } catch (err) {
-      // Silently handle - form still shows success to user
-      setSubmitted(true);
+      console.error('B2B submission error:', err.message);
+      setFormState(prev => ({ ...prev, submitted: true }));
     } finally {
-      setIsSubmitting(false);
+      setFormState(prev => ({ ...prev, isSubmitting: false }));
     }
   };
 
@@ -63,7 +70,7 @@ export default function ContactB2B({ setView, navigateTo }) {
           </div>
 
           <div className="b2b-form-container">
-            {submitted ? (
+            {formState.submitted ? (
               <div className="success-message">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="2">
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
@@ -80,8 +87,8 @@ export default function ContactB2B({ setView, navigateTo }) {
                     type="text" 
                     required 
                     className="luxury-input"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    value={formState.name}
+                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                   />
                 </div>
                 
@@ -91,8 +98,8 @@ export default function ContactB2B({ setView, navigateTo }) {
                     type="text" 
                     required 
                     className="luxury-input"
-                    value={formData.company}
-                    onChange={(e) => setFormData({...formData, company: e.target.value})}
+                    value={formState.company}
+                    onChange={(e) => setFormState({ ...formState, company: e.target.value })}
                   />
                 </div>
 
@@ -102,8 +109,8 @@ export default function ContactB2B({ setView, navigateTo }) {
                     type="email" 
                     required 
                     className="luxury-input"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    value={formState.email}
+                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                   />
                 </div>
 
@@ -111,18 +118,21 @@ export default function ContactB2B({ setView, navigateTo }) {
                   <label>Area of Interest</label>
                   <select 
                     className="luxury-input"
-                    value={formData.interest}
-                    onChange={(e) => setFormData({...formData, interest: e.target.value})}
+                    value={formState.interest}
+                    onChange={(e) => setFormState({ ...formState, interest: e.target.value })}
                   >
-                    <option value="lead_membership">Pay-per-Lead Membership</option>
-                    <option value="data_licensing">Data & Insights Licensing</option>
-                    <option value="developer_tools">Enterprise Developer Tools</option>
-                    <option value="demo">Request a Demo</option>
+                    <option value="lead_membership">Realtor Lead Network Membership</option>
+                    <option value="developer_data">Developer Neighborhood Analytics API</option>
+                    <option value="custom_partnership">Custom Marketing & Branding Partnership</option>
                   </select>
                 </div>
 
-                <button type="submit" className="btn-primary b2b-submit-btn" disabled={isSubmitting}>
-                  Request Partnership Details
+                <button 
+                  type="submit" 
+                  className="btn-luxury btn-full"
+                  disabled={formState.isSubmitting}
+                >
+                  {formState.isSubmitting ? 'Submitting Application...' : 'Request Partner Access'}
                 </button>
               </form>
             )}

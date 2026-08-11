@@ -13,6 +13,7 @@ import SEOHead from './components/SEOHead';
 import ComparisonView from './components/ComparisonView';
 import GuideView from './components/GuideView';
 import { supabase } from './supabaseClient';
+import { UserPreferencesProvider } from './UserPreferencesContext';
 import logoWhite from './assets/logo-white.png';
 import logoPurple from './assets/logo-purple.png';
 import './App.css';
@@ -525,7 +526,8 @@ export default function App() {
   };
 
   return (
-    <div className="app-container">
+    <UserPreferencesProvider initialPreferences={userPreferences}>
+      <div className="app-container">
       <SEOHead
         title={selectedArea ? `${selectedArea.name} | Toronto Neighborhood Vibe Profile & Real Estate Insights` : 'HomeVibes | Where Your Lifestyle Matches Home'}
         description={selectedArea ? `Explore ${selectedArea.name} in Toronto: lifestyle vibe match, average rent/buy prices, commute access, and neighborhood amenities.` : 'Discover Toronto neighborhoods tailored to your unique vibe, commute, budget, and lifestyle preferences.'}
@@ -711,6 +713,7 @@ export default function App() {
       {/* Footer */}
       <Footer setView={setView} navigateTo={navigateTo} />
     </div>
+    </UserPreferencesProvider>
   );
 }
 

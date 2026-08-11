@@ -22,11 +22,18 @@ import {
   WalletIcon
 } from './SvgIcons';
 
+// Scale Constants (Extracted per Qwen Code Audit)
+export const RATING_SCALE = {
+  PLATINUM: 90,
+  GOLD: 75,
+  SILVER: 60
+};
+
 // Helpers
 const getScoreColor = (score) => {
-  if (score >= 90) return '#D4AF37';
-  if (score >= 75) return '#C5A880';
-  if (score >= 60) return '#8E7557';
+  if (score >= RATING_SCALE.PLATINUM) return '#D4AF37';
+  if (score >= RATING_SCALE.GOLD) return '#C5A880';
+  if (score >= RATING_SCALE.SILVER) return '#8E7557';
   return '#4A4B54';
 };
 
