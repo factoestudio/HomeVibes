@@ -6,6 +6,10 @@ export const blogPosts = [
     date: 'August 10, 2026',
     excerpt: 'An in-depth analysis of why Downtown Oakville and Kerr Village achieved an 87/100 sentiment score in our 2026 GTA intelligence harvest, standing as Halton Region\'s premier luxury waterfront enclave.',
     category: 'Vibe Analysis',
+    coordinates: { lat: 43.4443, lng: -79.6703 },
+    neighborhoodName: "Downtown Oakville & Kerr Village",
+    city: "Oakville",
+    neighborhoodId: "oakville",
     content: `
 ## Downtown Oakville & Kerr Village: Halton's #1 Ranked Enclave for Waterfront Prestige & Boutique Living (2026 Analysis)
 
@@ -48,6 +52,10 @@ Downtown Oakville and Kerr Village deliver an unparalleled coastal lifestyle wit
     date: 'August 7, 2026',
     excerpt: 'Discover why Roncesvalles and High Park achieved the highest community sentiment score (88/100) in our 2026 GTA intelligence harvest, blending Polish heritage, green space, and eco-luxury family living.',
     category: 'Vibe Analysis',
+    coordinates: { lat: 43.6465, lng: -79.4637 },
+    neighborhoodName: "Roncesvalles & High Park",
+    city: "Toronto",
+    neighborhoodId: "roncesvalles",
     content: `
 ## Roncesvalles & High Park: Toronto's #1 Ranked Enclave for Eco-Luxury & Family Living (2026 Analysis)
 
@@ -90,6 +98,10 @@ Roncesvalles and High Park stand as the gold standard for family-first urban liv
     date: 'August 4, 2026',
     excerpt: 'An in-depth look at why the Beaches and Upper Beaches corridor continues to be Toronto\'s premier resort-style family haven, combining boardwalk lifestyle with heritage charm.',
     category: 'Vibe Analysis',
+    coordinates: { lat: 43.671, lng: -79.2941 },
+    neighborhoodName: "The Beaches & Upper Beaches",
+    city: "Toronto",
+    neighborhoodId: "the-beaches",
     content: `
 ## The Beaches & Upper Beaches: Toronto's 2026 Coastal Village Real Estate Analysis
 
@@ -132,6 +144,10 @@ The Beaches and Upper Beaches offer a lifestyle that feels like an extended summ
     date: 'August 2, 2026',
     excerpt: 'Explore how Leslieville and South Riverdale have solidified their status in summer 2026 as the East End\'s premier hub for boutique retail, film studio hubs, and family-first urban living.',
     category: 'Vibe Analysis',
+    coordinates: { lat: 43.6625, lng: -79.3364 },
+    neighborhoodName: "Leslieville & South Riverdale",
+    city: "Toronto",
+    neighborhoodId: "leslieville",
     content: `
 ## Leslieville & South Riverdale: Toronto's 2026 Epicenter for Creative Design & Family Living
 
@@ -174,6 +190,10 @@ Leslieville and South Riverdale represent the gold standard for East End living 
     date: 'July 30, 2026',
     excerpt: 'With the Hazel McCallion Hurontario LRT and waterfront redevelopment taking shape, Port Credit is the premier 2026 destination for buyers seeking lakefront charm and rapid GTA connectivity.',
     category: 'Market Trends',
+    coordinates: { lat: 43.5516, lng: -79.5855 },
+    neighborhoodName: "Port Credit & Mississauga Waterfront",
+    city: "Mississauga",
+    neighborhoodId: "port-credit",
     content: `
 ## Port Credit & Mississauga Waterfront: The 2026 Suburban-Urban Transit Oasis
 
@@ -218,6 +238,10 @@ Port Credit proves that you don't need a Toronto postal code to enjoy world-clas
     date: 'July 27, 2026',
     excerpt: 'Discover why Roncesvalles Village and the High Park enclave have become Toronto\'s 2026 destination for eco-conscious luxury, heritage home restorations, and active family living.',
     category: 'Vibe Analysis',
+    coordinates: { lat: 43.8703, lng: -79.3101 },
+    neighborhoodName: "Unionville & Main St Markham",
+    city: "Markham",
+    neighborhoodId: "markham",
     content: `
 ## Roncesvalles & High Park: Toronto's 2026 Eco-Luxury & Family Village Corridor
 
@@ -260,6 +284,10 @@ Roncesvalles & High Park offer a timeless blend of natural beauty, architectural
     date: 'July 26, 2026',
     excerpt: 'An in-depth 2026 ranking of the best Toronto & GTA neighborhoods for software engineers, tech founders, and remote product managers balancing hybrid commutes with high-vibe living.',
     category: 'Lifestyle & Tech',
+    coordinates: { lat: 43.6702, lng: -79.3898 },
+    neighborhoodName: "Yorkville & The Annex",
+    city: "Toronto",
+    neighborhoodId: "yorkville",
     content: `
 ## Best Toronto Neighborhoods for Tech Workers in 2026: Hybrid Work, Transit & Lifestyle Analysis
 
@@ -322,6 +350,10 @@ In 2026, tech workers are prioritizing neighborhoods that act as complete lifest
     date: 'July 26, 2026',
     excerpt: 'West End industrial artisan cool meets East End stroller-friendly charm. A comprehensive 2026 comparative analysis of Toronto\'s two favorite neighborhood enclaves.',
     category: 'Vibe Comparison',
+    coordinates: { lat: 43.7946, lng: -79.5268 },
+    neighborhoodName: "Vaughan Metropolitan Centre",
+    city: "Vaughan",
+    neighborhoodId: "vaughan",
     content: `
 ## Junction vs Leslieville 2026: West End vs East End Real Estate & Vibe Showdown
 
@@ -382,6 +414,10 @@ However, in 2026, key infrastructure developments—specifically the **West Toro
     date: 'July 26, 2026',
     excerpt: 'With the Eglinton Crosstown fully operational and new mixed-use developments opening, Midtown is quickly becoming the destination of choice for millennial tech families seeking space and connectivity.',
     category: 'Market Trends',
+    coordinates: { lat: 43.6853, lng: -79.7599 },
+    neighborhoodName: "Downtown Brampton & Mount Pleasant",
+    city: "Brampton",
+    neighborhoodId: "brampton",
     content: `
 ## The Rise of Mid-Town: Yonge & Eglinton's Transformation into a Family-Friendly Tech Hub
 
@@ -426,6 +462,10 @@ Midtown has successfully shed its construction-heavy past to become Toronto's pr
     date: 'July 25, 2026',
     excerpt: 'From waterfront promenades to tech-hub proximity, the revitalized East Bayfront and Sugar Beach pocket offers an unparalleled resort-style lifestyle in the heart of the city.',
     category: 'Vibe Analysis',
+    coordinates: { lat: 43.8105, lng: -79.0888 },
+    neighborhoodName: "Pickering Waterfront & Nautical Village",
+    city: "Pickering",
+    neighborhoodId: "pickering",
     content: `
 ## The Waterfront & Sugar Beach: Toronto's 2026 Urban Resort Living
 
@@ -470,6 +510,10 @@ The East Bayfront & Sugar Beach corridor proves that you don't have to leave the
     date: 'July 24, 2026',
     excerpt: 'From indie breweries and Geary Ave arts hubs to the Railpath expansion, the Junction and Dupont West corridor is driving Toronto\'s 2026 creative migration. Here is how the vibe matches your real estate move.',
     category: 'Vibe Analysis',
+    coordinates: { lat: 43.6372, lng: -79.4181 },
+    neighborhoodName: "Liberty Village & King West",
+    city: "Toronto",
+    neighborhoodId: "liberty-village",
     content: `
 ## The Junction & Dupont West: Toronto's 2026 Epicenter for Industrial Artisan Loft Living
 
@@ -516,6 +560,10 @@ The Junction & Dupont West corridor is proof that Toronto buyers in 2026 aren't 
     date: 'July 22, 2026',
     excerpt: 'The Bank of Canada held at 2.25% for the sixth straight time. With GTA sales up 9.4% and inventory tightening, here is how buyers, renewers, and investors should play it.',
     category: 'Market Trends',
+    coordinates: { lat: 43.7065, lng: -79.3986 },
+    neighborhoodName: "Yonge & Eglinton Midtown Hub",
+    city: "Toronto",
+    neighborhoodId: "midtown-toronto",
     content: `
 ## The Rate Hold Effect: What the Bank of Canada's 6th Consecutive Pause Means for GTA Buyers
 
@@ -562,6 +610,10 @@ The Bank of Canada is telling the market: *"We're not moving — and neither sho
     date: 'July 22, 2026',
     excerpt: 'Vacancy rates hit 5.4%, 66% of new buildings offer move-in incentives, and Bill 60 just doubled tenant protections. The Toronto rental market has completely flipped.',
     category: 'Rental Market',
+    coordinates: { lat: 43.8762, lng: -79.4372 },
+    neighborhoodName: "Richmond Hill Heritage Core",
+    city: "Richmond Hill",
+    neighborhoodId: "richmond-hill",
     content: `
 ## Toronto's Rental Reset: Vacancy Rates Hit 5-Year Highs and Landlords Are Paying You to Move In
 
@@ -619,6 +671,10 @@ Toronto's rental market has flipped from a landlord's playground to a renter's p
     date: 'July 21, 2026',
     excerpt: 'Line 5 is officially running and the western extension excavation has begun. Here’s what it means for midtown and western transit-oriented investors.',
     category: 'Market Trends',
+    coordinates: { lat: 43.5828, lng: -79.7145 },
+    neighborhoodName: "Streetsville Village",
+    city: "Mississauga",
+    neighborhoodId: "mississauga-valleys",
     content: `
 ## The Crosstown Effect: How Line 5’s Launch is Reshaping Midtown & Beyond
 
@@ -642,6 +698,10 @@ The long-awaited transit dream is finally reality. If you missed the boat on the
     date: 'July 21, 2026',
     excerpt: 'New condo sales are surging, but the action has completely shifted from pre-construction to completed projects. Here is how you should pivot your strategy.',
     category: 'Market Trends',
+    coordinates: { lat: 43.6501, lng: -79.4751 },
+    neighborhoodName: "Bloor West Village & High Park",
+    city: "Toronto",
+    neighborhoodId: "roncesvalles",
     content: `
 ## The 2026 Condo Shakeup: Why 'Move-In Ready' is Defeating Pre-Con
 
@@ -665,6 +725,10 @@ Certainty is the new luxury in 2026. If you're looking to invest or move, priori
     date: 'July 18, 2026',
     excerpt: 'The Ontario Line turns Leslieville from a great neighborhood into a globally connected urban village. Here is what it means for young families.',
     category: 'Market Trends',
+    coordinates: { lat: 43.6521, lng: -79.3551 },
+    neighborhoodName: "Canary District & Waterfront East",
+    city: "Toronto",
+    neighborhoodId: "downtown-toronto",
     content: `
 ## Leslieville & The Ontario Line: Future-Proofing Your Family's Lifestyle
 
@@ -696,6 +760,10 @@ Prices in South Riverdale and Leslieville are already adjusting to the future re
     date: 'July 18, 2026',
     excerpt: 'In the Toronto West End, telling someone you live in "Trinity Bellwoods" isn\'t specific enough anymore. We compare two of the most coveted, hyper-local strips.',
     category: 'Vibe Analysis',
+    coordinates: { lat: 43.3255, lng: -79.799 },
+    neighborhoodName: "Burlington Waterfront & Downtown",
+    city: "Burlington",
+    neighborhoodId: "oakville",
     content: `
 ## Ossington Strip vs. West Queen West: Which Micro-Cluster Fits Your Vibe?
 
@@ -726,6 +794,10 @@ Named one of the coolest neighborhoods in the world by Vogue a few years ago, WQ
     date: 'July 18, 2026',
     excerpt: 'The Hazel McCallion Line is transforming Port Credit from a lakeside gem into a hyper-connected transit hub. Discover why it\'s the premier play for young professionals.',
     category: 'Transit Impact',
+    coordinates: { lat: 43.6532, lng: -79.3832 },
+    neighborhoodName: "Greater Toronto Area Overview",
+    city: "GTA Regional",
+    neighborhoodId: "downtown-toronto",
     content: `
 ## The Hazel McCallion Line Effect: How Port Credit's Vibe is Evolving
 

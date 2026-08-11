@@ -1,0 +1,454 @@
+[
+  {
+    "neighborhood": "The Junction & Dupont West",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Positive",
+    "score": 85,
+    "summary": "The Junction and Dupont West offer a highly valued community atmosphere with independent retail, excellent food along Geary Avenue, and proximity to High Park. Residents praise the quick 17-minute UP Express commute to Union Station, though gentrification construction and narrow street parking remain common pain points.",
+    "topThemes": [
+      "Contained community character",
+      "UP Express & subway connectivity",
+      "Geary Avenue food & arts strip"
+    ],
+    "concerns": [
+      "Parking shortages on narrow side streets",
+      "Ongoing gentrification & construction noise"
+    ]
+  },
+  {
+    "neighborhood": "Leslieville & South Riverdale",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Positive",
+    "score": 83,
+    "summary": "Leslieville and South Riverdale maintain strong appeal for young families and professionals due to vibrant commercial strips, top school catchments (Withrow Ave), and access to Riverdale Park East. While semi-detached homes remain resilient, residents cite streetcar transit delays and visible urban challenges near major intersections as drawbacks.",
+    "topThemes": [
+      "Village-like community atmosphere",
+      "Proximity to Riverdale Park East",
+      "Strong public school catchments"
+    ],
+    "concerns": [
+      "Queen & King streetcar transit delays",
+      "Street parking constraints during winter"
+    ]
+  },
+  {
+    "neighborhood": "King West & Liberty Village",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Positive",
+    "score": 75,
+    "summary": "King West and Liberty Village remain major hubs for young professionals seeking high walkability, self-contained amenities, and nightlife. However, heavy reliance on overcrowded 504 King streetcars and severe vehicular traffic during event days in Liberty Village lead to frequent resident complaints.",
+    "topThemes": [
+      "Unmatched urban walkability",
+      "Vibrant nightlife and dining scene",
+      "Self-contained urban village amenities"
+    ],
+    "concerns": [
+      "504 King streetcar overcrowding",
+      "Liberty Village traffic gridlock & dog waste management"
+    ]
+  },
+  {
+    "neighborhood": "Yonge & Eglinton Midtown",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Neutral",
+    "score": 74,
+    "summary": "Yonge and Eglinton offers stellar transit access with Line 1 and the Eglinton Crosstown, paired with high density retail and dining options. Recent sentiment reflects frustration with persistent condo construction, intersection traffic gridlock, and compact layouts in newer high-rise builds.",
+    "topThemes": [
+      "Line 1 & Eglinton Crosstown transit hub",
+      "Abundant grocery and cinema amenities",
+      "High urban walkability"
+    ],
+    "concerns": [
+      "Persistent construction noise & dust",
+      "Main intersection traffic gridlock",
+      "Small condo unit floor plans"
+    ]
+  },
+  {
+    "neighborhood": "The Beaches & Upper Beaches",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Positive",
+    "score": 82,
+    "summary": "The Beaches provides a distinct resort-like waterfront lifestyle with lakefront boardwalks and a dog-friendly culture, while the Upper Beaches offers a more affordable alternative with direct Danforth GO access. Residents note that summer tourist traffic and seasonal business turnover on Queen Street are recurring challenges.",
+    "topThemes": [
+      "Lakefront boardwalk & beach lifestyle",
+      "Upper Beaches GO train convenience",
+      "Family-oriented community feel"
+    ],
+    "concerns": [
+      "Summer traffic congestion on Queen Street",
+      "Transit isolation in core Beaches",
+      "High home entry prices"
+    ]
+  },
+  {
+    "neighborhood": "Waterfront & Financial District",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Neutral",
+    "score": 68,
+    "summary": "The Waterfront and Financial District excel in PATH connectivity and proximity to corporate offices and harbour boardwalks. However, resident discussions highlight an oversupplied condo market, a quiet 'ghost town' feel outside business hours, and concerns surrounding short-term rental activity in certain towers.",
+    "topThemes": [
+      "Direct PATH network & Union Station access",
+      "Scenic lakefront boardwalks",
+      "High walkability to corporate core"
+    ],
+    "concerns": [
+      "High condo inventory supply pressure",
+      "Quiet atmosphere after business hours",
+      "Short-term rental (Airbnb) disruptions"
+    ]
+  },
+  {
+    "neighborhood": "Yorkville & The Annex",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Positive",
+    "score": 86,
+    "summary": "Yorkville stands as Toronto's premier luxury hub with high-end dining and concierge condo living, while The Annex brings academic energy, tree-lined streets, and historic architecture. The area benefits from dual subway line access at Bloor-Yonge and St. George, offset only by high cost-of-living thresholds.",
+    "topThemes": [
+      "Premier luxury retail & dining (Yorkville)",
+      "Academic charm & heritage architecture (Annex)",
+      "Dual subway line connectivity"
+    ],
+    "concerns": [
+      "High cost of living and rental rates",
+      "Seasonal student turnover in Annex rentals"
+    ]
+  },
+  {
+    "neighborhood": "Roncesvalles & High Park",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Positive",
+    "score": 88,
+    "summary": "Roncesvalles and High Park rank among Toronto's highest-rated family neighbourhoods, celebrated for small-town community feel, High Park green space, and independent commercial charm along Roncesvalles Avenue. Difficult street parking during peak festival seasons and streetcar delays are the main noted issues.",
+    "topThemes": [
+      "Direct access to High Park green space",
+      "Charming independent commercial strip",
+      "Strong family-friendly neighborhood bond"
+    ],
+    "concerns": [
+      "Competitive street parking",
+      "Streetcar commute variability to downtown core"
+    ]
+  },
+  {
+    "neighborhood": "Danforth & Greektown",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Positive",
+    "score": 84,
+    "summary": "Danforth and Greektown offer fantastic connectivity along TTC Line 2, combined with a vibrant culinary scene and strong sense of community safety. Resale semi-detached homes maintain steady demand, though buyers note high price thresholds above $1.1M.",
+    "topThemes": [
+      "Seamless Line 2 subway connectivity",
+      "Vibrant dining & patio culture",
+      "Safe, family-friendly neighbourhood feel"
+    ],
+    "concerns": [
+      "High entry price threshold for detached homes",
+      "Street traffic on Danforth Avenue"
+    ]
+  },
+  {
+    "neighborhood": "North York Centre",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Neutral",
+    "score": 73,
+    "summary": "North York Centre provides a practical, clean, and safe urban environment along Yonge Street with direct Line 1 subway access and an outstanding multicultural dining scene. Community discussions note a softening condo market and a preference for established resale units over small new pre-con layouts.",
+    "topThemes": [
+      "Line 1 subway corridor convenience",
+      "Diverse multicultural dining scene",
+      "High neighbourhood safety and cleanliness"
+    ],
+    "concerns": [
+      "Suburban atmosphere lacking downtown excitement",
+      "Highway 401 traffic congestion",
+      "Condo inventory supply overhang"
+    ]
+  },
+  {
+    "neighborhood": "Scarborough City Centre",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Neutral",
+    "score": 65,
+    "summary": "Scarborough City Centre serves as an affordable urban hub anchored by STC Mall, YMCA, and civic amenities. Current discussions reflect caution over the post-RT transit transition, car dependency for wider errands, and an overall softening real estate market.",
+    "topThemes": [
+      "Affordable starter condo entry point",
+      "Centralized retail & civic amenities",
+      "Multicultural community atmosphere"
+    ],
+    "concerns": [
+      "Transit uncertainty following RT closure",
+      "Car dependency outside the central mall hub",
+      "Slow property value appreciation"
+    ]
+  },
+  {
+    "neighborhood": "Etobicoke Centre / Six Points",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Positive",
+    "score": 78,
+    "summary": "Etobicoke Centre is undergoing a major urban transformation around Bloor-Kipling with the construction of the new Etobicoke Civic Centre and expanded parks. Residents value the unmatched transit connectivity of Kipling Station (Subway + GO Train), while managing ongoing construction disruptions.",
+    "topThemes": [
+      "Kipling Station regional transit hub",
+      "New Etobicoke Civic Centre investment",
+      "High future growth potential"
+    ],
+    "concerns": [
+      "Active construction zone fatigue",
+      "Traffic congestion during master-plan transition"
+    ]
+  },
+  {
+    "neighborhood": "Mississauga City Centre / Square One",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/mississauga",
+      "Reddit/r/torontorealestate",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Neutral",
+    "score": 71,
+    "summary": "Mississauga City Centre offers dense condo living with direct access to Square One Shopping Centre, Celebration Square, and the upcoming Hurontario LRT. Residents highlight convenience while pointing out elevator queues in high-rise towers, street traffic noise, and a softening condo rental market.",
+    "topThemes": [
+      "Abundant retail & entertainment at Square One",
+      "Hurontario LRT transit investment",
+      "Modern condo building amenities"
+    ],
+    "concerns": [
+      "Elevator wait times in mega-towers",
+      "Suburban gridlock and wind-tunnel effects",
+      "Weak cash-flow yields for condo investors"
+    ]
+  },
+  {
+    "neighborhood": "Port Credit Waterfront",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/mississauga",
+      "Reddit/r/torontorealestate",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Positive",
+    "score": 86,
+    "summary": "Port Credit is widely regarded as Mississauga's premier waterfront community, featuring scenic boardwalks, a vibrant marina, Lakeshore Road boutiques, and a 25-minute GO Train commute to Union Station. High home prices and summer Lakeshore traffic congestion are the primary resident trade-offs.",
+    "topThemes": [
+      "Scenic Lake Ontario waterfront & marina",
+      "Vibrant village commercial walkability",
+      "Express GO Train commute to Toronto"
+    ],
+    "concerns": [
+      "High real estate price premium",
+      "Lakeshore Road traffic & motorcycle noise"
+    ]
+  },
+  {
+    "neighborhood": "Streetsville",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/mississauga",
+      "Reddit/r/torontorealestate",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Positive",
+    "score": 83,
+    "summary": "Streetsville maintains a charming 'Bread and Honey' historic village atmosphere with independent shops along Queen Street, access to Culham Trail, and top-rated schools. Properties hold value exceptionally well, though car dependency outside the village center and long childcare waitlists are common concerns.",
+    "topThemes": [
+      "Historic small-town village feel",
+      "Community events & Culham Trail access",
+      "Resilient real estate market value"
+    ],
+    "concerns": [
+      "Car dependency outside Queen St core",
+      "Narrow street traffic bottlenecks",
+      "Long daycare waitlists"
+    ]
+  },
+  {
+    "neighborhood": "Downtown Brampton",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/Brampton",
+      "Reddit/r/torontorealestate",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Neutral",
+    "score": 58,
+    "summary": "Downtown Brampton offers convenience via the Brampton GO station, historic Gage Park, and local community events. However, sentiment reflects a noticeable housing market correction from 2022 peaks, high auto insurance rates, and resident desire for more diverse urban dining and nightlife options.",
+    "topThemes": [
+      "Direct GO Transit connectivity to Toronto",
+      "Historic Gage Park & community markets",
+      "Affordable GTA housing entry point"
+    ],
+    "concerns": [
+      "Significant real estate price correction from peak",
+      "Lack of urban dining and nightlife options",
+      "High local auto insurance rates"
+    ]
+  },
+  {
+    "neighborhood": "Unionville & Markham Centre",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/Markham",
+      "Reddit/r/torontorealestate",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Positive",
+    "score": 81,
+    "summary": "Unionville and Markham Centre combine historic Main Street charm and Toogood Pond trails with modern high-density condo living near the Pan Am Centre. The area is praised for world-class Asian dining and top public schools, while Highway 7 traffic and high entry home prices remain key concerns.",
+    "topThemes": [
+      "Historic Main Street Unionville & Toogood Pond",
+      "World-class Asian culinary destination",
+      "Top-tier public school catchments"
+    ],
+    "concerns": [
+      "Highway 7 & Kennedy Road traffic congestion",
+      "High real estate entry cost ($1.5M+ for detached)",
+      "Debates surrounding high-rise tower density"
+    ]
+  },
+  {
+    "neighborhood": "Vaughan Metropolitan Centre VMC",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/Vaughan",
+      "Reddit/r/torontorealestate",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Neutral",
+    "score": 67,
+    "summary": "Vaughan Metropolitan Centre provides direct Line 1 TTC subway service into Toronto, rapid access to Highways 400/407, and modern condo amenities. Resident discussions caution about heavy condo supply overhang, an ongoing construction environment, and a shortage of parks and street-level community warmth.",
+    "topThemes": [
+      "Direct Line 1 TTC subway terminus",
+      "Proximity to 400/407 highway corridors",
+      "New condo infrastructure & YMCA"
+    ],
+    "concerns": [
+      "High-density construction zone atmosphere",
+      "Elevator wait times & visitor parking constraints",
+      "Lack of green parks and street-level community feel"
+    ]
+  },
+  {
+    "neighborhood": "Downtown Oakville & Kerr Village",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/oakville",
+      "Reddit/r/torontorealestate",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Positive",
+    "score": 87,
+    "summary": "Downtown Oakville and Kerr Village present a balance of waterfront harbour prestige and an eclectic, walkable dining scene. Residents praise express GO Train service to Toronto and mature tree-lined streets, while noting high luxury price tags in Old Oakville and QEW highway traffic.",
+    "topThemes": [
+      "Waterfront harbour & heritage prestige (Downtown Oakville)",
+      "Eclectic, walkable main street dining (Kerr Village)",
+      "Lakeshore West express GO Train commute"
+    ],
+    "concerns": [
+      "High luxury real estate price barrier",
+      "QEW highway commuting traffic",
+      "Quiet nightlife after 9 PM"
+    ]
+  },
+  {
+    "neighborhood": "Pickering City Centre",
+    "scanDate": "2026-08-04T16:12:00.000Z",
+    "sources": [
+      "Reddit/r/pickering",
+      "Reddit/r/torontorealestate",
+      "Local real estate forums",
+      "Neighbourhood resident discussions"
+    ],
+    "sentiment": "Neutral",
+    "score": 72,
+    "summary": "Pickering City Centre is undergoing a major 55-acre master-planned transformation around Pickering Town Centre with new high-rises and City Centre Park. Residents value the fast 30-minute GO train commute to Union Station and lakefront trail access, while navigating active construction disruption and rising municipal taxes.",
+    "topThemes": [
+      "55-acre master-planned urban transformation",
+      "30-minute express GO Train to Union Station",
+      "Proximity to waterfront parks and trails"
+    ],
+    "concerns": [
+      "Active construction disruption & road closures",
+      "Car dependency outside the immediate core",
+      "Property tax increases"
+    ]
+  }
+]

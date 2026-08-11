@@ -1,0 +1,1042 @@
+{
+  "meta": {
+    "generatedAt": "2026-08-04T20:13:50.832Z",
+    "sprint": 2,
+    "scope": "Full GTA (20 Micro-Markets across Toronto, Peel, York, Halton, Durham)",
+    "version": "2.0.0",
+    "sources": [
+      {
+        "name": "City of Toronto Open Data — Development Applications",
+        "resourceId": "8907d8ed-c515-4ce9-b674-9f8c6eefcf0d",
+        "url": "https://open.toronto.ca/dataset/development-applications/"
+      },
+      {
+        "name": "CREA / HouseSigma — Price Benchmarks",
+        "url": "https://creastats.crea.ca",
+        "note": "June 2026 public release"
+      },
+      {
+        "name": "StatCan Housing Starts Table 46-10-0066",
+        "url": "https://www150.statcan.gc.ca/n1/tbl/csv/46100066-eng.zip"
+      },
+      {
+        "name": "Llama3 Local (Ollama)",
+        "model": "llama3:latest",
+        "purpose": "Sentiment scoring & description summarization"
+      },
+      {
+        "name": "Web Search Sentiment",
+        "purpose": "Source text for Llama3 scoring"
+      },
+      {
+        "name": "Web Search + Llama3 Sentiment",
+        "model": "llama3:latest",
+        "mergedAt": "2026-08-04T20:10:51.079Z",
+        "neighborhoods": 5
+      }
+    ],
+    "sentimentMergedAt": "2026-08-04T20:13:50.832Z"
+  },
+  "neighborhoods": [
+    {
+      "id": "the-junction",
+      "name": "The Junction & Dupont West",
+      "city": "Toronto",
+      "region": "Toronto West",
+      "priceSqFtBuy": 1065,
+      "avgRentMonthly": 2450,
+      "demandVelocityDays": 11,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 85,
+      "sentimentLabel": "Positive",
+      "sentimentSummary": "The Junction and Dupont West offer a highly valued community atmosphere with independent retail, excellent food along Geary Avenue, and proximity to High Park. Residents praise the quick 17-minute UP Express commute to Union Station, though gentrification construction and narrow street parking remain common pain points.",
+      "topThemes": [
+        "Contained community character",
+        "UP Express & subway connectivity",
+        "Geary Avenue food & arts strip"
+      ],
+      "concerns": [
+        "Parking shortages on narrow side streets",
+        "Ongoing gentrification & construction noise"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/toronto",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "leslieville",
+      "name": "Leslieville & South Riverdale",
+      "city": "Toronto",
+      "region": "Toronto East",
+      "priceSqFtBuy": 1100,
+      "avgRentMonthly": 2480,
+      "demandVelocityDays": 9,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 1,
+      "devApplicationsTop3": [
+        {
+          "appNumber": "22 210125 STE 14 OZ",
+          "type": "OZ",
+          "street": "929 QUEEN ST",
+          "dateSubmitted": "2022-09-27",
+          "status": "Under Review",
+          "description": "OPA and Rezoning for a  10-storey mixed-use building (including mezzanine) having a non-residential gross floor area of 213.5 square metres, and a residential gross floor area of 5,485.4 square metres",
+          "url": "http://app.toronto.ca/AIC/index.do?folderRsn=PV1GWskBQ29iOXIWd5ZOJw%3D%3D",
+          "wardName": "Toronto-Danforth",
+          "aiSummary": "Here's a summary in one sentence:\n\nA 10-storey mixed-use development with a mezzanine level is proposed for Toronto, featuring 143 residential units above 213 sqm of non-residential space (no key changes mentioned)."
+        }
+      ],
+      "sentimentScore": 83,
+      "sentimentLabel": "Positive",
+      "sentimentSummary": "Leslieville and South Riverdale maintain strong appeal for young families and professionals due to vibrant commercial strips, top school catchments (Withrow Ave), and access to Riverdale Park East. While semi-detached homes remain resilient, residents cite streetcar transit delays and visible urban challenges near major intersections as drawbacks.",
+      "topThemes": [
+        "Village-like community atmosphere",
+        "Proximity to Riverdale Park East",
+        "Strong public school catchments"
+      ],
+      "concerns": [
+        "Queen & King streetcar transit delays",
+        "Street parking constraints during winter"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/toronto",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "king-west",
+      "name": "King West & Liberty Village",
+      "city": "Toronto",
+      "region": "Toronto Core",
+      "priceSqFtBuy": 1120,
+      "avgRentMonthly": 2700,
+      "demandVelocityDays": 8,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 2,
+      "devApplicationsTop3": [
+        {
+          "appNumber": "19 261546 STE 10 SA",
+          "type": "SA",
+          "street": "30 BAY ST",
+          "dateSubmitted": "2019-12-16",
+          "status": "Under Review",
+          "description": "Site plan application for a proposed 57-storey non-residential building.",
+          "url": "http://app.toronto.ca/AIC/index.do?folderRsn=BaCUwfHA7yHoHcuHsE1how%3D%3D",
+          "wardName": "Spadina-Fort York",
+          "aiSummary": "Here is a summary of the development application:\n\nA site plan application has been submitted to build a 57-storey non-residential building with an unknown number of units (as it's not residential) in Toronto, with no key changes mentioned."
+        },
+        {
+          "appNumber": "19 261546 STE 10 SA",
+          "type": "SA",
+          "street": "60 HARBOUR ST",
+          "dateSubmitted": "2019-12-16",
+          "status": "Under Review",
+          "description": "Site plan application for a proposed 57-storey non-residential building.",
+          "url": "http://app.toronto.ca/AIC/index.do?folderRsn=BaCUwfHA7yHoHcuHsE1how%3D%3D",
+          "wardName": "Spadina-Fort York",
+          "aiSummary": "Here is a summary of the Toronto development application:\n\nThe applicant proposes a 57-storey non-residential building with no residential units, which represents a significant change in building type and height from what was previously approved on the site."
+        }
+      ],
+      "sentimentScore": 75,
+      "sentimentLabel": "Positive",
+      "sentimentSummary": "King West and Liberty Village remain major hubs for young professionals seeking high walkability, self-contained amenities, and nightlife. However, heavy reliance on overcrowded 504 King streetcars and severe vehicular traffic during event days in Liberty Village lead to frequent resident complaints.",
+      "topThemes": [
+        "Unmatched urban walkability",
+        "Vibrant nightlife and dining scene",
+        "Self-contained urban village amenities"
+      ],
+      "concerns": [
+        "504 King streetcar overcrowding",
+        "Liberty Village traffic gridlock & dog waste management"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/toronto",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "yonge-eglinton",
+      "name": "Yonge & Eglinton Midtown",
+      "city": "Toronto",
+      "region": "Toronto Midtown",
+      "priceSqFtBuy": 1050,
+      "avgRentMonthly": 2600,
+      "demandVelocityDays": 13,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 1,
+      "devApplicationsTop3": [
+        {
+          "appNumber": "21 235313 STE 12 SA",
+          "type": "SA",
+          "street": "45 BALLIOL ST",
+          "dateSubmitted": "2021-11-08",
+          "status": "Under Review",
+          "description": "Site Plan approval application for a 40-storey residential building having a gross floor area of 34,000 square metres, and containing 477 residential dwelling units.",
+          "url": "http://app.toronto.ca/AIC/index.do?folderRsn=Lv%2FNot1YNFAqIKZcCqcvFQ%3D%3D",
+          "wardName": "Toronto-St. Paul's",
+          "aiSummary": "Here is a summary of the Toronto development application in one clear sentence:\n\nA 40-storey residential building with 477 units and a gross floor area of 34,000 sqm is proposed for site plan approval, featuring key changes to the original plans."
+        }
+      ],
+      "sentimentScore": 74,
+      "sentimentLabel": "Neutral",
+      "sentimentSummary": "Yonge and Eglinton offers stellar transit access with Line 1 and the Eglinton Crosstown, paired with high density retail and dining options. Recent sentiment reflects frustration with persistent condo construction, intersection traffic gridlock, and compact layouts in newer high-rise builds.",
+      "topThemes": [
+        "Line 1 & Eglinton Crosstown transit hub",
+        "Abundant grocery and cinema amenities",
+        "High urban walkability"
+      ],
+      "concerns": [
+        "Persistent construction noise & dust",
+        "Main intersection traffic gridlock",
+        "Small condo unit floor plans"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/toronto",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "the-beaches",
+      "name": "The Beaches & Upper Beaches",
+      "city": "Toronto",
+      "region": "Toronto East",
+      "priceSqFtBuy": 980,
+      "avgRentMonthly": 2550,
+      "demandVelocityDays": 15,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 82,
+      "sentimentLabel": "Positive",
+      "sentimentSummary": "The Beaches provides a distinct resort-like waterfront lifestyle with lakefront boardwalks and a dog-friendly culture, while the Upper Beaches offers a more affordable alternative with direct Danforth GO access. Residents note that summer tourist traffic and seasonal business turnover on Queen Street are recurring challenges.",
+      "topThemes": [
+        "Lakefront boardwalk & beach lifestyle",
+        "Upper Beaches GO train convenience",
+        "Family-oriented community feel"
+      ],
+      "concerns": [
+        "Summer traffic congestion on Queen Street",
+        "Transit isolation in core Beaches",
+        "High home entry prices"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/toronto",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "waterfront-financial",
+      "name": "Waterfront & Financial District",
+      "city": "Toronto",
+      "region": "Toronto Core",
+      "priceSqFtBuy": 1180,
+      "avgRentMonthly": 2850,
+      "demandVelocityDays": 10,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 2,
+      "devApplicationsTop3": [
+        {
+          "appNumber": "19 261546 STE 10 SA",
+          "type": "SA",
+          "street": "30 BAY ST",
+          "dateSubmitted": "2019-12-16",
+          "status": "Under Review",
+          "description": "Site plan application for a proposed 57-storey non-residential building.",
+          "url": "http://app.toronto.ca/AIC/index.do?folderRsn=BaCUwfHA7yHoHcuHsE1how%3D%3D",
+          "wardName": "Spadina-Fort York",
+          "aiSummary": "Here is a summary of the Toronto development application in one clear sentence for a real estate analyst:\n\nThe City of Toronto has received an application to construct a 57-storey non-residential building, containing no residential units, which represents a significant change from typical high-rise developments in the area."
+        },
+        {
+          "appNumber": "19 261546 STE 10 SA",
+          "type": "SA",
+          "street": "60 HARBOUR ST",
+          "dateSubmitted": "2019-12-16",
+          "status": "Under Review",
+          "description": "Site plan application for a proposed 57-storey non-residential building.",
+          "url": "http://app.toronto.ca/AIC/index.do?folderRsn=BaCUwfHA7yHoHcuHsE1how%3D%3D",
+          "wardName": "Spadina-Fort York",
+          "aiSummary": "Here is a summary of the Toronto development application in one clear sentence:\n\nA site plan application has been submitted to construct a 57-storey non-residential building with no residential units, representing a significant change from typical high-rise developments in the area."
+        }
+      ],
+      "sentimentScore": 68,
+      "sentimentLabel": "Neutral",
+      "sentimentSummary": "The Waterfront and Financial District excel in PATH connectivity and proximity to corporate offices and harbour boardwalks. However, resident discussions highlight an oversupplied condo market, a quiet 'ghost town' feel outside business hours, and concerns surrounding short-term rental activity in certain towers.",
+      "topThemes": [
+        "Direct PATH network & Union Station access",
+        "Scenic lakefront boardwalks",
+        "High walkability to corporate core"
+      ],
+      "concerns": [
+        "High condo inventory supply pressure",
+        "Quiet atmosphere after business hours",
+        "Short-term rental (Airbnb) disruptions"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/toronto",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "yorkville-annex",
+      "name": "Yorkville & The Annex",
+      "city": "Toronto",
+      "region": "Toronto Core",
+      "priceSqFtBuy": 1350,
+      "avgRentMonthly": 3200,
+      "demandVelocityDays": 14,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 86,
+      "sentimentLabel": "Positive",
+      "sentimentSummary": "Yorkville stands as Toronto's premier luxury hub with high-end dining and concierge condo living, while The Annex brings academic energy, tree-lined streets, and historic architecture. The area benefits from dual subway line access at Bloor-Yonge and St. George, offset only by high cost-of-living thresholds.",
+      "topThemes": [
+        "Premier luxury retail & dining (Yorkville)",
+        "Academic charm & heritage architecture (Annex)",
+        "Dual subway line connectivity"
+      ],
+      "concerns": [
+        "High cost of living and rental rates",
+        "Seasonal student turnover in Annex rentals"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/toronto",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "roncesvalles-highpark",
+      "name": "Roncesvalles & High Park",
+      "city": "Toronto",
+      "region": "Toronto West",
+      "priceSqFtBuy": 1080,
+      "avgRentMonthly": 2500,
+      "demandVelocityDays": 12,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 88,
+      "sentimentLabel": "Positive",
+      "sentimentSummary": "Roncesvalles and High Park rank among Toronto's highest-rated family neighbourhoods, celebrated for small-town community feel, High Park green space, and independent commercial charm along Roncesvalles Avenue. Difficult street parking during peak festival seasons and streetcar delays are the main noted issues.",
+      "topThemes": [
+        "Direct access to High Park green space",
+        "Charming independent commercial strip",
+        "Strong family-friendly neighborhood bond"
+      ],
+      "concerns": [
+        "Competitive street parking",
+        "Streetcar commute variability to downtown core"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/toronto",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "danforth-greektown",
+      "name": "Danforth & Greektown",
+      "city": "Toronto",
+      "region": "Toronto East",
+      "priceSqFtBuy": 990,
+      "avgRentMonthly": 2400,
+      "demandVelocityDays": 11,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 1,
+      "devApplicationsTop3": [
+        {
+          "appNumber": "22 210125 STE 14 OZ",
+          "type": "OZ",
+          "street": "929 QUEEN ST",
+          "dateSubmitted": "2022-09-27",
+          "status": "Under Review",
+          "description": "OPA and Rezoning for a  10-storey mixed-use building (including mezzanine) having a non-residential gross floor area of 213.5 square metres, and a residential gross floor area of 5,485.4 square metres",
+          "url": "http://app.toronto.ca/AIC/index.do?folderRsn=PV1GWskBQ29iOXIWd5ZOJw%3D%3D",
+          "wardName": "Toronto-Danforth",
+          "aiSummary": "Here is a summary of the development application in one clear sentence for a real estate analyst:\n\nA 10-storey mixed-use building with a mezzanine level will be constructed in Toronto, featuring 213.5 sqm of non-residential space and 5,485.4 sqm of residential units, representing a significant change from the existing zoning regulations."
+        }
+      ],
+      "sentimentScore": 84,
+      "sentimentLabel": "Positive",
+      "sentimentSummary": "Danforth and Greektown offer fantastic connectivity along TTC Line 2, combined with a vibrant culinary scene and strong sense of community safety. Resale semi-detached homes maintain steady demand, though buyers note high price thresholds above $1.1M.",
+      "topThemes": [
+        "Seamless Line 2 subway connectivity",
+        "Vibrant dining & patio culture",
+        "Safe, family-friendly neighbourhood feel"
+      ],
+      "concerns": [
+        "High entry price threshold for detached homes",
+        "Street traffic on Danforth Avenue"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/toronto",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "north-york-centre",
+      "name": "North York Centre",
+      "city": "Toronto",
+      "region": "Toronto North",
+      "priceSqFtBuy": 950,
+      "avgRentMonthly": 2350,
+      "demandVelocityDays": 12,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 1,
+      "devApplicationsTop3": [
+        {
+          "appNumber": "24 143845 NNY 18 SA",
+          "type": "SA",
+          "street": "4696 YONGE ST",
+          "dateSubmitted": "2024-05-03",
+          "status": "Under Review",
+          "description": "The proposed development would remove the gas bar and commercial service station and replace these uses with a 40-storey mixed use building with 35,311.1 square metres of residential gross floor area ",
+          "url": "http://app.toronto.ca/AIC/index.do?folderRsn=8jLCATWwyU3QKzqppP5Lhg%3D%3D",
+          "wardName": "Willowdale",
+          "aiSummary": "A 40-storey mixed-use building is proposed for Toronto, featuring 35,311 sqm of residential space, replacing an existing gas bar and commercial service station."
+        }
+      ],
+      "sentimentScore": 73,
+      "sentimentLabel": "Neutral",
+      "sentimentSummary": "North York Centre provides a practical, clean, and safe urban environment along Yonge Street with direct Line 1 subway access and an outstanding multicultural dining scene. Community discussions note a softening condo market and a preference for established resale units over small new pre-con layouts.",
+      "topThemes": [
+        "Line 1 subway corridor convenience",
+        "Diverse multicultural dining scene",
+        "High neighbourhood safety and cleanliness"
+      ],
+      "concerns": [
+        "Suburban atmosphere lacking downtown excitement",
+        "Highway 401 traffic congestion",
+        "Condo inventory supply overhang"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/toronto",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "scarborough-town",
+      "name": "Scarborough City Centre",
+      "city": "Toronto",
+      "region": "Toronto East",
+      "priceSqFtBuy": 780,
+      "avgRentMonthly": 2100,
+      "demandVelocityDays": 16,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 12,
+      "devApplicationsTop3": [
+        {
+          "appNumber": "23 172335 ESC 21 OZ",
+          "type": "OZ",
+          "street": "32 CRAIGTON DR",
+          "dateSubmitted": "2023-07-10",
+          "status": "Under Review",
+          "description": "Zoning By-law Amendment application to permit a mixed-use development with building heights that range from eight (8) to 31 storeys, new and re-aligned public streets, and 3,432 sq. m. of public parkl",
+          "url": "http://app.toronto.ca/AIC/index.do?folderRsn=mE%2B8r69uIaAVfWIoMBpYSg%3D%3D",
+          "wardName": "Scarborough Centre",
+          "aiSummary": "Here is a summary of the Toronto development application in one clear sentence for a real estate analyst:\n\nA zoning by-law amendment is being sought to permit a mixed-use development comprising 8-31 storey buildings with approximately 500 units, featuring new and re-aligned public streets, as well as 3,432 square meters of public park space."
+        },
+        {
+          "appNumber": "23 172335 ESC 21 OZ",
+          "type": "OZ",
+          "street": "40 CRAIGTON DR",
+          "dateSubmitted": "2023-07-10",
+          "status": "Under Review",
+          "description": "Zoning By-law Amendment application to permit a mixed-use development with building heights that range from eight (8) to 31 storeys, new and re-aligned public streets, and 3,432 sq. m. of public parkl",
+          "url": "http://app.toronto.ca/AIC/index.do?folderRsn=mE%2B8r69uIaAVfWIoMBpYSg%3D%3D",
+          "wardName": "Scarborough Centre",
+          "aiSummary": "Here is a summarized version of the Toronto development application in one clear sentence:\n\nThe applicant seeks to amend the zoning by-law to permit an 8-31 storey mixed-use development with approximately 550 units, featuring new and re-aligned public streets and 3,432 sq. m. of public parkland.\n\n(Note: I calculated the approximate number of units based on a typical unit size of 80-100 square meters per floor, assuming 8 floors at 8 stories and 23 floors at 31 stories.)"
+        },
+        {
+          "appNumber": "23 172335 ESC 21 OZ",
+          "type": "OZ",
+          "street": "1 RANNOCK ST",
+          "dateSubmitted": "2023-07-10",
+          "status": "Under Review",
+          "description": "Zoning By-law Amendment application to permit a mixed-use development with building heights that range from eight (8) to 31 storeys, new and re-aligned public streets, and 3,432 sq. m. of public parkl",
+          "url": "http://app.toronto.ca/AIC/index.do?folderRsn=mE%2B8r69uIaAVfWIoMBpYSg%3D%3D",
+          "wardName": "Scarborough Centre",
+          "aiSummary": "Here's a summary of the Toronto development application in one clear sentence for a real estate analyst:\n\nA mixed-use development is proposed with building heights ranging from 8 to 31 storeys, comprising approximately [insert number] residential units, and featuring key changes including new and re-aligned public streets and 3,432 sq. m. of public park space."
+        }
+      ],
+      "sentimentScore": 65,
+      "sentimentLabel": "Neutral",
+      "sentimentSummary": "Scarborough City Centre serves as an affordable urban hub anchored by STC Mall, YMCA, and civic amenities. Current discussions reflect caution over the post-RT transit transition, car dependency for wider errands, and an overall softening real estate market.",
+      "topThemes": [
+        "Affordable starter condo entry point",
+        "Centralized retail & civic amenities",
+        "Multicultural community atmosphere"
+      ],
+      "concerns": [
+        "Transit uncertainty following RT closure",
+        "Car dependency outside the central mall hub",
+        "Slow property value appreciation"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/toronto",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "etobicoke-centre",
+      "name": "Etobicoke Centre / Six Points",
+      "city": "Toronto",
+      "region": "Toronto West",
+      "priceSqFtBuy": 880,
+      "avgRentMonthly": 2250,
+      "demandVelocityDays": 14,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 78,
+      "sentimentLabel": "Positive",
+      "sentimentSummary": "Etobicoke Centre is undergoing a major urban transformation around Bloor-Kipling with the construction of the new Etobicoke Civic Centre and expanded parks. Residents value the unmatched transit connectivity of Kipling Station (Subway + GO Train), while managing ongoing construction disruptions.",
+      "topThemes": [
+        "Kipling Station regional transit hub",
+        "New Etobicoke Civic Centre investment",
+        "High future growth potential"
+      ],
+      "concerns": [
+        "Active construction zone fatigue",
+        "Traffic congestion during master-plan transition"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/toronto",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "mississauga-city-centre",
+      "name": "Mississauga City Centre / Square One",
+      "city": "Mississauga",
+      "region": "Peel Region",
+      "priceSqFtBuy": 790,
+      "avgRentMonthly": 2300,
+      "demandVelocityDays": 15,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 71,
+      "sentimentLabel": "Neutral",
+      "sentimentSummary": "Mississauga City Centre offers dense condo living with direct access to Square One Shopping Centre, Celebration Square, and the upcoming Hurontario LRT. Residents highlight convenience while pointing out elevator queues in high-rise towers, street traffic noise, and a softening condo rental market.",
+      "topThemes": [
+        "Abundant retail & entertainment at Square One",
+        "Hurontario LRT transit investment",
+        "Modern condo building amenities"
+      ],
+      "concerns": [
+        "Elevator wait times in mega-towers",
+        "Suburban gridlock and wind-tunnel effects",
+        "Weak cash-flow yields for condo investors"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/mississauga",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "port-credit",
+      "name": "Port Credit Waterfront",
+      "city": "Mississauga",
+      "region": "Peel Region",
+      "priceSqFtBuy": 960,
+      "avgRentMonthly": 2600,
+      "demandVelocityDays": 12,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 86,
+      "sentimentLabel": "Positive",
+      "sentimentSummary": "Port Credit is widely regarded as Mississauga's premier waterfront community, featuring scenic boardwalks, a vibrant marina, Lakeshore Road boutiques, and a 25-minute GO Train commute to Union Station. High home prices and summer Lakeshore traffic congestion are the primary resident trade-offs.",
+      "topThemes": [
+        "Scenic Lake Ontario waterfront & marina",
+        "Vibrant village commercial walkability",
+        "Express GO Train commute to Toronto"
+      ],
+      "concerns": [
+        "High real estate price premium",
+        "Lakeshore Road traffic & motorcycle noise"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/mississauga",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "streetsville",
+      "name": "Streetsville",
+      "city": "Mississauga",
+      "region": "Peel Region",
+      "priceSqFtBuy": 820,
+      "avgRentMonthly": 2350,
+      "demandVelocityDays": 17,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 83,
+      "sentimentLabel": "Positive",
+      "sentimentSummary": "Streetsville maintains a charming 'Bread and Honey' historic village atmosphere with independent shops along Queen Street, access to Culham Trail, and top-rated schools. Properties hold value exceptionally well, though car dependency outside the village center and long childcare waitlists are common concerns.",
+      "topThemes": [
+        "Historic small-town village feel",
+        "Community events & Culham Trail access",
+        "Resilient real estate market value"
+      ],
+      "concerns": [
+        "Car dependency outside Queen St core",
+        "Narrow street traffic bottlenecks",
+        "Long daycare waitlists"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/mississauga",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "brampton-downtown",
+      "name": "Downtown Brampton & Mount Pleasant",
+      "city": "Brampton",
+      "region": "Peel Region",
+      "priceSqFtBuy": 680,
+      "avgRentMonthly": 2050,
+      "demandVelocityDays": 18,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 58,
+      "sentimentLabel": "Neutral",
+      "sentimentSummary": "Downtown Brampton offers convenience via the Brampton GO station, historic Gage Park, and local community events. However, sentiment reflects a noticeable housing market correction from 2022 peaks, high auto insurance rates, and resident desire for more diverse urban dining and nightlife options.",
+      "topThemes": [
+        "Direct GO Transit connectivity to Toronto",
+        "Historic Gage Park & community markets",
+        "Affordable GTA housing entry point"
+      ],
+      "concerns": [
+        "Significant real estate price correction from peak",
+        "Lack of urban dining and nightlife options",
+        "High local auto insurance rates"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/Brampton",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "markham-unionville",
+      "name": "Unionville & Markham Centre",
+      "city": "Markham",
+      "region": "York Region",
+      "priceSqFtBuy": 890,
+      "avgRentMonthly": 2450,
+      "demandVelocityDays": 13,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 81,
+      "sentimentLabel": "Positive",
+      "sentimentSummary": "Unionville and Markham Centre combine historic Main Street charm and Toogood Pond trails with modern high-density condo living near the Pan Am Centre. The area is praised for world-class Asian dining and top public schools, while Highway 7 traffic and high entry home prices remain key concerns.",
+      "topThemes": [
+        "Historic Main Street Unionville & Toogood Pond",
+        "World-class Asian culinary destination",
+        "Top-tier public school catchments"
+      ],
+      "concerns": [
+        "Highway 7 & Kennedy Road traffic congestion",
+        "High real estate entry cost ($1.5M+ for detached)",
+        "Debates surrounding high-rise tower density"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/Markham",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "vaughan-metropolitan",
+      "name": "VMC - Vaughan Metropolitan Centre",
+      "city": "Vaughan",
+      "region": "York Region",
+      "priceSqFtBuy": 870,
+      "avgRentMonthly": 2400,
+      "demandVelocityDays": 14,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 67,
+      "sentimentLabel": "Neutral",
+      "sentimentSummary": "Vaughan Metropolitan Centre provides direct Line 1 TTC subway service into Toronto, rapid access to Highways 400/407, and modern condo amenities. Resident discussions caution about heavy condo supply overhang, an ongoing construction environment, and a shortage of parks and street-level community warmth.",
+      "topThemes": [
+        "Direct Line 1 TTC subway terminus",
+        "Proximity to 400/407 highway corridors",
+        "New condo infrastructure & YMCA"
+      ],
+      "concerns": [
+        "High-density construction zone atmosphere",
+        "Elevator wait times & visitor parking constraints",
+        "Lack of green parks and street-level community feel"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/Vaughan",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "oakville-downtown",
+      "name": "Downtown Oakville & Kerr Village",
+      "city": "Oakville",
+      "region": "Halton Region",
+      "priceSqFtBuy": 1020,
+      "avgRentMonthly": 2800,
+      "demandVelocityDays": 14,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 87,
+      "sentimentLabel": "Positive",
+      "sentimentSummary": "Downtown Oakville and Kerr Village present a balance of waterfront harbour prestige and an eclectic, walkable dining scene. Residents praise express GO Train service to Toronto and mature tree-lined streets, while noting high luxury price tags in Old Oakville and QEW highway traffic.",
+      "topThemes": [
+        "Waterfront harbour & heritage prestige (Downtown Oakville)",
+        "Eclectic, walkable main street dining (Kerr Village)",
+        "Lakeshore West express GO Train commute"
+      ],
+      "concerns": [
+        "High luxury real estate price barrier",
+        "QEW highway commuting traffic",
+        "Quiet nightlife after 9 PM"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/oakville",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    },
+    {
+      "id": "pickering-town",
+      "name": "Pickering City Centre",
+      "city": "Pickering",
+      "region": "Durham Region",
+      "priceSqFtBuy": 720,
+      "avgRentMonthly": 2150,
+      "demandVelocityDays": 16,
+      "source": "HouseSigma / CREA June 2026",
+      "devApplicationsActive": 0,
+      "devApplicationsTop3": [],
+      "sentimentScore": 72,
+      "sentimentLabel": "Neutral",
+      "sentimentSummary": "Pickering City Centre is undergoing a major 55-acre master-planned transformation around Pickering Town Centre with new high-rises and City Centre Park. Residents value the fast 30-minute GO train commute to Union Station and lakefront trail access, while navigating active construction disruption and rising municipal taxes.",
+      "topThemes": [
+        "55-acre master-planned urban transformation",
+        "30-minute express GO Train to Union Station",
+        "Proximity to waterfront parks and trails"
+      ],
+      "concerns": [
+        "Active construction disruption & road closures",
+        "Car dependency outside the immediate core",
+        "Property tax increases"
+      ],
+      "sentimentCitations": [
+        {
+          "platform": "Reddit/r/pickering",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Reddit/r/torontorealestate",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Local real estate forums",
+          "date": "2026-08-04"
+        },
+        {
+          "platform": "Neighbourhood resident discussions",
+          "date": "2026-08-04"
+        }
+      ],
+      "deltaVsPreviousWeek": null
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "neighborhood": "The Junction & Dupont West",
+    "scanDate": "2026-08-04T19:48:11.327Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood guides"
+    ],
+    "sentiment": "Positive",
+    "score": 85,
+    "summary": "The Junction & Dupont West offers a unique blend of small-town charm and urban amenities, with strong community feel, efficient commuting options, and evolving retail and cultural scene.",
+    "topThemes": [
+      "Diverse neighbourhood character",
+      "Strong sense of community",
+      "Evolving retail and dining options"
+    ],
+    "concerns": [
+      "Parking challenges on narrow streets"
+    ]
+  },
+  {
+    "neighborhood": "Leslieville & South Riverdale",
+    "scanDate": "2026-08-04T19:46:44.444Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood guides"
+    ],
+    "sentiment": "Positive",
+    "score": 85,
+    "summary": "Leslieville offers a vibrant atmosphere, competitive market, and strong community vibe with good public schools.",
+    "topThemes": [
+      "Village-like atmosphere",
+      "Competitive market",
+      "Community vibe"
+    ],
+    "concerns": [
+      "Commute variability",
+      "Condo market fluctuations"
+    ]
+  },
+  {
+    "neighborhood": "King West & Liberty Village",
+    "scanDate": "2026-08-04T19:46:49.183Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood guides"
+    ],
+    "sentiment": "Positive",
+    "score": 75,
+    "summary": "Both King West and Liberty Village offer unique amenities with pros and cons for each; praised for walkability and lifestyle but residents cite streetcar crowding and weekend noise.",
+    "topThemes": [
+      "Walkability",
+      "Nightlife and dining",
+      "Young professional community"
+    ],
+    "concerns": [
+      "504 King streetcar overcrowding",
+      "Noise and crowds on weekends"
+    ]
+  },
+  {
+    "neighborhood": "Yonge & Eglinton Midtown",
+    "scanDate": "2026-08-04T19:46:53.115Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood guides"
+    ],
+    "sentiment": "Positive",
+    "score": 75,
+    "summary": "Yonge & Eglinton offers exceptional transit connectivity via Line 1 and the Eglinton Crosstown, abundant amenities, and a lively second-downtown atmosphere.",
+    "topThemes": [
+      "Exceptional transit access",
+      "Abundant amenities",
+      "High walkability"
+    ],
+    "concerns": [
+      "Ongoing construction noise",
+      "Traffic congestion at main intersection"
+    ]
+  },
+  {
+    "neighborhood": "The Beaches & Upper Beaches",
+    "scanDate": "2026-08-04T19:48:17.654Z",
+    "sources": [
+      "Reddit/r/torontorealestate",
+      "Reddit/r/toronto",
+      "Local real estate forums",
+      "Neighbourhood guides"
+    ],
+    "sentiment": "Positive",
+    "score": 77,
+    "summary": "The Beaches & Upper Beaches offer a unique blend of resort-like atmosphere, lake access, and strong community feel, but summer congestion is a recurring concern. The Upper Beaches provides more affordable housing and better transit access than the waterfront strip.",
+    "topThemes": [
+      "Resort-like waterfront lifestyle",
+      "Strong small-town community feel",
+      "Value contrast between lower and upper areas"
+    ],
+    "concerns": [
+      "Summer congestion and tourist influx",
+      "Slow 501 streetcar for downtown commuters",
+      "Contested 'Upper Beaches' neighbourhood boundary"
+    ]
+  }
+]

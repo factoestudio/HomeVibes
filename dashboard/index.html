@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HomeVibes — GTA Developer Intelligence Dashboard (Local)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      /* HomeVibes Official Color Theme */
+      --bg-dark: #0D0C2E;                /* Deep Violet-Navy */
+      --bg-surface: rgba(22, 20, 64, 0.65); /* Glass Navy Card */
+      --bg-surface-hover: rgba(35, 31, 92, 0.8);
+      --bg-subcard: rgba(17, 15, 51, 0.7);
+      
+      --color-primary: #B05EF1;          /* Vibrant Purple */
+      --color-primary-hover: #D08DF6;    /* Bright Purple Glow */
+      --color-secondary: #CAA6FB;        /* Soft Lavender */
+      --color-accent: #D08DF6;           /* Bright Purple Accent */
+      
+      --color-success: #34D399;          /* Emerald Green Accent */
+      --color-warning: #FBBF24;          /* Warm Amber */
+      --color-danger: #F15E8E;           /* Bright Coral Pink */
+      
+      --border-color: rgba(176, 94, 241, 0.2);  /* Thin Purple Tint */
+      --border-glow: rgba(176, 94, 241, 0.45);   /* Glowing Purple */
+      
+      --text-main: #FAFAFA;              /* Silk White */
+      --text-muted: #CAA6FB;             /* Soft Lavender */
+      --text-subtle: #8E7BB0;            /* Muted Violet-Gray */
+
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-primary: 'Outfit', sans-serif;
+      --font-serif: 'Playfair Display', serif;
+
+      --shadow-glow: 0 0 25px rgba(176, 94, 241, 0.25);
+      --shadow-card: 0 16px 40px -12px rgba(0, 0, 0, 0.6);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(176, 94, 241, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(208, 141, 246, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(13, 12, 46, 0.95) 0%, transparent 100%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: rgba(13, 12, 46, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 20px 36px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    }
+    
+    .logo { display: flex; align-items: center; gap: 14px; }
+    .logo-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      box-shadow: var(--shadow-glow);
+    }
+    .logo-text h1 {
+      font-family: var(--font-primary);
+      font-size: 20px; font-weight: 800;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #FFFFFF 0%, var(--color-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .logo-text p { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.2px; font-weight: 600; }
+    
+    .header-meta { text-align: right; font-size: 12px; color: var(--text-muted); }
+    .badge {
+      display: inline-block;
+      background: rgba(176, 94, 241, 0.18);
+      border: 1px solid var(--border-glow);
+      color: var(--color-accent);
+      padding: 4px 12px; border-radius: 20px;
+      font-size: 11px; font-weight: 700; font-family: var(--font-primary);
+      margin-left: 8px;
+    }
+    .badge.local {
+      background: rgba(52, 211, 153, 0.15);
+      border-color: rgba(52, 211, 153, 0.4);
+      color: var(--color-success);
+    }
+
+    /* Container Layout */
+    .container { max-width: 1440px; margin: 0 auto; padding: 32px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    
+    .section-title {
+      font-family: var(--font-primary);
+      font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--text-muted); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
+
+    /* Cards */
+    .card {
+      background: var(--bg-surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-sm {
+      background: var(--bg-subcard);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .card:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-glow);
+    }
+
+    /* KPI Row */
+    .kpi { text-align: center; }
+    .kpi-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 8px; }
+    .kpi-value { font-family: var(--font-primary); font-size: 32px; font-weight: 800; letter-spacing: -1px; }
+    .kpi-sub { font-size: 11px; color: var(--text-subtle); margin-top: 4px; }
+    .kpi-value.purple { color: var(--color-accent); text-shadow: 0 0 15px rgba(208, 141, 246, 0.4); }
+    .kpi-value.emerald { color: var(--color-success); text-shadow: 0 0 15px rgba(52, 211, 153, 0.3); }
+    .kpi-value.amber { color: var(--color-warning); text-shadow: 0 0 15px rgba(251, 191, 36, 0.3); }
+
+    /* Neighborhood cards */
+    .hood-card {
+      background: var(--bg-surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px; padding: 22px; cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hood-card:hover, .hood-card.active {
+      border-color: var(--color-primary);
+      background: var(--bg-surface-hover);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-glow);
+    }
+    .hood-name { font-family: var(--font-primary); font-size: 15px; font-weight: 700; margin-bottom: 14px; line-height: 1.3; color: var(--text-main); }
+    .hood-metric { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(176, 94, 241, 0.1); }
+    .hood-metric:last-child { border-bottom: none; }
+    .hood-metric-label { font-size: 12px; color: var(--text-muted); }
+    .hood-metric-value { font-size: 13px; font-weight: 700; font-family: var(--font-primary); }
+
+    .trend-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
+      font-family: var(--font-primary);
+    }
+    .trend-badge.Rising { background: rgba(52, 211, 153, 0.18); color: var(--color-success); border: 1px solid rgba(52, 211, 153, 0.3); }
+    .trend-badge.Stable { background: rgba(176, 94, 241, 0.18); color: var(--color-accent); border: 1px solid var(--border-glow); }
+    .trend-badge.Declining { background: rgba(241, 94, 142, 0.18); color: var(--color-danger); border: 1px solid rgba(241, 94, 142, 0.3); }
+    .trend-badge.Baseline { background: rgba(202, 166, 251, 0.1); color: var(--text-muted); border: 1px solid var(--border-color); }
+
+    /* Sentiment bar */
+    .sentiment-bar { height: 7px; border-radius: 4px; background: rgba(13, 12, 46, 0.8); margin-top: 8px; overflow: hidden; border: 1px solid var(--border-color); }
+    .sentiment-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+    .sentiment-fill.positive { background: linear-gradient(90deg, var(--color-primary), var(--color-accent)); box-shadow: 0 0 10px rgba(208, 141, 246, 0.6); }
+    .sentiment-fill.neutral  { background: linear-gradient(90deg, var(--color-warning), #FCD34D); }
+    .sentiment-fill.negative { background: linear-gradient(90deg, var(--color-danger), #F87171); }
+    .sentiment-fill.pending  { background: var(--border-color); }
+
+    /* Detail panel */
+    .detail-panel { background: var(--bg-surface-hover); border: 1px solid var(--border-glow); border-radius: 20px; padding: 28px; display: none; box-shadow: var(--shadow-glow); }
+    .detail-panel.visible { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .detail-section { margin-bottom: 24px; }
+    .detail-section h3 { font-family: var(--font-primary); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-muted); margin-bottom: 12px; }
+    
+    .app-item { background: var(--bg-subcard); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; margin-bottom: 10px; }
+    .app-num { font-size: 11px; color: var(--color-accent); font-weight: 700; font-family: var(--font-primary); margin-bottom: 4px; }
+    .app-street { font-size: 14px; font-weight: 700; color: var(--text-main); }
+    .app-summary { font-size: 13px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+    .app-meta { display: flex; gap: 16px; margin-top: 10px; font-size: 11px; color: var(--text-subtle); }
+    .app-link { color: var(--color-accent); text-decoration: none; font-size: 12px; font-weight: 600; }
+    .app-link:hover { text-decoration: underline; color: #FFFFFF; }
+
+    .citation-item { background: var(--bg-subcard); border-left: 3px solid var(--color-primary); padding: 12px 14px; border-radius: 0 8px 8px 0; margin-bottom: 8px; font-size: 12px; }
+    .citation-source { font-weight: 700; color: var(--color-accent); font-size: 11px; margin-bottom: 3px; font-family: var(--font-primary); }
+    
+    .theme-tag { display: inline-block; background: rgba(176, 94, 241, 0.18); border: 1px solid var(--border-glow); color: var(--color-accent); padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; margin: 3px; }
+    .concern-tag { display: inline-block; background: rgba(241, 94, 142, 0.15); border: 1px solid rgba(241, 94, 142, 0.3); color: var(--color-danger); padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; margin: 3px; }
+
+    /* Controls */
+    .controls { display: flex; gap: 12px; align-items: center; margin-bottom: 28px; flex-wrap: wrap; }
+    .sort-btn {
+      background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-muted);
+      padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; font-family: var(--font-primary);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .sort-btn:hover, .sort-btn.active {
+      border-color: var(--color-primary); color: #FFFFFF; background: linear-gradient(135deg, rgba(176, 94, 241, 0.4), rgba(208, 141, 246, 0.2));
+      box-shadow: 0 0 15px rgba(176, 94, 241, 0.3);
+    }
+    .audit-btn {
+      margin-left: auto; background: rgba(176, 94, 241, 0.12); border: 1px solid var(--border-glow); color: var(--color-accent);
+      padding: 8px 18px; border-radius: 20px; font-size: 12px; font-weight: 700; font-family: var(--font-primary);
+      cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px;
+    }
+    .audit-btn:hover { background: rgba(176, 94, 241, 0.25); color: #FFFFFF; box-shadow: var(--shadow-glow); }
+    .refresh-btn {
+      background: linear-gradient(135deg, var(--color-primary), #9B3DDF);
+      border: none; color: #FFFFFF; padding: 8px 18px; border-radius: 20px;
+      font-size: 12px; font-weight: 700; font-family: var(--font-primary); cursor: pointer;
+      box-shadow: var(--shadow-glow); transition: all 0.2s;
+    }
+    .refresh-btn:hover { background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary)); transform: scale(1.02); }
+
+    /* Modal */
+    .source-modal { display: none; position: fixed; inset: 0; background: rgba(7, 6, 25, 0.85); backdrop-filter: blur(12px); z-index: 200; align-items: center; justify-content: center; }
+    .source-modal.open { display: flex; }
+    .source-box { background: var(--bg-dark); border: 1px solid var(--border-glow); border-radius: 24px; padding: 36px; max-width: 680px; width: 90%; max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8); }
+    .source-box h2 { font-family: var(--font-primary); font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 20px; }
+    .source-row { border-bottom: 1px solid var(--border-color); padding: 14px 0; }
+    .source-row:last-child { border-bottom: none; }
+    .source-name { font-size: 14px; font-weight: 700; color: var(--text-main); }
+    .source-detail { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+    .source-status { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; font-family: var(--font-primary); }
+    .source-status.live { background: rgba(52, 211, 153, 0.18); color: var(--color-success); border: 1px solid rgba(52, 211, 153, 0.3); }
+    .source-status.local { background: rgba(176, 94, 241, 0.18); color: var(--color-accent); border: 1px solid var(--border-glow); }
+
+    .chart-wrap { position: relative; height: 230px; }
+    .generated-at { text-align: right; font-size: 11px; color: var(--text-subtle); margin-top: 36px; }
+
+    @media (max-width: 900px) { .grid-5 { grid-template-columns: 1fr 1fr; } .grid-2 { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .grid-5 { grid-template-columns: 1fr; } .container { padding: 18px; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="./assets/logo-white.png" onError="this.src='assets/logo-white.png'; this.onError=null;" alt="HomeVibes" style="height: 36px; width: auto; object-fit: contain;" />
+    <div style="height: 24px; width: 1px; background: var(--border-color); margin: 0 4px;"></div>
+    <div class="logo-text">
+      <h1>Intelligence</h1>
+      <p>GTA B2B Developer & Realtor Dashboard</p>
+    </div>
+  </div>
+  <div class="header-meta">
+    <span class="badge local">● LOCAL ONLY</span>
+    <span class="badge">Sprint 2 · Full GTA</span>
+    <br /><br />
+    <span id="generated-label">Loading data…</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- KPI Strip -->
+  <div class="grid-5" id="kpi-strip" style="margin-bottom: 32px;">
+    <div class="card kpi"><div class="kpi-label">GTA Micro-Markets</div><div class="kpi-value purple" id="kpi-hoods">—</div><div class="kpi-sub">Full GTA · Sprint 2</div></div>
+    <div class="card kpi"><div class="kpi-label">Avg Price/sqft</div><div class="kpi-value emerald" id="kpi-price">—</div><div class="kpi-sub">Public benchmark</div></div>
+    <div class="card kpi"><div class="kpi-label">Active Dev Apps</div><div class="kpi-value amber" id="kpi-devapps">—</div><div class="kpi-sub">Toronto Open Data</div></div>
+    <div class="card kpi"><div class="kpi-label">Avg Demand Velocity</div><div class="kpi-value purple" id="kpi-velocity">—</div><div class="kpi-sub">Days to offer</div></div>
+    <div class="card kpi"><div class="kpi-label">Avg Sentiment</div><div class="kpi-value" id="kpi-sentiment">—</div><div class="kpi-sub">Llama3 + Web sources</div></div>
+  </div>
+
+  <!-- Region Filters -->
+  <div class="controls" style="margin-bottom: 12px;">
+    <span style="font-size:12px; color: var(--text-muted); font-weight:600;">Region:</span>
+    <button class="sort-btn region-filter active" onclick="filterRegion('All')">All GTA</button>
+    <button class="sort-btn region-filter" onclick="filterRegion('Toronto')">Toronto</button>
+    <button class="sort-btn region-filter" onclick="filterRegion('Peel Region')">Peel (Mississauga/Brampton)</button>
+    <button class="sort-btn region-filter" onclick="filterRegion('York Region')">York (Markham/Vaughan)</button>
+    <button class="sort-btn region-filter" onclick="filterRegion('Halton Region')">Halton (Oakville)</button>
+    <button class="sort-btn region-filter" onclick="filterRegion('Durham Region')">Durham (Pickering)</button>
+  </div>
+
+  <!-- Sort Controls -->
+  <div class="controls">
+    <span style="font-size:12px; color: var(--text-muted); font-weight:600;">Sort by:</span>
+    <button class="sort-btn sort-type active" onclick="sortBy('name')">Name</button>
+    <button class="sort-btn sort-type" onclick="sortBy('priceSqFtBuy')">Price/sqft ↓</button>
+    <button class="sort-btn sort-type" onclick="sortBy('demandVelocityDays')">Demand ↑</button>
+    <button class="sort-btn sort-type" onclick="sortBy('sentimentScore')">Sentiment ↓</button>
+    <button class="sort-btn sort-type" onclick="sortBy('devApplicationsActive')">Dev Apps ↓</button>
+    <button class="audit-btn" onclick="toggleAudit()">🔍 Data Source Audit</button>
+    <button class="refresh-btn" onclick="location.reload()">↻ Refresh</button>
+  </div>
+
+  <!-- Neighborhood Cards -->
+  <div class="section-title">Toronto Micro-Markets</div>
+  <div class="grid-5" id="hood-grid" style="margin-bottom: 32px;"></div>
+
+  <!-- Detail Panel -->
+  <div id="detail-panel" class="detail-panel" style="margin-bottom: 32px;"></div>
+
+  <!-- Charts -->
+  <div class="section-title">Market Comparison</div>
+  <div class="grid-2" style="margin-bottom: 32px;">
+    <div class="card">
+      <div style="font-family:var(--font-primary); font-size:14px; font-weight:700; margin-bottom:16px; color:var(--text-main);">Price per sqft vs Demand Velocity</div>
+      <div class="chart-wrap"><canvas id="chart-price-velocity"></canvas></div>
+    </div>
+    <div class="card">
+      <div style="font-family:var(--font-primary); font-size:14px; font-weight:700; margin-bottom:16px; color:var(--text-main);">Sentiment Score by Neighborhood</div>
+      <div class="chart-wrap"><canvas id="chart-sentiment"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Agile Sprint Notes -->
+  <div class="section-title">Sprint 1 Observations & Next Steps</div>
+  <div class="card" id="sprint-notes" style="margin-bottom: 32px;">
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 28px;">
+      <div>
+        <div style="font-family:var(--font-primary); font-size:14px; font-weight:700; color: var(--color-success); margin-bottom:12px;">✅ What's Working</div>
+        <ul style="font-size:13px; color: var(--text-muted); line-height:2; padding-left:18px;">
+          <li>Toronto Open Data API — 26,368 dev application records</li>
+          <li>Llama3 local NLP summarizing dev app descriptions</li>
+          <li>Real ward-level data for 5 Toronto neighborhoods</li>
+          <li>Price benchmarks from CREA June 2026 (public)</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:var(--font-primary); font-size:14px; font-weight:700; color: var(--color-accent); margin-bottom:12px;">🔄 Sprint 2 Improvements</div>
+        <ul style="font-size:13px; color: var(--text-muted); line-height:2; padding-left:18px;">
+          <li>Merge sentiment subagent results once complete</li>
+          <li>Expand to all 25 Toronto neighborhoods</li>
+          <li>Add StatCan housing starts per CMA</li>
+          <li>Build week-over-week delta tracking (2nd run)</li>
+          <li>Add Mississauga & York Region (Sprint 3)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="generated-at" id="footer-ts"></div>
+</div>
+
+<!-- Data Audit Modal -->
+<div class="source-modal" id="audit-modal">
+  <div class="source-box">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+      <h2>🔍 Data Source Audit & Citations</h2>
+      <button onclick="toggleAudit()" style="background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer;">✕</button>
+    </div>
+    <div id="audit-content"></div>
+    <div style="margin-top:24px; padding-top:18px; border-top:1px solid var(--border-color); font-size:12px; color:var(--text-subtle);">
+      All data points are sourced from verified public APIs and registries. No TRREB/MLS data is used. Llama3 is used locally for NLP only — it does not generate market data.
+    </div>
+  </div>
+</div>
+
+<script>
+  let DATA = null;
+  let DELTA = null;
+  let selectedHood = null;
+  let currentSort = 'name';
+  let currentRegion = 'All';
+
+  function filterRegion(reg) {
+    currentRegion = reg;
+    document.querySelectorAll('.region-filter').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    render();
+  }
+
+  function getFilteredHoods() {
+    if (!DATA || !DATA.neighborhoods) return [];
+    if (currentRegion === 'All') return DATA.neighborhoods;
+    if (currentRegion === 'Toronto') return DATA.neighborhoods.filter(h => h.city === 'Toronto');
+    return DATA.neighborhoods.filter(h => h.region === currentRegion || h.city === currentRegion.split(' ')[0]);
+  }
+
+  async function loadData() {
+    const dataPaths = [
+      './data/gtaMarketIntelligence.json',
+      'data/gtaMarketIntelligence.json',
+      '../data/gtaMarketIntelligence.json',
+      '/data/gtaMarketIntelligence.json'
+    ];
+    for (const p of dataPaths) {
+      try {
+        const res = await fetch(p);
+        if (res.ok) {
+          DATA = await res.json();
+          console.log('Loaded intel data from:', p);
+          break;
+        }
+      } catch (e) {}
+    }
+
+    const deltaPaths = [
+      './data/gtaMarketIntelligenceDelta.json',
+      'data/gtaMarketIntelligenceDelta.json',
+      '../data/gtaMarketIntelligenceDelta.json',
+      '/data/gtaMarketIntelligenceDelta.json'
+    ];
+    for (const p of deltaPaths) {
+      try {
+        const res = await fetch(p);
+        if (res.ok) {
+          DELTA = await res.json();
+          console.log('Loaded delta data from:', p);
+          break;
+        }
+      } catch (e) {}
+    }
+
+    render();
+  }
+
+  function sentimentClass(score) {
+    if (score === null) return 'pending';
+    if (score >= 70) return 'positive';
+    if (score >= 45) return 'neutral';
+    return 'negative';
+  }
+
+  function getDelta(id) {
+    if (!DELTA) return null;
+    return DELTA.neighborhoods?.find(n => n.id === id) || null;
+  }
+
+  function sortNeighborhoods(hoods) {
+    return [...hoods].sort((a, b) => {
+      if (currentSort === 'name') return a.name.localeCompare(b.name);
+      if (currentSort === 'demandVelocityDays') return (a.demandVelocityDays || 99) - (b.demandVelocityDays || 99);
+      const av = a[currentSort] ?? -1, bv = b[currentSort] ?? -1;
+      return bv - av;
+    });
+  }
+
+  function render() {
+    if (!DATA) {
+      document.getElementById('kpi-hoods').textContent = '⚠';
+      document.getElementById('generated-label').textContent = 'Error loading data';
+      return;
+    }
+    const hoods = getFilteredHoods();
+    const ts = new Date(DATA.meta.generatedAt).toLocaleString('en-CA', { timeZone: 'America/Toronto', dateStyle: 'medium', timeStyle: 'short' });
+    document.getElementById('generated-label').textContent = `Last harvested: ${ts} EST`;
+    document.getElementById('footer-ts').textContent = `Data generated: ${ts} EST · Sprint ${DATA.meta.sprint} · ${DATA.meta.scope}`;
+
+    // KPIs
+    document.getElementById('kpi-hoods').textContent = hoods.length;
+    const avgPrice = Math.round(hoods.reduce((s, h) => s + h.priceSqFtBuy, 0) / hoods.length);
+    document.getElementById('kpi-price').textContent = '$' + avgPrice;
+    document.getElementById('kpi-devapps').textContent = hoods.reduce((s, h) => s + h.devApplicationsActive, 0);
+    const avgVel = Math.round(hoods.reduce((s, h) => s + h.demandVelocityDays, 0) / hoods.length);
+    document.getElementById('kpi-velocity').textContent = avgVel + 'd';
+    const scored = hoods.filter(h => h.sentimentScore !== null);
+    const sentEl = document.getElementById('kpi-sentiment');
+    if (scored.length > 0) {
+      const avg = Math.round(scored.reduce((s, h) => s + h.sentimentScore, 0) / scored.length);
+      sentEl.textContent = avg + '/100';
+      sentEl.className = 'kpi-value ' + (avg >= 70 ? 'purple' : avg >= 45 ? 'amber' : '');
+    } else {
+      sentEl.textContent = 'Pending';
+      sentEl.className = 'kpi-value amber';
+    }
+
+    // Hood cards
+    const grid = document.getElementById('hood-grid');
+    grid.innerHTML = '';
+    sortNeighborhoods(hoods).forEach(hood => {
+      const delta = getDelta(hood.id);
+      const overall = delta?.overallTrend || (DELTA ? 'Stable' : 'Baseline');
+      const arrow = delta?.overallArrow || (DELTA ? '→' : '');
+      const sc = hood.sentimentScore;
+      const sClass = sentimentClass(sc);
+      const card = document.createElement('div');
+      card.className = 'hood-card' + (selectedHood === hood.id ? ' active' : '');
+      card.innerHTML = `
+        <div class="hood-name">${hood.name}</div>
+        <span class="trend-badge ${overall}">${arrow} ${overall}</span>
+        <div style="margin-top:14px;">
+          <div class="hood-metric"><span class="hood-metric-label">Price/sqft</span><span class="hood-metric-value">$${hood.priceSqFtBuy}</span></div>
+          <div class="hood-metric"><span class="hood-metric-label">Avg Rent/mo</span><span class="hood-metric-value">$${hood.avgRentMonthly}</span></div>
+          <div class="hood-metric"><span class="hood-metric-label">Demand (days)</span><span class="hood-metric-value">${hood.demandVelocityDays}d</span></div>
+          <div class="hood-metric"><span class="hood-metric-label">Dev Applications</span><span class="hood-metric-value">${hood.devApplicationsActive}</span></div>
+        </div>
+        <div style="margin-top:14px;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:var(--text-muted)">Sentiment</span><span style="font-weight:700;color:var(--color-accent);">${sc !== null ? sc + '/100' : 'Pending'}</span></div>
+          <div class="sentiment-bar"><div class="sentiment-fill ${sClass}" style="width:${sc || 0}%"></div></div>
+        </div>
+      `;
+      card.onclick = () => showDetail(hood.id);
+      grid.appendChild(card);
+    });
+
+    renderCharts(hoods);
+    renderAudit();
+  }
+
+  function showDetail(id) {
+    selectedHood = selectedHood === id ? null : id;
+    render();
+    const panel = document.getElementById('detail-panel');
+    if (!selectedHood) { panel.className = 'detail-panel'; return; }
+    const hood = DATA.neighborhoods.find(h => h.id === id);
+    const delta = getDelta(id);
+    panel.className = 'detail-panel visible';
+    panel.innerHTML = `
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+        <div>
+          <h2 style="font-family:var(--font-primary);font-size:22px;font-weight:800;color:var(--text-main);">${hood.name}</h2>
+          <span style="font-size:12px;color:var(--text-muted);">${hood.city} · ${hood.region}</span>
+        </div>
+        <div style="margin-left:auto;text-align:right;">
+          <span class="trend-badge ${delta?.overallTrend || 'Baseline'}" style="font-size:13px;padding:6px 16px;">${delta?.overallArrow || ''} ${delta?.overallTrend || 'Baseline'}</span>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-bottom:24px;">
+        <div class="card-sm">
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">Price/sqft</div>
+          <div style="font-family:var(--font-primary);font-size:24px;font-weight:800;color:var(--color-success);">$${hood.priceSqFtBuy}</div>
+          ${delta ? `<div style="font-size:11px;color:var(--text-subtle);">vs prev: ${delta.metrics.priceSqFt.change !== null ? (delta.metrics.priceSqFt.change > 0 ? '+' : '') + '$' + delta.metrics.priceSqFt.change : 'N/A'}</div>` : ''}
+        </div>
+        <div class="card-sm">
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">Avg Monthly Rent</div>
+          <div style="font-family:var(--font-primary);font-size:24px;font-weight:800;color:var(--color-accent);">$${hood.avgRentMonthly}</div>
+          <div style="font-size:11px;color:var(--text-subtle);">Source: ${hood.source}</div>
+        </div>
+        <div class="card-sm">
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">Demand Velocity</div>
+          <div style="font-family:var(--font-primary);font-size:24px;font-weight:800;color:var(--color-warning);">${hood.demandVelocityDays}d</div>
+          <div style="font-size:11px;color:var(--text-subtle);">Avg days to offer</div>
+        </div>
+      </div>
+
+      ${hood.devApplicationsTop3?.length > 0 ? `
+      <div class="detail-section">
+        <h3>🏗️ Active Development Applications (${hood.devApplicationsActive} total)</h3>
+        ${hood.devApplicationsTop3.map(app => `
+          <div class="app-item">
+            <div class="app-num">${app.appNumber} · ${app.type} · ${app.wardName}</div>
+            <div class="app-street">📍 ${app.street}</div>
+            <div class="app-summary">${app.aiSummary || app.description}</div>
+            <div class="app-meta">
+              <span>Submitted: ${app.dateSubmitted}</span>
+              <span>Status: ${app.status}</span>
+              <a href="${app.url}" target="_blank" class="app-link">View Application ↗</a>
+            </div>
+          </div>
+        `).join('')}
+      </div>` : `<div class="detail-section"><h3>🏗️ Development Applications</h3><div style="color:var(--text-muted);font-size:13px;">No active applications found for this ward in current dataset.</div></div>`}
+
+      ${hood.sentimentScore !== null ? `
+      <div class="detail-section">
+        <h3>💬 Community Sentiment — ${hood.sentimentScore}/100 (${hood.sentimentLabel})</h3>
+        <div style="margin-bottom:12px;">
+          <div class="sentiment-bar" style="height:10px;"><div class="sentiment-fill ${sentimentClass(hood.sentimentScore)}" style="width:${hood.sentimentScore}%"></div></div>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px;line-height:1.6;">${hood.sentimentSummary}</p>
+        ${hood.topThemes?.length > 0 ? `<div style="margin-bottom:10px;"><span style="font-size:11px;color:var(--text-muted);font-weight:600;">Top themes: </span>${hood.topThemes.map(t => `<span class="theme-tag">${t}</span>`).join('')}</div>` : ''}
+        ${hood.concerns?.length > 0 ? `<div><span style="font-size:11px;color:var(--text-muted);font-weight:600;">Concerns: </span>${hood.concerns.map(c => `<span class="concern-tag">⚠ ${c}</span>`).join('')}</div>` : ''}
+        ${hood.sentimentCitations?.length > 0 ? `
+          <div style="margin-top:16px;">
+            <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px;font-weight:700;">CITATIONS</div>
+            ${hood.sentimentCitations.map(c => `
+              <div class="citation-item">
+                <div class="citation-source">${c.platform || c.source} · ${c.date || ''}</div>
+                <div>${c.title || c.text || 'Web search community sentiment scan'}</div>
+              </div>`).join('')}
+          </div>` : ''}
+      </div>` : `
+      <div class="detail-section">
+        <h3>💬 Community Sentiment</h3>
+        <div style="color:var(--color-warning);font-size:13px;">⏳ Sentiment analysis in progress (web search subagent running…)</div>
+      </div>`}
+    `;
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function sortBy(field) {
+    currentSort = field;
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    render();
+  }
+
+  function renderCharts(hoods) {
+    const labels = hoods.map(h => h.name.split('&')[0].trim());
+    const primaryPurple = '#B05EF1';
+    const accentPurple = '#D08DF6';
+    const softLavender = '#CAA6FB';
+    const emeraldGreen = '#34D399';
+    const amberYellow = '#FBBF24';
+
+    // Chart 1: Price vs Velocity
+    const ctx1 = document.getElementById('chart-price-velocity').getContext('2d');
+    if (window._chart1) window._chart1.destroy();
+    window._chart1 = new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [
+          { label: 'Price/sqft ($)', data: hoods.map(h => h.priceSqFtBuy), backgroundColor: 'rgba(176, 94, 241, 0.45)', borderColor: primaryPurple, borderWidth: 2, borderRadius: 8, yAxisID: 'y' },
+          { label: 'Days to Offer', data: hoods.map(h => h.demandVelocityDays), type: 'line', borderColor: amberYellow, backgroundColor: 'rgba(251, 191, 36, 0.15)', borderWidth: 3, pointRadius: 6, pointBackgroundColor: amberYellow, yAxisID: 'y2' }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: softLavender, font: { family: 'Plus Jakarta Sans', size: 11 } } } },
+        scales: {
+          x: { ticks: { color: softLavender, font: { family: 'Plus Jakarta Sans', size: 10 } }, grid: { color: 'rgba(176, 94, 241, 0.1)' } },
+          y: { ticks: { color: softLavender, callback: v => '$' + v }, grid: { color: 'rgba(176, 94, 241, 0.1)' } },
+          y2: { position: 'right', ticks: { color: amberYellow, callback: v => v + 'd' }, grid: { display: false } }
+        }
+      }
+    });
+
+    // Chart 2: Sentiment scores
+    const ctx2 = document.getElementById('chart-sentiment').getContext('2d');
+    if (window._chart2) window._chart2.destroy();
+    const sentScores = hoods.map(h => h.sentimentScore);
+    window._chart2 = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Sentiment Score',
+          data: sentScores,
+          backgroundColor: 'rgba(208, 141, 246, 0.5)',
+          borderColor: accentPurple,
+          borderWidth: 2,
+          borderRadius: 8,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: softLavender, font: { family: 'Plus Jakarta Sans', size: 10 } }, grid: { color: 'rgba(176, 94, 241, 0.1)' } },
+          y: { min: 0, max: 100, ticks: { color: softLavender }, grid: { color: 'rgba(176, 94, 241, 0.1)' } }
+        }
+      }
+    });
+  }
+
+  function renderAudit() {
+    if (!DATA) return;
+    const el = document.getElementById('audit-content');
+    el.innerHTML = DATA.meta.sources.map(s => `
+      <div class="source-row">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div class="source-name">${s.name}</div>
+          <span class="source-status ${s.model ? 'local' : 'live'}">${s.model ? '⚙ LOCAL AI' : '✅ LIVE API'}</span>
+        </div>
+        <div class="source-detail">${s.url ? `<a href="${s.url}" target="_blank" style="color:var(--color-accent);font-size:12px;">${s.url}</a>` : ''}${s.resourceId ? ` · Resource ID: ${s.resourceId}` : ''}${s.note ? ` · ${s.note}` : ''}${s.model ? ` · Model: ${s.model}` : ''}${s.purpose ? ` · ${s.purpose}` : ''}</div>
+      </div>`).join('');
+    const genAt = new Date(DATA.meta.generatedAt).toLocaleString('en-CA', { timeZone: 'America/Toronto' });
+    el.innerHTML += `<div class="source-row"><div class="source-name">Generated</div><div class="source-detail">${genAt} EST · v${DATA.meta.version}</div></div>`;
+  }
+
+  function toggleAudit() {
+    document.getElementById('audit-modal').classList.toggle('open');
+  }
+  document.getElementById('audit-modal').addEventListener('click', e => { if (e.target === e.currentTarget) toggleAudit(); });
+
+  loadData();
+</script>
+
+</body>
+</html>

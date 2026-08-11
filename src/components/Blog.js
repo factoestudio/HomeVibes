@@ -25,7 +25,13 @@ export default function Blog({ activeSlug, navigateTo }) {
   }
 
   if (selectedPost) {
-    return <BlogPost post={selectedPost} onBack={() => navigateTo ? navigateTo('/insights') : null} />;
+    return (
+      <BlogPost
+        post={selectedPost}
+        onBack={() => navigateTo ? navigateTo('/insights') : null}
+        onSelectNeighborhood={() => navigateTo ? navigateTo('/quiz') : null}
+      />
+    );
   }
 
   return (

@@ -2,7 +2,9 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Helmet } from 'react-helmet-async';
 
-export default function BlogPost({ post, onBack }) {
+import BlogMap from './BlogMap';
+
+export default function BlogPost({ post, onBack, onSelectNeighborhood }) {
   if (!post) return <div>Post not found.</div>;
 
   // Generate JSON-LD Schema
@@ -54,7 +56,7 @@ export default function BlogPost({ post, onBack }) {
       </a>
 
       <article className="card-glass luxury-border" style={{ padding: '3rem', backgroundColor: 'var(--color-bg-dark)' }}>
-        <header style={{ marginBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '2rem' }}>
+        <header style={{ marginBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1.5rem' }}>
           <span className="uppercase letter-spacing" style={{ fontSize: '0.9rem', color: 'var(--color-primary)' }}>
             {post.category}
           </span>
@@ -63,6 +65,14 @@ export default function BlogPost({ post, onBack }) {
           </h1>
           <p style={{ opacity: 0.6, fontSize: '0.9rem' }}>Published on {post.date}</p>
         </header>
+
+        {/* Embedded Interactive Neighborhood Map */}
+        <BlogMap
+          location={post.coordinates}
+          neighborhoodName={post.neighborhoodName || post.title.split(':')[0]}
+          city={post.city || 'GTA'}
+          onExplore={onSelectNeighborhood ? () => onSelectNeighborhood(post.neighborhoodId) : null}
+        />
         
         <div className="markdown-content" style={{ lineHeight: 1.8, fontSize: '1.1rem' }}>
           <ReactMarkdown>{post.content}</ReactMarkdown>

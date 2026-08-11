@@ -1,0 +1,669 @@
+{
+  "meta": {
+    "generatedAt": "2026-08-04T20:13:50.979Z",
+    "comparedTo": "snapshot_2026-08-04.json",
+    "note": "Week-over-week deltas computed"
+  },
+  "neighborhoods": [
+    {
+      "id": "the-junction",
+      "name": "The Junction & Dupont West",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 1065,
+          "previous": 1065,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 85,
+          "previous": 85,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 11,
+          "previous": 11,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "leslieville",
+      "name": "Leslieville & South Riverdale",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 1100,
+          "previous": 1100,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 83,
+          "previous": 83,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 9,
+          "previous": 9,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 1,
+          "previous": 1,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "king-west",
+      "name": "King West & Liberty Village",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 1120,
+          "previous": 1120,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 75,
+          "previous": 75,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 8,
+          "previous": 8,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 2,
+          "previous": 2,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "yonge-eglinton",
+      "name": "Yonge & Eglinton Midtown",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 1050,
+          "previous": 1050,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 74,
+          "previous": 74,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 13,
+          "previous": 13,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 1,
+          "previous": 1,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "the-beaches",
+      "name": "The Beaches & Upper Beaches",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 980,
+          "previous": 980,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 82,
+          "previous": 82,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 15,
+          "previous": 15,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "waterfront-financial",
+      "name": "Waterfront & Financial District",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 1180,
+          "previous": 1180,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 68,
+          "previous": 68,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 10,
+          "previous": 10,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 2,
+          "previous": 2,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "yorkville-annex",
+      "name": "Yorkville & The Annex",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 1350,
+          "previous": 1350,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 86,
+          "previous": 86,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 14,
+          "previous": 14,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "roncesvalles-highpark",
+      "name": "Roncesvalles & High Park",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 1080,
+          "previous": 1080,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 88,
+          "previous": 88,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 12,
+          "previous": 12,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "danforth-greektown",
+      "name": "Danforth & Greektown",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 990,
+          "previous": 990,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 84,
+          "previous": 84,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 11,
+          "previous": 11,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 1,
+          "previous": 1,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "north-york-centre",
+      "name": "North York Centre",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 950,
+          "previous": 950,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 73,
+          "previous": 73,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 12,
+          "previous": 12,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 1,
+          "previous": 1,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "scarborough-town",
+      "name": "Scarborough City Centre",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 780,
+          "previous": 780,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 65,
+          "previous": 65,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 16,
+          "previous": 16,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 12,
+          "previous": 12,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "etobicoke-centre",
+      "name": "Etobicoke Centre / Six Points",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 880,
+          "previous": 880,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 78,
+          "previous": 78,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 14,
+          "previous": 14,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "mississauga-city-centre",
+      "name": "Mississauga City Centre / Square One",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 790,
+          "previous": 790,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 71,
+          "previous": 71,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 15,
+          "previous": 15,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "port-credit",
+      "name": "Port Credit Waterfront",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 960,
+          "previous": 960,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 86,
+          "previous": 86,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 12,
+          "previous": 12,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "streetsville",
+      "name": "Streetsville",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 820,
+          "previous": 820,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 83,
+          "previous": 83,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 17,
+          "previous": 17,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "brampton-downtown",
+      "name": "Downtown Brampton & Mount Pleasant",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 680,
+          "previous": 680,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 58,
+          "previous": null,
+          "change": 58,
+          "trend": "Insufficient Data",
+          "arrow": "?"
+        },
+        "demandVelocity": {
+          "current": 18,
+          "previous": 18,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "markham-unionville",
+      "name": "Unionville & Markham Centre",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 890,
+          "previous": 890,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 81,
+          "previous": 81,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 13,
+          "previous": 13,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "vaughan-metropolitan",
+      "name": "VMC - Vaughan Metropolitan Centre",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 870,
+          "previous": 870,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 67,
+          "previous": null,
+          "change": 67,
+          "trend": "Insufficient Data",
+          "arrow": "?"
+        },
+        "demandVelocity": {
+          "current": 14,
+          "previous": 14,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "oakville-downtown",
+      "name": "Downtown Oakville & Kerr Village",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 1020,
+          "previous": 1020,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 87,
+          "previous": 87,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 14,
+          "previous": 14,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    },
+    {
+      "id": "pickering-town",
+      "name": "Pickering City Centre",
+      "overallTrend": "Stable",
+      "overallArrow": "→",
+      "metrics": {
+        "priceSqFt": {
+          "current": 720,
+          "previous": 720,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "sentiment": {
+          "current": 72,
+          "previous": 72,
+          "change": 0,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "demandVelocity": {
+          "current": 16,
+          "previous": 16,
+          "trend": "Stable",
+          "arrow": "→"
+        },
+        "devApplications": {
+          "current": 0,
+          "previous": 0,
+          "change": 0
+        }
+      }
+    }
+  ]
+}
