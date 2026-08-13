@@ -1,0 +1,99 @@
+{
+  "timestamp": "2026-08-13T12:49:06.371Z",
+  "tests": [
+    {
+      "name": "B2B Partner Form Submission",
+      "table": "contact_leads",
+      "status": "FAILED",
+      "statusCode": 401,
+      "submittedData": {
+        "full_name": "Test Partner Executive",
+        "company": "GTA Capital Partners",
+        "email": "b2b_test_2026-08-13T12-49-06-370Z@homevibes-test.com",
+        "interest": "B2B API & Market Intelligence Data Integration",
+        "source": "b2b_partner_form_test",
+        "created_at": "2026-08-13T12:49:06.371Z"
+      },
+      "response": {
+        "code": "42501",
+        "details": null,
+        "hint": null,
+        "message": "new row violates row-level security policy for table \"contact_leads\""
+      }
+    },
+    {
+      "name": "User Sign Up Form Lead Capture",
+      "table": "contact_leads",
+      "status": "FAILED",
+      "statusCode": 401,
+      "submittedData": {
+        "email": "signup_user_2026-08-13T12-49-06-370Z@homevibes-test.com",
+        "source": "user_signup_form_validation",
+        "created_at": "2026-08-13T12:49:07.442Z"
+      },
+      "response": {
+        "code": "42501",
+        "details": null,
+        "hint": null,
+        "message": "new row violates row-level security policy for table \"contact_leads\""
+      }
+    },
+    {
+      "name": "User Sign In Lead Logging",
+      "table": "contact_leads",
+      "status": "FAILED",
+      "statusCode": 401,
+      "submittedData": {
+        "email": "signin_user_2026-08-13T12-49-06-370Z@homevibes-test.com",
+        "source": "user_signin_form_validation",
+        "created_at": "2026-08-13T12:49:07.536Z"
+      },
+      "response": {
+        "code": "42501",
+        "details": null,
+        "hint": null,
+        "message": "new row violates row-level security policy for table \"contact_leads\""
+      }
+    },
+    {
+      "name": "Google Register OAuth Intent Lead",
+      "table": "contact_leads",
+      "status": "FAILED",
+      "statusCode": 401,
+      "submittedData": {
+        "email": "google_oauth_2026-08-13T12-49-06-370Z@homevibes-test.com",
+        "source": "google_oauth_register_intent",
+        "created_at": "2026-08-13T12:49:07.633Z"
+      },
+      "response": {
+        "code": "42501",
+        "details": null,
+        "hint": null,
+        "message": "new row violates row-level security policy for table \"contact_leads\""
+      }
+    },
+    {
+      "name": "User Clicks & Neighborhood Interest Tracking",
+      "table": "user_events",
+      "status": "FAILED",
+      "statusCode": 401,
+      "submittedData": {
+        "event_type": "VIEW_NEIGHBORHOOD_INTEREST",
+        "event_data": {
+          "neighborhood": "Downtown Oakville & Kerr Village",
+          "city": "Oakville",
+          "interest_level": "high_intent_unlock",
+          "commute_anchor": "Square One, Mississauga",
+          "timestamp": "2026-08-13T12:49:07.719Z"
+        }
+      },
+      "response": {
+        "code": "42501",
+        "details": null,
+        "hint": null,
+        "message": "new row violates row-level security policy for table \"user_events\""
+      }
+    }
+  ],
+  "latestLeadsInDatabase": []
+}
