@@ -309,8 +309,21 @@ export default function App() {
           role: 'resident', 
           preferences: prefs 
         });
+
+      // Also sync to contact_leads table for unified B2B lead intelligence
+      if (session.user?.email) {
+        await supabase
+          .from('contact_leads')
+          .insert([{
+            email: session.user.email,
+            full_name: session.user.user_metadata?.full_name || session.user.email.split('@')[0],
+            source: 'authenticated_user_quiz_preferences',
+            neighborhood: prefs?.commuteLocations?.[0]?.address || 'GTA Search',
+            created_at: new Date().toISOString()
+          }]);
+      }
     } catch (err) {
-      console.error('Error saving preferences:', err);
+      console.error('Error saving preferences and lead record:', err);
     }
   };
 

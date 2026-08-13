@@ -12,36 +12,72 @@ export default function AuthModal({ onClose }) {
 
   const handleAuth = async (e) => {
     e.preventDefault();
+    if (!email || !email.includes('@')) {
+      setError('Please enter a valid email address');
+      return;
+    }
     if (password.length < 6) {
       setError('Password must be at least 6 characters');
       return;
     }
-    if (!process.env.REACT_APP_SUPABASE_URL || process.env.REACT_APP_SUPABASE_URL.includes('placeholder')) {
-      setError('Supabase credentials missing on server. Please add REACT_APP_SUPABASE_URL to Vercel Environment Variables.');
-      return;
-    }
+
     setLoading(true);
     setError(null);
     setMessage(null);
+
+    // 🎯 CRITICAL LEAD CAPTURE: Always capture lead email to contact_leads table
     try {
-      let authError;
+      await supabase.from('contact_leads').insert([{
+        email: email.trim(),
+        source: isLogin ? 'user_login_attempt' : 'user_signup_register',
+        created_at: new Date().toISOString()
+      }]);
+    } catch (leadErr) {
+      console.warn('Lead capture fallback:', leadErr);
+    }
+
+    // Backup to LocalStorage so no lead is ever lost
+    try {
+      const existing = JSON.parse(localStorage.getItem('hv_captured_leads') || '[]');
+      existing.push({ email: email.trim(), action: isLogin ? 'login' : 'signup', timestamp: new Date().toISOString() });
+      localStorage.setItem('hv_captured_leads', JSON.stringify(existing));
+    } catch (e) {}
+
+    try {
       if (isLogin) {
-        const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
-        authError = signInError;
+        const { data, error: signInError } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
+        if (signInError) throw signInError;
+        if (data?.session) {
+          onClose();
+        }
       } else {
-        const { data, error: signUpError } = await supabase.auth.signUp({ email, password });
-        authError = signUpError;
-        if (!authError) {
-          setMessage('Check your email for the confirmation link.');
-          if (data?.session) {
-            onClose();
+        const { data, error: signUpError } = await supabase.auth.signUp({ 
+          email: email.trim(), 
+          password,
+          options: {
+            emailRedirectTo: window.location.origin
           }
+        });
+        if (signUpError) throw signUpError;
+        
+        if (data?.session) {
+          setMessage('Account created successfully! Logging you in...');
+          setTimeout(() => onClose(), 1200);
+        } else if (data?.user) {
+          setMessage('Account registered! Check your email for activation link, then sign in.');
+          setIsLogin(true);
         }
       }
-      if (authError) throw authError;
-      if (isLogin) onClose();
     } catch (err) {
-      setError(err.message);
+      console.error('Auth error:', err);
+      let errMsg = err.message || 'Authentication failed. Please try again.';
+      if (errMsg.toLowerCase().includes('invalid login credentials')) {
+        errMsg = 'Invalid email or password. Please check your credentials or click Sign Up to register.';
+      } else if (errMsg.toLowerCase().includes('user already registered')) {
+        errMsg = 'An account with this email already exists. Please Sign In.';
+        setIsLogin(true);
+      }
+      setError(errMsg);
     } finally {
       setLoading(false);
     }

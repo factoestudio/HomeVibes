@@ -1,5 +1,51 @@
 export const blogPosts = [
   {
+    id: 20,
+    slug: 'etobicoke-centre-six-points-civic-hub-2026',
+    title: 'Etobicoke Centre & Six Points: 2026 Master-Planned Transit Hub & Civic Renaissance Analysis',
+    date: 'August 13, 2026',
+    excerpt: 'An in-depth market analysis of Etobicoke Centre and Six Points achieving a 78/100 sentiment score in late summer 2026, driven by the new Etobicoke Civic Centre and Kipling Station multi-modal transit hub.',
+    category: 'Market Trends',
+    coordinates: { lat: 43.6371, lng: -79.5358 },
+    neighborhoodName: "Etobicoke Centre & Six Points",
+    city: "Toronto",
+    neighborhoodId: "etobicoke-centre",
+    content: `
+## Etobicoke Centre & Six Points: 2026 Master-Planned Transit Hub & Civic Renaissance Analysis
+
+**Target Persona & Micro-Cluster**  
+First-Time Homebuyers, Civic Infrastructure Investors, Hybrid Transit Commuters, and Urban Professionals across Bloor St West, Dundas St West, and Kipling Ave corridors.
+
+---
+
+## The Vibe / Impact
+
+In our August 13, 2026 Greater Toronto Area Market Intelligence harvest, **Etobicoke Centre & Six Points** scored a strong **78/100 overall community sentiment rating**, standing out as Toronto West’s most ambitious master-planned urban transformation zone. The realignment of the legacy Six Points interchange has unlocked a brand-new downtown core for Etobicoke, anchored by state-of-the-art public parks, pedestrian plazas, and civic infrastructure.
+
+The core driver of the 2026 market surge is the opening of the **new Etobicoke Civic Centre**, bringing public art galleries, a new TPL library branch, a community recreation center, and civic services into a single walkable precinct:
+- **Kipling Multi-Modal Transit Hub:** Direct access to Line 2 Bloor-Danforth Subway, Milton Line GO Train, and MiWay regional bus routes—offering a seamless 22-minute commute to Union Station and direct links to Pearson Airport.
+- **Urban Retail & Green Corridors:** Independent cafes, craft eateries along Bloor West, and sprawling park networks connecting down to Echo Valley Park and Mimico Creek trails.
+
+Market-wise, Etobicoke Centre offers incredible relative value. **Boutique mid-rise and high-rise condos trade at an accessible $880 per square foot**, with average monthly rents holding firm at **$2,250/month** and demand velocity clocking in at **14 days DOM**.
+
+---
+
+## The Real Estate Play
+
+Navigating the Etobicoke Centre market in August 2026 centers around long-term growth positioning:
+
+- **The Transit Anchor Advantage:** Condos within a 5-minute walk of Kipling Station represent top-tier entry-level investments for young professionals prioritizing friction-free regional transit.
+- **The Civic Centre Master-Plan Equity:** Residential properties surrounding the new Civic Centre plaza are positioned for long-term cap-rate appreciation as commercial and retail tenant density matures.
+- **The Established Islington Infill:** Nearby detached and semi-detached homes in historic Islington Village offer deep lots and laneway potential for buyers seeking traditional single-family space.
+
+---
+
+## HomeVibes Verdict
+
+Etobicoke Centre and Six Points combine unmatched multi-modal transit power with transformative municipal investment. For buyers seeking high growth upside, accessible entry pricing, and civic convenience, Etobicoke Centre is the premier 2026 urban match.
+`
+  },
+  {
     id: 19,
     slug: 'junction-dupont-west-artisan-transit-2026',
     title: 'The Junction & Dupont West: Toronto\'s #1 Ranked West-End Cultural Enclave for Artisan Living & Rapid Transit (2026 Analysis)',
