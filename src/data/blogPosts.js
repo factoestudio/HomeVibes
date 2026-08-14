@@ -1,5 +1,51 @@
 export const blogPosts = [
   {
+    id: 21,
+    slug: 'port-credit-waterfront-lakeside-village-2026',
+    title: 'Port Credit Waterfront: 2026 Market Analysis of Mississauga\'s #1 Lakeside Village & Express Transit Enclave',
+    date: 'August 14, 2026',
+    excerpt: 'An in-depth market intelligence report on Port Credit Waterfront achieving an 86/100 sentiment score in late summer 2026, driven by Brightwater master-plan developments, marina living, and a 25-minute GO Train commute to Downtown Toronto.',
+    category: 'Market Trends',
+    coordinates: { lat: 43.5515, lng: -79.5857 },
+    neighborhoodName: "Port Credit Waterfront",
+    city: "Mississauga",
+    neighborhoodId: "port-credit",
+    content: `
+## Port Credit Waterfront: 2026 Market Analysis of Mississauga's #1 Lakeside Village & Express Transit Enclave
+
+**Target Persona & Micro-Cluster**  
+Waterfront Enthusiasts, High-Net-Worth Executives, Downsizers, and Hybrid Toronto Commuters seeking luxury lakeside living along Lakeshore Rd East & West, Huron Park, and the Brightwater waterfront master plan.
+
+---
+
+## The Vibe / Impact
+
+In our August 14, 2026 GTA Real Estate & Sentiment Harvest, **Port Credit Waterfront** claimed the top spot in Peel Region with an outstanding **86/100 community sentiment rating**. Known as "Mississauga's Village on the Lake," Port Credit offers a rare fusion of resort-style waterfront tranquility, deep-water marina culture, and urban walkability along Lakeshore Road.
+
+The major growth catalyst in late summer 2026 is the rapid delivery of the **Brightwater waterfront master plan**, introducing eco-conscious parks, public boardwalks, retail plazas, and luxury mid-rise residences:
+- **Express Regional Transit:** Port Credit GO Station provides a friction-free **25-minute express train ride to Union Station** in Toronto, making it a premier haven for hybrid financial & tech executives.
+- **Lakeside Lifestyle & Gastronomy:** Historic lighthouse landmarks, Credit River boating trails, craft breweries, and upscale patio dining along Lakeshore Road.
+
+On the valuation front, Port Credit commands a premium price tag of **$960 per square foot**, with average monthly rents holding strong at **$2,600/month** and listing velocity moving at a swift **12 days on market**.
+
+---
+
+## The Real Estate Play
+
+Investing or purchasing in Port Credit during late 2026 requires understanding its distinct micro-districts:
+
+- **Brightwater Infill & Waterfront Mid-Rises:** Prime target for luxury buyers seeking modern smart-home features, LEED-certified design, and unobstructed Lake Ontario views.
+- **Central Port Credit Resale Condos:** High-yield rental opportunities within 400 meters of the GO Station, catering to young professionals commuting to Downtown Toronto.
+- **Mineola & Historic Village Infill:** Luxury detached properties on deep wooded lots commanding multi-million dollar valuations with strong long-term capital preservation.
+
+---
+
+## HomeVibes Verdict
+
+Port Credit combines unmatched waterfront lifestyle amenities with fast transit links into Toronto's core. For buyers seeking a vibrant lakeside sanctuary with resilient asset value, Port Credit is Mississauga's undisputed #1 real estate match.
+`
+  },
+  {
     id: 20,
     slug: 'etobicoke-centre-six-points-civic-hub-2026',
     title: 'Etobicoke Centre & Six Points: 2026 Master-Planned Transit Hub & Civic Renaissance Analysis',

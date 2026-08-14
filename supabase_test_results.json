@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-13T12:58:56.598Z",
+  "timestamp": "2026-08-13T13:09:51.100Z",
   "tests": [
     {
       "name": "B2B Partner Form Submission",
@@ -9,24 +9,12 @@
       "submittedData": {
         "full_name": "Test Partner Executive",
         "company": "GTA Capital Partners",
-        "email": "b2b_test_2026-08-13T12-58-56-597Z@homevibes-test.com",
+        "email": "b2b_test_2026-08-13T13-09-51-099Z@homevibes-test.com",
         "interest": "B2B API & Market Intelligence Data Integration",
         "source": "b2b_partner_form_test",
-        "created_at": "2026-08-13T12:58:56.598Z"
+        "created_at": "2026-08-13T13:09:51.100Z"
       },
-      "response": [
-        {
-          "id": "09c99376-4e78-4173-ae28-c3bdd76ed44e",
-          "full_name": "Test Partner Executive",
-          "company": "GTA Capital Partners",
-          "email": "b2b_test_2026-08-13T12-58-56-597Z@homevibes-test.com",
-          "interest": "B2B API & Market Intelligence Data Integration",
-          "timeline": null,
-          "neighborhood": null,
-          "source": "b2b_partner_form_test",
-          "created_at": "2026-08-13T12:58:56.598+00:00"
-        }
-      ]
+      "response": ""
     },
     {
       "name": "User Sign Up Form Lead Capture",
@@ -34,23 +22,11 @@
       "status": "SUCCESS",
       "statusCode": 201,
       "submittedData": {
-        "email": "signup_user_2026-08-13T12-58-56-597Z@homevibes-test.com",
+        "email": "signup_user_2026-08-13T13-09-51-099Z@homevibes-test.com",
         "source": "user_signup_form_validation",
-        "created_at": "2026-08-13T12:58:57.099Z"
+        "created_at": "2026-08-13T13:09:51.293Z"
       },
-      "response": [
-        {
-          "id": "d80c1403-936b-4c10-9940-e033ec05508a",
-          "full_name": null,
-          "company": null,
-          "email": "signup_user_2026-08-13T12-58-56-597Z@homevibes-test.com",
-          "interest": null,
-          "timeline": null,
-          "neighborhood": null,
-          "source": "user_signup_form_validation",
-          "created_at": "2026-08-13T12:58:57.099+00:00"
-        }
-      ]
+      "response": ""
     },
     {
       "name": "User Sign In Lead Logging",
@@ -58,23 +34,11 @@
       "status": "SUCCESS",
       "statusCode": 201,
       "submittedData": {
-        "email": "signin_user_2026-08-13T12-58-56-597Z@homevibes-test.com",
+        "email": "signin_user_2026-08-13T13-09-51-099Z@homevibes-test.com",
         "source": "user_signin_form_validation",
-        "created_at": "2026-08-13T12:58:57.305Z"
+        "created_at": "2026-08-13T13:09:51.386Z"
       },
-      "response": [
-        {
-          "id": "dcadb5a2-d5ef-426a-af8b-442795c72a1c",
-          "full_name": null,
-          "company": null,
-          "email": "signin_user_2026-08-13T12-58-56-597Z@homevibes-test.com",
-          "interest": null,
-          "timeline": null,
-          "neighborhood": null,
-          "source": "user_signin_form_validation",
-          "created_at": "2026-08-13T12:58:57.305+00:00"
-        }
-      ]
+      "response": ""
     },
     {
       "name": "Google Register OAuth Intent Lead",
@@ -82,23 +46,11 @@
       "status": "SUCCESS",
       "statusCode": 201,
       "submittedData": {
-        "email": "google_oauth_2026-08-13T12-58-56-597Z@homevibes-test.com",
+        "email": "google_oauth_2026-08-13T13-09-51-099Z@homevibes-test.com",
         "source": "google_oauth_register_intent",
-        "created_at": "2026-08-13T12:58:57.516Z"
+        "created_at": "2026-08-13T13:09:51.596Z"
       },
-      "response": [
-        {
-          "id": "9c9e3915-8886-457b-930b-9abcf02c4e4e",
-          "full_name": null,
-          "company": null,
-          "email": "google_oauth_2026-08-13T12-58-56-597Z@homevibes-test.com",
-          "interest": null,
-          "timeline": null,
-          "neighborhood": null,
-          "source": "google_oauth_register_intent",
-          "created_at": "2026-08-13T12:58:57.516+00:00"
-        }
-      ]
+      "response": ""
     },
     {
       "name": "User Clicks & Neighborhood Interest Tracking",
@@ -112,103 +64,11 @@
           "city": "Oakville",
           "interest_level": "high_intent_unlock",
           "commute_anchor": "Square One, Mississauga",
-          "timestamp": "2026-08-13T12:58:57.606Z"
+          "timestamp": "2026-08-13T13:09:51.681Z"
         }
       },
-      "response": [
-        {
-          "id": "639c41d7-f3d2-489c-aa36-6a27a9f31d31",
-          "user_id": null,
-          "event_type": "VIEW_NEIGHBORHOOD_INTEREST",
-          "event_data": {
-            "city": "Oakville",
-            "timestamp": "2026-08-13T12:58:57.606Z",
-            "neighborhood": "Downtown Oakville & Kerr Village",
-            "commute_anchor": "Square One, Mississauga",
-            "interest_level": "high_intent_unlock"
-          },
-          "created_at": "2026-08-13T12:58:57.887131+00:00"
-        }
-      ]
+      "response": ""
     }
   ],
-  "latestLeadsInDatabase": [
-    {
-      "id": "9c9e3915-8886-457b-930b-9abcf02c4e4e",
-      "full_name": null,
-      "company": null,
-      "email": "google_oauth_2026-08-13T12-58-56-597Z@homevibes-test.com",
-      "interest": null,
-      "timeline": null,
-      "neighborhood": null,
-      "source": "google_oauth_register_intent",
-      "created_at": "2026-08-13T12:58:57.516+00:00"
-    },
-    {
-      "id": "dcadb5a2-d5ef-426a-af8b-442795c72a1c",
-      "full_name": null,
-      "company": null,
-      "email": "signin_user_2026-08-13T12-58-56-597Z@homevibes-test.com",
-      "interest": null,
-      "timeline": null,
-      "neighborhood": null,
-      "source": "user_signin_form_validation",
-      "created_at": "2026-08-13T12:58:57.305+00:00"
-    },
-    {
-      "id": "d80c1403-936b-4c10-9940-e033ec05508a",
-      "full_name": null,
-      "company": null,
-      "email": "signup_user_2026-08-13T12-58-56-597Z@homevibes-test.com",
-      "interest": null,
-      "timeline": null,
-      "neighborhood": null,
-      "source": "user_signup_form_validation",
-      "created_at": "2026-08-13T12:58:57.099+00:00"
-    },
-    {
-      "id": "09c99376-4e78-4173-ae28-c3bdd76ed44e",
-      "full_name": "Test Partner Executive",
-      "company": "GTA Capital Partners",
-      "email": "b2b_test_2026-08-13T12-58-56-597Z@homevibes-test.com",
-      "interest": "B2B API & Market Intelligence Data Integration",
-      "timeline": null,
-      "neighborhood": null,
-      "source": "b2b_partner_form_test",
-      "created_at": "2026-08-13T12:58:56.598+00:00"
-    },
-    {
-      "id": "50cc3bbe-4f96-48c8-9a0b-0533e679a2f4",
-      "full_name": "Juan",
-      "company": null,
-      "email": "jcmorat@outlook.com",
-      "interest": null,
-      "timeline": "Just browsing",
-      "neighborhood": "North Corridor (4.0 km)",
-      "source": "premium_unlock",
-      "created_at": "2026-08-11T13:28:43.262+00:00"
-    },
-    {
-      "id": "1aaa2658-d57e-48cb-ac6b-80a2e2f67415",
-      "full_name": "test",
-      "company": "test company",
-      "email": "test@test.com",
-      "interest": "developer_tools",
-      "timeline": null,
-      "neighborhood": null,
-      "source": "b2b_contact_form",
-      "created_at": "2026-07-24T19:18:23.933+00:00"
-    },
-    {
-      "id": "a4dce138-f4c6-480d-b087-4c73a051bc94",
-      "full_name": "test",
-      "company": "test",
-      "email": "test@test.com",
-      "interest": "lead_membership",
-      "timeline": null,
-      "neighborhood": null,
-      "source": "b2b_contact_form",
-      "created_at": "2026-07-24T17:28:51.033+00:00"
-    }
-  ]
+  "latestLeadsInDatabase": []
 }

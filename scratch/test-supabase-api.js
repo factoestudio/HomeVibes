@@ -19,7 +19,7 @@ function supabaseRequest(endpoint, method = 'GET', data = null) {
         'apikey': SUPABASE_KEY,
         'Authorization': `Bearer ${SUPABASE_KEY}`,
         'Content-Type': 'application/json',
-        'Prefer': 'return=representation'
+        'Prefer': 'return=minimal'
       }
     };
 
