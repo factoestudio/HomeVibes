@@ -1,5 +1,52 @@
 export const blogPosts = [
   {
+    id: 22,
+    slug: 'unionville-markham-centre-market-schools-2026',
+    title: 'Unionville & Markham Centre: 2026 Market Intelligence & School Catchment Deep Dive',
+    date: 'August 15, 2026',
+    excerpt: 'An in-depth analysis of Unionville & Markham Centre achieving an 81/100 sentiment score in August 2026, driven by historic Main Street charm, top-tier public school catchments, and Markham Centre urban growth.',
+    category: 'Market Trends',
+    coordinates: { lat: 43.8694, lng: -79.3116 },
+    neighborhoodName: "Unionville & Markham Centre",
+    city: "Markham",
+    neighborhoodId: "markham-unionville",
+    content: `
+## Unionville & Markham Centre: 2026 Market Intelligence & School Catchment Deep Dive
+
+**Target Persona & Micro-Cluster**  
+Suburban Luxury Buyers, Multi-Generational Families, High-Performing Tech Professionals, and Education-Driven Buyers across Main St Unionville, Highway 7, Kennedy Rd, and Markham Centre.
+
+---
+
+## The Vibe / Impact
+
+In our August 15, 2026 GTA Real Estate & Sentiment Harvest, **Unionville & Markham Centre** emerged as York Region's top-performing suburban enclave with an impressive **81/100 community sentiment rating**. 
+
+The area's enduring appeal stems from a unique dual identity: the preserved 19th-century heritage village of **Historic Main Street Unionville** paired with the hyper-modern, transit-oriented development of **Markham Centre**:
+- **Top-Tier Education Anchors:** Renowned public & secondary school catchments (including Unionville High School and Markville Secondary) consistently attract family buyers prioritizing academic excellence.
+- **Gastronomy & Nature:** World-class Asian culinary destinations along Highway 7, boutique cafes, and serene walking trails around Toogood Pond and Carlton Park.
+- **York University Markham Campus Impact:** Expanded university presence has energized local tech incubators, student housing demand, and commercial retail activity.
+
+Market metrics show strong liquidity. **Condos and townhomes average $890 per square foot**, with monthly rental rates averaging **$2,450/month** and demand velocity moving at a brisk **13 days on market**.
+
+---
+
+## The Real Estate Play
+
+Navigating the Unionville & Markham Centre real estate market in late summer 2026 involves distinct sub-segment plays:
+
+- **Historic Unionville Detached Homes:** High-value single-family homes on generous lot sizes along Fred Varley Drive and Carlton Road—offering long-term wealth preservation and prestige.
+- **Markham Centre High-Rise Infill:** Smart entry points for first-time buyers and investors seeking modern condo amenities within walking distance of Viva Next bus rapid transit and Unionville GO Station.
+- **Highway 7 Mixed-Use Corridors:** High-demand rental inventory driven by tech professionals employed at nearby IBM, Lenovo, and AMD regional headquarters.
+
+---
+
+## HomeVibes Verdict
+
+Unionville & Markham Centre seamlessly bridges rich heritage, academic prestige, and high-tech corporate infrastructure. For family buyers and discerning investors seeking York Region's most resilient micro-market, Unionville is the premier choice.
+`
+  },
+  {
     id: 21,
     slug: 'port-credit-waterfront-lakeside-village-2026',
     title: 'Port Credit Waterfront: 2026 Market Analysis of Mississauga\'s #1 Lakeside Village & Express Transit Enclave',
