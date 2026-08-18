@@ -1,5 +1,52 @@
 export const blogPosts = [
   {
+    id: 23,
+    slug: 'downtown-oakville-kerr-village-luxury-waterfront-2026',
+    title: 'Downtown Oakville & Kerr Village: 2026 Market Analysis of GTA\'s #1 Rated Luxury Waterfront Enclave',
+    date: 'August 17, 2026',
+    excerpt: 'An in-depth market intelligence report on Downtown Oakville & Kerr Village achieving an elite 87/100 sentiment score in August 2026, driven by Sixteen Mile Creek harbor prestige, Lakeshore West GO express commuting, and artisanal dining corridors.',
+    category: 'Market Trends',
+    coordinates: { lat: 43.4437, lng: -79.6672 },
+    neighborhoodName: "Downtown Oakville & Kerr Village",
+    city: "Oakville",
+    neighborhoodId: "oakville-downtown",
+    content: `
+## Downtown Oakville & Kerr Village: 2026 Market Analysis of GTA's #1 Rated Luxury Waterfront Enclave
+
+**Target Persona & Micro-Cluster**  
+High-Net-Worth Executives, Luxury Downsizers, Hybrid Commuters, and Culinary Enthusiasts across Old Oakville, Towne Square, Sixteen Mile Creek Harbor, and Kerr Street.
+
+---
+
+## The Vibe / Impact
+
+In our August 17, 2026 Greater Toronto Area Real Estate & Sentiment Harvest, **Downtown Oakville & Kerr Village** captured the single highest community sentiment rating in the entire GTA with an extraordinary **87/100 score**.
+
+The area offers an unmatched blend of lakeside heritage elegance and vibrant commercial energy:
+- **Sixteen Mile Creek & Harbour Prestige:** Historic yacht clubs, manicured lakeside parks, and cobblestone Towne Square shopping along George Street and Lakeshore Road.
+- **Kerr Village Artisanal Energy:** An eclectic, walkable district packed with indie espresso bars, global bistro dining, and boutique design studios.
+- **Express Lakeshore West GO Transit:** Seamless **34-minute express commute** to Union Station in Toronto, attracting top C-suite executives and remote tech founders.
+
+Valuation metrics remain firmly in luxury territory. **Boutique luxury condos and townhomes command $1,020 per square foot**, with average monthly rents holding strong at **$2,800/month** and listing velocity moving at a swift **14 days on market**.
+
+---
+
+## The Real Estate Play
+
+Navigating the Downtown Oakville real estate landscape in late summer 2026 centers around three high-performing asset classes:
+
+- **Old Oakville Heritage Estates:** Multi-million dollar custom estates along Thomas, Trafalgar, and Robinson Streets—offering irreplaceable tree-lined grandeur and generational capital security.
+- **Luxury Mid-Rise Harbor Condos:** Low-turnover boutique residences surrounding Towne Square and Sixteen Mile Creek, highly coveted by downsizers seeking lock-and-leave luxury.
+- **Kerr Street Urban Infill:** Modern townhomes and urban mid-rises providing an entry point for younger professionals seeking walkable dining culture.
+
+---
+
+## HomeVibes Verdict
+
+Downtown Oakville & Kerr Village represent the gold standard for luxury suburban waterfront living in Ontario. With top-tier school catchments, premier harbor culture, and fast GO Train connections, Oakville is the GTA's reigning #1 micro-market.
+`
+  },
+  {
     id: 22,
     slug: 'unionville-markham-centre-market-schools-2026',
     title: 'Unionville & Markham Centre: 2026 Market Intelligence & School Catchment Deep Dive',
