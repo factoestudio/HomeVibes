@@ -1,5 +1,58 @@
 export const blogPosts = [
   {
+    id: 24,
+    slug: 'leslieville-vs-junction-toronto-showdown-2026',
+    title: 'Leslieville vs. The Junction: Which Toronto East or West Enclave Offers Better ROI & Vibe for Young Families in 2026?',
+    date: 'August 18, 2026',
+    excerpt: 'A head-to-head 2026 real estate battle comparing Toronto East\'s Leslieville (Sentiment 83/100) against Toronto West\'s The Junction (Sentiment 85/100) across price-per-sqft, transit access, school catchments, and lifestyle vibe.',
+    category: 'Market Trends',
+    coordinates: { lat: 43.6628, lng: -79.3361 },
+    neighborhoodName: "Leslieville vs. The Junction",
+    city: "Toronto",
+    neighborhoodId: "leslieville",
+    content: `
+## Leslieville vs. The Junction: Which Toronto East or West Enclave Offers Better ROI & Vibe for Young Families in 2026?
+
+**Target Persona & Micro-Cluster**  
+First-Time Homebuyers, Growing Families, Move-Up Buyers, and Creative Tech Professionals deciding between Queen St East (Leslieville/Riverdale) and Dundas St West (The Junction/Dupont West).
+
+---
+
+## The Head-to-Head Breakdown
+
+For Toronto home searchers, the eternal debate is **Toronto East vs. Toronto West**. Two neighborhood heavyweights represent the pinnacle of vibrant urban living for young families: **Leslieville & South Riverdale** (83/100 Vibe Score) versus **The Junction & Dupont West** (85/100 Vibe Score).
+
+Here is how they stack up across 4 critical metrics in August 2026:
+
+### 1. Valuation & Price-per-Square-Foot
+- **Leslieville:** Averages **$1,100 per sq ft** for condos/townhomes, with semi-detached homes holding firm at $1.3M–$1.5M. Monthly rents average **$2,480/month**.
+- **The Junction:** Averages **$980 per sq ft**, offering approximately **11% better relative value** for buyer square footage. Monthly rents average **$2,400/month**.
+- 🏆 **Winner on Value:** **The Junction** (More square footage per dollar).
+
+### 2. Transit & Commute Friction
+- **Leslieville:** Relies on Queen & King streetcar routes into the Financial District (22–30 mins), with direct access to the DVP and Gardiner Expressway.
+- **The Junction:** Powered by Bloor-Danforth Line 2 Subway (Keele/Dundas West) plus UP Express to Union Station (**15-minute commute**) and Pearson Airport (**18-minute commute**).
+- 🏆 **Winner on Transit Speed:** **The Junction** (UP Express is unbeatable).
+
+### 3. Family Lifestyle & Park Infrastructure
+- **Leslieville:** Unmatched green space with **Riverdale Park East** (famous skyline sunset views & outdoor pool), Withrow Park farmer's markets, and top-tier school catchments (Withrow Ave Jr PS).
+- **The Junction:** Bordered by High Park (Toronto's premier 400-acre green lung) and West Toronto Railpath cycling corridors.
+- 🏆 **Winner on Family Parks:** **Leslieville** (Village atmosphere & park cohesion).
+
+### 4. Culinary Culture & Micro-Vibe
+- **Leslieville:** Sophisticated brunch spots, indie coffee roasters along Queen East, and family-friendly bistros.
+- **The Junction:** Craft brewery trail along Junction Road, vintage furniture boutiques, and organic artisanal bakeries along Dundas West.
+- 🏆 **Winner on Vibe:** **Tie** (East-side refinement vs. West-side creative grit).
+
+---
+
+## HomeVibes Verdict
+
+- **Choose Leslieville IF:** You prioritize established park infrastructure (Riverdale/Withrow), village-like family cohesion, and east-side DVP highway connectivity.
+- **Choose The Junction IF:** You want higher square-footage value, 15-minute UP Express transit into Union Station, and a vibrant craft brewery culture.
+`
+  },
+  {
     id: 23,
     slug: 'downtown-oakville-kerr-village-luxury-waterfront-2026',
     title: 'Downtown Oakville & Kerr Village: 2026 Market Analysis of GTA\'s #1 Rated Luxury Waterfront Enclave',
