@@ -1,5 +1,78 @@
 export const blogPosts = [
   {
+    id: 25,
+    slug: 'top-5-hidden-gta-neighborhoods-remote-workers-under-800k-2026',
+    title: 'Top 5 Hidden GTA Neighborhoods for Remote Workers Under $800k (With 30-Minute GO Transit Access)',
+    date: 'August 20, 2026',
+    excerpt: 'A curated 2026 lifestyle guide ranking the top 5 Greater Toronto Area micro-markets under $800,000 for hybrid remote professionals seeking spacious home offices, indie cafe culture, and sub-30 minute GO Train connections.',
+    category: 'Lifestyle Guides',
+    coordinates: { lat: 43.6371, lng: -79.5358 },
+    neighborhoodName: "Top 5 GTA Remote Work Enclaves",
+    city: "GTA",
+    neighborhoodId: "etobicoke-centre",
+    content: `
+## Top 5 Hidden GTA Neighborhoods for Remote Workers Under $800k (With 30-Minute GO Transit Access)
+
+**Target Persona & Micro-Cluster**  
+Hybrid Remote Tech & Financial Executives, Freelance Creatives, and First-Time Buyers seeking max square footage, high-speed fiber internet infrastructure, indie coffee shops, and friction-free transit into Downtown Toronto.
+
+---
+
+## The Remote Work Housing Shift in 2026
+
+As hybrid work models solidify in 2026, GTA buyers are prioritizing **home office square footage, green trail connectivity, and local neighborhood coffee spots** over cramped downtown high-rises. However, maintaining a fast connection to Toronto's core for 2-3 office days per week remains essential.
+
+Based on our August 2026 GTA Market Intelligence & Vibe Score dataset, here are the **Top 5 Hidden Micro-Markets under $800,000** delivering the ultimate remote-work lifestyle:
+
+---
+
+### 1. Etobicoke Centre / Six Points (Toronto West)
+- **Price Point:** $880/sqft ($650k–$780k for 1-bed + den / 2-bed condos)
+- **Vibe Score:** 78/100
+- **The Remote Work Advantage:** Direct access to **Kipling Station Multi-Modal Hub** (Subway Line 2 + GO Train + MiWay). 22-minute ride to Union Station.
+- **Top Work Spot:** SanRemo Bakery & Bloor West independent espresso bars.
+
+---
+
+### 2. Streetsville "Bread & Honey Village" (Mississauga)
+- **Price Point:** $820/sqft ($680k–$790k for spacious townhomes & condo suites)
+- **Vibe Score:** 83/100
+- **The Remote Work Advantage:** Historic Main Street village ambiance with Culham Trail nature access right outside your door. Streetsville GO Station gets you to Union Station in 35 minutes.
+- **Top Work Spot:** Main Street cafes and quiet public library study spaces.
+
+---
+
+### 3. Scarborough City Centre & McCowan Corridor (Toronto East)
+- **Price Point:** $780/sqft ($580k–$720k for large 2-bed floor plans)
+- **Vibe Score:** 65/100 (Unmatched Relative Value)
+- **The Remote Work Advantage:** Maximum indoor square footage per dollar in the City of Toronto. Perfect for buyers needing dedicated dual home offices without stretching their budget.
+- **Top Work Spot:** Albert Campbell Library study lounges & local tea houses.
+
+---
+
+### 4. Pickering City Centre / Waterfront Trail (Durham Region)
+- **Price Point:** $720/sqft ($590k–$740k for new master-planned mid-rises)
+- **Vibe Score:** 72/100
+- **The Remote Work Advantage:** 55-acre master-planned transformation zone. **30-minute express GO Train to Union Station** paired with Lake Ontario waterfront trail access for midday exercise breaks.
+- **Top Work Spot:** Nautical Village cafes along Frenchman's Bay.
+
+---
+
+### 5. Downtown Brampton & Gage Park Precinct (Peel Region)
+- **Price Point:** $680/sqft ($540k–$690k entry price)
+- **Vibe Score:** 58/100
+- **The Remote Work Advantage:** The most affordable GO Transit entry point in the GTA. Brampton GO Station provides direct 38-minute transit into Toronto's Financial District.
+- **Top Work Spot:** Gage Park pavilion & historic Main Street coffee shops.
+
+---
+
+## HomeVibes Recommendation for Remote Workers
+
+- **For Max Square Footage:** Look to **Scarborough City Centre** or **Pickering**.
+- **For Village Charm & Walkability:** Choose **Streetsville** or **Etobicoke Centre**.
+`
+  },
+  {
     id: 24,
     slug: 'leslieville-vs-junction-toronto-showdown-2026',
     title: 'Leslieville vs. The Junction: Which Toronto East or West Enclave Offers Better ROI & Vibe for Young Families in 2026?',
