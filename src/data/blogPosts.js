@@ -1,5 +1,65 @@
 export const blogPosts = [
   {
+    id: 26,
+    slug: 'ontario-line-subway-audit-toronto-neighborhood-upgrades-2026',
+    title: 'Ontario Line Subway Audit: 4 Toronto Neighborhoods Set for Massive Real Estate Upgrades Before 2028 Opening',
+    date: 'August 21, 2026',
+    excerpt: 'An infrastructure market research audit analyzing the top 4 Toronto transit precincts poised for long-term equity appreciation driven by the 15.6km Ontario Line Subway stations.',
+    category: 'Market Trends',
+    coordinates: { lat: 43.6548, lng: -79.3582 },
+    neighborhoodName: "Ontario Line Transit Corridor",
+    city: "Toronto",
+    neighborhoodId: "leslieville",
+    content: `
+## Ontario Line Subway Audit: 4 Toronto Neighborhoods Set for Massive Real Estate Upgrades Before 2028 Opening
+
+**Target Persona & Micro-Cluster**  
+Transit-Oriented Investors, Urban Professionals, Long-Term Homeowners, and Commercial Retail Buyers across Corktown, Leslieville, East Harbour, Moss Park, and King-Bathurst.
+
+---
+
+## The Infrastructure Multiplier Effect
+
+Major transit infrastructure projects are the single strongest driver of long-term real estate equity appreciation in North America. In our August 21, 2026 Market Intelligence Audit, we analyzed progress along the **15.6-kilometer, 15-station Ontario Line Subway**, connecting Exhibition Place through Downtown Toronto up to Eglinton Avenue.
+
+With tunneling and station excavation nearing peak completion, four specific station precincts represent top-tier "Before They Boom" real estate positioning:
+
+---
+
+### 1. Corktown & Distillery District Precinct (Berkeley / Parliament St)
+- **Station Name:** Corktown Station
+- **The Equity Catalyst:** Connects Corktown directly to Queen/Yonge in 3 minutes and Exhibition Place in 7 minutes.
+- **Real Estate Impact:** Pre-construction and boutique resale condos surrounding King East and Front St East are experiencing strong investor demand, benefiting from proximity to the historic Distillery District and West Don Lands parks.
+
+---
+
+### 2. East Harbour Transit Hub & Unilever Precinct
+- **Station Name:** East Harbour Station
+- **The Equity Catalyst:** Positioned to become Ontario's second-busiest transit hub after Union Station, integrating Ontario Line Subway, Lakeshore East GO Train, and Broadview Tram extensions.
+- **Real Estate Impact:** Unlocks a 60-acre master-planned commercial and residential employment district bringing 50,000+ tech and financial jobs into East Toronto.
+
+---
+
+### 3. Leslieville & Gerrard / Carlaw Precinct (Gerrard Station)
+- **Station Name:** Gerrard Station
+- **The Equity Catalyst:** Cuts transit time from East Toronto into Toronto's Financial District from 35 minutes down to **12 minutes**.
+- **Real Estate Impact:** Mixed-use mid-rise developments along Gerrard St East and Carlaw Ave are drawing young families who want historic brick-and-beam loft charm with sub-15 minute downtown access.
+
+---
+
+### 4. King-Bathurst & Fashion District Station
+- **Station Name:** King-Bathurst Station
+- **The Equity Catalyst:** Relieves severe overcrowding on the 504 King streetcar line while creating a seamless north-south transfer hub.
+- **Real Estate Impact:** High-density condo towers in King West and Liberty Village gain immediate rapid-transit connections, boosting long-term rental yields and liquidity.
+
+---
+
+## HomeVibes Investment Takeaway
+
+Transit-oriented infill properties within 400 meters of Ontario Line station sites consistently command a **15% to 22% valuation premium** upon line commissioning. Buyers looking for 5-year equity growth should focus on **Corktown** and **Gerrard East**.
+`
+  },
+  {
     id: 25,
     slug: 'top-5-hidden-gta-neighborhoods-remote-workers-under-800k-2026',
     title: 'Top 5 Hidden GTA Neighborhoods for Remote Workers Under $800k (With 30-Minute GO Transit Access)',
