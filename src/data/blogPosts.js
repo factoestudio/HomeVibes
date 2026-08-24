@@ -1,5 +1,60 @@
 export const blogPosts = [
   {
+    id: 28,
+    slug: 'secret-micro-districts-dupont-west-loft-corridor-2026',
+    title: 'Secret Micro-Districts of Dupont West: The Underground Food, Art & Loft Corridor Realtors Overlook (2026 Guide)',
+    date: 'August 24, 2026',
+    excerpt: 'An insider lifestyle and real estate guide exploring Dupont West\'s thriving industrial-to-arts corridor, secret micro-bakeries, indie galleries, and hard loft conversions between Lansdowne and Dundas West.',
+    category: 'Lifestyle Guides',
+    coordinates: { lat: 43.6678, lng: -79.4412 },
+    neighborhoodName: "Dupont West & The Railpath Arts District",
+    city: "Toronto",
+    neighborhoodId: "toronto-junction",
+    content: `
+## Secret Micro-Districts of Dupont West: The Underground Food, Art & Loft Corridor Realtors Overlook (2026 Guide)
+
+**Target Persona & Micro-Cluster**  
+Creative Directors, Tech Founders, Artisanal Food Enthusiasts, and Loft Lovers seeking authentic industrial character, off-the-beaten-path culinary gems, and cycling connectivity along the West Toronto Railpath.
+
+---
+
+## Beyond the Mainstream: The Dupont West Renaissance
+
+While mainstream property searchers focus heavily on Queen West and King West, Toronto’s most exciting creative transformation in late summer 2026 is unfolding along **Dupont Street West**, stretching from Christie Pits past Lansdowne over to the Junction Triangle.
+
+Historically an industrial manufacturing spine, Dupont West has evolved into a hyper-walkable enclave of contemporary art galleries, micro-breweries, and authentic brick-and-beam loft residences.
+
+---
+
+## 3 Secret Micro-Pockets You Need to Know
+
+### 1. The West Toronto Railpath Arts Enclave (Dupont & Osler)
+- **The Vibe:** Tucked beside the active Railpath cycling highway, former industrial machine shops have transformed into independent contemporary art spaces, artisan ceramic studios, and specialty coffee roasters.
+- **Insider Gem:** Hidden courtyard espresso bars and micro-roasteries where local creatives work without the noisy crowds of downtown cafes.
+- **Housing Character:** Authentic authentic post-and-beam conversion lofts featuring 14-foot ceilings, exposed Douglas fir timbers, and private freight elevator access.
+
+---
+
+### 2. The Geary Avenue Gastronomy & Craft Corridor
+- **The Vibe:** Just north of Dupont, Geary Avenue stands as Toronto’s most celebrated indie food incubator, home to natural wine bars, artisan sourdough bakeries, and experimental culinary labs.
+- **Insider Gem:** Underground pasta workshops and small-batch ice cream parlors operating out of retrofitted automotive garages.
+- **Housing Character:** High-demand live/work zoning infill townhomes and boutique mid-rise developments appealing to design-conscious urbanites.
+
+---
+
+### 3. The Campbell Park Residential Pocket (Dupont & Lansdowne)
+- **The Vibe:** Tree-lined Victorian residential side streets anchored by Campbell Avenue Park, featuring a thriving community garden, multi-sport courts, and weekend artisan markets.
+- **Insider Gem:** Quiet family-friendly pockets with direct 8-minute walking access to Lansdowne Subway Station.
+- **Housing Character:** Restored turn-of-the-century brick semi-detached homes paired with modern laneway suites providing secondary rental income.
+
+---
+
+## The Real Estate Takeaway for 2026
+
+Dupont West offers an average price point of **$980 per square foot**—representing a **15% discount** compared to mature central pockets like Trinity Bellwoods or Yorkville, while delivering higher authenticity, world-class cycling infrastructure, and superior long-term capital appreciation potential.
+`
+  },
+  {
     id: 27,
     slug: 'is-condo-living-dead-gta-2026-data-teardown',
     title: 'Is Condo Living Dead in the GTA? A 2026 Data Teardown of Resale Prices vs. Suburban Townhome Yields',
