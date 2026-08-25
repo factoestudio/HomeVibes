@@ -1,5 +1,65 @@
 export const blogPosts = [
   {
+    id: 29,
+    slug: 'port-credit-vs-downtown-oakville-waterfront-showdown-2026',
+    title: 'Port Credit vs. Downtown Oakville: The Ultimate GTA West Waterfront Showdown (2026 Edition)',
+    date: 'August 25, 2026',
+    excerpt: 'An exhaustive head-to-head comparison between Mississauga\'s vibrant Port Credit waterfront and Halton\'s prestigious Downtown Oakville, analyzing GO transit times, dining vibes, school rankings, and price-per-square-foot benchmarks.',
+    category: 'Neighborhood Guides',
+    coordinates: { lat: 43.5516, lng: -79.5888 },
+    neighborhoodName: "Port Credit & Downtown Oakville Waterfront",
+    city: "Mississauga",
+    neighborhoodId: "mississauga-port-credit",
+    content: `
+## Port Credit vs. Downtown Oakville: The Ultimate GTA West Waterfront Showdown (2026 Edition)
+
+**Target Persona & Micro-Cluster**  
+Affluent Move-Up Buyers, Established Families, Downsizing Executives, and Lakefront Lifestyle Seekers comparing premier South Mississauga against Old Oakville's historic heritage core along Lake Ontario.
+
+---
+
+## The Lake Ontario Rivalry
+
+When home searchers seek lakeside living paired with direct GO Train express service into Toronto’s Financial Core, the decision inevitably narrows down to two gold-standard communities in the GTA West: **Port Credit (Mississauga)** and **Downtown Oakville (Halton)**.
+
+Both boast picturesque yacht marinas, historic high streets, and scenic waterfront parks. But their community energy, price points, and long-term buyer demographics are distinctly different.
+
+---
+
+## Head-to-Head Comparison Matrix
+
+| Factor | Port Credit (Mississauga) | Downtown Oakville (Halton) | Winner |
+| :--- | :--- | :--- | :---: |
+| **Vibe & Energy** | High-energy, music festivals, lively patio dining, youthful promenade | Refined, upscale heritage, quiet luxury boutiques, Michelin-style bistros | **Tie (Lifestyle Dependent)** |
+| **Transit to Union Station** | 22-min Express GO + Hazel McCallion LRT connection | 34-min Express GO Train | **Port Credit (Faster Commute)** |
+| **Price Benchmark (Detached)** | $1.75M – $2.8M | $2.4M – $4.8M+ | **Port Credit (Better Value)** |
+| **Average Price / Sq Ft** | $920 – $1,050 / sq ft | $1,150 – $1,400+ / sq ft | **Port Credit** |
+| **Top School Rankings** | Strong (Forest Avenue PS, Mentor College) | Elite (Appleby College, Oakville Trafalgar HS) | **Downtown Oakville** |
+| **Parks & Lakefront Trails** | JJ Plaus Park, Waterfront Trail, Marina promenade | Tannery Park, Lakeside Park, Sixteen Mile Creek | **Downtown Oakville (Scenic Heritage)** |
+
+---
+
+## 1. Port Credit: The Urban Waterfront Powerhouse
+- **The Lifestyle:** Often referred to as "Mississauga's Village on the Lake," Port Credit offers an urban buzz unmatched by typical suburbs. Lakeshore Road East is packed with over 80 independent restaurants, cocktail lounges, craft bakeries, and live music venues.
+- **Transit Advantage:** With the **Hazel McCallion LRT** providing rapid north-south connections and 15-minute two-way GO Train service, Port Credit offers downtown Toronto accessibility in just 22 minutes.
+- **Housing Mix:** Dynamic mix of luxury modern waterfront condominiums (Brightwater master plan), freehold townhomes, and custom infill builds.
+
+---
+
+## 2. Downtown Oakville: The Pinnacle of Quiet Luxury
+- **The Lifestyle:** Centered around George Street and Lakeshore Road West, Downtown Oakville exudes timeless European charm. Historic lampposts, manicured heritage streetscapes, high-end art galleries, and private yacht clubs define the lifestyle.
+- **The Prestige Factor:** Consistently ranked among Canada's safest and highest-income enclaves, boasting top-tier public and private institutions (including Appleby College and St. Mildred's-Lightbourn).
+- **Housing Mix:** Magnificent heritage manors, lakeside estates, and ultra-exclusive low-rise boutique residences catering to discerning executive buyers.
+
+---
+
+## The HomeVibes Verdict
+
+- **Choose Port Credit if:** You want a lively, social dining scene, rapid 22-minute downtown Toronto transit, and superior modern condo/townhome investment value.
+- **Choose Downtown Oakville if:** You prioritize generational wealth preservation, top-ranked private schools, historic estate architecture, and a tranquil lakefront village atmosphere.
+`
+  },
+  {
     id: 28,
     slug: 'secret-micro-districts-dupont-west-loft-corridor-2026',
     title: 'Secret Micro-Districts of Dupont West: The Underground Food, Art & Loft Corridor Realtors Overlook (2026 Guide)',
