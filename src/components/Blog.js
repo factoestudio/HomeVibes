@@ -43,21 +43,24 @@ export default function Blog({ activeSlug, navigateTo }) {
 
       <div className="blog-grid" style={{ display: 'grid', gap: '2rem', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
         {blogPosts.map(post => (
-          <div key={post.id} className="card-glass luxury-border" style={{ padding: '2rem', display: 'flex', flexDirection: 'column' }}>
-            <span className="uppercase letter-spacing" style={{ fontSize: '0.8rem', opacity: 0.7, marginBottom: '1rem', display: 'block', color: 'var(--color-primary)' }}>
-              {post.category} &bull; {post.date}
-            </span>
-            <h2 className="display-font" style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{post.title}</h2>
-            <p style={{ opacity: 0.8, lineHeight: 1.5, marginBottom: '2rem', flexGrow: 1 }}>{post.excerpt}</p>
-            <a 
-              href={`/insights/${post.slug}`}
-              className="btn-luxury" 
-              style={{ alignSelf: 'flex-start', padding: '0.5rem 1.5rem', fontSize: '0.9rem', display: 'inline-block' }}
-              onClick={(e) => { e.preventDefault(); if(navigateTo) navigateTo(`/insights/${post.slug}`); }}
-              aria-label={`Read article: ${post.title}`}
-            >
-              Read Article
-            </a>
+          <div key={post.id} className="card-glass luxury-border" style={{ overflow: 'hidden', borderRadius: '16px', display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <img src={`https://loremflickr.com/800/500/toronto,${encodeURIComponent(post.category.split(' ')[0])}?lock=${post.id}`} alt={post.title} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
+            <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+              <span className="uppercase letter-spacing" style={{ fontSize: '0.8rem', opacity: 0.7, marginBottom: '1rem', display: 'block', color: 'var(--color-primary)' }}>
+                {post.category} &bull; {post.date}
+              </span>
+              <h2 className="display-font" style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{post.title}</h2>
+              <p style={{ opacity: 0.8, lineHeight: 1.5, marginBottom: '2rem', flexGrow: 1 }}>{post.excerpt}</p>
+              <a 
+                href={`/insights/${post.slug}`}
+                className="btn-luxury" 
+                style={{ alignSelf: 'flex-start', padding: '0.5rem 1.5rem', fontSize: '0.9rem', display: 'inline-block' }}
+                onClick={(e) => { e.preventDefault(); if(navigateTo) navigateTo(`/insights/${post.slug}`); }}
+                aria-label={`Read article: ${post.title}`}
+              >
+                Read Article
+              </a>
+            </div>
           </div>
         ))}
       </div>
