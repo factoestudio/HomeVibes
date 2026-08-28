@@ -1,7 +1,7 @@
 import React from 'react';
 import BlogPost from './BlogPost';
 import { blogPosts } from '../data/blogPosts';
-import WikipediaImage from './WikipediaImage';
+import { getBlogImage } from '../data/blogImages';
 
 export default function Blog({ activeSlug, navigateTo }) {
   const cleanSlug = activeSlug ? decodeURIComponent(activeSlug).replace(/\/$/, '') : null;
@@ -43,32 +43,37 @@ export default function Blog({ activeSlug, navigateTo }) {
       </div>
 
       <div className="blog-grid" style={{ display: 'grid', gap: '2rem', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-        {blogPosts.map(post => (
-          <div key={post.id} className="card-glass luxury-border" style={{ overflow: 'hidden', borderRadius: '16px', display: 'flex', flexDirection: 'column', height: '100%' }}>
-            <WikipediaImage 
-              id={post.id} 
-              category={post.category} 
-              neighborhood={post.neighborhoodName || post.city || ''} 
-              title={post.title} 
-            />
-            <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-              <span className="uppercase letter-spacing" style={{ fontSize: '0.8rem', opacity: 0.7, marginBottom: '1rem', display: 'block', color: 'var(--color-primary)' }}>
-                {post.category} &bull; {post.date}
-              </span>
-              <h2 className="display-font" style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{post.title}</h2>
-              <p style={{ opacity: 0.8, lineHeight: 1.5, marginBottom: '2rem', flexGrow: 1 }}>{post.excerpt}</p>
-              <a 
-                href={`/insights/${post.slug}`}
-                className="btn-luxury" 
-                style={{ alignSelf: 'flex-start', padding: '0.5rem 1.5rem', fontSize: '0.9rem', display: 'inline-block' }}
-                onClick={(e) => { e.preventDefault(); if(navigateTo) navigateTo(`/insights/${post.slug}`); }}
-                aria-label={`Read article: ${post.title}`}
-              >
-                Read Article
-              </a>
+        {blogPosts.map(post => {
+          const imageUrl = getBlogImage(post);
+          return (
+            <div key={post.id} className="card-glass luxury-border" style={{ overflow: 'hidden', borderRadius: '16px', display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div style={{ width: '100%', height: '220px', overflow: 'hidden', backgroundColor: 'rgba(255,255,255,0.04)' }}>
+                <img 
+                  src={imageUrl} 
+                  alt={post.title} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} 
+                  loading="lazy"
+                />
+              </div>
+              <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                <span className="uppercase letter-spacing" style={{ fontSize: '0.8rem', opacity: 0.7, marginBottom: '1rem', display: 'block', color: 'var(--color-primary)' }}>
+                  {post.category} &bull; {post.date}
+                </span>
+                <h2 className="display-font" style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{post.title}</h2>
+                <p style={{ opacity: 0.8, lineHeight: 1.5, marginBottom: '2rem', flexGrow: 1 }}>{post.excerpt}</p>
+                <a 
+                  href={`/insights/${post.slug}`}
+                  className="btn-luxury" 
+                  style={{ alignSelf: 'flex-start', padding: '0.5rem 1.5rem', fontSize: '0.9rem', display: 'inline-block' }}
+                  onClick={(e) => { e.preventDefault(); if (navigateTo) navigateTo(`/insights/${post.slug}`); }}
+                  aria-label={`Read article: ${post.title}`}
+                >
+                  Read Article
+                </a>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
