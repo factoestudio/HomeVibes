@@ -1,5 +1,77 @@
 export const blogPosts = [
   {
+    id: 31,
+    slug: 'hazel-mccallion-lrt-corridor-audit-mississauga-brampton-2026',
+    title: 'Hazel McCallion LRT Corridor Audit: 3 Mississauga & Brampton Station Hubs Set for Significant Real Estate Lift Before 2027 Commissioning',
+    date: 'August 28, 2026',
+    excerpt: 'A comprehensive transit and real estate audit of the 18km Hazel McCallion Hurontario LRT line, identifying 3 high-leverage station precincts in Mississauga and Brampton with superior rental yields and capital growth runway before full passenger service begins.',
+    category: 'Transit & Infrastructure',
+    coordinates: { lat: 43.5933, lng: -79.6425 },
+    neighborhoodName: "Hurontario & Mississauga City Centre Corridor",
+    city: "Mississauga",
+    neighborhoodId: "mississauga-city-centre",
+    content: `
+## Hazel McCallion LRT Corridor Audit: 3 Mississauga & Brampton Station Hubs Set for Significant Real Estate Lift Before 2027 Commissioning
+
+**Target Persona & Micro-Cluster**  
+Real Estate Investors, First-Time Suburban Buyers, Peel Region Commuters, and Tech Professionals seeking transit-oriented equity appreciation along Hurontario Street connecting Port Credit, Square One, and Downtown Brampton.
+
+---
+
+## The 18-Kilometer Transit Revolution in Peel Region
+
+As track laying, catenary installation, and station canopy testing near completion along Hurontario Street in late summer 2026, the **Hazel McCallion LRT Line 10** is transitioning from a construction disruption into Peel Region’s most powerful property value catalyst.
+
+Spanning **18 kilometers with 19 dedicated rapid transit stops**, the LRT directly connects Lake Ontario’s Port Credit GO Station to Mississauga City Centre and north into Brampton Gateway Terminal.
+
+Historically across North American metros, the steepest property appreciation occurs **6 to 18 months prior to ribbon-cutting**, as pre-commissioning discounts disappear. 
+
+Here is our audit of the **3 highest-potential station precincts** along the Hazel McCallion corridor in 2026.
+
+---
+
+## 1. Cooksville Station Transit Hub (Hurontario & Dundas / Hillcrest)
+- **The Transit Anchor:** Immediate multi-modal interchange between the Hazel McCallion LRT and the Cooksville GO Train (Milton Line into Union Station), plus MiWay local and express bus networks.
+- **Current Price Benchmark:** $620 to $740 / sq ft (a **25% discount** compared to Square One high-rises just 2km north).
+- **The Opportunity:** Cooksville is undergoing massive municipal public realm upgrades, including widened pedestrian streetscapes, new community parks, and mid-rise infill zoning. 
+- **Target Asset Class:** 2-bedroom older condo apartments with low price-per-square-foot ratios and high cash-flow rental yields to Sheridan College students and downtown commuters.
+
+---
+
+## 2. Fairview & Mississauga City Centre South Hub (Hurontario & Central Pkwy / Elm Dr)
+- **The Transit Anchor:** Positioned at the southern gateway to Downtown Mississauga, offering 3-minute LRT access to Square One Shopping Centre and the future downtown loop spur.
+- **Current Price Benchmark:** $810 to $890 / sq ft.
+- **The Opportunity:** Avoids the vehicle traffic bottlenecks of core City Centre driveways while providing direct pedestrian access to Kariya Park Japanese gardens and rapid transit.
+- **Target Asset Class:** Boutique 1-bedroom + den and 2-bedroom modern condominium suites with private balconies and unblocked south lake views.
+
+---
+
+## 3. Brampton Gateway Terminal & Steeles Hub (Hurontario & Steeles Ave)
+- **The Transit Anchor:** Northern terminus of the LRT connecting Hurontario Street directly to Brampton Zum bus rapid transit lines and Algoma University’s expanding Peel campus.
+- **Current Price Benchmark:** $580 to $690 / sq ft (the most affordable entry point along the entire line).
+- **The Opportunity:** High-density mixed-use development approvals surrounding Shoppers World Brampton redevelopment, creating a brand-new master-planned urban district.
+- **Target Asset Class:** Pre-construction master-planned towers and entry-level condo townhomes with high rental tenant demand.
+
+---
+
+## Corridor Comparison Scorecard
+
+| Station Precinct | Municipality | Avg Price / Sq Ft | Key Transit Connection | Projected 3-Year Appreciation |
+| :--- | :--- | :---: | :--- | :---: |
+| **Cooksville Hub** | Mississauga | **$680 / sq ft** | Milton GO Train + LRT | **⭐⭐⭐⭐⭐ (Highest Runway)** |
+| **Fairview Hub** | Mississauga | **$850 / sq ft** | Downtown LRT + Kariya Park | **⭐⭐⭐⭐ (Premium Tenant Demand)** |
+| **Brampton Gateway** | Brampton | **$630 / sq ft** | Zum Rapid Bus + Steeles | **⭐⭐⭐⭐ (Cash-Flow Value)** |
+
+---
+
+## Strategic Investor Playbook for 2026
+
+1. **Target the Station 500-Meter Walking Buffer:** Properties located within a 5-to-7 minute walk of an LRT station command **8% to 12% higher rental premiums** than properties requiring a feeder bus.
+2. **Prioritize 2-Bedroom Units:** High student enrolment at Sheridan College (Hazel McCallion Campus) and young professional roommate demand make 2-bedroom units the fastest-leasing asset class.
+3. **Lock In Before Commissioning:** The window to negotiate builder incentives and resale seller concessions closes once live dynamic vehicle testing commences on Hurontario tracks.
+`
+  },
+  {
     id: 30,
     slug: 'top-5-family-gta-neighborhoods-top-schools-under-1-2m-2026',
     title: 'Top 5 Family-First GTA Neighborhoods with 9+ Rated Schools & Freehold Homes Under $1.2M (2026 Guide)',
