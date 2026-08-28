@@ -3,12 +3,12 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import torontoGeoJSON from '../data/toronto.json';
 
-// Helper to determine marker color based on match percentage - Slate Platinum Palette
+// Helper to determine marker color based on match percentage - Vibrant Brand Palette
 const getMarkerColor = (score) => {
-  if (score >= 90) return '#E6EBF2'; // Bright Platinum
-  if (score >= 75) return '#B0C4DE'; // Light Steel Blue
-  if (score >= 60) return '#778899'; // Light Slate Gray
-  return '#4A5568'; // Muted Slate
+  if (score >= 90) return '#FF0080'; // Hot Pink
+  if (score >= 75) return '#7928CA'; // Deep Purple
+  if (score >= 60) return '#007CF0'; // Bright Blue
+  return '#CBD5E1'; // Subtle Slate
 };
 
 // Helper to generate mathematical Bezier curves (flight paths)
@@ -185,10 +185,10 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
             const color = getMarkerColor(matchScore);
             return {
               color: color,
-              weight: 2,
+              weight: 1,
               opacity: 0.8,
               fillColor: color,
-              fillOpacity: 0.35,
+              fillOpacity: 0.15,
               className: `polygon-pulse-${matchedNeighborhood.id}`
             };
           } else {
@@ -228,13 +228,13 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
         if (n && n.lat && n.lng && !n.geojsonId) {
           const matchScore = n.matchScore || 0;
           const color = getMarkerColor(matchScore);
-          const circle = L.circle([n.lat, n.lng], {
-            radius: 2000,
+          const circle = L.circleMarker([n.lat, n.lng], {
+            radius: 8,
             color: color,
             weight: 2,
-            opacity: 0.8,
+            opacity: 0.9,
             fillColor: color,
-            fillOpacity: 0.30
+            fillOpacity: 0.5
           }).addTo(map);
 
           circle.bindTooltip(
@@ -328,20 +328,6 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
         );
         extraMarkersRef.current[`commute-${idx}`] = marker;
 
-        // Render Dynamic Commute Isochrone Buffer Ring (interactive: false so clicks pass through to neighborhoods)
-        const isochroneBufferCircle = L.circle([loc.lat, loc.lng], {
-          radius: radiusMeters,
-          color: '#D08DF6',
-          weight: 2,
-          dashArray: '6, 8',
-          fillColor: '#D08DF6',
-          fillOpacity: 0.12,
-          interactive: false,
-          className: 'isochrone-buffer-ring'
-        }).addTo(map);
-
-        extraMarkersRef.current[`isochrone-buffer-${idx}`] = isochroneBufferCircle;
-
         // Draw flight path curve if a neighborhood is selected
         if (selectedNeighborhood && selectedNeighborhood.lat && selectedNeighborhood.lng) {
           const bezierPoints = generateBezierPoints(selectedNeighborhood.lat, selectedNeighborhood.lng, loc.lat, loc.lng);
@@ -423,10 +409,10 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
       <div className="map-legend card-subglass luxury-subcard">
         <div className="legend-title display-font">Match compatibility</div>
         <div className="legend-items">
-          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#E6EBF2' }}></span> 90%+ (Bright Platinum)</div>
-          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#B0C4DE' }}></span> 75%-89% (Steel Blue)</div>
-          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#778899' }}></span> 60%-74% (Slate Gray)</div>
-          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#4A5568' }}></span> &lt; 60% (Muted)</div>
+          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#FF0080' }}></span> 90%+ (Hot Pink)</div>
+          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#7928CA' }}></span> 75%-89% (Deep Purple)</div>
+          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#007CF0' }}></span> 60%-74% (Bright Blue)</div>
+          <div className="legend-item"><span className="legend-color" style={{ backgroundColor: '#CBD5E1' }}></span> &lt; 60% (Slate)</div>
         </div>
       </div>
     </div>
