@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import neighborhoodVibe from '../assets/hero_urban_data.jpg';
 import dnaVisual from '../assets/neighborhood-dna.jpg';
 import logoPurple from '../assets/logo-purple.png';
+import trinityBellwoods from '../assets/trinity_bellwoods.jpg';
 
 const DataIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -164,6 +165,15 @@ export default function LandingPage({ onStart, onExplore }) {
 
           <div className="magic-mockup float-animation" style={{ width: '100%', maxWidth: '600px', marginTop: '5rem' }}>
             <div className="mockup-card" style={{ textAlign: 'left' }}>
+              
+              {/* Neighborhood Photo */}
+              <div style={{ marginBottom: '1.5rem', borderRadius: '16px', overflow: 'hidden', height: '220px', position: 'relative', boxShadow: '0 10px 20px rgba(0,0,0,0.05)' }}>
+                <img src={trinityBellwoods} alt="Trinity Bellwoods Park" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', background: 'rgba(255,255,255,0.9)', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 600, color: '#1d1d1f', backdropFilter: 'blur(10px)' }}>
+                  Toronto, ON
+                </div>
+              </div>
+
               <div className="mockup-header">
                 <MapIcon /> <span>Trinity Bellwoods</span>
               </div>
