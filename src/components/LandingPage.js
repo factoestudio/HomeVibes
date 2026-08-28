@@ -70,9 +70,25 @@ export default function LandingPage({ onStart, onExplore }) {
             <h2 className="display-font">
               You are more than a <br/>zip code and a budget.
             </h2>
-            <p className="features-intro-text">
-              Traditional real estate platforms treat you like a spreadsheet. They ask for square footage and price, completely ignoring what actually matters: your lifestyle. How close is the best coffee? Is the street safe at night? Does the culture fit your vibe?
+            <p className="features-intro-text" style={{ marginBottom: '2rem' }}>
+              Traditional real estate treats you like a spreadsheet. We focus on what actually matters to your daily life.
             </p>
+            
+            {/* Visual Feature Pills */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '12px 24px', background: 'white', border: '1px solid rgba(0,0,0,0.06)', borderRadius: '30px', boxShadow: '0 10px 20px rgba(0,0,0,0.03)', color: '#1d1d1f', fontWeight: 600, fontSize: '1.05rem' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF0080" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                Coffee & Dining
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '12px 24px', background: 'white', border: '1px solid rgba(0,0,0,0.06)', borderRadius: '30px', boxShadow: '0 10px 20px rgba(0,0,0,0.03)', color: '#1d1d1f', fontWeight: 600, fontSize: '1.05rem' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7928CA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                Safe Streets
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '12px 24px', background: 'white', border: '1px solid rgba(0,0,0,0.06)', borderRadius: '30px', boxShadow: '0 10px 20px rgba(0,0,0,0.03)', color: '#1d1d1f', fontWeight: 600, fontSize: '1.05rem' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#007CF0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                Culture & Vibe
+              </div>
+            </div>
           </div>
 
           {/* Bento Grid */}
