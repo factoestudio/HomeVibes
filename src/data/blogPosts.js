@@ -2,8 +2,6 @@ export const blogPosts = [
   {
     id: 31,
     slug: 'hazel-mccallion-lrt-corridor-audit-mississauga-brampton-2026',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Toronto_Skyline_Summer_2020.jpg/800px-Toronto_Skyline_Summer_2020.jpg',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Toronto_Skyline_Summer_2020.jpg/800px-Toronto_Skyline_Summer_2020.jpg',
     title: 'Hazel McCallion LRT Corridor Audit: 3 Mississauga & Brampton Station Hubs Set for Significant Real Estate Lift Before 2027 Commissioning',
     date: 'August 28, 2026',
     excerpt: 'A comprehensive transit and real estate audit of the 18km Hazel McCallion Hurontario LRT line, identifying 3 high-leverage station precincts in Mississauga and Brampton with superior rental yields and capital growth runway before full passenger service begins.',
@@ -76,8 +74,6 @@ Here is our audit of the **3 highest-potential station precincts** along the Haz
   {
     id: 30,
     slug: 'top-5-family-gta-neighborhoods-top-schools-under-1-2m-2026',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Toronto_Skyline_Summer_2020.jpg/800px-Toronto_Skyline_Summer_2020.jpg',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Toronto_Skyline_Summer_2020.jpg/800px-Toronto_Skyline_Summer_2020.jpg',
     title: 'Top 5 Family-First GTA Neighborhoods with 9+ Rated Schools & Freehold Homes Under $1.2M (2026 Guide)',
     date: 'August 26, 2026',
     excerpt: 'An essential data-driven guide for GTA parents identifying 5 family-friendly micro-markets offering top-tier Fraser Institute school rankings (9.0+), expansive parks, safe tree-lined cul-de-sacs, and freehold townhomes or semi-detached properties under $1.2M.',
@@ -158,8 +154,6 @@ Here are the **Top 5 Family-First GTA Micro-Markets** that deliver outstanding e
   {
     id: 29,
     slug: 'port-credit-vs-downtown-oakville-waterfront-showdown-2026',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Port_Credit_Scene_July_2019.jpeg/960px-Port_Credit_Scene_July_2019.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Port_Credit_Scene_July_2019.jpeg/960px-Port_Credit_Scene_July_2019.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail',
     title: 'Port Credit vs. Downtown Oakville: The Ultimate GTA West Waterfront Showdown (2026 Edition)',
     date: 'August 25, 2026',
     excerpt: 'An exhaustive head-to-head comparison between Mississauga\'s vibrant Port Credit waterfront and Halton\'s prestigious Downtown Oakville, analyzing GO transit times, dining vibes, school rankings, and price-per-square-foot benchmarks.',
@@ -220,8 +214,6 @@ Both boast picturesque yacht marinas, historic high streets, and scenic waterfro
   {
     id: 28,
     slug: 'secret-micro-districts-dupont-west-loft-corridor-2026',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Toronto_Skyline_Summer_2020.jpg/800px-Toronto_Skyline_Summer_2020.jpg',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Toronto_Skyline_Summer_2020.jpg/800px-Toronto_Skyline_Summer_2020.jpg',
     title: 'Secret Micro-Districts of Dupont West: The Underground Food, Art & Loft Corridor Realtors Overlook (2026 Guide)',
     date: 'August 24, 2026',
     excerpt: 'An insider lifestyle and real estate guide exploring Dupont West\'s thriving industrial-to-arts corridor, secret micro-bakeries, indie galleries, and hard loft conversions between Lansdowne and Dundas West.',
@@ -277,8 +269,6 @@ Dupont West offers an average price point of **$980 per square foot**—represen
   {
     id: 27,
     slug: 'is-condo-living-dead-gta-2026-data-teardown',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Toronto_Skyline_Summer_2020.jpg/800px-Toronto_Skyline_Summer_2020.jpg',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Toronto_Skyline_Summer_2020.jpg/800px-Toronto_Skyline_Summer_2020.jpg',
     title: 'Is Condo Living Dead in the GTA? A 2026 Data Teardown of Resale Prices vs. Suburban Townhome Yields',
     date: 'August 22, 2026',
     excerpt: 'A data-driven real estate myth-busting analysis comparing 2026 GTA condo resale prices, maintenance fees, and cap rates against suburban townhomes in Peel, York, and Halton regions.',

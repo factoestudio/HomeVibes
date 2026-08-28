@@ -51,8 +51,12 @@ export default function Blog({ activeSlug, navigateTo }) {
                 <img 
                   src={imageUrl} 
                   alt={post.title} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
                   loading="lazy"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80';
+                  }}
                 />
               </div>
               <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
