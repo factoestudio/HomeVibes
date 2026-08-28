@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import neighborhoodVibe from '../assets/hero_urban_data.jpg';
 import dnaVisual from '../assets/neighborhood-dna.jpg';
+import logoPurple from '../assets/logo-purple.png';
 
 const DataIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
     <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-  </svg>
-);
-
-const HeartIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
   </svg>
 );
 
@@ -153,7 +148,9 @@ export default function LandingPage({ onStart, onExplore }) {
         <div className="act-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '800px', margin: '0 auto' }}>
           
           <div className="magic-text-side" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div className="icon-glow-wrapper" style={{ margin: '0 auto 2rem auto' }}><HeartIcon /></div>
+            <div style={{ margin: '0 auto 2rem auto', padding: '1rem 2rem', background: 'rgba(255,255,255,0.9)', borderRadius: '24px', boxShadow: '0 10px 40px rgba(0,0,0,0.08)', backdropFilter: 'blur(20px)' }}>
+              <img src={logoPurple} alt="HomeVibes" style={{ height: '40px', width: 'auto', display: 'block' }} />
+            </div>
             <h2 className="display-font" style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1.5rem', lineHeight: 1.1, color: '#1d1d1f', letterSpacing: '-0.02em' }}>
               Find your people. <br/>Find your vibe.
             </h2>
