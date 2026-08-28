@@ -83,21 +83,27 @@ export default function LandingPage({ onStart, onExplore }) {
           <div className="bento-grid">
             
             {/* Left Card: The Science */}
-            <div className="bento-card bento-card-science">
-              <div className="bento-card-content">
+            <div className="bento-card bento-card-science" style={{ position: 'relative' }}>
+              {/* Soft Background Watermark */}
+              <div 
+                style={{
+                  position: 'absolute',
+                  top: 0, left: 0, right: 0, bottom: 0,
+                  backgroundImage: `url(${dnaVisual})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  opacity: 0.15,
+                  zIndex: 0,
+                  mixBlendMode: 'multiply'
+                }}
+              />
+              <div className="bento-card-content" style={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <h3 className="display-font">
                   We analyze the <br/><span className="text-gradient-purple">DNA</span> of every neighborhood.
                 </h3>
                 <p>
                   We process massive amounts of geospatial and cultural data to score neighborhoods based on safety, amenities, transit, and social energy. We do the heavy lifting so you don't have to guess.
                 </p>
-              </div>
-              <div className="bento-image-wrapper">
-                <img 
-                  src={dnaVisual} 
-                  alt="Neighborhood DNA" 
-                  className="bento-image"
-                />
               </div>
             </div>
 
