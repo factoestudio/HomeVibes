@@ -97,15 +97,41 @@ export default function LandingPage({ onStart, onExplore }) {
               We process massive amounts of geospatial and cultural data to score neighborhoods based on safety, amenities, transit, and social energy. We do the heavy lifting so you don't have to guess.
             </p>
           </div>
-          <div className="data-stats-side">
-            <div className="stat-card">
-              <h3 className="stat-number">{dataCount}+</h3>
-              <p className="stat-label">Data Points Analyzed</p>
+          <div className="data-stats-side infographic-panel" style={{ display: 'flex', flexDirection: 'column', gap: '1.8rem', background: 'rgba(255, 255, 255, 0.4)', backdropFilter: 'blur(16px)', padding: '2rem', borderRadius: '24px', border: '1px solid rgba(255, 255, 255, 0.6)', boxShadow: '0 12px 40px rgba(0,0,0,0.05)' }}>
+            
+            {/* Stat 1: Data Points */}
+            <div className="info-row" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <div style={{ background: 'linear-gradient(135deg, #FF0080, #7928CA)', padding: '14px', borderRadius: '14px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 15px rgba(255, 0, 128, 0.3)' }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              </div>
+              <div style={{ flex: 1 }}>
+                <h3 className="display-font" style={{ fontSize: '2.5rem', margin: 0, lineHeight: 1, background: 'linear-gradient(90deg, #FF0080, #7928CA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{dataCount}+</h3>
+                <p style={{ margin: '4px 0 0 0', fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>Geospatial Data Points</p>
+              </div>
             </div>
-            <div className="stat-card">
-              <h3 className="stat-number">100%</h3>
-              <p className="stat-label">Personalized Scoring</p>
+
+            {/* Stat 2: Personalized Scoring */}
+            <div className="info-row" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>Algorithm Personalization</p>
+                <h3 className="display-font" style={{ fontSize: '1.5rem', margin: 0, lineHeight: 1, color: '#7928CA' }}>100%</h3>
+              </div>
+              <div style={{ width: '100%', height: '8px', background: 'rgba(121, 40, 202, 0.1)', borderRadius: '4px', overflow: 'hidden' }}>
+                <div style={{ width: '100%', height: '100%', background: 'linear-gradient(90deg, #FF0080, #7928CA)', borderRadius: '4px', animation: 'fillBar 2s ease-out forwards' }}></div>
+              </div>
             </div>
+
+            {/* Stat 3: Neighborhoods */}
+            <div className="info-row" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <div style={{ background: 'linear-gradient(135deg, #00DFD8, #007CF0)', padding: '14px', borderRadius: '14px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 15px rgba(0, 124, 240, 0.3)' }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div style={{ flex: 1 }}>
+                <h3 className="display-font" style={{ fontSize: '2rem', margin: 0, lineHeight: 1, color: '#007CF0' }}>140+</h3>
+                <p style={{ margin: '4px 0 0 0', fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px' }}>GTA Neighborhoods</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
