@@ -39,6 +39,27 @@ const CURATED_GTA_IMAGES = {
   ]
 };
 
+// Filter out non-scenic Wikipedia images like provincial flags, coats of arms, road signs, or SVG maps
+const isBadImage = (url = '', pageTitle = '') => {
+  const lower = `${url} ${pageTitle}`.toLowerCase();
+  return (
+    lower.includes('flag') ||
+    lower.includes('coat_of_arms') ||
+    lower.includes('map') ||
+    lower.includes('logo') ||
+    lower.includes('.svg') ||
+    lower.includes('sign') ||
+    lower.includes('seal') ||
+    lower.includes('diagram') ||
+    lower.includes('construction') ||
+    lower.includes('plate') ||
+    lower.includes('icon') ||
+    lower.includes('census') ||
+    pageTitle.toLowerCase() === 'ontario' ||
+    pageTitle.toLowerCase() === 'canada'
+  );
+};
+
 // Deterministically picks a contextual, high-res GTA image based on title/category keywords and post ID
 function getContextualCuratedImage(category = '', title = '', neighborhood = '', id = 1) {
   const text = `${category} ${title} ${neighborhood}`.toLowerCase();
@@ -46,15 +67,15 @@ function getContextualCuratedImage(category = '', title = '', neighborhood = '',
   let pool = CURATED_GTA_IMAGES.condo;
   if (text.includes('family') || text.includes('school') || text.includes('suburb') || text.includes('freehold') || text.includes('townhome')) {
     pool = CURATED_GTA_IMAGES.family;
-  } else if (text.includes('transit') || text.includes('lrt') || text.includes('subway') || text.includes('line') || text.includes('hurontario') || text.includes('crosstown') || text.includes('ontario line')) {
+  } else if (text.includes('transit') || text.includes('lrt') || text.includes('subway') || text.includes('line') || text.includes('hurontario') || text.includes('crosstown') || text.includes('ontario line') || text.includes('hazel')) {
     pool = CURATED_GTA_IMAGES.transit;
-  } else if (text.includes('waterfront') || text.includes('port credit') || text.includes('oakville') || text.includes('beach') || text.includes('sugar beach') || text.includes('lake')) {
+  } else if (text.includes('waterfront') || text.includes('port credit') || text.includes('oakville') || text.includes('beach') || text.includes('sugar beach') || text.includes('lake') || text.includes('lakeside')) {
     pool = CURATED_GTA_IMAGES.waterfront;
-  } else if (text.includes('junction') || text.includes('leslieville') || text.includes('artisan') || text.includes('loft') || text.includes('ossington') || text.includes('queen') || text.includes('vibe')) {
+  } else if (text.includes('junction') || text.includes('leslieville') || text.includes('artisan') || text.includes('loft') || text.includes('ossington') || text.includes('queen') || text.includes('vibe') || text.includes('dupont')) {
     pool = CURATED_GTA_IMAGES.artisan;
-  } else if (text.includes('park') || text.includes('high park') || text.includes('roncesvalles') || text.includes('green')) {
+  } else if (text.includes('park') || text.includes('high park') || text.includes('roncesvalles') || text.includes('green') || text.includes('eco')) {
     pool = CURATED_GTA_IMAGES.parks;
-  } else if (text.includes('rate') || text.includes('rental') || text.includes('bank') || text.includes('finance') || text.includes('market') || text.includes('yield')) {
+  } else if (text.includes('rate') || text.includes('rental') || text.includes('bank') || text.includes('finance') || text.includes('market') || text.includes('yield') || text.includes('pre-con')) {
     pool = CURATED_GTA_IMAGES.finance;
   }
   
@@ -74,9 +95,16 @@ const WikipediaImage = ({ id = 1, category = '', neighborhood = '', title = '' }
     let isMounted = true;
 
     const fetchImage = async () => {
-      // 1. Identify if this is a general/overview market article (better served by curated topic image for variety)
+      // 1. Identify if this is a general/overview market article, transit line audit, or comparison
       const text = `${title} ${neighborhood}`.toLowerCase();
-      const isListicleOrTrend = text.includes('top 5') || text.includes('shakeup') || text.includes('rate hold') || text.includes('rental reset') || text.includes('condo living dead');
+      const isListicleOrTrend = 
+        text.includes('top 5') || 
+        text.includes('shakeup') || 
+        text.includes('rate hold') || 
+        text.includes('rental reset') || 
+        text.includes('condo living dead') ||
+        text.includes('lrt corridor') ||
+        text.includes('hazel mccallion');
 
       if (isListicleOrTrend) {
         if (isMounted) {
@@ -105,15 +133,21 @@ const WikipediaImage = ({ id = 1, category = '', neighborhood = '', title = '' }
         const response = await fetch(
           `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(
             queryTerm
-          )}&gsrlimit=1&prop=pageimages&pithumbsize=800&format=json&origin=*`
+          )}&gsrlimit=2&prop=pageimages&pithumbsize=800&format=json&origin=*`
         );
         const data = await response.json();
         
         let thumb = null;
         if (data.query && data.query.pages) {
-          const pages = data.query.pages;
-          const pageId = Object.keys(pages)[0];
-          thumb = pages[pageId]?.thumbnail?.source;
+          const pages = Object.values(data.query.pages);
+          for (const page of pages) {
+            const src = page?.thumbnail?.source;
+            const pageTitle = page?.title || '';
+            if (src && !isBadImage(src, pageTitle)) {
+              thumb = src;
+              break;
+            }
+          }
         }
 
         if (isMounted) {
