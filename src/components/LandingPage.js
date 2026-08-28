@@ -169,7 +169,24 @@ export default function LandingPage({ onStart, onExplore }) {
               </div>
               <div className="mockup-score text-gradient">98% Match</div>
               <div className="mockup-bar"><div className="mockup-fill"></div></div>
-              <p className="mockup-desc" style={{ color: '#6e6e73', fontWeight: 500 }}>Perfect for your cafe routine & transit needs.</p>
+              
+              {/* Feature Tags */}
+              <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '6px 14px', border: '1px solid rgba(0,0,0,0.1)', color: '#1d1d1f', borderRadius: '20px', fontSize: '0.9rem', fontWeight: 500 }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                  Cafes
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '6px 14px', border: '1px solid rgba(0,0,0,0.1)', color: '#1d1d1f', borderRadius: '20px', fontSize: '0.9rem', fontWeight: 500 }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="3" width="16" height="16" rx="2" ry="2"></rect><path d="M4 11h16"></path><path d="M12 3v8"></path><path d="M8 19l-2 3"></path><path d="M18 22l-2-3"></path><path d="M8 15h.01"></path><path d="M16 15h.01"></path></svg>
+                  Transit
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '6px 14px', border: '1px solid rgba(0,0,0,0.1)', color: '#1d1d1f', borderRadius: '20px', fontSize: '0.9rem', fontWeight: 500 }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22v-7l-3-3"></path><path d="M12 15l3-3"></path><path d="M19 10c0-3.3-2.7-6-6-6s-6 2.7-6 6c0 1.6.6 3 1.7 4 1.3 1.3 2.7 1.3 4.3 1.3s3-.1 4.3-1.4c1.1-.9 1.7-2.3 1.7-3.9z"></path></svg>
+                  Parks
+                </div>
+              </div>
+
+              <p className="mockup-desc" style={{ color: '#6e6e73', fontWeight: 500, margin: 0 }}>Perfect for your cafe routine, transit needs, and outdoor escapes.</p>
             </div>
           </div>
 
