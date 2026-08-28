@@ -149,28 +149,33 @@ export default function LandingPage({ onStart, onExplore }) {
       </section>
 
       {/* Act 3: The Magic / Result */}
-      <section className="story-act story-act-magic">
-        <div className="act-content magic-flex">
-          <div className="magic-mockup float-animation">
-            <div className="mockup-card">
+      <section className="story-act story-act-magic" style={{ textAlign: 'center', padding: '8rem 2rem' }}>
+        <div className="act-content" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '800px', margin: '0 auto' }}>
+          
+          <div className="magic-text-side" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div className="icon-glow-wrapper" style={{ margin: '0 auto 2rem auto' }}><HeartIcon /></div>
+            <h2 className="display-font" style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1.5rem', lineHeight: 1.1, color: '#1d1d1f', letterSpacing: '-0.02em' }}>
+              Find your people. <br/>Find your vibe.
+            </h2>
+            <p className="act-text" style={{ textAlign: 'center', margin: '0 auto 2.5rem auto', maxWidth: '600px' }}>
+              Take our interactive Vibe Quiz to tell us who you are. We'll instantly match you with the neighborhoods where you truly belong.
+            </p>
+            <button className="story-hero-btn outline-btn" onClick={() => onStart && onStart()} style={{ padding: '1.2rem 4rem', fontSize: '1.2rem' }}>
+              Start the Vibe Quiz
+            </button>
+          </div>
+
+          <div className="magic-mockup float-animation" style={{ width: '100%', maxWidth: '600px', marginTop: '5rem' }}>
+            <div className="mockup-card" style={{ textAlign: 'left' }}>
               <div className="mockup-header">
                 <MapIcon /> <span>Trinity Bellwoods</span>
               </div>
               <div className="mockup-score text-gradient">98% Match</div>
               <div className="mockup-bar"><div className="mockup-fill"></div></div>
-              <p className="mockup-desc">Perfect for your cafe routine & transit needs.</p>
+              <p className="mockup-desc" style={{ color: '#6e6e73', fontWeight: 500 }}>Perfect for your cafe routine & transit needs.</p>
             </div>
           </div>
-          <div className="magic-text-side">
-            <div className="icon-glow-wrapper"><HeartIcon /></div>
-            <h2 className="act-title">Find your people. <br/>Find your vibe.</h2>
-            <p className="act-text">
-              Take our interactive Vibe Quiz to tell us who you are. We'll instantly match you with the neighborhoods where you truly belong.
-            </p>
-            <button className="story-hero-btn outline-btn" onClick={() => onStart && onStart()}>
-              Start the Vibe Quiz
-            </button>
-          </div>
+
         </div>
       </section>
     </div>
