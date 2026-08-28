@@ -50,21 +50,20 @@ export default function Blog({ activeSlug, navigateTo }) {
               <span className="uppercase letter-spacing" style={{ fontSize: '0.8rem', opacity: 0.7, marginBottom: '1rem', display: 'block', color: 'var(--color-primary)' }}>
                 {post.category} &bull; {post.date}
               </span>
-                <h2 className="display-font" style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{post.title}</h2>
-                <p style={{ opacity: 0.8, lineHeight: 1.5, marginBottom: '2rem', flexGrow: 1 }}>{post.excerpt}</p>
-                <a 
-                  href={`/insights/${post.slug}`}
-                  className="btn-luxury" 
-                  style={{ alignSelf: 'flex-start', padding: '0.5rem 1.5rem', fontSize: '0.9rem', display: 'inline-block' }}
-                  onClick={(e) => { e.preventDefault(); if (navigateTo) navigateTo(`/insights/${post.slug}`); }}
-                  aria-label={`Read article: ${post.title}`}
-                >
-                  Read Article
-                </a>
-              </div>
+              <h2 className="display-font" style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{post.title}</h2>
+              <p style={{ opacity: 0.8, lineHeight: 1.5, marginBottom: '2rem', flexGrow: 1 }}>{post.excerpt}</p>
+              <a 
+                href={`/insights/${post.slug}`}
+                className="btn-luxury" 
+                style={{ alignSelf: 'flex-start', padding: '0.5rem 1.5rem', fontSize: '0.9rem', display: 'inline-block' }}
+                onClick={(e) => { e.preventDefault(); if (navigateTo) navigateTo(`/insights/${post.slug}`); }}
+                aria-label={`Read article: ${post.title}`}
+              >
+                Read Article
+              </a>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );
