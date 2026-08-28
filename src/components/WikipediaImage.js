@@ -8,22 +8,26 @@ const WikipediaImage = ({ neighborhood, title }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&pithumbsize=800&titles=${encodeURIComponent(
-            neighborhood + ' Toronto'
-          )}&format=json&origin=*`
+          `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(
+            neighborhood + ' Ontario'
+          )}&gsrlimit=1&prop=pageimages&pithumbsize=800&format=json&origin=*`
         );
         const data = await response.json();
-        const pages = data.query.pages;
-        const pageId = Object.keys(pages)[0];
         
-        const thumb = pages[pageId]?.thumbnail?.source;
+        let thumb = null;
+        if (data.query && data.query.pages) {
+          const pages = data.query.pages;
+          const pageId = Object.keys(pages)[0];
+          thumb = pages[pageId]?.thumbnail?.source;
+        }
+        
         if (thumb) {
           setImage(thumb);
         } else {
-          setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Toronto_Skyline_Summer_2020.jpg/800px-Toronto_Skyline_Summer_2020.jpg');
+          setImage(`https://picsum.photos/seed/${encodeURIComponent(neighborhood)}/800/500`);
         }
       } catch (err) {
-        setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Toronto_Skyline_Summer_2020.jpg/800px-Toronto_Skyline_Summer_2020.jpg');
+        setImage(`https://picsum.photos/seed/${encodeURIComponent(neighborhood)}/800/500`);
       }
       setLoading(false);
     };
