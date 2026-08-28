@@ -12,6 +12,7 @@ import AuthModal from './components/AuthModal';
 import SEOHead from './components/SEOHead';
 import ComparisonView from './components/ComparisonView';
 import GuideView from './components/GuideView';
+import PreferencesPanel from './components/PreferencesPanel';
 import { supabase } from './supabaseClient';
 import { UserPreferencesProvider } from './UserPreferencesContext';
 import logoWhite from './assets/logo-white.png';
@@ -118,6 +119,7 @@ export default function App() {
   const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
   const [selectedArea, setSelectedArea] = useState(null);
   const [cityFilter, setCityFilter] = useState('All');
+  const [showPreferencesPanel, setShowPreferencesPanel] = useState(false);
 
   // Auth State
   const [session, setSession] = useState(null);
@@ -586,7 +588,7 @@ export default function App() {
       {/* Main Content Area */}
       <main className={`app-main-content ${view === 'landing' ? 'landing-view-main' : ''}`}>
         {view === 'landing' ? (
-          <LandingPage onStart={() => navigateTo('/quiz')} />
+          <LandingPage onStart={() => navigateTo('/quiz')} onExplore={() => navigateTo('/results')} />
         ) : view === 'quiz' ? (
           <div className="quiz-container animate-fade-in">
             <VibeQuiz onComplete={handleQuizComplete} />
@@ -628,7 +630,28 @@ export default function App() {
                     >
                       {isSearchingAnchor ? 'Searching...' : '🎯 Evaluate Location'}
                     </button>
+                    <button
+                      type="button"
+                      className="btn-header-action luxury-btn-header"
+                      onClick={() => setShowPreferencesPanel(!showPreferencesPanel)}
+                      style={{ padding: '0.5rem 0.85rem', fontSize: '0.8rem', whiteSpace: 'nowrap' }}
+                      title="Refine Preferences"
+                    >
+                      ⚙️
+                    </button>
                   </form>
+                  
+                  {showPreferencesPanel && (
+                    <PreferencesPanel 
+                      currentPreferences={userPreferences || DEFAULT_PREFERENCES} 
+                      onSave={(newPrefs) => {
+                        setUserPreferences(newPrefs);
+                        if (session) saveUserPreferences(newPrefs);
+                        setShowPreferencesPanel(false);
+                      }}
+                      onClose={() => setShowPreferencesPanel(false)}
+                    />
+                  )}
                 </div>
 
                 {/* City Filters */}

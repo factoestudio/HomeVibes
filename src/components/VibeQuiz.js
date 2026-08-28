@@ -91,23 +91,28 @@ export default function VibeQuiz({ onComplete }) {
 
     setIsGeocoding(true);
     
-    // Geocode all valid addresses via OpenStreetMap Nominatim (with localStorage caching & retry)
-    const locationsWithCoords = await Promise.all(
-      commuteLocations.filter(loc => loc.address.trim() !== '').map(async (loc) => {
-        const cleanAddr = loc.address.trim();
-        const cacheKey = 'hv_geo_' + cleanAddr.toLowerCase().replace(/[^a-z0-9]/g, '_');
-        
-        // 1. Check client-side cache
-        try {
-          const cached = localStorage.getItem(cacheKey);
-          if (cached) {
-            const parsed = JSON.parse(cached);
-            if (parsed.lat && parsed.lng) {
-              return { ...loc, lat: parsed.lat, lng: parsed.lng };
-            }
-          }
-        } catch (e) {}
+    // Geocode all valid addresses via OpenStreetMap Nominatim sequentially
+    const validLocations = commuteLocations.filter(loc => loc.address.trim() !== '');
+    const locationsWithCoords = [];
 
+    for (const loc of validLocations) {
+      let resolvedLoc = { ...loc, lat: 43.6532, lng: -79.3832 }; // Fallback
+      const cleanAddr = loc.address.trim();
+      const cacheKey = 'hv_geo_' + cleanAddr.toLowerCase().replace(/[^a-z0-9]/g, '_');
+      
+      let foundInCache = false;
+      try {
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (parsed.lat && parsed.lng) {
+            resolvedLoc = { ...loc, lat: parsed.lat, lng: parsed.lng };
+            foundInCache = true;
+          }
+        }
+      } catch (e) {}
+
+      if (!foundInCache) {
         const queries = [
           /gta|toronto|mississauga|brampton|markham|vaughan|oakville|pickering|richmond hill|ajax|whitby|oshawa/i.test(cleanAddr) 
             ? cleanAddr 
@@ -115,22 +120,21 @@ export default function VibeQuiz({ onComplete }) {
           cleanAddr
         ];
 
+        let success = false;
         for (const q of queries) {
           try {
             const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(q)}&viewbox=-79.95,44.15,-78.85,43.35&bounded=1&countrycodes=ca&limit=1`;
-            const res = await fetch(url, {
-              headers: { 'User-Agent': 'HomeVibesApp/1.0 (https://homevibes.app)' }
-            });
+            const res = await fetch(url, { headers: { 'User-Agent': 'HomeVibesApp/1.0 (https://homevibes.app)' } });
             if (res.ok) {
               const data = await res.json();
               if (data && data.length > 0) {
                 const lat = parseFloat(data[0].lat);
                 const lng = parseFloat(data[0].lon);
-                // Verify within GTA limits
                 if (lat >= 43.35 && lat <= 44.15 && lng >= -79.95 && lng <= -78.85) {
-                  const coords = { lat, lng };
-                  try { localStorage.setItem(cacheKey, JSON.stringify(coords)); } catch(e) {}
-                  return { ...loc, ...coords };
+                  resolvedLoc = { ...loc, lat, lng };
+                  try { localStorage.setItem(cacheKey, JSON.stringify({lat, lng})); } catch(e) {}
+                  success = true;
+                  break;
                 }
               }
             }
@@ -138,10 +142,14 @@ export default function VibeQuiz({ onComplete }) {
             console.warn("Geocoding query fallback:", q, e.message);
           }
         }
-        // Fallback to Toronto GTA midpoint
-        return { ...loc, lat: 43.6532, lng: -79.3832 }; 
-      })
-    );
+        
+        // Nominatim policy: 1 request per second
+        if (validLocations.length > 1) {
+          await new Promise(r => setTimeout(r, 1000));
+        }
+      }
+      locationsWithCoords.push(resolvedLoc);
+    }
 
     setIsGeocoding(false);
 

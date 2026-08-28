@@ -23,7 +23,7 @@ const MapIcon = () => (
   </svg>
 );
 
-export default function LandingPage({ onStart }) {
+export default function LandingPage({ onStart, onExplore }) {
   const [dataCount, setDataCount] = useState(0);
 
   // Simple number counter animation for the data section
@@ -53,9 +53,14 @@ export default function LandingPage({ onStart }) {
           <p className="story-hero-subtext">
             Stop searching for just a physical house. Discover the perfect home in vibrant neighborhoods tailored perfectly to your personal routine, commute, and lifestyle.
           </p>
-          <button className="story-hero-btn pulse-glow" onClick={() => onStart && onStart()}>
-            Find Your Match
-          </button>
+          <div className="story-hero-buttons" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button className="story-hero-btn pulse-glow" onClick={() => onStart && onStart()}>
+              Find Your Match
+            </button>
+            <button className="story-hero-btn outline-btn" onClick={() => onExplore && onExplore()}>
+              Explore the Map
+            </button>
+          </div>
         </div>
       </section>
 
