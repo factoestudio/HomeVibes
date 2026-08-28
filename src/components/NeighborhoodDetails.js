@@ -223,7 +223,8 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
                   }}
                 />
               </svg>
-              <div className="score-ring-text" style={{ color: matchColor }}>
+              <div className="score-ring-text" style={{ color: matchColor, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: '2px' }}><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
                 <span className="score-number display-font" style={{ fontSize: '28px', fontWeight: 'bold' }}>{selectedArea.matchScore || 0}%</span>
                 <span className="score-label uppercase" style={{ fontSize: '10px', letterSpacing: '1px' }}>Total Match</span>
               </div>
@@ -234,6 +235,13 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
               const score = selectedArea.subScores[key] || 0;
               const label = key === 'commute' ? 'Commute' : key === 'amenities' ? 'Amenities' : 'Life Stage';
               const subColor = getScoreColor(score);
+              
+              const SubIcon = () => {
+                if (key === 'commute') return <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: '2px' }}><rect x="3" y="10" width="18" height="8" rx="2" ry="2"></rect><path d="M4 10L6 5h12l2 5"></path><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg>;
+                if (key === 'amenities') return <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: '2px' }}><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>;
+                return <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: '2px' }}><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>;
+              }
+
               return (
                 <div key={key} className="score-ring-container sub-dial" style={{ width: '80px', height: '80px', position: 'relative' }}>
                   <svg className="score-ring-svg" viewBox="0 0 100 100">
@@ -249,7 +257,8 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
                       }}
                     />
                   </svg>
-                  <div className="score-ring-text" style={{ color: subColor }}>
+                  <div className="score-ring-text" style={{ color: subColor, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <SubIcon />
                     <span className="score-number display-font" style={{ fontSize: '18px', fontWeight: 'bold' }}>{score}%</span>
                     <span className="score-label uppercase" style={{ fontSize: '8px', letterSpacing: '0.5px' }}>{label}</span>
                   </div>
