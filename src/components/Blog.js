@@ -1,6 +1,7 @@
 import React from 'react';
 import BlogPost from './BlogPost';
 import { blogPosts } from '../data/blogPosts';
+import WikipediaImage from './WikipediaImage';
 
 export default function Blog({ activeSlug, navigateTo }) {
   const cleanSlug = activeSlug ? decodeURIComponent(activeSlug).replace(/\/$/, '') : null;
@@ -44,7 +45,7 @@ export default function Blog({ activeSlug, navigateTo }) {
       <div className="blog-grid" style={{ display: 'grid', gap: '2rem', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
         {blogPosts.map(post => (
           <div key={post.id} className="card-glass luxury-border" style={{ overflow: 'hidden', borderRadius: '16px', display: 'flex', flexDirection: 'column', height: '100%' }}>
-            <img src={`https://loremflickr.com/800/500/toronto,${encodeURIComponent(post.category.split(' ')[0])}?lock=${post.id}`} alt={post.title} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
+            <WikipediaImage neighborhood={post.neighborhoodName ? post.neighborhoodName.split('&')[0].trim() : post.title.split(':')[0]} title={post.title} />
             <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
               <span className="uppercase letter-spacing" style={{ fontSize: '0.8rem', opacity: 0.7, marginBottom: '1rem', display: 'block', color: 'var(--color-primary)' }}>
                 {post.category} &bull; {post.date}
