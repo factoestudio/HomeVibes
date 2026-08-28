@@ -226,7 +226,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
               <div className="score-ring-text" style={{ color: 'var(--text-main)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: '2px', opacity: 0.8 }}><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
                 <span className="score-number display-font" style={{ fontSize: '24px', fontWeight: 'bold' }}>{selectedArea.matchScore || 0}%</span>
-                <span className="score-label uppercase" style={{ fontSize: '9px', letterSpacing: '1px', opacity: 0.8 }}>Total Match</span>
+                <span className="score-label uppercase" style={{ fontSize: '9px', letterSpacing: '1px', opacity: 0.8, textAlign: 'center', lineHeight: '12px' }}>Total Match</span>
               </div>
             </div>
 
@@ -260,7 +260,7 @@ export default function NeighborhoodDetails({ selectedArea, userPreferences, onC
                   <div className="score-ring-text" style={{ color: 'var(--text-main)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <SubIcon />
                     <span className="score-number display-font" style={{ fontSize: '24px', fontWeight: 'bold' }}>{score}%</span>
-                    <span className="score-label uppercase" style={{ fontSize: '9px', letterSpacing: '1px', opacity: 0.8 }}>{label}</span>
+                    <span className="score-label uppercase" style={{ fontSize: '9px', letterSpacing: '1px', opacity: 0.8, textAlign: 'center', lineHeight: '12px' }}>{label}</span>
                   </div>
                 </div>
               );
