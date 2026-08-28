@@ -19,6 +19,7 @@ import logoWhite from './assets/logo-white.png';
 import logoPurple from './assets/logo-purple.png';
 import './App.css';
 
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { generateDynamicIsochroneZones } from './utils/isochroneGenerator';
 
 // Haversine formula to calculate distance between two lat/lng coordinates in km
@@ -758,6 +759,7 @@ export default function App() {
       {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
       {/* Footer */}
       <Footer setView={setView} navigateTo={navigateTo} />
+      <SpeedInsights />
     </div>
     </UserPreferencesProvider>
   );
