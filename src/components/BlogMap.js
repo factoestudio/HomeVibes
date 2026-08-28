@@ -28,10 +28,9 @@ export default function BlogMap({ location, neighborhoodName, city, onExplore })
 
     mapInstanceRef.current = map;
 
-    // CARTO Dark Matter Tile Layer
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      maxZoom: 19,
-      subdomains: 'abcd',
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri'
     }).addTo(map);
 
     // Custom Glowing Purple Marker Icon

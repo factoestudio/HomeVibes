@@ -135,12 +135,10 @@ export default function MapWidget({ neighborhoods, selectedNeighborhood, onSelec
     // Zoom control at top right
     L.control.zoom({ position: 'topright' }).addTo(map);
 
-    // Load CartoDB Light (Positron) tiles
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd',
+    // Load Esri World Street Map tiles
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 18,
-      bounds: gtaBounds
+      attribution: 'Tiles &copy; Esri'
     }).addTo(map);
 
     mapRef.current = map;
