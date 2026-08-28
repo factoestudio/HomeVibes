@@ -2594,8 +2594,15 @@ path.flight-path-line {
   max-width: 700px;
 }
 
-.story-act-1 { text-align: center; }
+.story-act-1 { 
+  text-align: center; 
+  padding-bottom: 2rem; 
+}
 .story-act-1 .act-content { display: flex; flex-direction: column; align-items: center; }
+
+.story-act-data {
+  padding-top: 2rem;
+}
 
 .data-grid, .magic-flex {
   display: flex;
