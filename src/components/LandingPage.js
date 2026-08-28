@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import neighborhoodVibe from '../assets/vibrant_neighborhood.png';
+import dnaVisual from '../assets/neighborhood-dna.jpg';
 
 const DataIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -78,7 +79,19 @@ export default function LandingPage({ onStart, onExplore }) {
       <section className="story-act story-act-data">
         <div className="act-content data-grid">
           <div className="data-text-side">
-            <div className="icon-glow-wrapper"><DataIcon /></div>
+            <img 
+              src={dnaVisual} 
+              alt="Neighborhood DNA Analysis" 
+              style={{ 
+                width: '120px', 
+                height: '120px', 
+                objectFit: 'cover', 
+                borderRadius: '24px', 
+                marginBottom: '1.5rem', 
+                boxShadow: '0 8px 32px rgba(219, 39, 119, 0.2)',
+                border: '1px solid var(--border-glow)'
+              }} 
+            />
             <h2 className="act-title">We analyze the DNA of every neighborhood.</h2>
             <p className="act-text">
               We process massive amounts of geospatial and cultural data to score neighborhoods based on safety, amenities, transit, and social energy. We do the heavy lifting so you don't have to guess.
