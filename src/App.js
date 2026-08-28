@@ -294,7 +294,8 @@ export default function App() {
         fetchUserPreferences(session.user.id);
       } else {
         setUserPreferences(null);
-        setView('landing');
+        // Removed setView('landing') here because it was overwriting deep links (like /insights)
+        // handleLocationChange will correctly resolve the view based on the URL.
       }
     });
 
