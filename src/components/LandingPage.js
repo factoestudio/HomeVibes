@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import neighborhoodVibe from '../assets/vibrant_neighborhood.png';
+import neighborhoodVibe from '../assets/hero_urban_data.jpg';
 import dnaVisual from '../assets/neighborhood-dna.jpg';
 
 const DataIcon = () => (
