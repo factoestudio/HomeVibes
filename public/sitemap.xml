@@ -521,6 +521,21 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://homevibes.app/insights/toronto-pre-con-vs-move-in-ready-assignment-sales-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/insights/2026-suburban-migration-playbook-halton-peel-towns</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/insights/ontario-line-east-corridor-audit-pape-leslieville-corktown-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://homevibes.app/insights/hazel-mccallion-lrt-corridor-audit-mississauga-brampton-2026</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
