@@ -4,200 +4,190 @@ const { execSync } = require('child_process');
 
 const newPosts = [
   {
-    id: 34,
-    slug: 'toronto-pre-con-vs-move-in-ready-assignment-sales-2026',
-    title: 'Toronto Pre-Con vs. Move-In Ready: The 2026 ROI Teardown of Assignment Sales, Developer Incentives & Cash-Flow Yields',
-    date: 'August 29, 2026',
-    excerpt: 'An exhaustive financial and market analysis comparing GTA pre-construction assignments with move-in ready condominium resales, breaking down 6-figure assignment discounts, builder rate buy-downs, and positive cash-flow strategies following Bank of Canada policy shifts.',
+    id: 37,
+    slug: 'vaughan-metropolitan-centre-vmc-2026-audit-transit-yields',
+    title: "Vaughan Metropolitan Centre (VMC) 2026 Audit: York Region's High-Density Transit Core Reaching Critical Mass",
+    date: 'August 30, 2026',
+    excerpt: 'An exhaustive market and urban density audit of Vaughan Metropolitan Centre (VMC), analyzing Line 1 subway access, SmartVMC commercial expansion, rental yield compression, and price-per-square-foot comparisons with Downtown Toronto.',
     category: 'Market Trends',
-    coordinates: { lat: 43.6426, lng: -79.3871 },
-    neighborhoodName: "Downtown Core & Financial District",
-    city: "Toronto",
-    neighborhoodId: "waterfront-financial",
+    coordinates: { lat: 43.7942, lng: -79.5268 },
+    neighborhoodName: "Vaughan Metropolitan Centre",
+    city: "Vaughan",
+    neighborhoodId: "vaughan-metropolitan-centre",
     content: `
-## Toronto Pre-Con vs. Move-In Ready: The 2026 ROI Teardown of Assignment Sales, Developer Incentives & Cash-Flow Yields
+## Vaughan Metropolitan Centre (VMC) 2026 Audit: York Region's High-Density Transit Core Reaching Critical Mass
 
 **Target Persona & Micro-Cluster**  
-Real Estate Investors, Savvy First-Time Buyers, Downsizing Professionals, and Portfolio Managers navigating Toronto's shifting condominium landscape in late 2026.
+First-Time Homebuyers, Tech Professionals, York Region Commuters, and Institutional Investors seeking high-density transit connectivity without downtown Toronto pricing friction.
 
 ---
 
-## The Great Condo Recalibration of 2026
+## York Region's First True Downtown
 
-The Greater Toronto Area condominium sector in 2026 is experiencing its most significant structural shift in over a decade. After years of speculative pre-construction dominance where buyers paid 20% to 30% premiums for future delivery, the market has executed a sharp pivot toward **tangible, cash-flowing, move-in ready assets**.
+In late 2026, **Vaughan Metropolitan Centre (VMC)** has officially crossed the threshold from an ambitious master-planned construction zone into York Region's most dynamic, high-density urban core. 
 
-With multiple Bank of Canada rate cuts easing borrowing thresholds and a record wave of 2023–2025 project completions hitting the market, buyers now possess unprecedented leverage to secure **deep assignment discounts** and **unprecedented builder closing incentives**.
+As the northern terminus of **TTC Subway Line 1 (Yonge-University)**, VMC connects residents directly to York University in **7 minutes** and Union Station in **42 minutes**, making it the only master-planned suburban downtown in Ontario with heavy-rail rapid transit already fully commissioned.
 
----
-
-## 1. The Assignment Market: 6-Figure Discounts vs. Resale Comps
-- **The Market Reality:** Original purchasers who bought pre-construction units in 2020–2022 at peak prices ($1,300 to $1,500 / sq ft) are facing closing appraisals that require substantial cash top-ups.
-- **The Opportunity:** Distressed and motivated assignment sellers are trading contracts at **$850 to $980 / sq ft** in prime Downtown, Midtown, and waterfront towers—representing $100,000 to $250,000 equity discounts below original contract values.
-- **Strategic Filter:** Look for assignment contracts where the original deposit (15% to 20%) is heavily discounted or fully forfeited to the incoming assignee upon closing.
+With over **15,000 residential units delivered or actively under construction**, alongside 1.5 million square feet of Class-A commercial space, KPMG corporate offices, and the state-of-the-art PwC-YMCA Community Centre, VMC is establishing a powerful secondary commercial hub.
 
 ---
 
-## 2. Developer Closing Incentives: Analyzing Rate Buy-Downs & Rental Guarantees
-Major Tier-1 developers (Tridel, Menkes, Daniels, CentreCourt) are utilizing innovative closing packages to protect nominal price integrity:
-- **3-Year Fixed Rate Buy-Downs:** Financing packages guaranteeing 2.99% to 3.49% mortgage rates for the first 36 months, saving buyers $800 to $1,400 per month in debt service.
-- **2-Year Rental Guarantees with Free Property Management:** Cash-flow insurance providing 5.5% to 6.2% gross rental yields without tenant vacancy exposure.
-- **Free Assignment & Capped Development Charges:** Zero-dollar assignment rights and development levy caps under $5,000.
+## 1. Price Benchmark: VMC vs. North York Centre & Downtown Toronto
+- **The Value Arbitrage:** While Downtown Toronto core condominiums command $1,150 to $1,350 / sq ft and Yonge-Sheppard averages $980 to $1,080 / sq ft, VMC high-rises trade between **$790 and $890 / sq ft**.
+- **The Equity Runway:** Investors buying resale or near-completion units in SmartVMC, Transit City, and Festival are acquiring sub-5-year-old concrete-and-glass assets with modern amenities at a **25% discount** to equivalent subway-connected Toronto nodes.
+- **Target Asset Class:** 1-Bedroom + Den floor plans with two full bathrooms, offering versatile layouts for young professional work-from-home couples and student co-tenancies.
 
 ---
 
-## 3. Cash-Flow Scorecard: Assignment vs. Move-In Ready Resale
+## 2. Rental Yield & Tenant Demographic Profile
+- **Gross Rental Yield:** **5.6% to 6.2%** (among the highest for subway-adjacent residential product across the GTA).
+- **Tenant Drivers:** Steady corporate tenant pool from surrounding Class-A office towers, combined with non-stop student rental absorption from York University (over 55,000 students located just 2 subway stops south).
+- **Average 1-Bed Rental:** $2,250 – $2,450 / month; 2-Bed: $2,850 – $3,150 / month.
 
-| Investment Metric | Pre-Con Assignment | Move-In Ready Resale | Traditional New Pre-Con (2029 Delivery) |
+---
+
+## 3. Master-Plan Infrastructure Upgrades (2026–2028)
+- **Central Park & Pedestrian Promenade:** A 9-acre urban park network featuring outdoor event pavilions, cycling trails, and year-round public programming.
+- **Highway 7 & 400 Flyover Connectivity:** Dedicated Viva Rapid Transit bus lanes and immediate arterial highway ramps providing seamless east-west GTA mobility.
+- **Retail & Lifestyle Ecosystem:** Buca Osteria, Earls, Balzac’s Coffee, and expanding grocery anchors establishing an energetic 18-hour street realm.
+
+---
+
+## VMC Investment Scorecard (2026)
+
+| Investment Pillar | VMC Core | Yonge & Eglinton Midtown | Downtown Toronto |
 | :--- | :---: | :---: | :---: |
-| **Avg Price / Sq Ft** | **$920 / sq ft** | **$880 / sq ft** | **$1,250 / sq ft** |
-| **Gross Rental Yield** | **5.4% – 6.1%** | **5.2% – 5.8%** | **3.8% – 4.2%** |
-| **Closing Timeline** | **30 to 90 Days** | **30 to 60 Days** | **3 to 5 Years** |
-| **Price Discount to Peak** | **-22%** | **-18%** | **0% (Premium)** |
-| **2026 Investor Rating** | **⭐⭐⭐⭐⭐ (Top Value)** | **⭐⭐⭐⭐ (Low Risk)** | **⭐⭐ (Avoid Speculation)** |
-
----
-
-## The 2026 HomeVibes Verdict
-For buyers entering the Toronto condo market in late 2026, **move-in ready assignments and recently completed 1-to-2-year-old towers** offer the highest risk-adjusted returns. By locking in tangible floor plans, proven condo board financials, and deep assignment discounts, investors are securing strong cash-flow foundations as Toronto's population growth continues to absorb urban inventory.
+| **Avg Price / Sq Ft** | **$840 / sq ft** | **$990 / sq ft** | **$1,180 / sq ft** |
+| **Direct Subway Access** | **Line 1 Terminus** | **Line 1 + Line 5** | **Line 1 + Line 2** |
+| **Gross Rental Yield** | **5.8%** | **4.9%** | **4.6%** |
+| **Master-Plan Delivery** | **Active Phase 2** | **Mature Urban** | **Infill Redevelopment** |
+| **2026 HomeVibes Rating** | **⭐⭐⭐⭐⭐ (Superior Growth)** | **⭐⭐⭐⭐ (Stable)** | **⭐⭐⭐ (Cash-Flow Tight)** |
 `
   },
   {
-    id: 33,
-    slug: '2026-suburban-migration-playbook-halton-peel-towns',
-    title: 'The 2026 Suburban Migration Playbook: Top 4 Halton & Peel Towns Outperforming Toronto Core for Value, Schools & Green Space',
-    date: 'August 29, 2026',
-    excerpt: 'A comprehensive suburban relocation playbook evaluating Downtown Oakville, Streetsville Mississauga, Downtown Milton, and Aldershot Burlington across Fraser Institute school scores, GO Transit commute times, and freehold property valuations.',
-    category: 'Family Living',
-    coordinates: { lat: 43.4475, lng: -79.6663 },
-    neighborhoodName: "Downtown Oakville & Kerr Village",
-    city: "Oakville",
-    neighborhoodId: "downtown-oakville",
-    content: `
-## The 2026 Suburban Migration Playbook: Top 4 Halton & Peel Towns Outperforming Toronto Core for Value, Schools & Green Space
-
-**Target Persona & Micro-Cluster**  
-Growing Families, Move-Up Buyers, Hybrid Commuters, and Remote Executives trading congested core Toronto condos for freehold space, top-tier schools, and vibrant village streetscapes in Halton and Peel regions.
-
----
-
-## The New Golden Standard for GTA Family Living
-
-As hybrid work schedules stabilize across corporate Toronto in 2026, the definition of the "ideal home" has fundamentally evolved. Families are no longer willing to compromise on backyards, square footage, and school catchments simply to shave 10 minutes off a commute.
-
-Halton and Peel regions have emerged as the primary beneficiaries of this structural migration, offering **heritage downtown cores, Michelin-caliber local dining, 9+ rated schools, and express GO Train connections into Union Station**.
-
-Here is our data audit of the **Top 4 Western GTA suburban enclaves** outperforming the market in 2026.
-
----
-
-## 1. Downtown Oakville & Kerr Village (Halton Region)
-- **The Vibe:** Halton’s premier luxury waterfront enclave, blending historic 19th-century streetscapes, gourmet bakeries, and yacht marinas with modern luxury infill.
-- **School Quality:** Top-ranked **Oakville Trafalgar High School** (Fraser Institute: 9.3/10) and Appleby College catchment.
-- **Commute:** 28 minutes to Toronto Union Station via Oakville GO Express.
-- **Benchmark Freehold:** $1.45M – $2.2M for detached homes; $980k – $1.35M for luxury townhomes.
-
----
-
-## 2. Streetsville Village (Mississauga / Peel Region)
-- **The Vibe:** "The Village in the City"—historic mill town atmosphere centered around Queen Street South, with community farmers' markets, craft breweries, and the Credit River trail network.
-- **School Quality:** **Streetsville Secondary School** (8.4/10) and top-ranked French Immersion elementary programs.
-- **Commute:** 34 minutes via Streetsville GO (Milton Line).
-- **Benchmark Freehold:** $1.15M – $1.4M for detached homes; $880k – $1.05M for freehold village townhomes.
-
----
-
-## 3. Downtown Milton & Old Milton Heritage District (Halton Region)
-- **The Vibe:** Dramatic Niagara Escarpment backdrop, Kelso conservation recreation, and a thriving family-first Main Street with independent cafes and community parks.
-- **School Quality:** **Bishop Reding** and **E.C. Drury** catchments (8.8/10).
-- **Commute:** 42 minutes via Milton GO Express.
-- **Benchmark Freehold:** $940k – $1.18M (unbeatable price-to-space ratio in the GTA West).
-
----
-
-## 4. Aldershot Waterfront & Plains Corridor (Burlington / Halton Region)
-- **The Vibe:** Scenic Burlington Bay vistas, Royal Botanical Gardens trailheads, and quiet mid-century residential cul-de-sacs with expansive 60+ foot lot frontages.
-- **School Quality:** **Aldershot High School** (8.2/10) with specialized eco-studies and outdoor athletics.
-- **Commute:** 38 minutes via Aldershot GO (Lakeshore West all-day express).
-- **Benchmark Freehold:** $1.08M – $1.35M for renovated bungalows and side-splits.
-
----
-
-## Suburban Scorecard Matrix (2026)
-
-| Enclave | Avg Freehold Price | Top School Rating | GO Express Time | Green Space Index | Family Vibe Score |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **Downtown Oakville** | **$1.65M** | **9.3 / 10** | **28 min** | **96%** | **98% (Luxury Tier)** |
-| **Streetsville** | **$1.22M** | **8.4 / 10** | **34 min** | **92%** | **95% (Community Hub)** |
-| **Downtown Milton** | **$1.04M** | **8.8 / 10** | **42 min** | **98%** | **94% (High Value)** |
-| **Aldershot Burlington** | **$1.18M** | **8.2 / 10** | **38 min** | **97%** | **93% (Nature & Bay)** |
-`
-  },
-  {
-    id: 32,
-    slug: 'ontario-line-east-corridor-audit-pape-leslieville-corktown-2026',
-    title: 'Ontario Line East Corridor Audit: 3 East York & Leslieville Station Precincts Primed for Maximum Capital Growth (2026 Analysis)',
-    date: 'August 29, 2026',
-    excerpt: 'A detailed transit and urban planning audit of the Ontario Line East subway corridor, examining the Pape Interchange, Riverside/Leslieville Station, and Corktown Hub for rezoning density, rental yields, and high-growth investment runway before 2030 opening.',
+    id: 36,
+    slug: 'yonge-north-subway-extension-ynse-richmond-hill-markham-catalyst-2026',
+    title: 'The Yonge North Subway Extension (YNSE) Property Catalyst: Richmond Hill & Markham Station Precincts to Watch Before 2030',
+    date: 'August 30, 2026',
+    excerpt: 'A comprehensive transit-oriented development audit of the 8km Yonge North Subway Extension (Line 1), evaluating high-density MTSA upzoning at Clark, Royal Orchard, and High Tech stations with projected 5-year capital appreciation runway.',
     category: 'Transit & Infrastructure',
-    coordinates: { lat: 43.6765, lng: -79.3449 },
-    neighborhoodName: "East York & Pape Transit Hub",
-    city: "Toronto",
-    neighborhoodId: "danforth-greektown",
+    coordinates: { lat: 43.8398, lng: -79.4288 },
+    neighborhoodName: "Richmond Hill Centre & High Tech Hub",
+    city: "Richmond Hill",
+    neighborhoodId: "richmond-hill-heritage",
     content: `
-## Ontario Line East Corridor Audit: 3 East York & Leslieville Station Precincts Primed for Maximum Capital Growth (2026 Analysis)
+## The Yonge North Subway Extension (YNSE) Property Catalyst: Richmond Hill & Markham Station Precincts to Watch Before 2030
 
 **Target Persona & Micro-Cluster**  
-Transit-Oriented Investors, First-Time Urban Buyers, East-End Families, and Tech Commuters targeting rapid subway appreciation along the 15.6km Ontario Line connecting Exhibition Place to the Ontario Science Centre through Downtown Toronto.
+Long-Term Growth Investors, Multi-Generational Families, York Region Homeowners, and Pre-Con Buyers seeking transit-oriented equity appreciation along Yonge Street connecting Finch Station to Richmond Hill Centre.
 
 ---
 
-## The East-End Transit Paradigm Shift
+## The 8-Kilometer Subway Breakthrough in York Region
 
-By late 2026, heavy excavation and tunneling for the **Ontario Line East Segment** have reached pivotal milestones. The transition from early utility relocation to visible station structural shafts along Pape Avenue and Queen Street East has permanently cemented investor confidence in the project's delivery trajectory.
+The **Yonge North Subway Extension (YNSE)** is York Region's single most impactful infrastructure undertaking of the decade. Extending **TTC Line 1 north from Finch Station by 8 kilometers**, the line brings 5 brand-new rapid transit stations to Markham, Vaughan, and Richmond Hill.
 
-Connecting directly to **Line 2 Bloor-Danforth at Pape Station**, the Ontario Line will cut commute times from East York and Leslieville into the Financial District down to **under 10 minutes**—bypassing the chronic bottleneck of the Bloor-Yonge interchange entirely.
+Historically across North American metros, the steepest real estate appreciation occurs during the **engineering award and deep structural excavation phases (2026–2028)**, as municipal zoning frameworks crystallize and institutional capital floods station catchments.
 
-Here is our analytical audit of the **3 highest-potential station precincts** along the East Corridor.
-
----
-
-## 1. Pape Station Multi-Modal Interchange (Pape & Danforth / Greektown)
-- **The Transit Anchor:** The most critical transfer hub on the entire East Line, joining Line 2 Bloor-Danforth with the Ontario Line. Commuters can reach Queen & Bay in 8 minutes and King & Bathurst in 12 minutes.
-- **Current Price Benchmark:** $880 to $1,020 / sq ft.
-- **The Opportunity:** City of Toronto Major Transit Station Area (MTSA) upzoning allows high-density residential towers along Danforth Avenue, unlocking redevelopment value for low-rise commercial parcels and multi-unit conversions.
-- **Target Asset Class:** Low-rise triplex and fourplex conversions on surrounding side streets (Cavell, Mortimer) and boutique pre-construction mid-rises.
+Here is our analytical teardown of the **3 highest-potential station precincts** along the YNSE corridor.
 
 ---
 
-## 2. Riverside & Leslieville Station (Queen St E & De Grassi / Degrassi St)
-- **The Transit Anchor:** Integrated rail corridor station connecting Queen Street East's vibrant culinary and boutique design district directly to Downtown Toronto and the Port Lands.
-- **Current Price Benchmark:** $1,050 to $1,180 / sq ft.
-- **The Opportunity:** Seamless integration with Queen streetcar networks and the multi-billion-dollar revitalization of the Don Mouth and Port Lands entertainment districts just south.
-- **Target Asset Class:** 2-bedroom boutique lofts and classic brick Victorians within a 500-meter radius of Jimmie Simpson Park.
+## 1. High Tech / Richmond Hill Centre Mega-Hub (Yonge St & Highway 7 / 407)
+- **The Transit Anchor:** Multi-modal terminal integrating TTC Subway Line 1, Richmond Hill GO Train, and Viva BRT networks.
+- **Current Price Benchmark:** $780 to $890 / sq ft.
+- **The Opportunity:** City of Richmond Hill Major Transit Station Area (MTSA) master plans allow up to **50+ storey mixed-use towers**, creating an entirely new skyline with over 20,000 residential suites and commercial tech campuses.
+- **Target Asset Class:** 2-bedroom pre-construction assignments and 1-to-3-year-old resale condos within a 400-meter pedestrian radius of the GO/Subway interchange.
 
 ---
 
-## 3. Corktown & First Parliament Precinct (King St E & Parliament / Front St E)
-- **The Transit Anchor:** Immediate gateway into the Financial District, Distillery District, and Canary District, connecting streetcar routes 504 King and 501 Queen with deep-bore subway platforms.
-- **Current Price Benchmark:** $1,120 to $1,250 / sq ft.
-- **The Opportunity:** Surrounding master-planned regeneration of the First Parliament heritage site and massive commercial tech tenant expansion along the King East design corridor.
-- **Target Asset Class:** Modern 1-bedroom + den high-rise condominiums with efficient square-foot layouts and unobstructed skyline views.
+## 2. Clark Station Precinct (Yonge St & Clark Ave / Steeles North)
+- **The Transit Anchor:** Direct underground subway portal serving the Thornhill residential node, cutting travel time to Finch to 3 minutes and Yorkville to 22 minutes.
+- **Current Price Benchmark:** $820 to $940 / sq ft for condos; $1.25M to $1.6M for freehold townhomes.
+- **The Opportunity:** High-density infill replacing aging strip plazas with mixed-use pedestrian plazas, luxury grocery anchors, and landscaped streetscapes.
+- **Target Asset Class:** Low-rise townhomes and boutique mid-rises with strong family demographic retention and Fraser Institute top-ranked schools.
 
 ---
 
-## East Corridor Comparison Scorecard (2026)
+## 3. Royal Orchard Station (Yonge St & Royal Orchard Blvd)
+- **The Transit Anchor:** Nestled between Thornhill and Richmond Hill, providing neighborhood-scale subway connectivity to mature residential ravines and golf course enclaves.
+- **Current Price Benchmark:** $810 to $920 / sq ft.
+- **The Opportunity:** Preservation of surrounding leafy residential character with targeted mid-rise intensification along the immediate Yonge frontage.
+- **Target Asset Class:** Downsizer-oriented luxury 2-bedroom + den suites with private ravine views.
 
-| Station Hub | Current Avg $/SqFt | Time to Union / Financial Core | MTSA Upzoning Density | Projected 3-Year Appreciation |
+---
+
+## YNSE Station Corridor Comparison (2026)
+
+| Station Precinct | Current Price / SqFt | Distance to Finch Station | MTSA Density Potential | Projected 5-Year Capital Runway |
 | :--- | :---: | :---: | :---: | :---: |
-| **Pape Interchange** | **$940 / sq ft** | **8 minutes** | **High (Up to 35 storeys)** | **⭐⭐⭐⭐⭐ (Highest Equity Runway)** |
-| **Riverside / Leslieville** | **$1,110 / sq ft** | **6 minutes** | **Mid-Rise (8 to 12 storeys)** | **⭐⭐⭐⭐ (Premium Lifestyle Vibe)** |
-| **Corktown Hub** | **$1,180 / sq ft** | **4 minutes** | **High (Mixed-Use Commercial)** | **⭐⭐⭐⭐ (Core Downtown Yield)** |
+| **High Tech Hub** | **$830 / sq ft** | **8.0 km (Terminal)** | **Ultra-High (40–60 Storeys)** | **⭐⭐⭐⭐⭐ (Highest Equity Upside)** |
+| **Clark Station** | **$880 / sq ft** | **2.2 km** | **High (25–35 Storeys)** | **⭐⭐⭐⭐ (Established Demand)** |
+| **Royal Orchard** | **$850 / sq ft** | **4.8 km** | **Mid-Rise (12–18 Storeys)** | **⭐⭐⭐⭐ (Boutique Downsizers)** |
+`
+  },
+  {
+    id: 35,
+    slug: 'waterfront-west-lrt-parkdale-rail-corridor-regeneration-2026',
+    title: 'Waterfront West LRT & Parkdale Rail Corridor: The Next High-Yield Lakefront Regeneration (2026 Analysis)',
+    date: 'August 30, 2026',
+    excerpt: 'An urban planning and property valuation audit of the Waterfront West transit corridor and Parkdale rail junction, assessing Ontario Place revitalization spillover, heritage loft appreciation, and lakeside rental demand.',
+    category: 'Neighborhood Guides',
+    coordinates: { lat: 43.6369, lng: -79.4346 },
+    neighborhoodName: "Parkdale & Exhibition Waterfront Hub",
+    city: "Toronto",
+    neighborhoodId: "roncesvalles-high-park",
+    content: `
+## Waterfront West LRT & Parkdale Rail Corridor: The Next High-Yield Lakefront Regeneration (2026 Analysis)
+
+**Target Persona & Micro-Cluster**  
+Urban Trendsetters, Creative Industry Founders, East-West Hybrid Commuters, and Boutique Property Investors seeking character heritage assets alongside massive multi-billion-dollar lakefront revitalization.
+
+---
+
+## The Lakefront Regeneration Frontier
+
+While Toronto's East Waterfront and Port Lands have dominated urban headlines, the **West Waterfront corridor spanning Parkdale, Exhibition Place, and Ontario Place** is undergoing a profound structural renaissance in late 2026.
+
+Anchored by the massive transformation of **Ontario Place into an all-season cultural and wellness destination**, alongside Metrolinx track expansions linking Exhibition GO with the future Ontario Line western terminus, the district is closing the historic price gap with King West and Liberty Village.
+
+---
+
+## 1. The Parkdale Rail Corridor & Industrial Loft Heritage
+- **The Vibe:** Authentic Victorian residential streetscapes, independent music venues, artisan bakeries, and converted brick-and-beam industrial spaces along Dufferin and Queen West.
+- **The Value Gap:** Price per square foot in South Parkdale averages **$880 to $980 / sq ft**—a **15% to 20% discount** compared to Liberty Village high-rises just 400 meters east across Dufferin Street.
+- **Target Asset Class:** Converted heritage lofts, Victorian multiplexes, and boutique infill townhomes along the King-Queen streetcar triangle.
+
+---
+
+## 2. Multi-Modal Transit Infrastructure: Exhibition Hub
+- **Exhibition GO Station Expansion:** Direct 8-minute express trains into Union Station, running on 15-minute two-way all-day frequency on the Lakeshore West Line.
+- **Ontario Line Western Terminal:** Deep-bore excavation connecting Exhibition directly to Queen & Spadina, Queen & Bay, and the Financial District in under 10 minutes.
+- **Waterfront West Streetcar Connection:** Upgraded dedicated right-of-way transit loops connecting Dufferin Street, Lake Shore Boulevard, and downtown waterfront parks.
+
+---
+
+## 3. Lifestyle & Micro-Economic Drivers
+- **Ontario Place Public Parkland & Marina:** Over 40 acres of public waterfront trails, sandy beaches, concert venues, and year-round recreation.
+- **Micro-Brewery & Culinary Destination:** Queen Street West and King West retail corridors maintaining low commercial vacancies and high young professional foot traffic.
+
+---
+
+## Waterfront West Scorecard (2026)
+
+| Metric | Parkdale / Exhibition | Liberty Village | King West Core |
+| :--- | :---: | :---: | :---: |
+| **Avg Price / Sq Ft** | **$930 / sq ft** | **$1,050 / sq ft** | **$1,220 / sq ft** |
+| **Transit Access** | **GO Train + Streetcar + Ontario Line** | **King Streetcar + GO** | **King & Queen Streetcars** |
+| **Lakeside Walking Index** | **94%** | **84%** | **78%** |
+| **Character & Loft Premium** | **High (Victorian / Industrial)** | **Medium (Modern Condo)** | **High (Boutique Lofts)** |
+| **2026 Investment Rating** | **⭐⭐⭐⭐⭐ (Top Upside)** | **⭐⭐⭐⭐ (Stable Cash-Flow)** | **⭐⭐⭐ (High Entry Cost)** |
 `
   }
 ];
 
 function run() {
-  console.log('Running Content Creator engine for HomeVibes...');
+  console.log('Running Content Creator engine for HomeVibes (Batch 2)...');
 
   // 1. Read existing blogPosts.js
   const blogPostsPath = path.join(__dirname, '../src/data/blogPosts.js');
@@ -225,7 +215,7 @@ function run() {
   content = content.slice(0, insertionPoint) + newPostsCode + content.slice(insertionPoint);
 
   fs.writeFileSync(blogPostsPath, content, 'utf8');
-  console.log(`✅ Successfully added ${newPosts.length} new 2026 market intelligence articles to blogPosts.js!`);
+  console.log(`✅ Successfully added ${newPosts.length} new 2026 market intelligence articles to blogPosts.js! (IDs: 37, 36, 35)`);
 
   // 3. Regenerate Sitemap & RSS Feed
   console.log('Regenerating sitemap.xml and rss.xml...');

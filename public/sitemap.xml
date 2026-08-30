@@ -521,6 +521,21 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://homevibes.app/insights/vaughan-metropolitan-centre-vmc-2026-audit-transit-yields</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/insights/yonge-north-subway-extension-ynse-richmond-hill-markham-catalyst-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/insights/waterfront-west-lrt-parkdale-rail-corridor-regeneration-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://homevibes.app/insights/toronto-pre-con-vs-move-in-ready-assignment-sales-2026</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
