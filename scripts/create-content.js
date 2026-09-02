@@ -4,202 +4,196 @@ const { execSync } = require('child_process');
 
 const newPosts = [
   {
-    id: 40,
-    slug: 'golden-horseshoe-tech-migration-burlington-hamilton-waterloo-2026',
-    title: 'The 2026 Golden Horseshoe Tech Hub Migration: Why Burlington, Hamilton & Waterloo Are Capturing Toronto Remote Executives',
-    date: 'September 1, 2026',
-    excerpt: 'An in-depth relocation and equity analysis tracking the migration of Toronto tech workers and executives into Burlington Waterfront, Hamilton Dundas/Kirkendall, and Waterloo Innovation Corridor, evaluating GO Transit electrification, property value arbitrage, and lifestyle scores.',
-    category: 'Lifestyle & Tech',
-    coordinates: { lat: 43.3255, lng: -79.7990 },
-    neighborhoodName: "Burlington Waterfront & Downtown",
-    city: "Burlington",
-    neighborhoodId: "burlington-waterfront",
-    content: `
-## The 2026 Golden Horseshoe Tech Hub Migration: Why Burlington, Hamilton & Waterloo Are Capturing Toronto Remote Executives
-
-**Target Persona & Micro-Cluster**  
-Senior Tech Engineers, Product Directors, FinTech Founders, Hybrid Commuters, and Move-Up Families trading $1.8M cramped Toronto semi-detached homes for spacious freehold estates, top-tier recreation, and waterfront lifestyle along the Western Golden Horseshoe.
-
----
-
-## The Tech Decentralization Wave of 2026
-
-As flexible hybrid models (2 days in-office, 3 days remote) become permanently embedded in corporate Canadian tech culture, the geographic boundaries of the "Toronto Commuter Zone" have expanded. 
-
-Senior engineers and executives are prioritizing **lifestyle ROI, private home offices, expansive 50+ foot lot frontages, and world-class municipal parklands** over proximity to Bay Street.
-
-Three western nodes have captured the lion's share of this high-income demographic: **Burlington Waterfront, Hamilton's Kirkendall/Dundas heritage corridor, and the Waterloo Tech Cluster**.
-
----
-
-## 1. Burlington Waterfront & Downtown Core (Halton Region)
-- **The Lifestyle Anchor:** Spencer Smith Park promenade, Brant Street Pier, luxury boutique dining (Isabelle Restaurant, The Pearle Hotel & Spa), and direct Lake Ontario trail networks.
-- **Commute:** 44 minutes to Toronto Union Station via all-day 15-minute Lakeshore West express trains.
-- **Price Benchmark:** Detached homes average $1.25M to $1.65M (compared to $2.1M+ in South Etobicoke or Bloor West).
-- **Target Asset Class:** Mid-century bungalows with deep lots ripe for modern architectural additions, and luxury waterfront low-rise condominiums.
-
----
-
-## 2. Hamilton South & Kirkendall / Dundas (Hamilton Region)
-- **The Lifestyle Anchor:** Locke Street South dining and cafe district, direct Bruce Trail escarpment access, and historic Victorian and Edwardian stone architecture.
-- **Commute:** 52 minutes via West Harbour GO direct express into Union Station.
-- **Price Benchmark:** Character detached brick homes at **$780k to $1.05M**—an astonishing **45% discount** to Toronto core equivalents.
-- **Target Asset Class:** 3-bedroom renovated red-brick Victorians with walkability to independent cafes and artisan bakeries.
-
----
-
-## 3. Waterloo Innovation Corridor & Uptown Waterloo
-- **The Lifestyle Anchor:** Canada's leading tech and AI ecosystem (Google HQ, Perimeter Institute, University of Waterloo innovation hubs), integrated with Ion Light Rail transit and Uptown Waterloo retail.
-- **Commute:** Hybrid GO Rail + Highway 401 express connectivity.
-- **Price Benchmark:** Modern freehold detached homes at $850k to $1.15M.
-- **Target Asset Class:** Contemporary infill townhomes and master-planned tech-hub residential suites with high local tenant demand from software engineers.
-
----
-
-## Western Migration Comparison Scorecard (2026)
-
-| Enclave | Avg Detached Price | Travel Time to Union | Tech Talent Density | Green Space / Waterfront Index | 2026 Investor Rating |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **Burlington Waterfront** | **$1.42M** | **44 min** | **High (Executives)** | **98% (Lake Ontario)** | **⭐⭐⭐⭐⭐ (Luxury Lifestyle)** |
-| **Hamilton Kirkendall** | **$890k** | **52 min** | **Medium-High (Startups)** | **95% (Escarpment Trails)** | **⭐⭐⭐⭐⭐ (Highest Equity Growth)** |
-| **Uptown Waterloo** | **$960k** | **Hybrid / Local** | **Ultra-High (AI / Software)** | **91% (Parks & Trails)** | **⭐⭐⭐⭐ (Stable Cash-Flow)** |
-`
-  },
-  {
-    id: 39,
-    slug: 'scarborough-centre-line-2-subway-extension-mtsa-audit-2026',
-    title: 'Scarborough Centre & Line 2 Subway Extension: 3 Station Precincts Unlocking Massive MTSA Rezoning (2026 Audit)',
-    date: 'September 1, 2026',
-    excerpt: 'An exhaustive transit infrastructure and master-plan audit of the 7.8km Line 2 Bloor-Danforth East Subway Extension, examining Lawrence East, Scarborough Centre, and Sheppard East / McCowan for high-density rezoning, rental demand, and investment upside.',
-    category: 'Transit & Infrastructure',
-    coordinates: { lat: 43.7749, lng: -79.2578 },
-    neighborhoodName: "Scarborough City Centre",
+    id: 43,
+    slug: 'port-lands-villiers-island-waterfront-mega-district-2026',
+    title: "The 2026 Port Lands & Villiers Island Transformation: Inside Toronto's $1.3B Waterfront Mega-District (Investor Playbook)",
+    date: 'September 2, 2026',
+    excerpt: 'An exhaustive urban design and investment audit of the $1.35B Port Lands flood protection completion and Villiers Island rezoning, analyzing waterfront density allowances, future East Bayfront LRT links, and price per square foot appreciation models vs. Canary District.',
+    category: 'Neighborhood Guides',
+    coordinates: { lat: 43.6496, lng: -79.3524 },
+    neighborhoodName: "Canary District & Waterfront East",
     city: "Toronto",
-    neighborhoodId: "scarborough-city-centre",
+    neighborhoodId: "canary-district",
     content: `
-## Scarborough Centre & Line 2 Subway Extension: 3 Station Precincts Unlocking Massive MTSA Rezoning (2026 Audit)
+## The 2026 Port Lands & Villiers Island Transformation: Inside Toronto's $1.3B Waterfront Mega-District (Investor Playbook)
 
 **Target Persona & Micro-Cluster**  
-Value-Focused Investors, First-Time Buyers, East-End Families, and Institutional Developers capitalizing on Toronto's single largest outer-borough rapid transit investment.
+Forward-Looking Real Estate Investors, Urban Design Enthusiasts, Waterfront Luxury Buyers, and Tech Founders seeking first-mover advantage in North America's largest master-planned waterfront revitalization.
 
 ---
 
-## The 7.8-Kilometer Heavy-Rail Subway Expansion
+## Toronto's Next Century: The Island That Flood Protection Built
 
-Tunnel boring and station shaft construction along the **Line 2 East Subway Extension (Scarborough Subway Extension)** are progressing at full throttle in late 2026. Extending Line 2 east from Kennedy Station to Sheppard Avenue East, this 3-station heavy-rail breakthrough will completely replace the decommissioned Scarborough RT with continuous, one-seat subway service into Downtown Toronto.
+In late 2026, the monumental **$1.35 billion Port Lands Flood Protection Project** has reached final operational commissioning. By creating a brand-new naturalized mouth for the Don River, Waterfront Toronto has successfully removed 240 hectares of prime central lakefront land from the flood plain.
 
-The City of Toronto has introduced sweeping **Major Transit Station Area (MTSA)** zoning frameworks across all three station catchments, permitting high-density mixed-use residential towers and pedestrianized master plans.
+The crown jewel of this reclamation is **Villiers Island (Okanagan / Indigenous-named precinct)**—a brand-new, climate-resilient island community situated directly south of the Distillery District and Canary District.
 
----
-
-## 1. Scarborough Centre Terminal Mega-Hub (McCowan & Ellesmere)
-- **The Transit Anchor:** Direct underground subway station integrated with Scarborough Town Centre (STC), regional bus terminals, and future transit priority corridors.
-- **Current Price Benchmark:** $680 to $790 / sq ft (the most competitive price point on the entire TTC heavy-rail subway network).
-- **The Opportunity:** Multi-billion-dollar master-plan redevelopment of surrounding surface parking lots into a complete mixed-use urban downtown with over 36 high-rise towers, a central community park, and new retail streetscapes.
-- **Target Asset Class:** 2-bedroom condominium apartments with low monthly maintenance fees and strong cash-flow rental yields to Centennial College and University of Toronto Scarborough (UTSC) students.
+With over **12,000 future residential units, 30+ acres of public waterfront parks, sandy river beaches, and a dedicated rapid transit right-of-way**, the Port Lands represents Toronto's highest-upside urban frontier for the 2026–2032 development cycle.
 
 ---
 
-## 2. Lawrence East Station (Lawrence Ave E & McCowan Rd)
-- **The Transit Anchor:** Neighborhood-scale subway portal serving established residential subdivisions and commercial medical plazas.
-- **Current Price Benchmark:** $640 to $750 / sq ft for condominiums; $980k to $1.2M for detached bungalows.
-- **The Opportunity:** Low-rise commercial parcel assembly and mid-rise residential infill along Lawrence Avenue, unlocking substantial redevelopment land value.
-- **Target Asset Class:** Older brick bungalows on 45+ foot frontages within 600 meters of the station portal, offering garden suite and multi-plex rental conversion potential.
+## 1. Villiers Island Master-Plan Density & Architectural Vision
+- **The Design Standard:** Low-carbon timber construction, mid-rise urban blocks (8 to 24 storeys), 100% electrified heating networks, and complete pedestrianized waterfront esplanades.
+- **Price Benchmarks (2026):** Surrounding mature East Bayfront and Canary District resale condos trade at **$1,080 to $1,220 / sq ft**, establishing a strong baseline for initial Villiers Island launches.
+- **Target Asset Class:** 2-bedroom corner residences with unblocked south views of Lake Ontario, Tommy Thompson Park, and the Toronto Harbour.
 
 ---
 
-## 3. Sheppard East / McCowan Station (Sheppard Ave E & McCowan Rd)
-- **The Transit Anchor:** Northern terminus of Line 2, with future integration into the planned Sheppard Subway Extension (Line 4) connecting west to Don Mills.
-- **Current Price Benchmark:** $700 to $810 / sq ft.
-- **The Opportunity:** Gateway position linking North Scarborough, Agincourt commercial hubs, and Highway 401 commuter corridors.
-- **Target Asset Class:** Pre-construction master-planned residential phases offering extended builder deposit structures.
+## 2. Infrastructure & Rapid Transit Connectivity
+- **Waterfront East LRT (Line 7):** Dedicated underground and surface light rail connecting Union Station directly through Queens Quay East, Parliament Slip, and across the new Cherry Street bridges onto Villiers Island in **8 minutes**.
+- **The Iconic Bridge Network:** Four curving, architectural steel bridges connecting the island to downtown Toronto, already completed and operational for cyclists and transit.
+- **Parks & Ecology:** River Park North and South featuring natural wetlands, kayak launches, and walking promenades integrated with Toronto's Martin Goodman Trail.
 
 ---
 
-## Line 2 East Subway Scorecard (2026)
-
-| Station Hub | Current Avg $/SqFt | Subway Connection | MTSA Density Capacity | 5-Year Capital Runway |
-| :--- | :---: | :---: | :---: | :---: |
-| **Scarborough Centre** | **$740 / sq ft** | **Line 2 Direct Terminal** | **Ultra-High (Up to 55 Storeys)** | **⭐⭐⭐⭐⭐ (Highest Equity Upside)** |
-| **Lawrence East** | **$690 / sq ft** | **Line 2 Mid-Line** | **Mid-to-High (15–25 Storeys)** | **⭐⭐⭐⭐ (Land Assembly Value)** |
-| **Sheppard East** | **$750 / sq ft** | **Line 2 + Future Line 4** | **High (25–40 Storeys)** | **⭐⭐⭐⭐ (Dual-Subway Gateway)** |
-`
-  },
-  {
-    id: 38,
-    slug: 'midtown-toronto-rental-teardown-yonge-eglinton-vs-st-clair-2026',
-    title: 'Midtown Toronto Rental Teardown: Yonge & Eglinton vs. St. Clair & Davisville for Yields, Vacancy & Tenant Demand (2026 Edition)',
-    date: 'September 1, 2026',
-    excerpt: 'A comprehensive rental market audit of Midtown Toronto following Line 5 Eglinton Crosstown commissioning, comparing cap rates, tenant demographics, and cash-flow sustainability across Yonge & Eglinton, Davisville Village, and St. Clair West.',
-    category: 'Rental Market',
-    coordinates: { lat: 43.7065, lng: -79.3986 },
-    neighborhoodName: "Yonge & Eglinton Midtown Hub",
-    city: "Toronto",
-    neighborhoodId: "yonge-eglinton",
-    content: `
-## Midtown Toronto Rental Teardown: Yonge & Eglinton vs. St. Clair & Davisville for Yields, Vacancy & Tenant Demand (2026 Edition)
-
-**Target Persona & Micro-Cluster**  
-Condominium Landlords, Multi-Unit Investors, Corporate Relocation Specialists, and Young Professionals comparing Midtown Toronto's premier subway-connected rental clusters.
+## 3. The 5-Year Capital Appreciation Horizon
+- **Early-Mover Multipliers:** Historically in Toronto (St. Lawrence in the 80s, Liberty Village in the 2000s, Canary District in 2015), initial master-plan phases achieved **35% to 50% capital growth** by the time final civic amenities and retail arrived.
+- **Institutional Capital:** Major pension funds and Tier-1 developers (Dream, Great Gulf, Kilmer) are anchoring long-term commercial tech and cultural spaces.
 
 ---
 
-## Midtown's High-Density Transit Maturation
+## Port Lands vs. Mature Waterfront Precincts (2026)
 
-With the **Eglinton Crosstown LRT (Line 5)** operational and fully integrated with TTC Subway Line 1, Midtown Toronto has solidified its status as the premier secondary corporate and residential core of the city.
-
-Midtown commands the lowest residential vacancy rates in the GTA (consistently below 1.8%), driven by an affluent tenant demographic of healthcare professionals (Sunnybrook, Mt. Sinai), tech executives, and corporate consulting partners who require rapid dual-subway access into the Financial District.
-
-Here is our analytical comparison of Midtown's 3 key rental sub-markets in 2026.
-
----
-
-## 1. Yonge & Eglinton High-Rise Core (The Dual-Subway Mega-Hub)
-- **The Tenant Profile:** Young tech workers, medical residents, and corporate finance analysts seeking full-amenity luxury towers with co-working lounges, fitness clubs, and direct underground subway concourses.
-- **Rental Comps (2026):**
-  - **1-Bedroom:** $2,450 – $2,650 / month
-  - **1-Bedroom + Den:** $2,800 – $3,050 / month
-  - **2-Bedroom:** $3,350 – $3,700 / month
-- **Gross Yield:** **5.1% to 5.5%**
-- **Investor Note:** Focus on 2021–2024 vintage towers with unrent-controlled status to maintain market-indexed returns.
-
----
-
-## 2. Davisville Village (Boutique Low-Rise & Green Space Haven)
-- **The Tenant Profile:** Couples, long-term professionals, and young families attracted to the Kay Gardner Beltline Trail, June Rowlands Park, and quiet tree-lined streets just 1 subway stop south of Eglinton.
-- **Rental Comps (2026):**
-  - **1-Bedroom:** $2,300 – $2,500 / month
-  - **2-Bedroom:** $3,100 – $3,450 / month
-- **Gross Yield:** **4.8% to 5.2%**
-- **Investor Note:** Lower tenant turnover rates (average tenancy exceeds 28 months), reducing leasing commission friction and vacancy downtime.
-
----
-
-## 3. St. Clair West & Hillcrest Village (Artisan Dining & Community Vibe)
-- **The Tenant Profile:** Creative directors, media professionals, and culinary enthusiasts drawn to St. Clair’s dedicated streetcar right-of-way, Wychwood Barns farmers' markets, and local gastro-pubs.
-- **Rental Comps (2026):**
-  - **1-Bedroom:** $2,350 – $2,550 / month
-  - **2-Bedroom:** $3,200 – $3,500 / month
-- **Gross Yield:** **5.2% to 5.6%**
-- **Investor Note:** Boutique mid-rise condominiums along St. Clair offer superior square-foot layouts with lower condo maintenance fees than Yonge-Eglinton mega-towers.
-
----
-
-## Midtown Rental Scorecard Matrix (2026)
-
-| Metric | Yonge & Eglinton | Davisville Village | St. Clair West |
+| Metric | Villiers Island / Port Lands | Canary District | Harbourfront Core |
 | :--- | :---: | :---: | :---: |
-| **Average 1-Bed Rent** | **$2,550 / mo** | **$2,400 / mo** | **$2,450 / mo** |
-| **Vacancy Rate** | **1.4% (Ultra-Low)** | **1.6%** | **1.5%** |
-| **Transit Connectivity** | **Line 1 + Line 5 Crosstown** | **Line 1 Subway** | **Line 1 + 512 Dedicated LRT** |
-| **Average Tenancy Duration**| **18 Months** | **28 Months (Highest Retention)**| **24 Months** |
-| **2026 Investor Rating** | **⭐⭐⭐⭐⭐ (High Liquidity)** | **⭐⭐⭐⭐ (Low Turnover)** | **⭐⭐⭐⭐ (Boutique Vibe)** |
+| **Projected $/SqFt** | **$1,120 / sq ft (Launch)** | **$1,150 / sq ft** | **$1,320 / sq ft** |
+| **Parkland Ratio** | **42% (Highest in Toronto)**| **22% (Corktown Common)** | **8% (High Density)** |
+| **Transit Access** | **Future Waterfront LRT** | **King/Queen Streetcars** | **Union Station Hub** |
+| **Sustainability Rating** | **Net-Zero Ready (LEED ND)** | **LEED Gold** | **Legacy Standard** |
+| **2026 Growth Rating** | **⭐⭐⭐⭐⭐ (Maximum Upside)**| **⭐⭐⭐⭐ (Established Vibe)**| **⭐⭐⭐ (Mature Yield)** |
+`
+  },
+  {
+    id: 42,
+    slug: 'durham-region-transit-revolution-pickering-whitby-waterfront-yields-2026',
+    title: "Durham Region's 2026 Transit Revolution: Why Pickering & Whitby Waterfront Enclaves Are Outpacing West GTA for Rental Yields",
+    date: 'September 2, 2026',
+    excerpt: 'A comprehensive East GTA market audit analyzing Pickering City Centre, Nautical Village, and Whitby Harbourfront, evaluating Lakeshore East 15-minute GO frequency, 6.2%+ gross rental yields, and freehold price advantages vs. Mississauga and Oakville.',
+    category: 'Market Trends',
+    coordinates: { lat: 43.8354, lng: -79.0890 },
+    neighborhoodName: "Pickering Waterfront & Nautical Village",
+    city: "Pickering",
+    neighborhoodId: "pickering-waterfront",
+    content: `
+## Durham Region's 2026 Transit Revolution: Why Pickering & Whitby Waterfront Enclaves Are Outpacing West GTA for Rental Yields
+
+**Target Persona & Micro-Cluster**  
+Cash-Flow Real Estate Investors, First-Time Freehold Buyers, Commuter Families, and Landlords seeking high net rental yields with rapid 30-minute express rail connectivity into Toronto Union Station.
+
+---
+
+## The East GTA Value Arbitrage in 2026
+
+While the West GTA (Oakville, Burlington, Port Credit) has historically commanded peak real estate valuations, **Durham Region has emerged in 2026 as the undisputed powerhouse for investor cash flow and capital yield sustainability**.
+
+Anchored by **Metrolinx Lakeshore East 15-minute all-day two-way GO Train service**, Durham Region allows commuters to reach Downtown Toronto in **under 35 minutes** while acquiring freehold real estate and master-planned condominiums at a **30% to 40% discount** compared to western lakefront counterparts.
+
+Here is our analytical teardown of the **Top 3 Durham Region waterfront and transit nodes** in 2026.
+
+---
+
+## 1. Pickering City Centre & Master-Plan Mega-Hub (Kingston Rd & Liverpool)
+- **The Transit Anchor:** Pickering GO Station (direct enclosed pedestrian skybridge crossing Highway 401), delivering 28-minute express service to Union Station.
+- **Current Price Benchmark:** $720 to $810 / sq ft for new condominiums.
+- **The Opportunity:** Multi-phase transformation of Pickering Town Centre into a 55-acre master-planned downtown district with 10 high-rise residential towers, a new municipal library, and a 1-acre central park.
+- **Gross Rental Yield:** **5.9% to 6.4%** (significantly outperforming Mississauga City Centre's 5.2%).
+
+---
+
+## 2. Pickering Nautical Village & Frenchman's Bay Waterfront
+- **The Vibe:** Nautical boardwalk, yacht clubs, lakeside bistros, and protected lagoon beaches along Liverpool Road.
+- **Price Benchmark:** $980k to $1.35M for freehold waterfront townhomes and detached properties (vs. $1.7M+ in Port Credit).
+- **Target Asset Class:** Freehold townhomes and boutique mid-rises with strong short-and-long-term corporate executive tenant demand.
+
+---
+
+## 3. Whitby Harbourfront & Port Whitby (Victoria St & Gordon St)
+- **The Transit Anchor:** Whitby GO Station terminal with rapid access to Highway 401, 412, and 407 toll route.
+- **Current Price Benchmark:** $660 to $760 / sq ft; $890k to $1.15M for detached family homes.
+- **The Opportunity:** Expanding marina village with modern waterfront condos, waterfront park trails (Iroquois Beach), and high tenant retention rates.
+- **Gross Rental Yield:** **6.1% to 6.6%**.
+
+---
+
+## East vs. West Lakefront Yield Matrix (2026)
+
+| Enclave | Avg Condominium $/SqFt | Avg Freehold Price | Travel Time to Union | Gross Rental Yield | 2026 Cash-Flow Rating |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Pickering City Centre** | **$760 / sq ft** | **$940k** | **28 min** | **6.2%** | **⭐⭐⭐⭐⭐ (Top Yield)** |
+| **Port Credit (West)** | **$1,120 / sq ft** | **$1.65M** | **26 min** | **4.9%** | **⭐⭐⭐⭐ (Capital Growth)** |
+| **Port Whitby** | **$710 / sq ft** | **$920k** | **42 min** | **6.4%** | **⭐⭐⭐⭐⭐ (High Cash-Flow)** |
+| **Downtown Oakville (West)** | **$1,250 / sq ft** | **$1.85M** | **28 min** | **4.4%** | **⭐⭐⭐ (Equity Lockup)** |
+`
+  },
+  {
+    id: 41,
+    slug: 'brampton-innovation-district-queen-street-brt-catalyst-2026',
+    title: 'Brampton Innovation District & Queen Street BRT: The 2026 Property Catalyst for First-Time Buyers & Multi-Unit Conversions',
+    date: 'September 2, 2026',
+    excerpt: 'An urban infrastructure and multi-unit investment teardown of Downtown Brampton, analyzing the Queen Street Bus Rapid Transit (BRT) rollout, TMU School of Medicine opening, and high-cash-flow legal triplex conversion playbooks.',
+    category: 'Transit & Infrastructure',
+    coordinates: { lat: 43.6845, lng: -79.7602 },
+    neighborhoodName: "Downtown Brampton & Mount Pleasant",
+    city: "Brampton",
+    neighborhoodId: "downtown-brampton",
+    content: `
+## Brampton Innovation District & Queen Street BRT: The 2026 Property Catalyst for First-Time Buyers & Multi-Unit Conversions
+
+**Target Persona & Micro-Cluster**  
+First-Time Homebuyers, Small-Scale Multi-Family Developers, Student Housing Landlords, and Move-Up Families looking for accessible freehold prices and robust cash-flow opportunities in Peel Region.
+
+---
+
+## The Academic & Transit Metamorphosis of Downtown Brampton
+
+Downtown Brampton in late 2026 is undergoing one of the most comprehensive urban turnarounds in the Greater Toronto Area. Propelled by the opening of the **Toronto Metropolitan University (TMU) School of Medicine** and continuous expansion of the **Brampton Innovation District**, the city centre has evolved from a suburban node into a major academic and healthcare technology employment hub.
+
+Complementing this institutional expansion is the rollout of the **Queen Street Bus Rapid Transit (BRT) priority corridor**, providing rapid east-west transit linking Downtown Brampton directly to Vaughan Metropolitan Centre (VMC) and TTC Subway Line 1.
+
+---
+
+## 1. Academic & Medical Tenant Surge
+- **The Student Housing Deficit:** Over 10,000 university, medical, and college students (TMU Medical, Algoma University, Sheridan Davis Campus) are competing for housing within a 2km radius of Brampton GO Station.
+- **Rental Comps (2026):**
+  - **1-Bedroom Apartment:** $2,050 – $2,250 / month
+  - **2-Bedroom Suite:** $2,650 – $2,900 / month
+  - **Single Student Rooms:** $900 – $1,150 / month
+- **Gross Rental Yield:** **6.5% to 7.4%** on converted multi-unit freehold properties.
+
+---
+
+## 2. The Multi-Unit Legal Conversion Playbook
+- **City of Brampton Infill Policy:** Progressive municipal zoning permits up to **3 legal residential units** (Main House + Basement Suite + Garden / Laneway Suite) on standard single-family residential lots.
+- **The Economics:**
+  - Acquisition of 3-bedroom older bungalow: **$820,000**
+  - Basement & Garden Suite Conversion Cost: **$240,000**
+  - Total Capital Invested: **$1,060,000**
+  - Total Monthly Gross Rent (3 units): **$6,800 / month ($81,600 / year)**
+  - **Net Cap Rate:** **6.2% – 6.8%** (virtually impossible to achieve with standard single condos in Toronto core).
+
+---
+
+## 3. Transit Hub: Brampton GO & Hazel McCallion LRT Northern Link
+- **Kitchener GO Rail Line:** Direct 36-minute express train into Toronto Union Station with expanding two-way 15-minute peak service.
+- **Hazel McCallion LRT Connection:** Brampton Gateway Terminal connecting directly south into Mississauga City Centre and Port Credit.
+
+---
+
+## Downtown Brampton Investment Scorecard (2026)
+
+| Pillar | Downtown Brampton | Mississauga City Centre | Toronto Core (East/West) |
+| :--- | :---: | :---: | :---: |
+| **Entry Price Point** | **$580k – $850k** | **$650k – $1.1M** | **$750k – $1.4M** |
+| **Gross Rental Yield** | **6.8% (Top in Peel)** | **5.4%** | **4.8%** |
+| **Tenant Growth Engine** | **TMU Medical + Tech** | **Corporate + Sheridan** | **Corporate Tech + Finance** |
+| **Multi-Unit Upside**| **High (Garden Suites)**| **Low (Condo Dominated)** | **Medium (High Cost)** |
+| **2026 HomeVibes Score**| **⭐⭐⭐⭐⭐ (Cash Flow King)**| **⭐⭐⭐⭐ (Transit Hub)** | **⭐⭐⭐ (Low Margin)** |
 `
   }
 ];
 
 function run() {
-  console.log('Running Content Creator engine for HomeVibes (Batch 3)...');
+  console.log('Running Content Creator engine for HomeVibes (Batch 4)...');
 
   // 1. Read existing blogPosts.js
   const blogPostsPath = path.join(__dirname, '../src/data/blogPosts.js');
@@ -227,7 +221,7 @@ function run() {
   content = content.slice(0, insertionPoint) + newPostsCode + content.slice(insertionPoint);
 
   fs.writeFileSync(blogPostsPath, content, 'utf8');
-  console.log(`✅ Successfully added ${newPosts.length} new 2026 market intelligence articles to blogPosts.js! (IDs: 40, 39, 38)`);
+  console.log(`✅ Successfully added ${newPosts.length} new 2026 market intelligence articles to blogPosts.js! (IDs: 43, 42, 41)`);
 
   // 3. Regenerate Sitemap & RSS Feed
   console.log('Regenerating sitemap.xml and rss.xml...');
