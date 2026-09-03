@@ -521,6 +521,21 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://homevibes.app/insights/mississauga-lakeview-village-vs-brightwater-port-credit-waterfront-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/insights/eglinton-east-lrt-scarborough-transit-frontier-2026-audit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/insights/toronto-laneway-garden-suite-economics-2026-guide</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://homevibes.app/insights/port-lands-villiers-island-waterfront-mega-district-2026</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
