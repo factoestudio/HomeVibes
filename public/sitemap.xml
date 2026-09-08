@@ -521,6 +521,21 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://homevibes.app/insights/toronto-west-harbour-revitalization-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/insights/york-region-solar-farm-investment-outlook-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homevibes.app/insights/downtown-hamilton-mixed-use-development-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://homevibes.app/insights/mississauga-lakeview-village-vs-brightwater-port-credit-waterfront-2026</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
