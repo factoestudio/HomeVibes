@@ -1,5 +1,112 @@
 export const blogPosts = [
   {
+    id: 50,
+    slug: 'streetsville-vs-unionville-gta-heritage-village-showdown-2026',
+    title: 'Streetsville vs. Unionville: The 2026 GTA Heritage Village Showdown — Which Historic Enclave Wins for Charm, Schools & ROI?',
+    date: 'September 9, 2026',
+    excerpt: 'A comprehensive comparative analysis of Peel and York Region premier heritage downtowns—Streetsville (Mississauga) and Unionville (Markham)—evaluating price per square foot metrics, GO Transit expansions, Fraser Institute school rankings, and 5-year equity runway.',
+    category: 'Neighborhood Guides',
+    coordinates: { lat: 43.5833, lng: -79.7144 },
+    neighborhoodName: "Streetsville & Unionville",
+    city: "Mississauga & Markham",
+    neighborhoodId: "streetsville",
+    content: `
+## Streetsville vs. Unionville: The 2026 GTA Heritage Village Showdown
+
+**Target Persona & Micro-Cluster**  
+Move-up families, hybrid tech & financial executives, and heritage lifestyle buyers choosing between Peel Region's historic Credit River corridor and York Region's Silicon Valley North enclave.
+
+---
+
+### Executive Summary & The Core Dilemma
+In late 2026, as buyers push past cookie-cutter suburban subdivisions in search of authentic character, two 19th-century mill towns stand as the pinnacle of GTA village living: **Streetsville** (Mississauga, Peel Region) and **Unionville** (Markham, York Region). 
+
+Both boast walkable brick-and-mortar main streets, canopy-lined residential avenues, and GO rail connections directly to Union Station. However, their investment profiles, price ceilings, school catchment competition, and commuter dynamics diverge significantly.
+
+---
+
+### 1. Village Vibe & Everyday Walkability
+
+| Lifestyle Metric | Streetsville (Mississauga) | Unionville (Markham) |
+| :--- | :--- | :--- |
+| **Main Street Character** | Queen St S: working village with bakeries, pubs & indie retail | Main St Unionville: picturesque storybook village & patio culture |
+| **Natural Amenities** | Credit River Trail system, Memorial Park & Culham Trail | Toogood Pond Park, Crosby Park & Rouge Valley greenway |
+| **Community Pulse** | Bread and Honey Festival, Canada Day Rotary celebrations | Unionville Festival, Markham Jazz Festival & seasonal night markets |
+| **Pedestrian Vibe** | Practical, neighborhood-centric community gatherings | Tourist-attracting destination with heritage conservation district |
+
+Streetsville offers an unpretentious, tight-knit village ambiance where generational Mississauga residents and young professional families mingle at local spots like The Franklin House and Kate's Town Talk Bakery. 
+
+Unionville delivers an internationally recognized heritage aesthetic centered around Toogood Pond, offering postcard-perfect Victorian architecture and elevated dining such as the Unionville Arms Pub and Old Firehall Confectionery.
+
+---
+
+### 2. Commute & Transit Infrastructure (2026 Audit)
+
+| Transit Feature | Streetsville GO | Unionville GO |
+| :--- | :--- | :--- |
+| **GO Rail Corridor** | Milton Line (CPKC rail corridor) | Stouffville Line (Metrolinx GO Expansion) |
+| **Travel Time to Union** | ~42 minutes | ~38 minutes |
+| **Service Frequency** | Peak-hour directional train service + off-peak GO buses | All-day two-way 15-minute electrified service upgrades |
+| **Highway Proximity** | Highway 401 (5 min), Highway 403 (8 min), Highway 407 (6 min) | Highway 407 ETR (3 min), Highway 404/DVP (7 min) |
+
+**Transit Winner:** **Unionville**. With Metrolinx completing major double-tracking and electrification upgrades along the Stouffville Line, Unionville GO provides true all-day, two-way rapid transit flexibility. Streetsville GO remains heavily dependent on peak-direction schedules due to CPKC freight rail sharing agreements.
+
+---
+
+### 3. Academic Rankings & School Catchments
+
+| Category | Streetsville Schools | Unionville Schools |
+| :--- | :--- | :--- |
+| **Top Elementary** | Vista Heights Public School (Fraser: 8.4/10) | William Berczy PS / St. Justin Martyr (Fraser: 9.1/10) |
+| **Flagship High School** | Streetsville Secondary School (Fraser: 7.6/10) | Unionville High School / Markville SS (Fraser: 9.2/10) |
+| **Specialty Programs** | French Immersion & Specialist High Skills Majors | Arts Unionville (AUM) & Gifted Education |
+
+**Academic Winner:** **Unionville**. While Streetsville is home to Vista Heights—one of Peel District School Board's most coveted elementary catchments—Unionville sits at the absolute epicenter of Ontario's highest-ranking public high schools, with both Unionville HS and neighboring Markville SS consistently ranking in the top 2% province-wide.
+
+---
+
+### 4. 2026 Real Estate Economics & Price Benchmarks
+
+| Market Metric (Q3 2026) | Streetsville | Unionville & Markham Centre | Advantage |
+| :--- | :--- | :--- | :--- |
+| **Benchmark Price / Sq Ft** | **$820 / sq ft** | **$890 / sq ft** | Streetsville (+8.5% value margin) |
+| **Average Monthly Freehold Rent** | $2,350 / mo | $2,450 / mo | Unionville (+4.2% rental yield) |
+| **Average Days on Market** | 17 Days | 13 Days | Unionville (Higher demand velocity) |
+| **Freehold Detached Median** | $1,420,000 | $1,680,000 | Streetsville (Lower entry threshold) |
+| **HomeVibes Sentiment Score** | **83 / 100** | **81 / 100** | Streetsville (Community satisfaction) |
+
+Streetsville delivers substantially more square footage per dollar. Buyers transitioning from Toronto condominiums can secure freehold detached homes and semi-detached properties at an $820/sq ft benchmark, compared to $890/sq ft in Unionville. However, Unionville boasts a rapid 13-day sales velocity and higher international buyer liquidity.
+
+---
+
+### 5. 5-Year Capital Appreciation Catalysts
+
+- **Streetsville's Growth Engines:**  
+  1. Connection to the **Hazel McCallion LRT** corridor along Hurontario (under 10 minutes east).  
+  2. Mississauga's official plan protecting low-density heritage conservation while encouraging gentle density along Queen Street.  
+  3. Sustained demand from tech workers commuting to Meadowvale Business Park and downtown Mississauga.
+
+- **Unionville's Growth Engines:**  
+  1. Multi-billion dollar **Markham Centre** master plan expansion bringing York University Markham Campus and tech headquarters.  
+  2. Stouffville GO 15-minute electrification completion.  
+  3. Perpetual international buyer demand anchored by world-class academic catchment boundaries.
+
+---
+
+### The Verdict: Which Village Matches Your Vibe?
+
+- **Choose Streetsville If:** You prioritize value per square foot, outdoor river recreation along the Credit River, a tight-knit community feel, and fast access to Pearson Airport, Highway 401, and Mississauga's commercial hubs.
+- **Choose Unionville If:** You demand top-tier academic credentials for your children, all-day frequent GO train service, close proximity to Markham's tech campus ecosystem, and premium heritage prestige.
+
+---
+
+### Find Your Ideal GTA Neighborhood Vibe
+Unsure whether Peel or York Region aligns with your budget, lifestyle, and commute threshold?
+
+👉 [**Take the HomeVibes AI Neighborhood Matcher**](https://homevibes.app) to discover your top 3 GTA communities based on your commute, school preferences, and lifestyle DNA.
+`
+  },
+  {
     id: 47,
     slug: 'toronto-west-harbour-revitalization-2026',
     title: 'Toronto West Harbour Revitalization 2026: New Urban Waterfront Blueprint',
