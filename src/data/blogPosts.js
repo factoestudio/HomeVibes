@@ -261,40 +261,6 @@ The West Harbour district is being redeveloped into a 1,200‑acre mixed‑use w
 `
   },
   {
-    id: 48,
-    slug: 'york-region-solar-farm-investment-outlook-2026',
-    title: 'York Region Solar Farm Investment Outlook 2026',
-    date: 'September 4, 2026',
-    excerpt: 'Forecast of solar farm capacity expansions, PPA rates, and green‑energy tax incentives across York Region’s emerging renewable corridor.',
-    category: 'Market Trends',
-    coordinates: { lat: 43.9735, lng: -79.2477 },
-    neighborhoodName: "York Region",
-    city: "York Region",
-    neighborhoodId: "york-region-solar",
-    content: `
-## York Region Solar Farm Investment Outlook 2026
-
-**Target Persona & Micro‑Cluster**  
-Institutional investors, clean‑energy funds, and eco‑conscious developers.
-
----
-
-### Capacity Growth
-- 2026 target: 2.5 GW of new solar capacity
-- Major projects: Newmarket Solar Park (250 MW), Whitchurch‑Stouffville (180 MW)
-
-### PPA Rates
-- Expected 2026 PPA: $0.047 /kWh (10% above 2025)
-
-### Incentives
-- Provincial Green‑Energy Tax Credit: 15% of capital costs
-- Federal IA‑FIT program extensions through 2028
-
-### Investment Rating
-⭐⭐⭐⭐ – Strong returns with policy support.
-`
-  },
-  {
     id: 49,
     slug: 'downtown-hamilton-mixed-use-development-2026',
     title: 'Downtown Hamilton Mixed‑Use Development 2026: Revitalizing the Steel City',
