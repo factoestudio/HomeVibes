@@ -1,5 +1,105 @@
 export const blogPosts = [
   {
+    id: 54,
+    slug: 'cabbagetown-victorian-micro-market-vibe-guide-2026',
+    title: 'Inside Cabbagetown: Toronto’s Secret Victorian Garden Sanctuary & Micro-Market Vibe Guide (2026 Edition)',
+    date: 'October 5, 2026',
+    excerpt: 'Stepping off Parliament Street into Cabbagetown feels like uncovering a preserved 19th-century secret garden. We explore North America’s largest Victorian enclave—from Riverdale Farm’s pastures to heritage bay-and-gables and 2026 freehold valuations.',
+    category: 'Vibe Analysis',
+    coordinates: { lat: 43.6667, lng: -79.3639 },
+    neighborhoodName: "Cabbagetown & Riverdale Park West",
+    city: "Toronto",
+    neighborhoodId: "cabbagetown",
+    content: `
+## Inside Cabbagetown: Toronto's Secret Victorian Garden Sanctuary & Micro-Market Vibe Guide
+
+**Target Persona & Micro-Cluster**  
+Creative directors, medical & academic professionals from U of T and the Hospital District, heritage architecture purists, and urban families seeking a true village sanctuary minutes from the Financial Core.
+
+---
+
+### The Secret Garden in the Heart of the City
+
+Turn east off Parliament Street onto Carlton, Metcalfe, or Sackville on a golden October afternoon, and the modern city simply dissolves. 
+
+The glass towers and relentless traffic hum of downtown Toronto vanish beneath a canopy of century-old silver maples. In their place stands a breathtaking open-air museum of brick chimneys, intricate wrought-iron gates, gaslamp-style streetlights, and private front-yard perennial gardens.
+
+This is **Cabbagetown**—celebrated internationally as the largest continuous enclave of preserved Victorian residential architecture in North America. Originally settled in the mid-19th century by Irish immigrants who famously planted vegetables in their front yards, the neighborhood has evolved into one of Toronto's most fiercely protected, bohemian, and architecturally revered micro-markets.
+
+Here is our insider walk-through of the daily lifestyle, hidden pockets, and real estate dynamics defining Cabbagetown in late 2026.
+
+---
+
+### 1. The Architectural DNA: Living Inside a Protected Masterpiece
+
+What makes Cabbagetown entirely unique in the GTA is its strict **Heritage Conservation District (HCD)** designation. Unlike other central Toronto neighborhoods vulnerable to speculative lot-splitting or intrusive modern infills, Cabbagetown’s streetscape is permanently safeguarded by law.
+
+- **The Bay-and-Gable Icon:** The defining silhouette of the neighborhood is the classic Toronto Bay-and-Gable—tall, narrow brick Victorian homes designed with ornamental gothic peaks, soaring 11-foot ceilings, and bay windows that flood interior parlors with natural light.
+- **Micro-Pocket Cottages:** Tucked behind main streets lie hidden pedestrian mews like **Alpha Avenue** and **Wellesley Cottages**—rows of quaint, dollhouse-like 1880s brick worker cottages with pocket gardens that feel straight out of a Charles Dickens novel.
+- **The Queen Anne Mansions:** Along leafy avenues like Winchester and Metcalfe, grand Queen Anne homes boast ornate wrap-around verandas, stained-glass transoms, and turret towers.
+
+---
+
+### 2. The Pastoral Oasis: Riverdale Farm & The Don Valley
+
+Cabbagetown’s eastern boundary holds perhaps the most surreal urban amenity in Canada: **Riverdale Farm**.
+
+- **The Working Downtown Farm:** Spanning 7.5 idyllic acres of historic rolling pastures, Riverdale Farm is a real, operational municipal farm. On any given morning, local residents jog past heritage breeds of cattle, goats, pigs, and draft horses, strolling through historic barns dating back to the 1850s.
+- **The Don Valley Trailhead:** Immediately adjacent lies Riverdale Park West, which cascades down into the lush Don River valley. Cyclists and runners have direct access to the Lower Don Trail, allowing a 15-minute car-free ride down to the lakefront, the Distillery District, or Tommy Thompson Park.
+- **The Necropolis Gardens:** Neighboring the park is the historic Toronto Necropolis, whose gothic chapel and park-like grounds provide an extraordinarily peaceful, dignified botanical walking route.
+
+---
+
+### 3. The Parliament Street Rituals: Indie Culture & Village Flavor
+
+While nearby Yorkville leans into corporate luxury and King West caters to high-energy nightlife, Cabbagetown’s commercial spine along **Parliament Street** remains fiercely independent:
+
+- **Jet Fuel Coffee:** The spiritual center of Cabbagetown since the 1990s. Founded as a bicycle courier refuge, this no-nonsense espresso bar roasts its own beans and serves dark, rich americanos surrounded by cycling ephemera and spirited neighborhood debates.
+- **The House on Parliament:** Widely regarded as the gold standard of Toronto gastropubs. With dark wood paneling, an exceptional craft beer and scotch list, and a hidden rooftop patio, it serves as the neighborhood's unofficial living room.
+- **F'Amelia:** A cozy, warm-timbered trattoria tucked into a historic cottage on Amelia Street, famous for northern Italian wood-fired pizza and handmade pastas under twinkle-lit garden trees.
+- **The Cabbagetown Festival:** Held every September, the festival shuts down Parliament Street for artisan makers, live jazz, and the beloved Blair's Cup parade.
+
+---
+
+### 4. 2026 Real Estate Economics: The Scarcity Premium
+
+Because no new land can be created and high-rise condo developments are prohibited within the heritage conservation core, Cabbagetown properties carry an enduring **scarcity premium**:
+
+- **Benchmark Price:** **~$1,040 per square foot**
+- **Average Days on Market:** **16 Days** (high liquidity for updated character freeholds)
+- **Freehold Semi-Detached Range:** **$1.4M to $1.85M**
+- **Restored Detached Victorian Mansions:** **$2.2M to $3.1M+**
+- **Average Monthly Character Rental:** **$3,100 / month** (driven by visiting professors, hospital fellows, and creative directors)
+
+During broader market fluctuations, Cabbagetown freeholds historically demonstrate remarkable price resilience. Buyers are purchasing irreplaceable architectural craftsmanship—original plaster ceiling medallions, exposed brick hearths, and centuries-old Douglas fir joists—that simply cannot be replicated today.
+
+---
+
+### 5. Commute & Transit Dynamics: The Downtown Connection
+
+Despite its quiet garden village feel, Cabbagetown is extraordinarily well-connected:
+
+- **TTC Streetcar Arteries:** The **506 Carlton streetcar** whisks commuters west to the Yonge subway line and the University of Toronto in under 10 minutes. The **505 Dundas** provides direct access to the Eaton Centre and Financial Core.
+- **The Cycling Superhighway:** Using the separated cycle tracks along Sherbourne or the Bayview multi-use trail, downtown office workers can bike to Bay & King in under 12 minutes flat.
+- **The Ontario Line Connection:** When the Ontario Line opens, Cabbagetown residents will be just an 8-minute walk from the future **Corktown Station**, unlocking rapid subway connections north and west.
+
+---
+
+### The Verdict: Is Cabbagetown Your Tribe?
+
+- **You Will Fall in Love Here If:** You crave authentic architectural character, value quiet morning strolls past historic barns and rose gardens, love supporting independent local bistros, and want a downtown commute without the concrete sterility of condo canyons.
+- **Look Elsewhere If:** You require an attached two-car private garage (most homes rely on street permit parking or rear laneway pads), demand pristine open-concept minimalist glass boxes, or dislike heritage preservation renovation guidelines.
+
+---
+
+### Find Your Authentic Toronto Neighborhood Vibe
+
+Wondering if Cabbagetown, Leslieville, Roncesvalles, or another historic Toronto enclave matches your budget, commute tolerances, and lifestyle DNA?
+
+👉 [**Take the Free HomeVibes AI Neighborhood Matcher**](https://homevibes.app) to get your personalized neighborhood match based on your lifestyle DNA in under 2 minutes.
+`
+  },
+  {
     id: 53,
     slug: 'true-cost-45-minute-commute-gta-real-estate-teardown-2026',
     title: 'The True Cost of a 45-Minute Commute: Why Cheaper Suburban Freeholds Often Cost More (2026 Financial Teardown)',
